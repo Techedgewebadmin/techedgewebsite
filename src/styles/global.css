@@ -1,0 +1,59 @@
+@import "tailwindcss";
+@import "./project-page.css";
+
+@font-face {
+  font-family: 'Anton';
+  src: url('/fonts/anton-latin-400-normal.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'DM Sans';
+  src: url('/fonts/dm-sans-latin-400-normal.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Roboto Mono';
+  src: url('/fonts/roboto-mono-latin-400-normal.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Space Grotesk';
+  src: url('/fonts/space-grotesk-latin-400-normal.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@theme inline {
+  --font-anton: 'Anton', sans-serif;
+  --font-sans: 'DM Sans', sans-serif;
+  --font-mono: 'Roboto Mono', sans-serif;
+  --font-grotesk: 'Space Grotesk', sans-serif;
+  
+  --color-primary: oklch(0.9646 0.0199 100.58);
+
+  --color-background: oklch(0.9826 0.0068 97.36);
+  --color-background-foreground: oklch(0.9311 0.0112 89.73);
+  
+  --color-foreground: oklch(0.18 0.02 250);
+
+  --color-accent: oklch(0.94 0.022 114.96);
+  --color-accent-foreground: oklch(1 0 0);
+
+  --color-secondary: oklch(0.78 0.14 130);
+  --color-secondary-foreground: oklch(0.3637 0.0866 148.03);
+
+  --color-secondary-dark: oklch(0.45 0.09 135);
+
+  --color-muted: oklch(0.40 0.02 250);
+  --color-muted-foreground: oklch(0.708 0 0);
+}

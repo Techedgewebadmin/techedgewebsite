@@ -1,0 +1,186 @@
+---
+import { getCollection } from "astro:content";
+import type { GetStaticPaths } from "astro";
+import Layout from "@/layouts/Layout.astro";
+import { Image } from "astro:assets";
+import { render } from "astro:content";
+import BreadCrumb from "@/components/common/BreadCrumb.astro";
+import CtaSlug from "@/components/common/CtaSlug.astro";
+import { t } from "@/lib/utils";
+
+export const prerender = true;
+
+export const getStaticPaths = (async () => {
+  const projects = await getCollection("projects");
+
+  return projects.map((project) => ({
+    params: { slug: project.id },
+    props: { project },
+  }));
+}) satisfies GetStaticPaths;
+
+const { project } = Astro.props;
+const { Content } = await render(project);
+const {
+  title,
+  category,
+  location,
+  capacity,
+  date,
+  image,
+  description,
+  stats,
+  client,
+} = project.data;
+---
+
+<Layout
+  title={title}
+  description={description}
+  image={image.src}
+>
+  <article data-hero-el class="bg-accent-foreground md:bg-background-foreground py-16 md:py-24">
+    <!-- Header Section -->
+    <section
+      class="bg-accent-foreground py-8 md:py-12 container mx-auto rounded-lg md:border-2 md:border-dashed md:border-muted"
+    >
+      <div class="mx-auto px-4 max-w-7xl">
+        <!-- Breadcrumb -->
+        <BreadCrumb title={title} />
+
+        <!-- Category Badge -->
+        <div class="mb-4">
+          <span
+            class="inline-flex items-center px-4 py-2 rounded-full bg-secondary text-foreground font-mono text-sm font-bold uppercase"
+          >
+            {category}
+          </span>
+        </div>
+
+        <!-- Title -->
+        <h1
+          class="text-4xl md:text-5xl xl:text-6xl font-anton uppercase leading-tight text-foreground mb-4"
+        >
+          {title}
+        </h1>
+
+        <!-- Description -->
+        <p class="text-lg md:text-xl text-foreground max-w-4xl mb-8">
+          {description}
+        </p>
+
+        <!-- Featured Image -->
+        <div
+          class="relative rounded-lg overflow-hidden aspect-video border border-secondary-dark"
+        >
+          <Image
+            src={image}
+            alt={title}
+            class="w-full h-full object-cover"
+            loading="eager"
+          />
+        </div>
+      </div>
+
+      <!-- Two Column Layout -->
+      <div
+        class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 max-w-7xl mx-auto px-4 mt-12 md:mt-20"
+      >
+        <!-- Left Sidebar - Stats (Sticky) -->
+        <aside class="lg:col-span-4 space-y-6">
+          <div class="lg:sticky lg:top-24 space-y-6">
+            <!-- Project Stats -->
+            <div
+              class="bg-muted-foreground/10 border-dashed border-2 border-secondary-dark rounded-lg p-6"
+            >
+              <h3
+                class="text-xl font-grotesk uppercase text-foreground mb-6 pb-3 border-b-2 border-dashed"
+              >
+                {t('project.slug.detail.title')}
+              </h3>
+              <div class="space-y-4">
+                <div>
+                  <p class="text-muted text-xs uppercase font-mono mb-1">
+                    {t('project.slug.detail.location')}
+                  </p>
+                  <p class="text-foreground text-base font-grotesk">
+                    {location}
+                  </p>
+                </div>
+                <div>
+                  <p class="text-muted text-xs uppercase font-mono mb-1">
+                    {t('project.slug.detail.capacity')}
+                  </p>
+                  <p class="text-foreground text-base font-grotesk">
+                    {capacity}
+                  </p>
+                </div>
+                <div>
+                  <p class="text-muted text-xs uppercase font-mono mb-1">
+                    {t('project.slug.detail.completed')}
+                  </p>
+                  <p class="text-foreground text-base font-grotesk">
+                    {date}
+                  </p>
+                </div>
+                {
+                  client && (
+                    <div>
+                      <p class="text-muted text-xs uppercase font-mono mb-1">
+                        {t('project.slug.detail.client')}
+                      </p>
+                      <p class="text-foreground text-base font-grotesk">
+                        {client}
+                      </p>
+                    </div>
+                  )
+                }
+              </div>
+            </div>
+
+            <!-- Project Impact -->
+            <div
+              class="bg-muted-foreground/10 border-dashed border-2 border-muted rounded-lg p-6"
+            >
+              <h3
+                class="text-xl font-grotesk uppercase text-foreground mb-6 pb-3 border-b-2 border-dashed"
+              >
+                {t('project.slug.impacts.title')}
+              </h3>
+              <div class="space-y-4">
+                {
+                  [
+                    { label: t('project.slug.impacts.solarpanels'), value: stats.panelCount },
+                    { label: t('project.slug.impacts.co2'), value: stats.co2Saved },
+                    { label: t('project.slug.impacts.energy'), value: stats.energyGenerated },
+                    { label: t('project.slug.impacts.payback'), value: stats.paybackPeriod },
+                  ].map((stat) => (
+                    <div class="flex flex-col items-start">
+                      <p class="text-muted text-xs uppercase font-mono mb-1">
+                        {stat.label}
+                      </p>
+                      <p class="text-xl font-grotesk text-foreground">
+                        {stat.value}
+                      </p>
+                    </div>
+                  ))
+                }
+              </div>
+            </div>
+          </div>
+        </aside>
+
+        <!-- Right Content - Article -->
+        <main class="lg:col-span-8 pl-0 xl:pl-6">
+          <!-- Markdown Content -->
+          <article class="project-page">
+            <Content />
+          </article>
+
+          <!-- CTA Section -->
+          <CtaSlug />
+        </main>
+      </div>
+    </section>
+  </article>
+</Layout>

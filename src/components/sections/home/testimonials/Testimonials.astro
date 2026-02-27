@@ -1,0 +1,20 @@
+---
+import Heading from "@/components/common/Heading.astro";
+import { TestimonialsCarousel } from "./TestimonialsCarousel";
+import { t } from "@/lib/utils";
+---
+
+<section class="py-12 md:py-20 px-4 overflow-hidden">
+  <div class="max-w-7xl mx-auto md:px-4">
+    <div class="space-y-2">
+      <Heading heading={t('testimonials.heading')} />
+      <h2
+        class="text-3xl md:text-4xl xl:text-6xl tracking-tight font-anton uppercase leading-none"
+      >
+        {t('testimonials.title')}
+      </h2>
+    </div>
+
+    <TestimonialsCarousel client:only="react" />
+  </div>
+</section>

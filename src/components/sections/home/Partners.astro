@@ -1,0 +1,69 @@
+---
+import Heading from "@/components/common/Heading.astro";
+import { Icon } from "astro-icon/components";
+import { t } from "@/lib/utils";
+
+const partners = [
+  // Row 1
+  { name: "panel", col: "col-start-1", row: "row-start-1" },
+  { name: "panel", col: "col-start-2", row: "row-start-1" },
+  { name: "panel", col: "col-start-4", row: "row-start-1" },
+  { name: "panel", col: "col-start-5", row: "row-start-1" },
+
+  // Row 2
+  { name: "panel", col: "col-start-2", row: "row-start-2" },
+  { name: "panel", col: "col-start-3", row: "row-start-2" },
+  { name: "panel", col: "col-start-5", row: "row-start-2" },
+
+  // Row 3
+  { name: "panel", col: "col-start-1", row: "row-start-3" },
+  { name: "panel", col: "col-start-3", row: "row-start-3" },
+  { name: "panel", col: "col-start-4", row: "row-start-3" },
+  { name: "panel", col: "col-start-5", row: "row-start-3" },
+];
+---
+
+<section class="py-16 md:py-20">
+  <div class="container mx-auto px-4 max-w-7xl">
+    <div class="mb-8">
+      <Heading heading={t('partners.heading')} />
+      <h2
+        class="text-3xl md:text-4xl xl:text-6xl tracking-tight font-anton uppercase leading-none"
+      >
+        {t('partners.title')}
+      </h2>
+    </div>
+    <!-- Grid Container -->
+    <div
+      class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 md:gap-6 auto-rows-[140px] md:auto-rows-[180px]"
+    >
+      {
+        partners.map((partner) => (
+          <div
+            class={`
+            ${partner.col} ${partner.row}
+            bg-secondary/60 rounded-2xl 
+            flex items-center justify-center p-8
+            hover:bg-secondary/30 transition-colors duration-300
+            group
+          `}
+          >
+            <span class="text-foreground/80 font-anton text-xl md:text-2xl uppercase tracking-wide text-center group-hover:text-foreground transition-colors">
+              <Icon name={partner.name} size={80} />
+            </span>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  /* Fallback for mobile where we might want a simpler grid */
+  @media (max-width: 1024px) {
+    .grid > div {
+      grid-column: auto;
+      grid-row: auto;
+    }
+  }
+</style>

@@ -1,0 +1,84 @@
+---
+import { Icon } from "@iconify-icon/react";
+import { Image } from "astro:assets";
+import type { CollectionEntry } from "astro:content";
+import Button from "../buttons/Button.astro";
+import { t } from "@/lib/utils";
+
+interface Props {
+  project: CollectionEntry<"projects">;
+  size?: "large" | "small";
+  className?: string;
+}
+
+const { project, size = "large", className = "" } = Astro.props;
+
+const { id, data } = project;
+const { title, category, location, capacity, image, description } = data;
+
+const isLarge = size === "large";
+const titleSize = isLarge ? "text-xl md:text-3xl" : "text-xl md:text-2xl";
+const descSize = isLarge ? "text-base md:text-lg" : "text-sm md:text-base";
+const padding = isLarge ? "md:p-8" : "md:p-6";
+---
+
+<a
+  href={`/projects/${id}`}
+  class={`group flex flex-col h-full transition-all duration-300 ${className}`}
+>
+  <!-- Image -->
+  <div class="relative overflow-hidden aspect-video rounded-t-lg">
+    <Image
+      src={image}
+      alt={title}
+      class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+    />
+
+    <span
+      class="absolute top-4 left-4 inline-flex items-center px-3 py-1 rounded-full bg-secondary text-foreground font-mono text-xs md:text-sm font-bold uppercase z-10"
+    >
+      {category}
+    </span>
+  </div>
+
+  <!-- Content -->
+  <div
+    class={`flex flex-col h-full p-6 ${padding} rounded-b-lg border-2 border-dashed border-t-0 bg-accent-foreground`}
+  >
+    <h3
+      class={`leading-8  tracking-tight font-black uppercase mb-3 text-foreground group-hover:underline group-hover:underline-offset-8 group-hover:decoration-secondary ${titleSize}`}
+    >
+      {title}
+    </h3>
+
+    <p class={`text-muted leading-relaxed mb-4 ${descSize}`}>
+      {description}
+    </p>
+
+    <!-- Stats -->
+    <div class="flex items-center justify-between text-foreground px-4 mb-6">
+      <div class="flex flex-col">
+        <span class="font-bold text-xs uppercase font-mono mb-1">{t("card.project.location")}</span>
+        <span class="font-sans text-sm md:text-base">{location}</span>
+      </div>
+      <div class="flex flex-col">
+        <span class="font-bold text-xs uppercase font-mono mb-1">{t("card.project.capacity")}</span>
+        <span class="font-sans text-sm md:text-base">{capacity}</span>
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <Button
+      variant="solid"
+      size="sm"
+      group
+    >
+      <span class="font-mono text-sm uppercase">{t("card.project.btn")}</span>
+      <Icon
+        client:only="react"
+        icon="icon-park-outline:arrow-right"
+        className="h-auto w-6 transition-transform group-hover:translate-x-1"
+      />
+    </Button>
+  </div>
+</a>

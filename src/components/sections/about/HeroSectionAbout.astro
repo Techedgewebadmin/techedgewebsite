@@ -1,0 +1,76 @@
+---
+import { t } from "@/lib/utils";
+import { Icon } from "astro-icon/components";
+
+const title = t("about.hero.title");
+const formatted = title.replace(
+  /future/i,
+  '<span class="font-sans text-4xl lg:text-6xl xl:text-7xl font-light italic lowercase">{ future }</span>' 
+);
+---
+
+<section class="fixed top-0 left-0 w-full h-dvh overflow-hidden z-0">
+  <video
+    class="absolute inset-0 w-full h-full object-cover pointer-events-none"
+    muted
+    autoplay
+    loop
+    playsinline
+    transition:persist
+  >
+    <source src="/videos/video6.mp4" type="video/mp4" />
+  </video>
+
+  <div class="absolute inset-0 bg-black opacity-30 pointer-events-none"></div>
+
+  <div
+    class="relative z-10 h-full flex items-baseline-last justify-between p-4 lg:p-12"
+  >
+    <div class="max-w-3xl space-y-4 text-accent-foreground">
+      <span
+        data-hero-el
+        class="font-anton text-base md:text-lg lg:text-xl uppercase tracking-wide"
+      >
+        {t("about.hero.heading")}
+      </span>
+      <h1
+        data-hero-el
+        class="flex flex-col gap-1 lg:gap-2 text-4xl lg:text-6xl xl:text-8xl font-anton uppercase"
+        set:html={formatted}
+      />
+      <p
+        data-hero-el
+        class="text-base lg:text-lg xl:text-xl mt-2 lg:mt-4 max-w-xl font-sans"
+      >
+        {t("about.hero.description")}
+      </p>
+    </div>
+
+    <!-- Card - Hidden on mobile, visible on lg+ -->
+    <div
+      class="hidden lg:flex w-fit relative h-full flex-col gap-4 p-4 md:p-6 justify-end"
+    >
+      <!-- Top Card -->
+      <div
+        data-hero-el
+        class="bg-background/80 backdrop-blur-sm rounded-2xl p-6 md:p-8 flex flex-col justify-between text-foreground"
+      >
+        <div>
+          <h2 class="text-3xl md:text-4xl font-anton mb-2">
+            {t("about.hero.card.title")}
+          </h2>
+          <p class="font-sans text-sm md:text-base opacity-80 max-w-xs mb-4">
+            {t("about.hero.card.description")}
+          </p>
+        </div>
+
+        <div class="flex justify-end">
+          <Icon name="arrow" class="size-9 -rotate-45 text-foreground" />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Spacer for content to start after the hero -->
+<div class="h-dvh"></div>

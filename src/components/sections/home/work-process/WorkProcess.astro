@@ -1,0 +1,27 @@
+---
+import { processes } from "@/config/workProcess.json";
+import Heading from "@/components/common/Heading.astro";
+import { t } from "@/lib/utils";
+import { Icon } from "astro-icon/components";
+import { WorkProcessScroll } from "./WorkProcessScroll";
+---
+
+<section class="relative container mx-auto py-16 md:py-20">
+  <div class="flex justify-between items-center gap-4 max-w-7xl mx-auto px-4">
+    <div class="space-y-3">
+      <Heading heading={t("workprocess.heading")} />
+      <h2
+        class="max-w-4xl text-3xl md:text-4xl xl:text-6xl tracking-tight font-anton uppercase leading-none"
+      >
+        {t("workprocess.title")}
+      </h2>
+    </div>
+    <Icon
+      name="arrow"
+      size={56}
+      class="rotate-180 text-secondary mt-4 lg:block hidden"
+    />
+  </div>
+
+  <WorkProcessScroll client:load processes={processes} />
+</section>

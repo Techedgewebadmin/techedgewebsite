@@ -1,0 +1,73 @@
+---
+import type { HTMLAttributes } from "astro/types";
+import { cva, type VariantProps } from "class-variance-authority";
+import { cn } from "@/lib/utils";
+
+const buttonVariants = cva(
+  "inline-flex items-center justify-center gap-2 cursor-pointer outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-accent disabled:pointer-events-none disabled:opacity-50 transition-all duration-300",
+  {
+    variants: {
+      variant: {
+        primary:
+          "bg-foreground text-white text-lg rounded-full hover:bg-secondary hover:text-foreground border border-foreground transition-colors duration-300 font-grotesk uppercase",
+        secondary: 
+          "bg-secondary hover:bg-accent text-foreground rounded-full",
+        solid:
+          "bg-secondary hover:bg-transparent border border-secondary hover:border-foreground text-foreground font-grotesk font-semibold uppercase rounded-full",
+        outline:
+          "border border-foreground hover:border-foreground text-foreground hover:text-accent hover:bg-foreground font-grotesk font-semibold uppercase rounded-full",
+      },
+      size: {
+        sm: "px-4 py-2 text-xs md:text-sm",
+        md: "px-6 py-2 text-sm md:text-base",
+        lg: "px-8 py-3 text-base md:text-lg",
+        xl: "px-12 py-4 text-lg md:text-xl",
+        icon: "p-2 size-10",
+        none: "",
+      },
+      group: {
+        true: "",
+        false: "",
+      },
+    },
+    compoundVariants: [
+      {
+        variant: "solid",
+        group: true,
+        className: "group-hover:bg-transparent group-hover:border-foreground",
+      },
+    ],
+    defaultVariants: {
+      variant: "primary",
+      size: "none",
+      group: false,
+    },
+  }
+);
+
+interface Props
+  extends HTMLAttributes<"button">,
+    Omit<HTMLAttributes<"a">, "type">,
+    VariantProps<typeof buttonVariants> {
+  href?: string;
+}
+
+const {
+  variant,
+  size,
+  class: className,
+  href,
+  group = false,
+  ...rest
+} = Astro.props;
+
+const Tag = href ? "a" : "button";
+---
+
+<Tag
+  class={cn(buttonVariants({ variant, size, group }), className)}
+  href={href}
+  {...rest}
+>
+  <slot />
+</Tag>

@@ -1,0 +1,58 @@
+---
+import { Icon } from "astro-icon/components";
+import { t } from "@/lib/utils";
+import Button from "@/components/ui/buttons/Button.astro";
+---
+
+<section class="fixed top-0 left-0 w-full h-dvh overflow-hidden z-0">
+  <video
+    class="absolute inset-0 w-full h-full object-cover pointer-events-none"
+    muted
+    autoplay
+    loop
+    playsinline
+    transition:persist
+  >
+    <source src="/videos/video5.mp4" type="video/mp4" />
+  </video>
+
+  <div class="absolute inset-0 bg-black opacity-30 pointer-events-none"></div>
+
+  <div
+    class="relative z-10 h-full flex items-baseline-last justify-between p-4 lg:p-12"
+  >
+    <div class="max-w-3xl space-y-4 text-accent-foreground">
+      <h1
+        data-hero-el
+        class="text-4xl lg:text-6xl xl:text-8xl font-anton uppercase"
+      >
+        {t("index.hero.h1")}
+      </h1>
+
+      <p
+        data-hero-el
+        class="text-base lg:text-lg xl:text-xl mt-4 max-w-xl font-sans"
+      >
+        {t("index.hero.description")}
+      </p>
+      <Button
+        data-hero-el
+        href="/contact"
+        variant="secondary"
+        class="font-anton text-base lg:text-xl uppercase max-w-sm"
+        size="lg"
+      >
+        {t("index.hero.btn")}
+      </Button>
+    </div>
+    <Icon
+      data-hero-el
+      name="arrow"
+      size={56}
+      class="rotate-180 hidden lg:block text-accent-foreground"
+    />
+  </div>
+</section>
+
+<!-- Spacer so that the content starts after the hero -->
+<div class="h-dvh"></div>

@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Techedge Solar Proposal</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+
+body{
+  margin:0;
+  font-family:Arial, sans-serif;
+  background:#e9edf2;
+}
+
+header{
+  background:#0a5c3b;
+  color:white;
+  padding:12px 20px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+button{
+  padding:8px 12px;
+  cursor:pointer;
+  border:none;
+  background:white;
+  font-weight:bold;
+}
+
+.container{
+  display:flex;
+  min-height:calc(100vh - 60px);
+}
+
+.left{
+  width:38%;
+  background:#f9fafb;
+  padding:20px;
+  overflow:auto;
+}
+
+.right{
+  width:62%;
+  background:#e9edf2;
+  padding:30px 0;
+  display:flex;
+  justify-content:center;
+  overflow:auto;
+}
+
+.document{
+  width:210mm;
+  min-height:297mm;
+  background:white;
+  padding:12mm 12mm;
+  box-shadow:0 0 8px rgba(0,0,0,0.1);
+  position:relative;
+}
+
+/* WATERMARK */
+.watermark{
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%) rotate(-25deg);
+  opacity:0.05;
+  width:70%;
+  pointer-events:none;
+  z-index:0;
+}
+
+#preview{
+  position:relative;
+  z-index:1;
+}
+
+input, select, textarea{
+  width:100%;
+  padding:8px;
+  margin-bottom:10px;
+  border:1px solid #ccc;
+  border-radius:4px;
+  font-size:14px;
+}
+
+table{
+  width:100%;
+  border-collapse:collapse;
+  margin-top:12px;
+}
+
+th, td{
+  border:1px solid #ccc;
+  padding:8px;
+  font-size:14px;
+}
+
+th{
+  background:#f2f2f2;
+}
+
+.amount{
+  text-align:right;
+}
+
+.logo{
+  height:90px;
+}
+
+.signature{
+  height:60px;
+  margin-top:10px;
+}
+
+/* SCREEN GRID */
+.grid-2x2{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:15px;
+  margin-top:20px;
+}
+
+.section-box{
+  border:1px solid #ccc;
+  padding:12px;
+  font-size:13px;
+}
+
+/* HEADING */
+.proposal-heading{
+  text-align:center;
+  font-size:18px;
+  font-weight:bold;
+  margin-bottom:20px;
+  text-transform:uppercase;
+}
+
+/* Mobile */
+@media(max-width:1000px){
+  .container{ flex-direction:column; }
+  .left,.right{ width:100%; }
+  .document{ width:100%; padding:20px; }
+  .grid-2x2{ grid-template-columns:1fr; }
+}
+
+/* PRINT SETTINGS */
+@page{
+  size:A4;
+  margin:3mm;
+}
+
+@media print{
+
+  header,.left{
+    display:none;
+  }
+
+  body{
+    background:white;
+  }
+
+  .right{
+    padding:0;
+  }
+
+  .document{
+    box-shadow:none;
+    width:100%;
+    min-height:auto;
+    padding:3mm;
+  }
+
+  .grid-2x2{
+    gap:8px;
+  }
+
+  table{
+    margin-top:6px;
+  }
+
+  th,td{
+    padding:5px;
+  }
+
+  .footer-section{
+    margin-top:12px;
+    page-break-inside:avoid;
+  }
+
+}
+  /* Convert grid to stable table for print */
+  .grid-2x2{
+    display:table;
+    width:100%;
+    border-spacing:10px;
+  }
+
+  .section-box{
+    display:table-cell;
+    width:50%;
+    vertical-align:top;
+    page-break-inside:avoid;
+  }
+
+  .watermark{
+    opacity:0.04;
+  }
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+<div><b>Techedge Solar Proposal Builder</b></div>
+<button onclick="downloadPDF()">Save as PDF</button>
+</header>
+
+<div class="container">
+
+<div class="left">
+
+<h3>Client Details</h3>
+
+<input id="qtNo">
+<input id="date" type="date">
+
+<input id="clientName" placeholder="Client Company Name">
+<input id="contactPerson" placeholder="Contact Person">
+<input id="contactPhone" placeholder="Phone Number">
+<input id="contactEmail" placeholder="Email ID">
+
+<textarea id="delivery" placeholder="Billing Address"></textarea>
+
+<h3>Project Details</h3>
+
+<select id="type">
+<option>Ongrid</option>
+<option>Offgrid</option>
+<option>Hybrid</option>
+</select>
+
+<input id="capacity" type="number" placeholder="Capacity (kW)">
+<input id="description" value="Supply & Installation of Solar Power Plant">
+<input id="rate" type="number" placeholder="Total Price (Excl GST)">
+
+<h3>GST Structure</h3>
+<select id="gstMode">
+<option value="epc">Solar EPC (70% @5% + 30% @18%)</option>
+<option value="supply">Supply Only (5%)</option>
+<option value="service">BOS & Installation (18%)</option>
+<option value="custom">Custom %</option>
+</select>
+
+<input id="customGST" type="number" placeholder="Custom GST %" style="display:none;">
+
+<h3>Techedge Scope</h3>
+<textarea id="Inclusions">
+1. Solar Panels
+2. String Inverters,
+3. Mounting Structure,
+4. Cables & Junction Boxes,
+5. Earthing & Lightning Protection kit,
+6. ONE Year Warranty on Supply & Installation.</textarea>
+
+<h3>Out of Techedge Scope</h3>
+<textarea id="exclusions">
+1. All civil works except earthing,
+2. Structural strengthening (if required),
+3. Any additional works beyond agreed scope</textarea>
+
+<h3>Delivery & Installation</h3>
+<textarea id="deliveryDetails">
+  1. Delivery and installation within 6-8 weeks from order confirmation.</textarea>
+
+<h3>Payment Terms</h3>
+<textarea id="paymentTerms">
+1. 50% Advance on Order Confirmation,
+2. 30% Before Dispatch,
+3. 15% Before Installation & Sync,
+4. 5% After Commissioning.</textarea>
+
+</div>
+
+<div class="right">
+<div class="document">
+<img src="/Logo.png" class="watermark">
+<div id="preview"></div>
+</div>
+</div>
+
+</div>
+
+<script>
+
+/* Date formats */
+function getTodayFormats(){
+  let now=new Date();
+  let yyyy=now.getFullYear();
+  let mm=String(now.getMonth()+1).padStart(2,"0");
+  let dd=String(now.getDate()).padStart(2,"0");
+
+  let monthNames=["JAN","FEB","MAR","APR","MAY","JUN","JUL","AUG","SEP","OCT","NOV","DEC"];
+  let display=dd+monthNames[now.getMonth()]+yyyy;
+
+  return{
+    numeric:yyyy+mm+dd,
+    display:display
+  };
+}
+
+function formatINR(num){
+  num = Math.round(num); // remove decimals completely
+  return "₹ " + num.toLocaleString("en-IN", {
+    maximumFractionDigits: 0
+  });
+}
+
+
+function formatCapacity(val){
+  if(val>=1000) return (val/1000).toFixed(2)+" MW";
+  return val+" kW";
+}
+
+function numberToWords(num){
+if(num===0) return "Zero Rupees Only";
+let ones=["","One","Two","Three","Four","Five","Six","Seven","Eight","Nine",
+"Ten","Eleven","Twelve","Thirteen","Fourteen","Fifteen","Sixteen",
+"Seventeen","Eighteen","Nineteen"];
+let tens=["","","Twenty","Thirty","Forty","Fifty","Sixty","Seventy","Eighty","Ninety"];
+function convert(n){
+let str="";
+if(n>99){str+=ones[Math.floor(n/100)]+" Hundred ";n%=100;}
+if(n>19){str+=tens[Math.floor(n/10)]+" ";n%=10;}
+if(n>0){str+=ones[n]+" ";}
+return str;
+}
+let result="";
+let crore=Math.floor(num/10000000);num%=10000000;
+let lakh=Math.floor(num/100000);num%=100000;
+let thousand=Math.floor(num/1000);num%=1000;
+if(crore) result+=convert(crore)+"Crore ";
+if(lakh) result+=convert(lakh)+"Lakh ";
+if(thousand) result+=convert(thousand)+"Thousand ";
+if(num) result+=convert(num);
+return result.trim()+" Rupees Only";
+}
+
+function calculateGST(base){
+let mode=gstMode.value;
+let gstTotal=0;
+let details="";
+if(mode=="epc"){
+let solar=base*0.7;
+let service=base*0.3;
+let gstSolar=solar*0.05;
+let gstService=service*0.18;
+gstTotal=gstSolar+gstService;
+details=`
+<tr><td>70% Supply @5%</td><td class="amount">${formatINR(gstSolar)}</td></tr>
+<tr><td>30% BOS & Installation @18%</td><td class="amount">${formatINR(gstService)}</td></tr>`;
+}
+if(mode=="supply"){ gstTotal=base*0.05; details=`<tr><td>GST @5%</td><td class="amount">${formatINR(gstTotal)}</td></tr>`;}
+if(mode=="service"){ gstTotal=base*0.18; details=`<tr><td>GST @18%</td><td class="amount">${formatINR(gstTotal)}</td></tr>`;}
+if(mode=="custom"){ let c=Number(customGST.value||0); gstTotal=base*c/100; details=`<tr><td>GST @${c}%</td><td class="amount">${formatINR(gstTotal)}</td></tr>`;}
+return{gstTotal,details};
+}
+
+function formatDisplayDate(dateString){
+  if(!dateString) return "";
+
+  const d = new Date(dateString);
+  const dd = String(d.getDate()).padStart(2,'0');
+  const yyyy = d.getFullYear();
+
+  const months = [
+    "JAN","FEB","MAR","APR","MAY","JUN",
+    "JUL","AUG","SEP","OCT","NOV","DEC"
+  ];
+
+  return dd + " " + months[d.getMonth()] + " " + yyyy;
+}
+
+function addDaysToDate(dateString, days){
+  if(!dateString) return "";
+
+  const d = new Date(dateString);
+  d.setDate(d.getDate() + days);
+
+  const dd = String(d.getDate()).padStart(2,'0');
+  const yyyy = d.getFullYear();
+
+  const months = [
+    "JAN","FEB","MAR","APR","MAY","JUN",
+    "JUL","AUG","SEP","OCT","NOV","DEC"
+  ];
+
+  return dd + " " + months[d.getMonth()] + " " + yyyy;
+}
+
+function updatePreview(){
+
+let base=Number(rate.value||0);
+let capacityValue=Number(capacity.value||0);
+let gstData=calculateGST(base);
+let total=base+gstData.gstTotal;
+
+/* Heading */
+let capacityText="";
+if(capacityValue>0){
+  capacityText=formatCapacity(capacityValue);
+}
+
+let headingText="PROPOSAL";
+
+if(capacityText && type.value){
+  headingText="PROPOSAL FOR "+capacityText+" "+type.value.toUpperCase()+" SOLAR POWER PLANT";
+}
+
+if(clientName.value){
+  headingText+=" FOR "+clientName.value.toUpperCase();
+}
+
+/* Description */
+let finalDescription=description.value;
+if(capacityValue>0){
+  finalDescription+=" ("+formatCapacity(capacityValue)+" "+type.value.toUpperCase()+")";
+}
+
+preview.innerHTML=`
+
+<div class="proposal-heading">${headingText}</div>
+
+<img src="/Logo.png" class="logo"><br><br>
+
+<b>Techedge SPE India Pvt. Ltd.</b><br>
+No. 10/11, Maragondanahalli Tavarekere, Bangalore – 562130<br>
+GSTIN: 29AAHCT2953M1ZP<br><br>
+
+<table>
+<tr>
+<td>
+<b>Client:</b><br>
+${clientName.value}<br>
+<b>Contact:</b> ${contactPerson.value}<br>
+<b>Phone:</b> ${contactPhone.value}<br>
+<b>Email:</b> ${contactEmail.value}
+</td>
+<td>
+<b>Address:</b><br>
+${delivery.value.replace(/\n/g,"<br>")}
+</td>
+<td>
+<b>Quotation No:</b> ${qtNo.value}<br>
+<b>Date:</b> ${formatDisplayDate(date.value)}
+</td>
+</tr>
+</table>
+
+<table>
+<tr><th>Description</th><th class="amount">Amount</th></tr>
+<tr><td>${finalDescription}</td><td class="amount">${formatINR(base)}</td></tr>
+</table>
+
+<table>
+<tr><td>Subtotal</td><td class="amount">${formatINR(base)}</td></tr>
+${gstData.details}
+<tr><td><b>Total</b></td><td class="amount"><b>${formatINR(total)}</b></td></tr>
+</table>
+
+<br><b>Amount in Words:</b> ${numberToWords(Math.round(total))}<br><br>
+
+<div class="grid-2x2">
+<div class="section-box"><b>Techedge Scope:</b><br>${Inclusions.value.replace(/\n/g,"<br>")}</div>
+<div class="section-box"><b>Out of Scope:</b><br>${exclusions.value.replace(/\n/g,"<br>")}</div>
+<div class="section-box"><b>Delivery & Installation:</b><br>${deliveryDetails.value.replace(/\n/g,"<br>")}</div>
+<div class="section-box"><b>Payment Terms:</b><br>${paymentTerms.value.replace(/\n/g,"<br>")}</div>
+</div>
+
+<br><br>
+
+
+<div style="margin-top:25px; display:flex; justify-content:space-between; align-items:flex-start; gap:40px; page-break-inside:avoid;">
+
+  <!-- Signature Section -->
+  <div style="flex:1; text-align:left; position:relative;">
+
+    <!-- Watermark Behind Signature -->
+    <img src="/Logo.png" 
+         style="position:absolute; left:0; top:-20px; height:110px; opacity:0.05; z-index:0;">
+
+    <div style="position:relative; z-index:1;">
+      <b>For Techedge SPE India Pvt. Ltd.</b><br><br>
+
+      <img src="/Sign.png" style="height:60px;"><br>
+
+      <div style="border-top:1px solid #444; width:220px; margin-top:4px;"></div>
+      <b>Authorized Signatory</b>
+    </div>
+
+  </div>
+
+  <!-- Bank Details Square Box -->
+  <div style="flex:1; border:2px solid #0a5c3b; padding:14px; background:#f3f9f6; font-size:13px;">
+    <b>Please transfer the payment to the following bank account</b><br><br>
+    State Bank of India<br>
+    A/C No: 38440022567<br>
+    IFSC: SBIN0017780
+  </div>
+
+</div>
+<br>
+<div style="text-align:center; font-size:12px; margin-top:12px;">
+  This quotation is valid till ${addDaysToDate(date.value,15)}.
+</div>
+`;
+}
+
+function downloadPDF(){
+let today=getTodayFormats();
+let cleanClient=(clientName.value||"Client").replace(/\s+/g,"-");
+let fileName="Proposal_"+cleanClient+"_"+qtNo.value+"_"+today.display;
+document.title=fileName;
+window.print();
+}
+
+gstMode.addEventListener("change",()=>{customGST.style.display=gstMode.value=="custom"?"block":"none";updatePreview();});
+document.querySelectorAll("input,textarea,select").forEach(el=>el.addEventListener("input",updatePreview));
+
+let today=getTodayFormats();
+qtNo.value="TEQ"+today.numeric+"-1";
+date.valueAsDate=new Date();
+
+updatePreview();
+
+</script>
+
+</body>
+</html>

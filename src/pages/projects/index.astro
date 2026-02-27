@@ -1,0 +1,26 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import { getCollection } from "astro:content";
+import { t } from "@/lib/utils";
+
+import Cta from "@/components/common/Cta.astro";
+import HeroSectionProjects from "@/components/sections/projects/HeroSectionProjects.astro";
+import ProjectList from "@/components/sections/projects/ProjectList.astro";
+
+const projects = await getCollection("projects");
+const projectsFilter = projects.sort(
+  (a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime()
+);
+---
+
+<Layout
+  title={t("meta.projects.title")}
+  description={t("meta.projects.description")}
+  keywords={t("meta.projects.keywords")}
+>
+  <HeroSectionProjects projects={projects} />
+  <div class="relative z-10 bg-background-foreground">
+    <ProjectList projects={projectsFilter} />
+    <Cta />
+  </div>
+</Layout>

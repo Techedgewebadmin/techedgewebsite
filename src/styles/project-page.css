@@ -1,0 +1,109 @@
+/* ================================
+   PROJECT PAGE — Custom Typography
+   ================================ */
+
+.project-page {
+  font-family: var(--font-grotesk);
+  max-width: 100%;
+  width: 100%;
+  color: var(--color-muted);
+}
+
+.project-page article {
+  width: 100%;
+}
+
+/* HEADINGS */
+.project-page h2,
+.project-page h3,
+.project-page h4 {
+  font-family: var(--font-grotesk);
+  text-transform: uppercase;
+  color: var(--color-foreground);
+  line-height: 1;
+}
+
+.project-page h2 {
+  font-size: 1.5rem; /* 24px */
+  margin-top: 3rem;
+  margin-bottom: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .project-page h2 {
+    font-size: 2rem; /* 32px */
+  }
+}
+
+.project-page h3 {
+  font-size: 1.75rem; /* 28px */
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+.project-page h4 {
+  font-size: 1.25rem;
+  margin-top: 1.5rem;
+  margin-bottom: 0.75rem;
+}
+
+/* PARAGRAPHS */
+.project-page p {
+  color: var(--color-muted);
+  font-size: 1.125rem;
+  line-height: 1.75;
+  margin-bottom: 1.5rem;
+}
+
+/* STRONG */
+.project-page strong {
+  color: var(--color-foreground);
+  font-weight: 700;
+}
+
+/* LINKS */
+.project-page a {
+  color: var(--color-secondary);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  transition: opacity 0.2s ease;
+}
+
+.project-page a:hover {
+  opacity: 0.8;
+}
+
+/* LISTS */
+.project-page ul {
+  list-style: disc;
+  padding-left: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.project-page li {
+  margin-bottom: 0.5rem;
+}
+
+/* BLOCKQUOTE */
+.project-page blockquote {
+  border-left: 4px solid var(--color-secondary);
+  padding-left: 1.5rem;
+  font-style: italic;
+  color: var(--color-muted);
+  margin: 2rem 0;
+}
+
+/* CODE INLINE */
+.project-page code {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 0.25rem 0.5rem;
+  border-radius: 6px;
+  font-size: 0.95rem;
+}
+
+/* IMAGES */
+.project-page img {
+  border-radius: 12px;
+  margin: 2rem 0;
+  width: 100%;
+}

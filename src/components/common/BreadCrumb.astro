@@ -1,0 +1,44 @@
+---
+interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+
+const { pathname } = Astro.url;
+const paths = pathname.split('/').filter((path) => path);
+
+const formatPath = (path: string) => {
+  return path
+    .replace(/-/g, ' ')
+    .replace(/\b\w/g, (char) => char.toUpperCase());
+};
+---
+
+<nav
+  class="mb-6 flex items-center gap-2 text-sm font-bold uppercase font-grotesk text-muted"
+  aria-label="Breadcrumb"
+>
+  <a href="/" class="hover:text-foreground transition-colors">Home</a>
+  
+  {
+    paths.map((path, index) => {
+      const href = `/${paths.slice(0, index + 1).join('/')}`;
+      const isLast = index === paths.length - 1;
+      const label = isLast && title ? title : formatPath(path);
+
+      return (
+        <>
+          <span>/</span>
+          {isLast ? (
+            <span class="text-foreground">{label}</span>
+          ) : (
+            <a href={href} class="hover:text-foreground transition-colors">
+              {label}
+            </a>
+          )}
+        </>
+      );
+    })
+  }
+</nav>

@@ -1,0 +1,86 @@
+---
+import { Icon } from "astro-icon/components";
+import { socialLinks } from "@/config/socialLinks.json";
+import { t } from "@/lib/utils";
+import { navItems, footerOtherItems } from "@/config/navItems.json";
+import SocialCard from "../ui/cards/SocialCard.astro";
+
+---
+
+<footer class="w-full relative z-10 bg-muted">
+  <div class="max-w-360 mx-auto p-8 md:pt-12 lg:pt-16 overflow-hidden">
+    <div
+      class="flex flex-col lg:flex-row justify-between items-start gap-12 mb-20"
+    >
+      <div class="max-w-2xl space-y-6">
+        <h4
+          class="text-4xl md:text-5xl lg:text-6xl font-anton font-medium tracking-tight uppercase text-accent"
+        >
+          {t("footer.title")}
+        </h4>
+        <Icon name="arrow" size={80} class="text-secondary rotate-45" />
+      </div>
+
+      <div class="flex flex-col lg:flex-row gap-16 md:gap-24">
+        <div>
+          <h5 class="text-gray-300 text-sm uppercase mb-6 tracking-wide">
+            {t("footer.menu.title")}
+          </h5>
+          <ul class="space-y-4 text-background font-medium text-lg">
+            {
+              navItems.map((item) => (
+                <li>
+                  <a
+                    href={item.href}
+                    class="hover:text-secondary transition-colors"
+                  >
+                    {item.title}
+                  </a>
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+
+        <div>
+          <h5 class="text-gray-300 text-sm uppercase mb-6 tracking-wide">
+            {t("footer.other.title")}
+          </h5>
+          <ul class="space-y-4 text-background font-medium text-lg">
+            {
+              footerOtherItems.map((item) => (
+                <li>
+                  <a
+                    href={item.href}
+                    class="hover:text-secondary transition-colors"
+                  >
+                    {item.title}
+                  </a>
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="flex justify-end pb-12">
+      <div
+        class="grid grid-cols-2 lg:grid-cols-4 gap-4 w-full h-full lg:max-w-4xl"
+      >
+        {socialLinks.map((social) => <SocialCard {...social} />)}
+      </div>
+    </div>
+
+    <div
+      class="flex flex-col md:flex-row justify-between items-center text-muted-foreground text-sm border-t border-transparent md:border-none pt-4 md:pt-8"
+    >
+      <div class="flex items-center gap-2 mb-2 md:mb-0">
+        <span class="text-muted-foreground text-sm md:text-base uppercase">{t("company.name")}</span>
+        <span class="bg-muted-foreground w-px h-3"></span>
+        <span class="text-muted-foreground text-sm md:text-base">{new Date().getFullYear()}</span>
+      </div>
+      <div>All rights reserved</div>
+    </div>
+  </div>
+</footer>

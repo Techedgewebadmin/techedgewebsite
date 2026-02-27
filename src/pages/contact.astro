@@ -1,0 +1,11 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import ContactContent from "@/components/sections/contact/ContactContent.astro";
+import { t } from "@/lib/utils";
+
+export const prerender = false
+---
+
+<Layout title={t("meta.contact.title")} description={t("meta.contact.description")} keywords={t("meta.contact.keywords")}>
+  <ContactContent />
+</Layout>

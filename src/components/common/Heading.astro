@@ -1,0 +1,12 @@
+---
+import { Icon } from "astro-icon/components";
+
+const { heading } = Astro.props;
+---
+
+<p
+  class="flex items-center font-grotesk text-sm md:text-base lg:text-lg mb-4 tracking-wider font-semibold uppercase"
+>
+  <Icon name="arrow" size={24} class="rotate-135 text-secondary mr-2" />
+  {heading}
+</p>

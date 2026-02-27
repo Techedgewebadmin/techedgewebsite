@@ -1,0 +1,153 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import { Icon } from "@iconify-icon/react";
+import { t } from "@/lib/utils";
+
+---
+
+<Layout
+  title={t("meta.privacy.title")}
+  description={t("meta.privacy.description")}
+>
+  <section class="py-20 md:py-32 px-4 min-h-screen">
+    <div class="max-w-4xl mx-auto">
+      <!-- Header -->
+      <div class="mb-12">
+        <a
+          href="/"
+          class="inline-flex items-center gap-2 text-muted hover:text-secondary transition-colors mb-6"
+        >
+          <Icon client:only="react" icon="mdi:arrow-left" className="size-5" />
+          <span class="font-grotesk">Back to Home</span>
+        </a>
+        <h1
+          class="text-5xl md:text-6xl lg:text-7xl font-anton uppercase leading-tight mb-6"
+        >
+          Privacy Policy
+        </h1>
+        <p class="text-muted font-sans text-lg">
+          Last updated: December 2024
+        </p>
+      </div>
+
+      <!-- Content -->
+      <div class="prose prose-lg max-w-none space-y-8">
+        <section>
+          <h2 class="text-3xl font-anton uppercase mb-4">1. Introduction</h2>
+          <p class="text-foreground/80 leading-relaxed">
+            At Cipres Solar, we are committed to protecting your privacy and ensuring the security of your personal information. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website or use our services.
+          </p>
+        </section>
+
+        <section>
+          <h2 class="text-3xl font-anton uppercase mb-4">2. Information We Collect</h2>
+          <p class="text-foreground/80 leading-relaxed mb-4">
+            We collect information that you provide directly to us, including:
+          </p>
+          <ul class="list-disc pl-6 space-y-2 text-foreground/80">
+            <li><strong>Personal Information:</strong> Name, email address, phone number, mailing address</li>
+            <li><strong>Property Information:</strong> Address, property type, roof specifications, energy usage data</li>
+            <li><strong>Financial Information:</strong> Payment details, billing information (processed securely through third-party payment processors)</li>
+            <li><strong>Communication Data:</strong> Records of your communications with us, including emails, phone calls, and chat messages</li>
+            <li><strong>Technical Data:</strong> IP address, browser type, device information, and usage data</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2 class="text-3xl font-anton uppercase mb-4">3. How We Use Your Information</h2>
+          <p class="text-foreground/80 leading-relaxed mb-4">
+            We use the information we collect to:
+          </p>
+          <ul class="list-disc pl-6 space-y-2 text-foreground/80">
+            <li>Provide, maintain, and improve our solar installation services</li>
+            <li>Process your requests and transactions</li>
+            <li>Conduct site assessments and provide accurate quotes</li>
+            <li>Communicate with you about our services, updates, and promotional offers</li>
+            <li>Comply with legal obligations and resolve disputes</li>
+            <li>Analyze usage patterns to improve our website and services</li>
+            <li>Prevent fraud and enhance security</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2 class="text-3xl font-anton uppercase mb-4">4. Information Sharing and Disclosure</h2>
+          <p class="text-foreground/80 leading-relaxed mb-4">
+            We do not sell your personal information. We may share your information with:
+          </p>
+          <ul class="list-disc pl-6 space-y-2 text-foreground/80">
+            <li><strong>Service Providers:</strong> Third-party vendors who assist us in operating our business (e.g., payment processors, installation contractors)</li>
+            <li><strong>Legal Requirements:</strong> When required by law, court order, or government regulations</li>
+            <li><strong>Business Transfers:</strong> In connection with a merger, acquisition, or sale of assets</li>
+            <li><strong>With Your Consent:</strong> When you explicitly authorize us to share your information</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2 class="text-3xl font-anton uppercase mb-4">5. Data Security</h2>
+          <p class="text-foreground/80 leading-relaxed">
+            We implement appropriate technical and organizational measures to protect your personal information against unauthorized access, alteration, disclosure, or destruction. However, no method of transmission over the Internet or electronic storage is 100% secure, and we cannot guarantee absolute security.
+          </p>
+        </section>
+
+        <section>
+          <h2 class="text-3xl font-anton uppercase mb-4">6. Your Rights and Choices</h2>
+          <p class="text-foreground/80 leading-relaxed mb-4">
+            You have the right to:
+          </p>
+          <ul class="list-disc pl-6 space-y-2 text-foreground/80">
+            <li>Access and receive a copy of your personal information</li>
+            <li>Correct inaccurate or incomplete information</li>
+            <li>Request deletion of your personal information</li>
+            <li>Object to or restrict certain processing of your information</li>
+            <li>Opt-out of marketing communications</li>
+            <li>Withdraw consent where processing is based on consent</li>
+          </ul>
+          <p class="text-foreground/80 leading-relaxed mt-4">
+            To exercise these rights, please contact us using the information provided below.
+          </p>
+        </section>
+
+        <section>
+          <h2 class="text-3xl font-anton uppercase mb-4">7. Cookies and Tracking Technologies</h2>
+          <p class="text-foreground/80 leading-relaxed">
+            We use cookies and similar tracking technologies to collect information about your browsing activities. You can control cookies through your browser settings, but disabling cookies may affect your ability to use certain features of our website.
+          </p>
+        </section>
+
+        <section>
+          <h2 class="text-3xl font-anton uppercase mb-4">8. Data Retention</h2>
+          <p class="text-foreground/80 leading-relaxed">
+            We retain your personal information for as long as necessary to fulfill the purposes outlined in this Privacy Policy, unless a longer retention period is required or permitted by law. When we no longer need your information, we will securely delete or anonymize it.
+          </p>
+        </section>
+
+        <section>
+          <h2 class="text-3xl font-anton uppercase mb-4">9. Children's Privacy</h2>
+          <p class="text-foreground/80 leading-relaxed">
+            Our services are not directed to individuals under the age of 18. We do not knowingly collect personal information from children. If you believe we have collected information from a child, please contact us immediately.
+          </p>
+        </section>
+
+        <section>
+          <h2 class="text-3xl font-anton uppercase mb-4">10. Changes to This Privacy Policy</h2>
+          <p class="text-foreground/80 leading-relaxed">
+            We may update this Privacy Policy from time to time. We will notify you of any material changes by posting the new Privacy Policy on this page and updating the "Last updated" date. We encourage you to review this Privacy Policy periodically.
+          </p>
+        </section>
+
+        <section>
+          <h2 class="text-3xl font-anton uppercase mb-4">11. Contact Us</h2>
+          <p class="text-foreground/80 leading-relaxed">
+            If you have any questions or concerns about this Privacy Policy or our data practices, please contact us at:
+          </p>
+          <div class="mt-4 p-6 bg-muted rounded-xl">
+            <p class="text-primary font-semibold">Cipres Solar - Privacy Team</p>
+            <p class="text-primary/80">Email: privacy@cipres.com</p>
+            <p class="text-primary/80">Phone: (+48) 762 864 075</p>
+            <p class="text-primary/80">Address: Mendoza, New York, NY 10012, United States</p>
+          </div>
+        </section>
+      </div>
+    </div>
+  </section>
+</Layout>

@@ -1,0 +1,31 @@
+---
+import { Accordion } from "@/components/ui/accordion/Accordion";
+import Button from "@/components/ui/buttons/Button.astro";
+import { faqItems } from "@/config/faq.json";
+import { t } from "@/lib/utils";
+---
+
+<section id="faq" class="py-16 md:py-20 px-4 md:px-8 lg:px-12 bg-background">
+  <div class="max-w-7xl mx-auto flex flex-col lg:flex-row gap-16 lg:gap-24">
+    <!-- Left Column: Content -->
+    <div class="lg:w-1/3 space-y-8 xl:sticky top-24 self-start">
+      <div class="space-y-3">
+        <h2 class="text-4xl md:text-5xl lg:text-6xl font-anton uppercase">
+          {t("faq.title")}
+        </h2>
+        <p class="text-muted font-sans text-lg leading-relaxed">
+          {t("faq.description")}
+        </p>
+      </div>
+
+      <Button href="/contact" variant="solid" size="md" class="px-12">
+        {t("faq.btn")}
+      </Button>
+    </div>
+
+    <!-- Right Column: Accordion -->
+    <div class="lg:w-2/3">
+      <Accordion client:visible items={faqItems} />
+    </div>
+  </div>
+</section>

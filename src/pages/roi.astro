@@ -1,0 +1,230 @@
+---
+---
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Solar ROI Calculator | Techedge</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <style>
+    body {
+      font-family: Arial;
+      margin: 0;
+      padding: 20px;
+      background: #ffffff;
+      color: #222;
+    }
+
+    h2 {
+      color: #0a5c3b;
+      margin-bottom: 10px;
+    }
+
+    .inputs {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    label {
+      font-size: 13px;
+      font-weight: 600;
+      display: block;
+      margin-bottom: 3px;
+    }
+
+    input {
+      width: 100%;
+      padding: 6px;
+      border: 1px solid #ccc;
+    }
+
+    .summary {
+      margin-bottom: 20px;
+      padding: 20px;
+      background: #f4f9f6;
+      border-left: 6px solid #0a5c3b;
+      line-height: 1.6;
+      font-size: 14px;
+    }
+  </style>
+</head>
+
+<body>
+
+<h2>Solar Financial Executive Summary</h2>
+
+<div class="inputs">
+  <div><label>Project Name</label><input id="client" /></div>
+  <div><label>Project Address</label><input id="address" /></div>
+  <div><label>Project Size (kW)</label><input type="number" id="size" value="600" /></div>
+  <div><label>Cost per Watt without all taxes (₹)</label><input type="number" id="perwatt" value="30" /></div>
+  <div><label>Generation per kW per Day</label><input type="number" id="gen" value="4.5" /></div>
+  <div><label>Tariff (₹/unit)</label><input type="number" id="tariff" value="6.8" /></div>
+  <div><label>Tariff Escalation (%)</label><input type="number" id="esc" value="5" /></div>
+  <div><label>Degradation (%)</label><input type="number" id="deg" value="0.7" /></div>
+  <div><label>AMC (% of Project Cost)</label><input type="number" id="amc" value="1" /></div>
+  <div><label>Project Life (Years)</label><input type="number" id="life" value="25" /></div>
+</div>
+
+<div class="summary" id="summary"></div>
+
+<div style="height:450px;">
+  <canvas id="chart"></canvas>
+</div>
+
+<script>
+
+let chart = null;
+
+function formatCurrency(value){
+  value = Math.round(value * 100) / 100;
+  function clean(num){ return Number(num.toFixed(2)).toString(); }
+  if(value >= 10000000) return "₹ " + clean(value/10000000) + " Crore";
+  if(value >= 100000) return "₹ " + clean(value/100000) + " Lakhs";
+  if(value >= 1000) return "₹ " + clean(value/1000) + " Thousand";
+  return "₹ " + clean(value);
+}
+
+function calculateIRR(cashflows){
+  let guess = 0.2;
+  for(let i=0;i<100;i++){
+    let npv = 0, dnpv = 0;
+    for(let t=0;t<cashflows.length;t++){
+      npv += cashflows[t] / Math.pow(1+guess,t);
+      dnpv -= t * cashflows[t] / Math.pow(1+guess,t+1);
+    }
+    guess -= npv/dnpv;
+  }
+  return guess;
+}
+
+function calculate(){
+
+  const client = document.getElementById("client").value || "Project";
+  const address = document.getElementById("address").value || "Project Location";
+  const size = +document.getElementById("size").value || 0;
+  const perwatt = +document.getElementById("perwatt").value || 0;
+  const gen = +document.getElementById("gen").value || 0;
+  const tariff = +document.getElementById("tariff").value || 0;
+  const esc = (+document.getElementById("esc").value || 0)/100;
+  const deg = (+document.getElementById("deg").value || 0)/100;
+  const amcPercent = (+document.getElementById("amc").value || 0)/100;
+  const life = +document.getElementById("life").value || 0;
+
+  const investment = size * 1000 * perwatt;
+  const annualGenBase = size * gen * 320;
+  const annualAMC = investment * amcPercent;
+
+  let cumulativeSavings = 0;
+  let cumulativeCost = investment;
+  let currentGen = annualGenBase;
+  let currentTariff = tariff;
+
+  let savingsData = [{x:0, y:0}];
+  let costData = [{x:0, y:investment}];
+  let cashflows = [-investment];
+
+  let roiYear = null;
+  let roiMonths = null;
+
+  for(let y=1; y<=life; y++){
+
+    let revenue = currentGen * currentTariff;
+    let netSaving = revenue - annualAMC;
+
+    cumulativeSavings += netSaving;
+    cumulativeCost += annualAMC;
+    cashflows.push(netSaving);
+
+    savingsData.push({x:y, y:cumulativeSavings});
+    costData.push({x:y, y:cumulativeCost});
+
+    if(roiYear === null && cumulativeSavings >= cumulativeCost){
+
+      const previousSavings = cumulativeSavings - netSaving;
+      const gap = cumulativeCost - previousSavings;
+      const fraction = gap / netSaving;
+
+      roiYear = y - 1;
+      roiMonths = Math.round(fraction * 12);
+      if(roiMonths >= 12){ roiYear++; roiMonths = 0; }
+    }
+
+    currentGen *= (1 - deg);
+    currentTariff *= (1 + esc);
+  }
+
+  const irr = calculateIRR(cashflows) * 100;
+
+  let roiText = roiYear !== null 
+    ? roiYear + " Years " + roiMonths + " Months"
+    : "Not Achieved Within Project Life";
+
+  document.getElementById("summary").innerHTML =
+    "<h3>Executive Summary</h3>" +
+    "<p><b>" + client + "</b>, located at <b>" + address + 
+    "</b>, is planning to install a <b>" + size + 
+    " kW rooftop solar photovoltaic power plant</b>.</p>" +
+
+    "<p>The total estimated project investment without all taxes is <b>" + 
+    formatCurrency(investment) + 
+    "</b>.</p>" +
+
+    "<p>The plant is expected to generate approximately <b>" +
+    annualGenBase.toLocaleString("en-IN") +
+    " units annually</b>, resulting in Year 1 net savings after O&M.</p>" +
+
+    "<p>Over a project life of <b>" + life +
+    " years</b>, the system achieves an IRR of <b>" +
+    irr.toFixed(2) +
+    "%</b> and an estimated payback period of <b>" +
+    roiText +
+    "</b>.</p>";
+
+  if(chart) chart.destroy();
+
+  chart = new Chart(document.getElementById("chart"), {
+    type: "line",
+    data: {
+      datasets: [
+        {
+          label: "Cumulative Savings",
+          data: savingsData,
+          borderColor: "#0a5c3b",
+          borderWidth: 3
+        },
+        {
+          label: "Investment + AMC",
+          data: costData,
+          borderColor: "red",
+          borderDash:[6,6],
+          borderWidth: 2
+        }
+      ]
+    },
+    options: {
+      parsing:false,
+      responsive:true,
+      scales:{
+        x:{type:'linear',min:0,max:life,ticks:{stepSize:1}},
+        y:{beginAtZero:true,ticks:{callback:(v)=>formatCurrency(v)}}
+      }
+    }
+  });
+
+}
+
+document.querySelectorAll("input").forEach(el=>{
+  el.addEventListener("input", calculate);
+});
+
+calculate();
+
+</script>
+
+</body>
+</html>

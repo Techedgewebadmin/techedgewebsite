@@ -1,0 +1,17 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import CompanyOverview from "@/components/sections/about/CompanyOverview.astro";
+import FaqSection from "@/components/sections/about/FaqSection.astro";
+import Cta from "@/components/common/Cta.astro";
+import HeroSectionAbout from "@/components/sections/about/HeroSectionAbout.astro";
+import { t } from "@/lib/utils";
+---
+
+<Layout title={t("meta.about.title")} description={t("meta.about.description")} keywords={t("meta.about.keywords")}>
+  <HeroSectionAbout />
+  <div class="relative z-10 bg-background-foreground">
+    <CompanyOverview />
+    <FaqSection />
+    <Cta />
+  </div>
+</Layout>

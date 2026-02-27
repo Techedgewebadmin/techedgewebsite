@@ -1,0 +1,118 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import { Icon } from "@iconify-icon/react";
+import { t } from "@/lib/utils";
+---
+
+<Layout
+  title={t("meta.terms.title")}
+  description={t("meta.terms.description")}
+>
+  <section class="py-20 md:py-32 px-4 min-h-screen">
+    <div class="max-w-4xl mx-auto">
+      <!-- Header -->
+      <div class="mb-12">
+        <a
+          href="/"
+          class="inline-flex items-center gap-2 text-muted hover:text-secondary transition-colors mb-6"
+        >
+          <Icon client:only="react" icon="mdi:arrow-left" className="size-5" />
+          <span class="font-grotesk">Back to Home</span>
+        </a>
+        <h1
+          class="text-5xl md:text-6xl lg:text-7xl font-anton uppercase leading-tight mb-6"
+        >
+          Terms of Service
+        </h1>
+        <p class="text-muted font-sans text-lg">
+          Last updated: December 2024
+        </p>
+      </div>
+
+      <!-- Content -->
+      <div class="prose prose-lg max-w-none space-y-8">
+        <section>
+          <h2 class="text-3xl font-anton uppercase mb-4">1. Agreement to Terms</h2>
+          <p class="text-foreground/80 leading-relaxed">
+            By accessing and using Cipres Solar services, you agree to be bound by these Terms of Service and all applicable laws and regulations. If you do not agree with any of these terms, you are prohibited from using or accessing our services.
+          </p>
+        </section>
+
+        <section>
+          <h2 class="text-3xl font-anton uppercase mb-4">2. Use License</h2>
+          <p class="text-foreground/80 leading-relaxed mb-4">
+            Permission is granted to temporarily access the materials on Cipres Solar's website for personal, non-commercial transitory viewing only. This is the grant of a license, not a transfer of title, and under this license you may not:
+          </p>
+          <ul class="list-disc pl-6 space-y-2 text-foreground/80">
+            <li>Modify or copy the materials</li>
+            <li>Use the materials for any commercial purpose or public display</li>
+            <li>Attempt to reverse engineer any software contained on our website</li>
+            <li>Remove any copyright or proprietary notations from the materials</li>
+            <li>Transfer the materials to another person or "mirror" the materials on any other server</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2 class="text-3xl font-anton uppercase mb-4">3. Solar Installation Services</h2>
+          <p class="text-foreground/80 leading-relaxed mb-4">
+            Our solar installation services are subject to the following terms:
+          </p>
+          <ul class="list-disc pl-6 space-y-2 text-foreground/80">
+            <li>All installations require a site assessment and approval</li>
+            <li>Pricing is subject to change based on site conditions and requirements</li>
+            <li>Installation timelines are estimates and may vary based on weather, permits, and other factors</li>
+            <li>Warranty terms are provided separately in your service agreement</li>
+            <li>Maintenance schedules and requirements will be outlined in your contract</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2 class="text-3xl font-anton uppercase mb-4">4. Payment Terms</h2>
+          <p class="text-foreground/80 leading-relaxed">
+            Payment terms will be outlined in your individual service agreement. Generally, we require a deposit upon contract signing, with the balance due upon project completion. We accept various payment methods including bank transfers, credit cards, and financing options where available.
+          </p>
+        </section>
+
+        <section>
+          <h2 class="text-3xl font-anton uppercase mb-4">5. Warranties and Guarantees</h2>
+          <p class="text-foreground/80 leading-relaxed">
+            Cipres Solar provides warranties on both equipment and installation workmanship. Specific warranty terms vary by product and service and will be detailed in your service agreement. We work with leading manufacturers who provide industry-standard equipment warranties.
+          </p>
+        </section>
+
+        <section>
+          <h2 class="text-3xl font-anton uppercase mb-4">6. Limitation of Liability</h2>
+          <p class="text-foreground/80 leading-relaxed">
+            In no event shall Cipres Solar or its suppliers be liable for any damages (including, without limitation, damages for loss of data or profit, or due to business interruption) arising out of the use or inability to use our services, even if Cipres Solar or an authorized representative has been notified orally or in writing of the possibility of such damage.
+          </p>
+        </section>
+
+        <section>
+          <h2 class="text-3xl font-anton uppercase mb-4">7. Governing Law</h2>
+          <p class="text-foreground/80 leading-relaxed">
+            These terms and conditions are governed by and construed in accordance with the laws of the jurisdiction in which Cipres Solar operates, and you irrevocably submit to the exclusive jurisdiction of the courts in that location.
+          </p>
+        </section>
+
+        <section>
+          <h2 class="text-3xl font-anton uppercase mb-4">8. Changes to Terms</h2>
+          <p class="text-foreground/80 leading-relaxed">
+            Cipres Solar reserves the right to revise these terms of service at any time without notice. By using this website and our services, you are agreeing to be bound by the current version of these Terms of Service.
+          </p>
+        </section>
+
+        <section>
+          <h2 class="text-3xl font-anton uppercase mb-4">9. Contact Information</h2>
+          <p class="text-foreground/80 leading-relaxed">
+            If you have any questions about these Terms of Service, please contact us at:
+          </p>
+          <div class="mt-4 p-6 bg-muted rounded-xl">
+            <p class="text-primary font-semibold">Cipres Solar</p>
+            <p class="text-primary/80">Email: legal@cipres.com</p>
+            <p class="text-primary/80">Phone: (+48) 762 864 075</p>
+          </div>
+        </section>
+      </div>
+    </div>
+  </section>
+</Layout>

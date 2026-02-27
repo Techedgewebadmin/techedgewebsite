@@ -1,0 +1,28 @@
+---
+import { t } from "@/lib/utils";
+import { ProjectListHover } from "./ProjectListHover";
+import type { CollectionEntry } from "astro:content";
+
+interface Props {
+  projects: CollectionEntry<"projects">[];
+}
+
+const { projects } = Astro.props;
+---
+
+<section class="py-12 md:py-20">
+  <div class="max-w-7xl mx-auto px-4">
+    <h2
+      class="text-3xl md:text-4xl xl:text-5xl font-anton uppercase text-foreground mb-4"
+    >
+      {t('project.page.title')}
+    </h2>
+    <p class="text-lg text-muted max-w-2xl">
+      {t('project.page.description')}
+    </p>
+  </div>
+
+  <div class="pt-8">
+    <ProjectListHover client:load projects={projects} />
+  </div>
+</section>

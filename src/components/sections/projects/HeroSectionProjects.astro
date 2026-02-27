@@ -1,0 +1,141 @@
+---
+import type { CollectionEntry } from "astro:content";
+import { Icon } from "astro-icon/components";
+import Button from "@/components/ui/buttons/Button.astro";
+import { t } from "@/lib/utils";
+
+interface Props {
+  projects?: CollectionEntry<"projects">[];
+}
+
+const { projects = [] } = Astro.props;
+
+// Calculate statistics
+const totalPanels = projects.reduce(
+  (sum, p) => sum + p.data.stats.panelCount,
+  0
+);
+const totalProjects = projects.length;
+const totalCO2 = projects.reduce((sum, p) => {
+  const co2Value = parseFloat(p.data.stats.co2Saved.replace(/[^\d.]/g, ""));
+  return sum + co2Value;
+}, 0);
+---
+
+<section class="fixed top-0 left-0 w-full h-dvh overflow-hidden z-0">
+  <video
+    class="absolute inset-0 w-full h-full object-cover pointer-events-none"
+    muted
+    autoplay
+    loop
+    playsinline
+    transition:persist
+  >
+    <source src="/videos/video4.mp4" type="video/mp4" />
+  </video>
+
+  <div class="absolute inset-0 bg-black opacity-30 pointer-events-none"></div>
+
+  <div
+    class="relative z-10 h-full flex flex-col lg:flex-row items-start lg:items-baseline-last justify-end lg:justify-between p-4 lg:p-12 gap-6 lg:gap-0"
+  >
+    <div class="max-w-3xl space-y-4 text-accent-foreground">
+      <h1
+        data-hero-el
+        class="text-4xl lg:text-6xl xl:text-8xl font-anton uppercase"
+      >
+        {t("project.page.hero.h1")}
+      </h1>
+
+      <p
+        data-hero-el
+        class="text-base lg:text-lg xl:text-xl mt-4 max-w-xl font-sans"
+      >
+        {t('project.page.hero.description')}
+      </p>
+      <Button
+        data-hero-el
+        href="/contact"
+        variant="secondary"
+        class="font-anton text-base lg:text-xl uppercase max-w-sm"
+        size="lg"
+      >
+        {t("project.page.hero.btn")}
+      </Button>
+    </div>
+
+    <!-- Cards adaptadas a mobile -->
+    <div
+      data-hero-el
+      class="grid grid-cols-3 lg:grid-cols-1 xl:grid-cols-3 gap-2 lg:gap-4 w-full lg:w-auto"
+    >
+      <!-- Total Units -->
+      <div
+        class="bg-background-foreground rounded-lg p-3 lg:p-4 flex flex-col justify-between min-h-[100px] lg:min-h-[120px]"
+      >
+        <p
+          class="text-2xl lg:text-4xl font-grotesk font-semibold text-foreground"
+        >
+          {totalPanels.toLocaleString()}
+        </p>
+        <div class="flex items-center justify-between mt-2">
+          <p
+            class="text-muted text-xs lg:text-base uppercase font-semibold font-grotesk"
+          >
+            Panels
+          </p>
+          <Icon
+            name="arrow"
+            size={20}
+            class="text-secondary -rotate-45 lg:w-7 lg:h-7"
+          />
+        </div>
+      </div>
+
+      <!-- Projects -->
+      <div
+        class="bg-background-foreground rounded-lg p-3 lg:p-4 flex flex-col justify-between min-h-[100px] lg:min-h-[120px]"
+      >
+        <p
+          class="text-2xl lg:text-4xl font-grotesk font-semibold text-foreground"
+        >
+          {totalProjects}
+        </p>
+        <div class="flex items-start justify-between mt-2">
+          <p
+            class="text-foreground text-xs lg:text-base uppercase font-semibold font-grotesk"
+          >
+            Done
+          </p>
+          <Icon
+            name="arrow"
+            size={20}
+            class="text-secondary -rotate-45 lg:w-7 lg:h-7"
+          />
+        </div>
+      </div>
+
+      <!-- CO2 Saved -->
+      <div
+        class="bg-secondary rounded-md p-3 lg:p-4 flex flex-col justify-between min-h-[100px] lg:min-h-[120px]"
+      >
+        <p
+          class="text-xl lg:text-4xl font-grotesk font-semibold text-foreground"
+        >
+          {totalCO2.toFixed(1)}t
+        </p>
+        <div class="flex items-start justify-between mt-2">
+          <p
+            class="text-foreground text-xs lg:text-base uppercase font-grotesk font-semibold"
+          >
+            CO2
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Spacer so that the content starts after the hero -->
+<div class="h-dvh"></div>
+

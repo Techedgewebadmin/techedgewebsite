@@ -1,0 +1,34 @@
+---
+import { Icon } from "astro-icon/components";
+import { SolarServices } from "./SolarServices";
+import { SolarServicesMobile } from "./SolarServiceMobile";
+import { services } from "@/config/services.json";
+import { t } from "@/lib/utils";
+import Heading from "@/components/common/Heading.astro";
+---
+
+<div class="bg-accent-foreground border-t-2 border-b-2 2xl:border-2 border-dashed 2xl:container 2xl:mx-auto rounded-lg">
+  <section class="px-4 py-12 md:py-20 max-w-7xl mx-auto">
+    <div class="relative mb-10 flex items-center justify-between">
+      <div class="max-w-4xl space-y-2">
+        <Heading heading={t("ourservice.heading")} />
+        <h2
+          class="text-3xl md:text-4xl lg:text-6xl tracking-tight font-anton uppercase leading-none"
+        >
+          {t("ourservice.title")}
+        </h2>
+      </div>
+      <Icon
+        name="arrow"
+        size={56}
+        class="text-secondary rotate-225 lg:block hidden"
+      />
+    </div>
+    <div class="hidden lg:block">
+      <SolarServices client:load services={services} />
+    </div>
+    <div class="lg:hidden block">
+      <SolarServicesMobile client:load services={services} />
+    </div>
+  </section>
+</div>

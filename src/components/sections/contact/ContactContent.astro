@@ -1,0 +1,118 @@
+---
+import { Icon } from "@iconify-icon/react";
+import ContactForm from "./ContactForm.astro";
+import { socialLinks } from "@/config/socialLinks.json";
+import { contactInfo } from "@/config/socialLinks.json";
+import { t } from "@/lib/utils";
+---
+
+<section class="py-28 md:py-32 px-4">
+  <div data-hero-el class="max-w-7xl mx-auto">
+    <!-- Title & Description - Always on top -->
+    <div class="space-y-6 mb-16">
+      <h1
+        class="text-3xl md:text-4xl xl:text-6xl tracking-tight font-anton uppercase leading-none"
+      >
+        {t('contact.title')}
+      </h1>
+      <p
+        class="text-muted font-sans text-base md:text-lg leading-relaxed max-w-2xl"
+      >
+        {t('contact.description')}
+      </p>
+    </div>
+
+    <!-- Two Columns: Form first on mobile, Contact info first on desktop -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-28">
+      <!-- Right Column Form -->
+      <div
+        class="order-1 lg:order-2 bg-white p-8 md:p-10 rounded-xl border-2 border-muted border-dashed"
+      >
+        <ContactForm />
+      </div>
+
+      <!-- Left Column Contact Info -->
+      <div class="order-2 lg:order-1 space-y-8 flex flex-col justify-between">
+        <!-- Contact Details -->
+        <div class="space-y-8">
+          <!-- Address -->
+          <div class="space-y-2">
+            <h3 class="text-sm font-grotesk font-semibold uppercase text-muted">
+              {t('contact.office')}
+            </h3>
+            <div class="text-foreground font-sans">
+              <p>{contactInfo.address.street}</p>
+              <p>{contactInfo.address.city}</p>
+              <p>{contactInfo.address.country}</p>
+            </div>
+          </div>
+
+          <!-- Email -->
+          <div class="space-y-2">
+            <h3 class="text-sm font-grotesk font-semibold uppercase text-muted">
+              {t('contact.email')}
+            </h3>
+            <a
+              href={`mailto:${contactInfo.email}`}
+              class="text-2xl md:text-3xl font-anton text-foreground hover:text-secondary transition-colors block"
+            >
+              {contactInfo.email}
+            </a>
+          </div>
+
+          <!-- Phone -->
+          <div class="space-y-2">
+            <h3 class="text-sm font-grotesk font-semibold uppercase text-muted">
+              {t('contact.phone')}
+            </h3>
+            <a
+              href={`tel:${contactInfo.phone.replace(/\s/g, "")}`}
+              class="text-2xl md:text-3xl font-anton text-foreground hover:text-secondary transition-colors block"
+            >
+              {contactInfo.phone}
+            </a>
+          </div>
+
+          <!-- Hours -->
+          <div class="space-y-2">
+            <h3 class="text-sm font-grotesk font-semibold uppercase text-muted">
+              {t('contact.workingHours')}
+            </h3>
+            <p class="text-foreground font-sans">
+              {contactInfo.workingHours}
+            </p>
+            <p class="text-muted font-sans text-sm">{contactInfo.workingDays}</p>
+          </div>
+        </div>
+
+        <!-- Social Links -->
+        <div class="pt-8 border-t-2 border-muted border-dashed">
+          <h3
+            class="text-sm font-grotesk font-semibold uppercase text-muted mb-4"
+          >
+            {t('contact.followUs')}
+          </h3>
+          <div class="flex gap-4">
+            {
+              socialLinks.map((social) => (
+                <a
+                  href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={social.label}
+                  class="size-12 rounded-full border-2 border-muted hover:border-secondary flex items-center justify-center hover:scale-110 transition-all"
+                >
+                  <Icon
+                    client:only="react"
+                    icon={social.icon}
+                    className="text-2xl text-foreground"
+                  />
+                </a>
+              ))
+            }
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

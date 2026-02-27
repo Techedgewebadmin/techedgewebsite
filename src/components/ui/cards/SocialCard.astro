@@ -1,0 +1,28 @@
+---
+import { Icon } from "@iconify-icon/react";
+
+interface Props {
+  href: string;
+  icon: string;
+  label: string;
+}
+
+const { href, icon, label } = Astro.props;
+
+// Check if it's an external link (not tel:)
+const isExternal = href.startsWith('https');
+---
+
+<a 
+  href={href}
+  target={isExternal ? "_blank" : undefined}
+  rel={isExternal ? "noopener noreferrer" : undefined}
+  class="bg-secondary hover:bg-background-foreground transition-colors p-4 xl:p-6 rounded-lg flex flex-col items-center lg:items-start justify-between aspect-square group min-w-24 min-h-24"
+>
+  <div class="w-10 h-10 flex items-center justify-center rounded-full border border-green-900/10 text-green-900 bg-accent">
+    <Icon client:only="react" icon={icon} width={24} height={24} />
+  </div>
+  <span class="font-normal text-gray-900 group-hover:translate-x-1 transition-transform text-center lg:text-start text-sm xl:text-base font-grotesk uppercase">
+    {label}
+  </span>
+</a>

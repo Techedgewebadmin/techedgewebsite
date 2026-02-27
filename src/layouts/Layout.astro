@@ -1,0 +1,79 @@
+---
+import Navbar from "@/components/ui/nav/Navbar.astro";
+import "../styles/global.css";
+import Footer from "@/components/common/Footer.astro";
+import { LoadingScreen } from "@/components/common/LoadingScreen";
+import BaseHead from "@/components/common/BaseHead.astro";
+
+const { title, description, image, keywords } = Astro.props;
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <BaseHead
+      title={title}
+      description={description}
+      image={image}
+      keywords={keywords}
+    />
+  </head>
+
+  <body class="bg-background-foreground">
+    <LoadingScreen client:load />
+    <Navbar />
+    <slot />
+    <Footer />
+    <div
+    class="relative w-full bg-primary text-muted text-center py-3 text-sm border-t border-border z-50"
+  >
+    <p>
+      <strong>Demo Website Notice:</strong> This website is for demonstration purposes
+      only. All content is fictional and generated for portfolio showcasing.
+    </p>
+  </div>
+  </body>
+</html>
+<script>
+  import Lenis from "lenis";
+  import gsap from "gsap";
+
+  /** Smooth scroll */
+  const lenis = new Lenis({
+    duration: 1.4,
+    easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+  });
+
+  function raf(time: number) {
+    lenis.raf(time);
+    requestAnimationFrame(raf);
+  }
+  requestAnimationFrame(raf);
+
+  /** Animate hero elements */
+  const animateHero = () => {
+    const els = document.querySelectorAll("[data-hero-el]");
+
+    if (!els.length) return;
+
+    gsap.set(els, {
+      opacity: 0,
+      y: 60,
+      filter: "blur(12px)",
+      scale: 0.96,
+    });
+
+    gsap.to(els, {
+      opacity: 1,
+      y: 0,
+      filter: "blur(0px)",
+      scale: 1,
+      duration: 0.9,
+      ease: "power4.out",
+      stagger: 0.25,
+    });
+  };
+
+  /** Wait until LoadingScreen says the app is ready */
+  window.addEventListener("app:ready", animateHero, { once: true });
+</script>
