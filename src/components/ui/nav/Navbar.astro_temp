@@ -1,0 +1,71 @@
+---
+import Button from "../buttons/Button.astro";
+import { FullscreenMenu } from "./FullscreenMenu";
+
+import logo from "@/assets/logo.png";
+import { Image } from "astro:assets";
+---
+
+<nav
+  id="navbar"
+  class="fixed top-1 left-2 right-2 md:left-12 md:right-12 z-40 transition-all duration-300"
+>
+  <div
+    id="navbar-inner"
+    class="w-full mx-auto px-4 md:px-9 py-6 flex justify-between items-center transition-all duration-500"
+  >
+
+    <!-- Logo -->
+    <a href="/">
+      <Image
+        src={logo}
+        alt="Techedge SPE India Pvt Ltd"
+        width={200}
+        height={70}
+        format="webp"
+        quality={90}
+        class="object-contain"
+      />
+    </a>
+
+    <!-- Right Side Buttons -->
+    <div class="flex items-center gap-4">
+      <Button
+        id="lets-talk-btn"
+        variant="primary"
+        href="/contact"
+        class="hidden md:flex opacity-0 pointer-events-none text-base px-6 py-3"
+      >
+        Let's Talk
+      </Button>
+
+      <Button
+        id="menu-toggle"
+        variant="secondary"
+        class="cursor-pointer flex items-center gap-3 px-6 py-3 group"
+        aria-label="Toggle menu"
+      >
+        <span
+          class="hidden md:block font-grotesk font-semibold text-sm md:text-base uppercase"
+        >
+          Menu
+        </span>
+
+        <div class="grid grid-cols-2 gap-1">
+          <div class="size-1.5 rounded-full bg-current"></div>
+          <div class="size-1.5 rounded-full bg-current"></div>
+          <div class="size-1.5 rounded-full bg-current"></div>
+          <div class="size-1.5 rounded-full bg-current"></div>
+        </div>
+      </Button>
+    </div>
+  </div>
+
+  <div
+    id="navbar-bg"
+    class="absolute inset-0 -z-10 opacity-0 transition-opacity duration-300 bg-muted border-b-2 border-secondary max-w-360 mx-auto rounded-xl"
+  >
+  </div>
+</nav>
+
+<FullscreenMenu client:load />
