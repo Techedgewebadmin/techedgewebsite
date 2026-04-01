@@ -82,7 +82,7 @@ export const labels = {
 
   //Contact Section
   'contact.title': 'Contact Us',
-  'contact.description': 'Everything you need to know before starting your project. But if you still have questions send us a message.',
+  'contact.description': 'Contact us for a free site survey.',
   'contact.office': 'Office',
   'contact.email': 'Email',
   'contact.phone': 'Phone',
