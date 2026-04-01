@@ -5,7 +5,7 @@ export type FaqItem = {
 
 export const faqItems: FaqItem[] = [
   {
-    question: "How is Cipres different from other solar contractors?",
+    question: "How is Techedge different from other solar contractors?",
     answer:
       "We offer a full-cycle EPC approach, meaning we handle everything from engineering and procurement to construction and maintenance. Our focus on quality and long-term partnership sets us apart.",
   },
