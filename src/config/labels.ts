@@ -1,6 +1,6 @@
 // labels.ts - Only text
 export const labels = {
-  'company.name': 'CIPRES',
+  'company.name': 'Techedge SPE India Pvt. Ltd',
 
   // Hero Section
   'index.hero.btn': 'Get Started',
@@ -114,29 +114,29 @@ export const labels = {
   '404.quick.link': 'Or explore these pages:',
 
   //Meta (seo)
-  'meta.index.title': 'CIPRES | Clean Energy Solutions',
+  'meta.index.title': 'TECHEDGE | Clean Energy Solutions',
   'meta.index.description': 'We are a full-cycle EPC and renewable energy development company, focused on building and investing in clean energy infrastructure worldwide.',
-  'meta.index.keywords': 'CIPRES, Clean Energy Solutions, EPC, Renewable Energy Development, Clean Energy Infrastructure, Solar Energy, Solar Panel Installation, Solar Panel Maintenance, Solar Panel Repair, Solar Panel Replacement, Solar Panel Upgrade, Solar Panel Installation, Solar Panel Maintenance, Solar Panel Repair, Solar Panel Replacement, Solar Panel Upgrade',
+  'meta.index.keywords': 'TECHEDGE, Clean Energy Solutions, EPC, Renewable Energy Development, Clean Energy Infrastructure, Solar Energy, Solar Panel Installation, Solar Panel Maintenance, Solar Panel Repair, Solar Panel Replacement, Solar Panel Upgrade, Solar Panel Installation, Solar Panel Maintenance, Solar Panel Repair, Solar Panel Replacement, Solar Panel Upgrade',
 
-  'meta.about.title': 'CIPRES | About Us',
+  'meta.about.title': 'TECHEDGE | About Us',
   'meta.about.description': 'We are a full-cycle EPC and renewable energy development company, focused on building and investing in clean energy infrastructure worldwide.',
-  'meta.about.keywords': 'CIPRES, Clean Energy Solutions, EPC, Renewable Energy Development, Clean Energy Infrastructure, Solar Energy, Solar Panel Installation, Solar Panel Maintenance, Solar Panel Repair, Solar Panel Replacement, Solar Panel Upgrade, Solar Panel Installation, Solar Panel Maintenance, Solar Panel Repair, Solar Panel Replacement, Solar Panel Upgrade',
+  'meta.about.keywords': 'TECHEDGE, Clean Energy Solutions, EPC, Renewable Energy Development, Clean Energy Infrastructure, Solar Energy, Solar Panel Installation, Solar Panel Maintenance, Solar Panel Repair, Solar Panel Replacement, Solar Panel Upgrade, Solar Panel Installation, Solar Panel Maintenance, Solar Panel Repair, Solar Panel Replacement, Solar Panel Upgrade',
 
-  'meta.contact.title': 'CIPRES | Contact Us',
+  'meta.contact.title': 'TECHEDGE | Contact Us',
   'meta.contact.description': 'Everything you need to know before starting your project. But if you still have questions, we\'re here to help.',
-  'meta.contact.keywords': 'CIPRES, Clean Energy Solutions, EPC, Renewable Energy Development, Clean Energy Infrastructure, Solar Energy, Solar Panel Installation, Solar Panel Maintenance, Solar Panel Repair, Solar Panel Replacement, Solar Panel Upgrade, Solar Panel Installation, Solar Panel Maintenance, Solar Panel Repair, Solar Panel Replacement, Solar Panel Upgrade',
+  'meta.contact.keywords': 'TECHEDGE, Clean Energy Solutions, EPC, Renewable Energy Development, Clean Energy Infrastructure, Solar Energy, Solar Panel Installation, Solar Panel Maintenance, Solar Panel Repair, Solar Panel Replacement, Solar Panel Upgrade, Solar Panel Installation, Solar Panel Maintenance, Solar Panel Repair, Solar Panel Replacement, Solar Panel Upgrade',
 
-  'meta.projects.title': 'CIPRES | Projects',
+  'meta.projects.title': 'TECHEDGE | Projects',
   'meta.projects.description': 'Explore our portfolio of successful solar installations across residential, commercial, and community sectors.',
-  'meta.projects.keywords': 'CIPRES, Clean Energy Solutions, EPC, Renewable Energy Development, Clean Energy Infrastructure, Solar Energy, Solar Panel Installation, Solar Panel Maintenance, Solar Panel Repair, Solar Panel Replacement, Solar Panel Upgrade, Solar Panel Installation, Solar Panel Maintenance, Solar Panel Repair, Solar Panel Replacement, Solar Panel Upgrade',
+  'meta.projects.keywords': 'TECHEDGE, Clean Energy Solutions, EPC, Renewable Energy Development, Clean Energy Infrastructure, Solar Energy, Solar Panel Installation, Solar Panel Maintenance, Solar Panel Repair, Solar Panel Replacement, Solar Panel Upgrade, Solar Panel Installation, Solar Panel Maintenance, Solar Panel Repair, Solar Panel Replacement, Solar Panel Upgrade',
 
   'meta.404.title': '404 - Page Not Found',
   'meta.404.description': 'The page you\'re looking for doesn\'t exist',
 
-  'meta.privacy.title': 'CIPRES | Privacy Policy',
+  'meta.privacy.title': 'TECHEDGE | Privacy Policy',
   'meta.privacy.description': 'Your privacy is important to us. We value your trust and are committed to protecting your personal information.',
 
-  'meta.terms.title': 'CIPRES | Terms of Use',
+  'meta.terms.title': 'TECHEDGE | Terms of Use',
   'meta.terms.description': 'By using our website, you agree to our terms of use.',
 
 } as const;

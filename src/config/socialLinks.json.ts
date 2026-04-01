@@ -30,7 +30,7 @@ export const contactInfo: ContactInfo = {
     city: "NY 11111",
     country: "United States",
   },
-  email: "contact@cipres.com",
+  email: "contact@techedgesolar.com",
   phone: "(+000) 111 222 333",
   workingHours: "Monday - Friday | 9AM - 5PM",
   workingDays: "Sat-Sun: Closed",
