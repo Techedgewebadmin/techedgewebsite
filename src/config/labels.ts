@@ -1,6 +1,6 @@
 // labels.ts - Only text
 export const labels = {
-  'company.name': 'Techedge SPE India Pvt. Ltd',
+  'company.name': 'Techedge',
 
   // Hero Section
   'index.hero.btn': 'Get Started',
@@ -82,7 +82,7 @@ export const labels = {
 
   //Contact Section
   'contact.title': 'Contact Us',
-  'contact.description': 'Everything you need to know before starting your project. But if you still have questions send us a message.',
+  'contact.description': 'Contact us for a free site survey.',
   'contact.office': 'Office',
   'contact.email': 'Email',
   'contact.phone': 'Phone',
@@ -114,29 +114,29 @@ export const labels = {
   '404.quick.link': 'Or explore these pages:',
 
   //Meta (seo)
-  'meta.index.title': 'TECHEDGE | Clean Energy Solutions',
+  'meta.index.title': 'Techedge | Clean Energy Solutions',
   'meta.index.description': 'We are a full-cycle EPC and renewable energy development company, focused on building and investing in clean energy infrastructure worldwide.',
-  'meta.index.keywords': 'TECHEDGE, Clean Energy Solutions, EPC, Renewable Energy Development, Clean Energy Infrastructure, Solar Energy, Solar Panel Installation, Solar Panel Maintenance, Solar Panel Repair, Solar Panel Replacement, Solar Panel Upgrade, Solar Panel Installation, Solar Panel Maintenance, Solar Panel Repair, Solar Panel Replacement, Solar Panel Upgrade',
+  'meta.index.keywords': 'Techedge, Clean Energy Solutions, EPC, Renewable Energy Development, Clean Energy Infrastructure, Solar Energy, Solar Panel Installation, Solar Panel Maintenance, Solar Panel Repair, Solar Panel Replacement, Solar Panel Upgrade, Solar Panel Installation, Solar Panel Maintenance, Solar Panel Repair, Solar Panel Replacement, Solar Panel Upgrade',
 
-  'meta.about.title': 'TECHEDGE | About Us',
+  'meta.about.title': 'Techedge | About Us',
   'meta.about.description': 'We are a full-cycle EPC and renewable energy development company, focused on building and investing in clean energy infrastructure worldwide.',
-  'meta.about.keywords': 'TECHEDGE, Clean Energy Solutions, EPC, Renewable Energy Development, Clean Energy Infrastructure, Solar Energy, Solar Panel Installation, Solar Panel Maintenance, Solar Panel Repair, Solar Panel Replacement, Solar Panel Upgrade, Solar Panel Installation, Solar Panel Maintenance, Solar Panel Repair, Solar Panel Replacement, Solar Panel Upgrade',
+  'meta.about.keywords': 'Techedge, Clean Energy Solutions, EPC, Renewable Energy Development, Clean Energy Infrastructure, Solar Energy, Solar Panel Installation, Solar Panel Maintenance, Solar Panel Repair, Solar Panel Replacement, Solar Panel Upgrade, Solar Panel Installation, Solar Panel Maintenance, Solar Panel Repair, Solar Panel Replacement, Solar Panel Upgrade',
 
-  'meta.contact.title': 'TECHEDGE | Contact Us',
+  'meta.contact.title': 'Techedge | Contact Us',
   'meta.contact.description': 'Everything you need to know before starting your project. But if you still have questions, we\'re here to help.',
-  'meta.contact.keywords': 'TECHEDGE, Clean Energy Solutions, EPC, Renewable Energy Development, Clean Energy Infrastructure, Solar Energy, Solar Panel Installation, Solar Panel Maintenance, Solar Panel Repair, Solar Panel Replacement, Solar Panel Upgrade, Solar Panel Installation, Solar Panel Maintenance, Solar Panel Repair, Solar Panel Replacement, Solar Panel Upgrade',
+  'meta.contact.keywords': 'Techedge, Clean Energy Solutions, EPC, Renewable Energy Development, Clean Energy Infrastructure, Solar Energy, Solar Panel Installation, Solar Panel Maintenance, Solar Panel Repair, Solar Panel Replacement, Solar Panel Upgrade, Solar Panel Installation, Solar Panel Maintenance, Solar Panel Repair, Solar Panel Replacement, Solar Panel Upgrade',
 
-  'meta.projects.title': 'TECHEDGE | Projects',
+  'meta.projects.title': 'Techedge | Projects',
   'meta.projects.description': 'Explore our portfolio of successful solar installations across residential, commercial, and community sectors.',
-  'meta.projects.keywords': 'TECHEDGE, Clean Energy Solutions, EPC, Renewable Energy Development, Clean Energy Infrastructure, Solar Energy, Solar Panel Installation, Solar Panel Maintenance, Solar Panel Repair, Solar Panel Replacement, Solar Panel Upgrade, Solar Panel Installation, Solar Panel Maintenance, Solar Panel Repair, Solar Panel Replacement, Solar Panel Upgrade',
+  'meta.projects.keywords': 'Techedge, Clean Energy Solutions, EPC, Renewable Energy Development, Clean Energy Infrastructure, Solar Energy, Solar Panel Installation, Solar Panel Maintenance, Solar Panel Repair, Solar Panel Replacement, Solar Panel Upgrade, Solar Panel Installation, Solar Panel Maintenance, Solar Panel Repair, Solar Panel Replacement, Solar Panel Upgrade',
 
   'meta.404.title': '404 - Page Not Found',
   'meta.404.description': 'The page you\'re looking for doesn\'t exist',
 
-  'meta.privacy.title': 'TECHEDGE | Privacy Policy',
+  'meta.privacy.title': 'Techedge | Privacy Policy',
   'meta.privacy.description': 'Your privacy is important to us. We value your trust and are committed to protecting your personal information.',
 
-  'meta.terms.title': 'TECHEDGE | Terms of Use',
+  'meta.terms.title': 'Techedge | Terms of Use',
   'meta.terms.description': 'By using our website, you agree to our terms of use.',
 
 } as const;
