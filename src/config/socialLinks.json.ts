@@ -30,8 +30,8 @@ export const contactInfo: ContactInfo = {
     city: "Bangalore – 562130",
     country: "India",
   },
-  email: "contact@techedge.com",
-  phone: "(+000) 111 222 333",
-  workingHours: "Monday - Friday | 9AM - 5PM",
-  workingDays: "Sat-Sun: Closed",
+  email: "sales@techedgeindia.co.in",
+  phone: "(+91) 98440 97096",
+  workingHours: "",
+  workingDays: "",
 };
