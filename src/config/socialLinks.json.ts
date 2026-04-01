@@ -26,9 +26,9 @@ export const socialLinks: SocialLink[] = [
 
 export const contactInfo: ContactInfo = {
   address: {
-    street: "Mendoza, New York",
-    city: "NY 11111",
-    country: "United States",
+    street: "No. 10/11, Maragondanahalli Tavarekere",
+    city: "Bangalore – 562130",
+    country: "India",
   },
   email: "contact@techedge.com",
   phone: "(+000) 111 222 333",

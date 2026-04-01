@@ -1,33 +1,24 @@
 ---
 import Button from "@/components/ui/buttons/Button.astro";
-
-// ============================================================================
-// DEMO CONTACT FORM - FOR PORTFOLIO/SHOWCASE PURPOSES ONLY
-// ============================================================================
-// This is a simplified demo version of the contact form that doesn't require
-// environment variables or backend setup. It just shows a success message.
-//
-// 🚨 TO ENABLE PRODUCTION CONTACT FORM:
-// 1. Rename this file to ContactFormDemo.astro
-// 2. Rename ContactForm.PRODUCTION.astro to ContactForm.astro
-// 3. Set up your environment variables (.env file):
-//    - RESEND_API_KEY
-//    - RESEND_EMAIL
-//    - FROM_EMAIL
-//    - UPSTASH_REDIS_REST_URL
-//    - UPSTASH_REDIS_REST_TOKEN
-// 4. See README.md for complete setup instructions
-// ============================================================================
 ---
 
-<form class="space-y-6" id="contact-form">
-  <!-- Success Message -->
+<form
+  class="space-y-6"
+  id="contact-form"
+  name="contact"
+  method="POST"
+  netlify
+  netlify-honeypot="bot-field"
+>
+  <input type="hidden" name="form-name" value="contact" />
+
+  <!-- Success / Error Message -->
   <div id="form-message" class="hidden"></div>
 
-  <!-- Demo Notice -->
-  <div class="p-3 bg-amber-50 border border-amber-300 rounded-lg text-amber-800 text-sm">
-    <p><strong>⚠️ Demo Mode:</strong> This form is for demonstration only. No emails will be sent.</p>
-  </div>
+  <!-- Honeypot -->
+  <p class="hidden">
+    <label>Don't fill this out: <input name="bot-field" /></label>
+  </p>
 
   <!-- Name Fields in Grid -->
   <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -143,41 +134,49 @@ import Button from "@/components/ui/buttons/Button.astro";
   if (form) {
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
-      
-      // Clear previous messages
+
       if (formMessage) {
         formMessage.classList.add('hidden');
         formMessage.innerHTML = '';
       }
 
-      // Show loading state
       if (submitBtn && btnText && btnLoader) {
         submitBtn.disabled = true;
         btnText.classList.add('hidden');
         btnLoader.classList.remove('hidden');
       }
 
-      // Simulate sending delay (demo only)
-      await new Promise(resolve => setTimeout(resolve, 1500));
+      try {
+        const formData = new FormData(form);
+        const response = await fetch('/', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body: new URLSearchParams(formData as any).toString(),
+        });
 
-      // Show success message (demo only - no actual email sent)
-      if (formMessage) {
-        formMessage.classList.remove('hidden');
-        formMessage.className = 'p-4 bg-green-100 border-2 border-green-500 rounded-xl text-green-800';
-        formMessage.innerHTML = '<p class="font-semibold">✓ Demo submission successful! (No email was actually sent)</p>';
-      }
-      
-      // Reset form
-      form.reset();
-      
-      // Scroll to success message
-      formMessage?.scrollIntoView({ behavior: 'smooth', block: 'center' });
-
-      // Restore button
-      if (submitBtn && btnText && btnLoader) {
-        submitBtn.disabled = false;
-        btnText.classList.remove('hidden');
-        btnLoader.classList.add('hidden');
+        if (response.ok) {
+          if (formMessage) {
+            formMessage.classList.remove('hidden');
+            formMessage.className = 'p-4 bg-green-100 border-2 border-green-500 rounded-xl text-green-800';
+            formMessage.innerHTML = '<p class="font-semibold">✓ Message sent successfully! We\'ll be in touch soon.</p>';
+          }
+          form.reset();
+          formMessage?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        } else {
+          throw new Error('Submission failed');
+        }
+      } catch {
+        if (formMessage) {
+          formMessage.classList.remove('hidden');
+          formMessage.className = 'p-4 bg-red-100 border-2 border-red-500 rounded-xl text-red-800';
+          formMessage.innerHTML = '<p class="font-semibold">✗ Something went wrong. Please try again.</p>';
+        }
+      } finally {
+        if (submitBtn && btnText && btnLoader) {
+          submitBtn.disabled = false;
+          btnText.classList.remove('hidden');
+          btnLoader.classList.add('hidden');
+        }
       }
     });
   }
