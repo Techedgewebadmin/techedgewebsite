@@ -6,156 +6,116 @@ import { contactInfo } from "@/config/socialLinks.json";
 import { t } from "@/lib/utils";
 ---
 
-<section class="py-28 md:py-32 px-4 bg-foreground min-h-screen">
-  <div data-hero-el class="max-w-7xl mx-auto">
-    <!-- Title & Description - Always on top -->
-    <div class="space-y-6 mb-16">
-      <h1
-        class="text-3xl md:text-4xl xl:text-6xl tracking-tight font-anton uppercase leading-none text-primary"
-      >
-        Contact Us for a Free Site Survey
-      </h1>
-      <p class="text-muted-foreground font-sans text-base md:text-lg leading-relaxed max-w-3xl">
-        Planning to install a solar system or upgrade your existing setup? Our team is here to support you at every step.
-      </p>
-      <p class="text-muted-foreground font-sans text-base md:text-lg leading-relaxed max-w-3xl">
-        We offer a complimentary site survey to assess your location, understand your energy requirements, and recommend the most efficient and cost-effective solution tailored to your needs.
-      </p>
-      <div class="max-w-3xl">
-        <p class="text-muted-foreground font-sans text-base md:text-lg leading-relaxed mb-4">During the survey, our experts will:</p>
-        <ul class="space-y-2 text-muted-foreground font-sans text-base md:text-lg">
-          <li class="flex items-start gap-3">
-            <span class="text-secondary mt-1 shrink-0">→</span>
-            <span>Evaluate your rooftop or installation area</span>
-          </li>
-          <li class="flex items-start gap-3">
-            <span class="text-secondary mt-1 shrink-0">→</span>
-            <span>Analyze your current electricity consumption</span>
-          </li>
-          <li class="flex items-start gap-3">
-            <span class="text-secondary mt-1 shrink-0">→</span>
-            <span>Identify optimal system size and configuration</span>
-          </li>
-          <li class="flex items-start gap-3">
-            <span class="text-secondary mt-1 shrink-0">→</span>
-            <span>Check technical feasibility and shading factors</span>
-          </li>
-          <li class="flex items-start gap-3">
-            <span class="text-secondary mt-1 shrink-0">→</span>
-            <span>Provide a preliminary savings and ROI estimate</span>
-          </li>
-        </ul>
-      </div>
-      <p class="text-muted-foreground font-sans text-base md:text-lg leading-relaxed max-w-3xl">
-        This no-obligation assessment helps you make an informed decision with complete clarity and confidence.
-      </p>
-      <p class="text-primary font-sans text-base md:text-lg leading-relaxed max-w-3xl font-semibold">
-        Get in touch today to schedule your free site survey and take the first step towards reliable and sustainable energy.
-      </p>
-    </div>
+<section class="py-16 md:py-24 px-4">
+  <div class="max-w-7xl mx-auto">
 
-    <!-- Solutions List -->
-    <div class="mb-12">
-      <h2 class="text-sm font-grotesk font-semibold uppercase text-muted-foreground mb-4 tracking-widest">Our Solutions</h2>
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
-        {[
-          { icon: "☀️", title: "ON-GRID Solar", desc: "Grid-tied, net metering", href: "/solutions/on-grid-solar" },
-          { icon: "🏕️", title: "OFF-GRID Solar", desc: "Full energy independence", href: "/solutions/off-grid-solar" },
-          { icon: "⚡", title: "Hybrid Solar", desc: "Solar + battery + grid", href: "/solutions/hybrid-solar" },
-          { icon: "❄️", title: "Cold Storage Solar", desc: "Built with RINAC", href: "/solutions/hybrid-solar-cold-storage" },
-        ].map((sol) => (
-          <a href={sol.href}
-            class="group bg-white/5 border border-muted-foreground/20 hover:border-secondary rounded-xl p-4 flex flex-col gap-2 transition-all duration-200 hover:bg-white/10">
-            <span class="text-2xl">{sol.icon}</span>
-            <div class="font-anton uppercase text-sm tracking-wide text-primary leading-tight">{sol.title}</div>
-            <div class="text-xs text-muted-foreground font-grotesk">{sol.desc}</div>
-            <div class="text-xs text-secondary font-semibold mt-auto group-hover:gap-1 flex items-center gap-0.5 transition-all">Learn more →</div>
-          </a>
-        ))}
-      </div>
-    </div>
+    <!-- Two-column layout: info left, form right (top-aligned) -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start">
 
-    <!-- Two Columns: Form first on mobile, Contact info first on desktop -->
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-28">
-      <!-- Right Column Form -->
-      <div
-        class="order-1 lg:order-2 bg-white p-8 md:p-10 rounded-xl border-2 border-muted-foreground border-dashed"
-      >
-        <ContactForm />
-      </div>
+      <!-- LEFT: Info -->
+      <div class="space-y-10">
 
-      <!-- Left Column Contact Info -->
-      <div class="order-2 lg:order-1 space-y-8 flex flex-col justify-between">
+        <!-- Heading -->
+        <div class="space-y-4">
+          <h1 class="text-3xl md:text-4xl xl:text-5xl tracking-tight font-anton uppercase leading-none text-foreground">
+            Contact Us for a Free Site Survey
+          </h1>
+          <p class="text-muted-foreground font-sans text-base md:text-lg leading-relaxed">
+            Planning to install a solar system or upgrade your existing setup? Our team is here to support you at every step.
+          </p>
+          <p class="text-muted-foreground font-sans text-base leading-relaxed">
+            We offer a complimentary site survey to assess your location, understand your energy requirements, and recommend the most efficient solution tailored to your needs.
+          </p>
+        </div>
+
+        <!-- Survey points -->
+        <div>
+          <p class="text-foreground font-sans text-sm font-semibold uppercase tracking-widest mb-4">During the survey, our experts will:</p>
+          <ul class="space-y-3 text-muted-foreground font-sans text-base">
+            {[
+              "Evaluate your rooftop or installation area",
+              "Analyze your current electricity consumption",
+              "Identify optimal system size and configuration",
+              "Check technical feasibility and shading factors",
+              "Provide a preliminary savings and ROI estimate",
+            ].map((item) => (
+              <li class="flex items-start gap-3">
+                <span class="text-secondary mt-1 shrink-0">→</span>
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <!-- Solutions -->
+        <div>
+          <h2 class="text-sm font-grotesk font-semibold uppercase text-muted-foreground mb-4 tracking-widest">Our Solutions</h2>
+          <div class="grid grid-cols-2 gap-3">
+            {[
+              { icon: "☀️", title: "ON-GRID Solar", desc: "Grid-tied, net metering", href: "/solutions/on-grid-solar" },
+              { icon: "🏕️", title: "OFF-GRID Solar", desc: "Full energy independence", href: "/solutions/off-grid-solar" },
+              { icon: "⚡", title: "Hybrid Solar", desc: "Solar + battery + grid", href: "/solutions/hybrid-solar" },
+              { icon: "❄️", title: "Cold Storage Solar", desc: "Built with RINAC", href: "/solutions/hybrid-solar-cold-storage" },
+            ].map((sol) => (
+              <a href={sol.href}
+                class="group bg-foreground/5 border border-muted-foreground/20 hover:border-secondary rounded-xl p-4 flex flex-col gap-2 transition-all duration-200">
+                <span class="text-2xl">{sol.icon}</span>
+                <div class="font-anton uppercase text-sm tracking-wide text-foreground leading-tight">{sol.title}</div>
+                <div class="text-xs text-muted-foreground font-grotesk">{sol.desc}</div>
+                <div class="text-xs text-secondary font-semibold mt-auto flex items-center gap-0.5 group-hover:gap-1 transition-all">Learn more →</div>
+              </a>
+            ))}
+          </div>
+        </div>
+
         <!-- Contact Details -->
-        <div class="space-y-8">
-          <!-- Address -->
-          <div class="space-y-2">
-            <h3 class="text-sm font-grotesk font-semibold uppercase text-muted-foreground">
-              {t('contact.office')}
-            </h3>
-            <div class="text-primary font-sans">
+        <div class="space-y-6 pt-4 border-t border-muted-foreground/20">
+          <div class="space-y-1">
+            <h3 class="text-xs font-grotesk font-semibold uppercase text-muted-foreground tracking-widest">{t('contact.office')}</h3>
+            <div class="text-foreground font-sans text-sm">
               <p>{contactInfo.address.street}</p>
               <p>{contactInfo.address.city}</p>
               <p>{contactInfo.address.country}</p>
             </div>
           </div>
-
-          <!-- Email -->
-          <div class="space-y-2">
-            <h3 class="text-sm font-grotesk font-semibold uppercase text-muted-foreground">
-              {t('contact.email')}
-            </h3>
-            <a
-              href={`mailto:${contactInfo.email}`}
-              class="text-2xl md:text-3xl font-anton text-primary hover:text-secondary transition-colors block"
-            >
+          <div class="space-y-1">
+            <h3 class="text-xs font-grotesk font-semibold uppercase text-muted-foreground tracking-widest">{t('contact.email')}</h3>
+            <a href={`mailto:${contactInfo.email}`} class="text-xl font-anton text-foreground hover:text-secondary transition-colors block">
               {contactInfo.email}
             </a>
           </div>
-
-          <!-- Phone -->
-          <div class="space-y-2">
-            <h3 class="text-sm font-grotesk font-semibold uppercase text-muted-foreground">
-              {t('contact.phone')}
-            </h3>
-            <a
-              href={`tel:${contactInfo.phone.replace(/\s/g, "")}`}
-              class="text-2xl md:text-3xl font-anton text-primary hover:text-secondary transition-colors block"
-            >
+          <div class="space-y-1">
+            <h3 class="text-xs font-grotesk font-semibold uppercase text-muted-foreground tracking-widest">{t('contact.phone')}</h3>
+            <a href={`tel:${contactInfo.phone.replace(/\s/g, "")}`} class="text-xl font-anton text-foreground hover:text-secondary transition-colors block">
               {contactInfo.phone}
             </a>
           </div>
-
         </div>
 
         <!-- Social Links -->
-        <div class="pt-8 border-t-2 border-muted-foreground border-dashed">
-          <h3
-            class="text-sm font-grotesk font-semibold uppercase text-muted-foreground mb-4"
-          >
-            {t('contact.followUs')}
-          </h3>
+        <div class="pt-4 border-t border-muted-foreground/20">
+          <h3 class="text-xs font-grotesk font-semibold uppercase text-muted-foreground mb-4 tracking-widest">{t('contact.followUs')}</h3>
           <div class="flex gap-4">
-            {
-              socialLinks.map((social) => (
-                <a
-                  href={social.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={social.label}
-                  class="size-12 rounded-full border-2 border-muted-foreground hover:border-secondary flex items-center justify-center hover:scale-110 transition-all"
-                >
-                  <Icon
-                    client:only="react"
-                    icon={social.icon}
-                    className="text-2xl text-primary"
-                  />
-                </a>
-              ))
-            }
+            {socialLinks.map((social) => (
+              <a
+                href={social.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={social.label}
+                class="size-10 rounded-full border border-muted-foreground/40 hover:border-secondary flex items-center justify-center hover:scale-110 transition-all"
+              >
+                <Icon client:only="react" icon={social.icon} className="text-xl text-foreground" />
+              </a>
+            ))}
           </div>
         </div>
       </div>
+
+      <!-- RIGHT: Form (sticky top) -->
+      <div class="lg:sticky lg:top-28 bg-white p-8 md:p-10 rounded-2xl shadow-sm border border-muted-foreground/20">
+        <ContactForm />
+      </div>
+
     </div>
   </div>
 </section>

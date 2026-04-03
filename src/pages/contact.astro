@@ -1,10 +1,15 @@
 ---
 import Layout from "@/layouts/Layout.astro";
+import HeroSectionContact from "@/components/sections/contact/HeroSectionContact.astro";
 import ContactContent from "@/components/sections/contact/ContactContent.astro";
+import Cta from "@/components/common/Cta.astro";
 import { t } from "@/lib/utils";
-
 ---
 
 <Layout title={t("meta.contact.title")} description={t("meta.contact.description")} keywords={t("meta.contact.keywords")}>
-  <ContactContent />
+  <HeroSectionContact />
+  <div class="relative z-10 bg-background-foreground">
+    <ContactContent />
+    <Cta />
+  </div>
 </Layout>

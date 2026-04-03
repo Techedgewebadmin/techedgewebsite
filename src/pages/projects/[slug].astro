@@ -39,48 +39,51 @@ const {
   description={description}
   image={image.src}
 >
-  <article data-hero-el class="bg-accent-foreground md:bg-background-foreground py-16 md:py-24">
-    <!-- Header Section -->
-    <section
-      class="bg-accent-foreground py-8 md:py-12 container mx-auto rounded-lg md:border-2 md:border-dashed md:border-muted"
-    >
-      <div class="mx-auto px-4 max-w-7xl">
-        <!-- Breadcrumb -->
-        <BreadCrumb title={title} />
-
-        <!-- Category Badge -->
-        <div class="mb-4">
-          <span
-            class="inline-flex items-center px-4 py-2 rounded-full bg-secondary text-foreground font-mono text-sm font-bold uppercase"
-          >
-            {category}
-          </span>
-        </div>
-
-        <!-- Title -->
-        <h1
-          class="text-4xl md:text-5xl xl:text-6xl font-anton uppercase leading-tight text-foreground mb-4"
-        >
+  <!-- Hero with project image background -->
+  <section class="fixed top-0 left-0 w-full h-dvh overflow-hidden z-0">
+    <Image
+      src={image}
+      alt={title}
+      class="absolute inset-0 w-full h-full object-cover pointer-events-none"
+      loading="eager"
+    />
+    <div class="absolute inset-0 bg-black opacity-50 pointer-events-none"></div>
+    <div class="relative z-10 h-full flex items-baseline-last justify-between p-4 lg:p-12">
+      <div class="max-w-3xl space-y-4 text-accent-foreground">
+        <span data-hero-el class="font-anton text-base md:text-lg uppercase tracking-wide text-secondary">
+          {category}
+        </span>
+        <h1 data-hero-el class="text-4xl lg:text-6xl xl:text-8xl font-anton uppercase leading-none">
           {title}
         </h1>
-
-        <!-- Description -->
-        <p class="text-lg md:text-xl text-foreground max-w-4xl mb-8">
+        <p data-hero-el class="text-base lg:text-lg max-w-xl font-sans">
           {description}
         </p>
-
-        <!-- Featured Image -->
-        <div
-          class="relative rounded-lg overflow-hidden aspect-video border border-secondary-dark"
-        >
-          <Image
-            src={image}
-            alt={title}
-            class="w-full h-full object-cover"
-            loading="eager"
-          />
+      </div>
+      <div class="hidden lg:flex w-fit relative h-full flex-col p-4 md:p-6 justify-end">
+        <div data-hero-el class="bg-background/80 backdrop-blur-sm rounded-2xl p-6 space-y-3 min-w-[200px]">
+          <div>
+            <p class="text-[0.65rem] uppercase tracking-wider text-muted-foreground font-semibold">Location</p>
+            <p class="text-sm font-bold text-foreground">{location}</p>
+          </div>
+          <div>
+            <p class="text-[0.65rem] uppercase tracking-wider text-muted-foreground font-semibold">Capacity</p>
+            <p class="text-sm font-bold text-foreground">{capacity}</p>
+          </div>
+          <div>
+            <p class="text-[0.65rem] uppercase tracking-wider text-muted-foreground font-semibold">Completed</p>
+            <p class="text-sm font-bold text-foreground">{date}</p>
+          </div>
         </div>
       </div>
+    </div>
+  </section>
+  <div class="h-dvh"></div>
+
+  <article class="relative z-10 bg-background-foreground pb-16 md:pb-24">
+    <section class="bg-accent-foreground py-8 md:py-12 container mx-auto rounded-lg md:border-2 md:border-dashed md:border-muted">
+      <div class="mx-auto px-4 max-w-7xl">
+        <BreadCrumb title={title} />
 
       <!-- Two Column Layout -->
       <div

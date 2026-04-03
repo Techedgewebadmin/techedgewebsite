@@ -4,8 +4,8 @@ export const labels = {
 
   // Hero Section
   'index.hero.btn': 'Get Started',
-  'index.hero.h1': 'Excellence in Solar Engineering',
-  'index.hero.description': 'Thinking about solar? We make it easy. Our team handles everything from assessment to installation, so you can start saving faster.',
+  'index.hero.h1': 'Best Investment Your Roof Will Ever Make',
+  'index.hero.description': 'Electricity rates rise every year — solar doesn\'t. Pay back in 3–4 years, save for 25. One free site survey is all it takes to get started.',
 
   // Choose Us Section
   'choseus.title': 'The intelligent choice for visionaries in Clean Energy',

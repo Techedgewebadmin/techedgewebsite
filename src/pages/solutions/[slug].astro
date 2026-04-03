@@ -20,23 +20,45 @@ const { sol } = Astro.props;
   description={sol.description}
   keywords={`${sol.title}, solar EPC Bangalore, Techedge solar`}
 >
-  <article class="bg-background-foreground pt-32 md:pt-40 pb-16 md:pb-24">
-
-    <!-- Header -->
-    <section class="container mx-auto px-4 max-w-7xl mb-12">
-      <BreadCrumb title={sol.title} />
-
-      <div class="flex items-center gap-4 mt-6 mb-4">
-        <div data-hero-el class="w-14 h-14 rounded-2xl bg-accent border border-secondary/30 flex items-center justify-center text-3xl shrink-0">
-          {sol.icon}
-        </div>
-        <div>
-          <p data-hero-el class="text-xs font-bold uppercase tracking-widest text-secondary mb-1">Solar Solution</p>
-          <h1 data-hero-el class="font-anton uppercase text-3xl md:text-5xl tracking-tight leading-none text-foreground">{sol.title}</h1>
+  <!-- Hero -->
+  <section class="fixed top-0 left-0 w-full h-dvh overflow-hidden z-0">
+    <video
+      class="absolute inset-0 w-full h-full object-cover pointer-events-none"
+      muted autoplay loop playsinline transition:persist
+    >
+      <source src="/videos/video5.mp4" type="video/mp4" />
+    </video>
+    <div class="absolute inset-0 bg-black opacity-50 pointer-events-none"></div>
+    <div class="relative z-10 h-full flex items-baseline-last justify-between p-4 lg:p-12">
+      <div class="max-w-3xl space-y-4 text-accent-foreground">
+        <span data-hero-el class="font-anton text-base md:text-lg lg:text-xl uppercase tracking-wide text-secondary">
+          {sol.icon} Solar Solution
+        </span>
+        <h1 data-hero-el class="text-4xl lg:text-6xl xl:text-8xl font-anton uppercase leading-none">
+          {sol.title}
+        </h1>
+        <p data-hero-el class="text-base lg:text-lg xl:text-xl mt-4 max-w-xl font-sans">
+          {sol.tagline}
+        </p>
+      </div>
+      <div class="hidden lg:flex w-fit relative h-full flex-col p-4 md:p-6 justify-end">
+        <div data-hero-el class="bg-background/80 backdrop-blur-sm rounded-2xl p-6 grid grid-cols-2 gap-3 min-w-[280px]">
+          {sol.highlights.map((h) => (
+            <div>
+              <div class="text-[0.65rem] uppercase tracking-wider text-muted-foreground font-semibold">{h.label}</div>
+              <div class="text-sm font-bold mt-0.5 text-foreground">{h.value}</div>
+            </div>
+          ))}
         </div>
       </div>
+    </div>
+  </section>
+  <div class="h-dvh"></div>
 
-      <p data-hero-el class="text-lg md:text-xl font-grotesk text-secondary-foreground">{sol.tagline}</p>
+  <article class="relative z-10 bg-background-foreground pb-16 md:pb-24">
+    <section class="container mx-auto px-4 max-w-7xl pt-12 mb-12">
+      <BreadCrumb title={sol.title} />
+
     </section>
 
     <!-- Highlights strip -->

@@ -1,0 +1,65 @@
+---
+import { t } from "@/lib/utils";
+---
+
+<section class="fixed top-0 left-0 w-full h-dvh overflow-hidden z-0">
+  <video
+    class="absolute inset-0 w-full h-full object-cover pointer-events-none"
+    muted
+    autoplay
+    loop
+    playsinline
+    transition:persist
+  >
+    <source src="/videos/video4.mp4" type="video/mp4" />
+  </video>
+
+  <div class="absolute inset-0 bg-black opacity-50 pointer-events-none"></div>
+
+  <div class="relative z-10 h-full flex items-baseline-last justify-between p-4 lg:p-12">
+    <div class="max-w-3xl space-y-4 text-accent-foreground">
+      <span
+        data-hero-el
+        class="font-anton text-base md:text-lg lg:text-xl uppercase tracking-wide"
+      >
+        Get In Touch
+      </span>
+      <h1
+        data-hero-el
+        class="text-4xl lg:text-6xl xl:text-8xl font-anton uppercase leading-none"
+      >
+        Contact Us
+      </h1>
+      <p
+        data-hero-el
+        class="text-base lg:text-lg xl:text-xl mt-2 lg:mt-4 max-w-xl font-sans"
+      >
+        Planning to install a solar system? Our team is here to help. Get a free site survey and tailored solar solution for your needs.
+      </p>
+    </div>
+
+    <!-- Info card — desktop only -->
+    <div class="hidden lg:flex w-fit relative h-full flex-col gap-4 p-4 md:p-6 justify-end">
+      <div
+        data-hero-el
+        class="bg-background/80 backdrop-blur-sm rounded-2xl p-6 md:p-8 flex flex-col gap-4 text-foreground min-w-[220px]"
+      >
+        <div>
+          <p class="text-xs font-grotesk uppercase tracking-widest text-muted-foreground mb-1">Email</p>
+          <p class="font-anton text-lg">sales@techedgeindia.co.in</p>
+        </div>
+        <div>
+          <p class="text-xs font-grotesk uppercase tracking-widest text-muted-foreground mb-1">Phone</p>
+          <p class="font-anton text-lg">(+91) 98440 97096</p>
+        </div>
+        <div>
+          <p class="text-xs font-grotesk uppercase tracking-widest text-muted-foreground mb-1">Location</p>
+          <p class="font-sans text-sm">Bangalore, India</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Spacer so content starts after hero -->
+<div class="h-dvh"></div>
