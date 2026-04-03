@@ -1,6 +1,6 @@
 ---
 import Button from "../buttons/Button.astro";
-import { FullscreenMenu } from "./FullscreenMenu";
+import { DropdownMenu } from "./DropdownMenu";
 ---
 
 <nav
@@ -45,8 +45,8 @@ import { FullscreenMenu } from "./FullscreenMenu";
 
 </nav>
 
-<!-- Fullscreen Menu -->
-<FullscreenMenu client:load />
+<!-- Dropdown Menu -->
+<DropdownMenu client:load />
 
 <script>
   const navbarInner = document.getElementById("navbar-inner");

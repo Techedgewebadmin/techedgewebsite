@@ -1,0 +1,90 @@
+---
+import Heading from "@/components/common/Heading.astro";
+import { solutions } from "@/data/solutions";
+---
+
+<section class="px-4 py-12 md:py-20 max-w-7xl mx-auto">
+  <div class="mb-10 space-y-2">
+    <Heading heading="Our Solutions" />
+    <h2 class="text-3xl md:text-4xl lg:text-6xl tracking-tight font-anton uppercase leading-none">
+      Solar for Every Need
+    </h2>
+    <p class="text-muted-foreground text-base md:text-lg max-w-2xl">
+      From grid-connected rooftops to off-grid farms and cold chain facilities — Techedge designs and installs the right solar solution for your specific requirements.
+    </p>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6 solutions-home-grid">
+    {solutions.map((sol, i) => (
+      <a
+        href={`/solutions/${sol.slug}`}
+        data-sol-home-card
+        class="solution-home-card group bg-white rounded-2xl border border-muted/30 p-8 flex flex-col gap-4 relative overflow-hidden transition-all duration-300"
+      >
+        <div class="card-accent absolute top-0 left-0 right-0 h-[3px] bg-secondary opacity-0 transition-opacity duration-300"></div>
+
+        <div class="flex items-start justify-between">
+          <div class="w-12 h-12 rounded-2xl bg-accent border border-secondary/30 flex items-center justify-center text-2xl">
+            {sol.icon}
+          </div>
+          <span class="text-xs font-bold uppercase tracking-widest text-muted-foreground mt-1">0{i + 1}</span>
+        </div>
+
+        <div>
+          <h3 class="font-anton uppercase text-2xl md:text-3xl tracking-wide text-foreground leading-tight">
+            {sol.title}
+          </h3>
+          <p class="text-sm mt-1 text-secondary-foreground">{sol.tagline}</p>
+        </div>
+
+        <p class="text-muted-foreground text-sm leading-relaxed line-clamp-3">{sol.description}</p>
+
+        <div class="grid grid-cols-2 gap-3 mt-2">
+          {sol.highlights.map((h) => (
+            <div class="rounded-xl px-3 py-2 bg-accent border border-secondary/20">
+              <div class="text-[0.65rem] uppercase tracking-wider text-muted-foreground font-semibold">{h.label}</div>
+              <div class="text-sm font-bold mt-0.5 text-secondary-foreground">{h.value}</div>
+            </div>
+          ))}
+        </div>
+
+        <div class="mt-auto flex items-center gap-2 font-semibold text-sm text-secondary-foreground transition-all duration-300 group-hover:gap-3 group-hover:text-secondary">
+          Learn More <span>→</span>
+        </div>
+      </a>
+    ))}
+  </div>
+</section>
+
+<style>
+  .solution-home-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.1);
+    border-color: var(--color-secondary);
+  }
+  .solution-home-card:hover .card-accent {
+    opacity: 1;
+  }
+</style>
+
+<script>
+  import gsap from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  const cards = document.querySelectorAll("[data-sol-home-card]");
+  gsap.set(cards, { opacity: 0, y: 40 });
+  gsap.to(cards, {
+    opacity: 1,
+    y: 0,
+    duration: 0.7,
+    ease: "power3.out",
+    stagger: 0.15,
+    scrollTrigger: {
+      trigger: ".solutions-home-grid",
+      start: "top 80%",
+      toggleActions: "play none none none",
+    },
+  });
+</script>

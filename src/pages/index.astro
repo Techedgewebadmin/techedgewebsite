@@ -1,6 +1,7 @@
 ---
 import ChoseUs from "@/components/sections/home/chose-us/ChoseUs.astro";
 import HeroSection from "@/components/sections/home/HeroSection.astro";
+import OurSolutions from "@/components/sections/home/OurSolutions.astro";
 import OurService from "@/components/sections/home/our-service/OurService.astro";
 import OurProjects from "@/components/sections/home/OurProjects.astro";
 import Partners from "@/components/sections/home/Partners.astro";
@@ -20,14 +21,15 @@ const projectsFilter = projects
 ---
 
 <Layout title={t("meta.index.title")} description={t("meta.index.description")} keywords={t("meta.index.keywords")}>
-  <HeroSection />
+  <div id="home"><HeroSection /></div>
   <div class="relative z-10 bg-background-foreground">
-    <ChoseUs />
+    <div id="solutions"><OurSolutions /></div>
     <OurService />
+    <div id="about"><ChoseUs /></div>
     <WorkProcess />
     <Partners />
-    <OurProjects projects={projectsFilter} />
+    <div id="projects"><OurProjects projects={projectsFilter} /></div>
     <Testimonials />
-    <Cta />
+    <div id="contact"><Cta /></div>
   </div>
 </Layout>

@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Solar ROI Calculator | Techedge</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <style>
+    body {
+      font-family: Arial;
+      margin: 0;
+      padding: 20px;
+      background: #ffffff;
+      color: #222;
+    }
+
+    h2 {
+      color: #0a5c3b;
+      margin-bottom: 10px;
+    }
+
+    .inputs {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    label {
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    input {
+      width: 100%;
+      padding: 6px;
+      border: 1px solid #ccc;
+    }
+
+    .summary {
+      margin-bottom: 20px;
+      padding: 20px;
+      background: #f4f9f6;
+      border-left: 6px solid #0a5c3b;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+  </style>
+</head>
+
+<body>
+
+<h2>Solar Financial Executive Summary</h2>
+
+<div class="inputs">
+  <div><label>Project Name</label><input id="client" /></div>
+  <div><label>Project Address</label><input id="address" /></div>
+  <div><label>Project Size (kW)</label><input type="number" id="size" value="600" /></div>
+  <div><label>Cost per Watt (₹)</label><input type="number" id="perwatt" value="30" /></div>
+  <div><label>Generation per kW per Day</label><input type="number" id="gen" value="4.5" /></div>
+  <div><label>Tariff (₹/unit)</label><input type="number" id="tariff" value="6.8" /></div>
+  <div><label>Tariff Escalation (%)</label><input type="number" id="esc" value="5" /></div>
+  <div><label>Degradation (%)</label><input type="number" id="deg" value="0.7" /></div>
+  <div><label>AMC (%)</label><input type="number" id="amc" value="1" /></div>
+  <div><label>Project Life (Years)</label><input type="number" id="life" value="25" /></div>
+</div>
+
+<div class="summary" id="summary"></div>
+
+<div style="height:450px;">
+  <canvas id="chart"></canvas>
+</div>
+
+<script>
+let chart = null;
+
+function formatCurrency(value){
+  value = Math.round(value);
+  if(value >= 10000000) return "₹ " + (value/10000000).toFixed(2) + " Cr";
+  if(value >= 100000) return "₹ " + (value/100000).toFixed(2) + " L";
+  return "₹ " + value.toLocaleString("en-IN");
+}
+
+function calculateIRR(cashflows){
+  function npv(rate){
+    return cashflows.reduce((sum, cf, t) => sum + cf / Math.pow(1+rate, t), 0);
+  }
+
+  let low = -0.9, high = 1;
+  let mid;
+
+  for(let i=0;i<100;i++){
+    mid = (low + high)/2;
+    let val = npv(mid);
+    if(Math.abs(val) < 0.0001) return mid;
+    if(val > 0) low = mid;
+    else high = mid;
+  }
+  return mid;
+}
+
+function calculate(){
+
+  const client = document.getElementById("client").value || "Project";
+  const address = document.getElementById("address").value || "Project Location";
+  const size = +document.getElementById("size").value;
+  const perwatt = +document.getElementById("perwatt").value;
+  const gen = +document.getElementById("gen").value;
+  const tariff = +document.getElementById("tariff").value;
+  const esc = +document.getElementById("esc").value / 100;
+  const deg = +document.getElementById("deg").value / 100;
+  const amcPercent = +document.getElementById("amc").value / 100;
+  const life = +document.getElementById("life").value;
+
+  const investment = size * 1000 * perwatt;
+  const annualGenBase = size * gen * 365 * 0.85;
+  const baseAMC = investment * amcPercent;
+
+  let cumulativeSavings = 0;
+  let cumulativeCost = investment;
+  let currentGen = annualGenBase;
+  let currentTariff = tariff;
+
+  let savingsData = [{x:0, y:0}];
+  let costData = [{x:0, y:investment}];
+  let cashflows = [-investment];
+
+  let roiYear=null, roiMonths=null;
+
+  for(let y=1;y<=life;y++){
+
+    let revenue = currentGen * currentTariff;
+    let amc = baseAMC * Math.pow(1.05, y-1);
+    let net = revenue - amc;
+
+    cumulativeSavings += net;
+    cumulativeCost += amc;
+    cashflows.push(net);
+
+    savingsData.push({x:y,y:cumulativeSavings});
+    costData.push({x:y,y:cumulativeCost});
+
+    if(net>0 && roiYear===null && cumulativeSavings>=cumulativeCost){
+      let prev = cumulativeSavings - net;
+      let gap = cumulativeCost - prev;
+      let frac = gap/net;
+
+      roiYear=y-1;
+      roiMonths=Math.round(frac*12);
+    }
+
+    currentGen *= (1-deg);
+    currentTariff *= (1+esc);
+  }
+
+  const irr = calculateIRR(cashflows)*100;
+
+  const co2 = annualGenBase * 0.82 / 1000;
+  const lcoe = (investment + baseAMC*life) / (annualGenBase*life);
+
+  document.getElementById("summary").innerHTML =
+    `<h3>Executive Summary</h3>
+    <p><b>${client}</b> at <b>${address}</b> will install <b>${size} kW solar plant</b>.</p>
+    <p>Total investment: <b>${formatCurrency(investment)}</b></p>
+    <p>Annual generation: <b>${Math.round(annualGenBase).toLocaleString()}</b> units</p>
+    <p>IRR: <b>${irr.toFixed(2)}%</b> | Payback: <b>${roiYear ?? "-"} yrs ${roiMonths ?? ""} months</b></p>
+    <p>LCOE: <b>₹ ${lcoe.toFixed(2)}/unit</b></p>
+    <p>CO₂ savings: <b>${co2.toFixed(2)} tons/year</b></p>`;
+
+  if(chart) chart.destroy();
+
+  chart = new Chart(document.getElementById("chart"), {
+    type:"line",
+    data:{
+      datasets:[
+        {
+          label:"Savings",
+          data:savingsData,
+          borderColor:"#0a5c3b",
+          backgroundColor:"rgba(10,92,59,0.1)",
+          fill:true
+        },
+        {
+          label:"Cost",
+          data:costData,
+          borderColor:"red",
+          borderDash:[5,5]
+        }
+      ]
+    },
+    options:{
+      parsing:false,
+      scales:{
+        x:{type:"linear",ticks:{stepSize:1}},
+        y:{ticks:{callback:(v)=>formatCurrency(v)}}
+      }
+    }
+  });
+}
+
+document.querySelectorAll("input").forEach(i=>i.addEventListener("input",calculate));
+calculate();
+</script>
+
+</body>
+</html>

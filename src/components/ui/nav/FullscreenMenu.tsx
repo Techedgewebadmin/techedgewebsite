@@ -283,6 +283,26 @@ export const FullscreenMenu = () => {
             <ul className="w-full max-w-4xl space-y-1 md:space-y-2 mb-8 lg:mb-0">
               {navItems.map((item) => {
                 const isActive = currentPath === item.href;
+                const isHomePage = currentPath === '/';
+
+                const handleNavClick = (e: React.MouseEvent) => {
+                  if (isHomePage && item.sectionId) {
+                    e.preventDefault();
+                    handleClose();
+                    setTimeout(() => {
+                      const lenis = (window as any).__lenis;
+                      if (item.sectionId === 'home') {
+                        lenis ? lenis.scrollTo(0, { duration: 1.2 }) : window.scrollTo({ top: 0, behavior: 'smooth' });
+                      } else {
+                        const el = document.getElementById(item.sectionId!);
+                        if (el) lenis ? lenis.scrollTo(el, { duration: 1.2 }) : el.scrollIntoView({ behavior: 'smooth' });
+                      }
+                    }, 400);
+                  } else {
+                    handleClose();
+                  }
+                };
+
                 return (
                   <li
                     key={item.title}
@@ -291,7 +311,7 @@ export const FullscreenMenu = () => {
                   >
                     <a
                       href={item.href}
-                      onClick={handleClose}
+                      onClick={handleNavClick}
                       className="group flex items-center gap-3 md:gap-6 py-2 md:py-4 transition-all duration-300"
                       aria-current={isActive ? 'page' : undefined}
                     >
