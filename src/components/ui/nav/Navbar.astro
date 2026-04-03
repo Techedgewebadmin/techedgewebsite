@@ -12,7 +12,7 @@ import { FullscreenMenu } from "./FullscreenMenu";
     class="w-full mx-auto px-4 md:px-9 py-6 flex justify-between items-center transition-all duration-500"
   >
     <!-- Logo -->
-    <a href="/" class="flex items-center z-10">
+    <a id="navbar-logo" href="/" class="flex items-center z-10 transition-all duration-300">
       <img
         src="/images/logo.webp"
         alt="Techedge Logo"
@@ -22,16 +22,6 @@ import { FullscreenMenu } from "./FullscreenMenu";
 
     <!-- Right Side Buttons -->
     <div class="flex items-center gap-4">
-      <!-- Let's Talk Button (visible on scroll, hidden on mobile) -->
-      <Button
-        id="lets-talk-btn"
-        variant="primary"
-        href="/contact"
-        class="hidden md:flex opacity-0 pointer-events-none text-base px-6 py-3"
-      >
-        Let's Talk
-      </Button>
-
       <!-- Menu Button -->
       <Button
         id="menu-toggle"
@@ -53,171 +43,23 @@ import { FullscreenMenu } from "./FullscreenMenu";
     </div>
   </div>
 
-  <!-- Background Overlay (only visible on scroll) -->
-  <div
-    id="navbar-bg"
-    class="absolute inset-0 -z-10 opacity-0 transition-opacity duration-300 bg-muted border-b-2 border-secondary max-w-360 mx-auto rounded-xl"
-  >
-  </div>
 </nav>
 
 <!-- Fullscreen Menu -->
 <FullscreenMenu client:load />
 
 <script>
-  import { gsap } from "gsap";
-
   const navbarInner = document.getElementById("navbar-inner");
-  const navbarBg = document.getElementById("navbar-bg");
-  const letsTalkBtn = document.getElementById("lets-talk-btn");
+  const navbarLogo = document.getElementById("navbar-logo");
   const menuToggle = document.getElementById("menu-toggle");
   let isMenuOpen = false;
-  let isScrolled = false;
-  let isInitialized = false;
 
-  // Function to set the initial state without animation
-  const initNavbar = () => {
-    const scrollY = window.scrollY;
-
-    if (scrollY > 80) {
-      // Set scrolled state immediately without animation
-      gsap.set(navbarInner, {
-        maxWidth: "90rem",
-        paddingTop: "1rem",
-        paddingBottom: "1rem",
-      });
-
-      gsap.set(navbarBg, {
-        opacity: 1,
-      });
-
-      gsap.set(letsTalkBtn, {
-        opacity: 1,
-        pointerEvents: "auto",
-        x: 0,
-      });
-
-      isScrolled = true;
-    } else {
-      // Set initial state immediately without animation
-      gsap.set(navbarInner, {
-        maxWidth: "100%",
-        paddingTop: "1.5rem",
-        paddingBottom: "1.5rem",
-      });
-
-      gsap.set(navbarBg, {
-        opacity: 0,
-      });
-
-      gsap.set(letsTalkBtn, {
-        opacity: 0,
-        pointerEvents: "none",
-        x: 20,
-      });
-
-      isScrolled = false;
-    }
-
-    isInitialized = true;
-  };
-
-  const updateNavbar = () => {
-    if (!isInitialized) return;
-
-    const scrollY = window.scrollY;
-
-    if (scrollY > 80 && !isScrolled) {
-      isScrolled = true;
-
-      // Timeline for scroll animation
-      const tl = gsap.timeline();
-
-      // Animate the internal container to max-w-7xl
-      tl.to(navbarInner, {
-        maxWidth: "90rem",
-        paddingTop: "1rem",
-        paddingBottom: "1rem",
-        duration: 0.4,
-        ease: "power3.out",
-      });
-
-      // Fade in the background
-      tl.to(
-        navbarBg,
-        {
-          opacity: 1,
-          duration: 0.3,
-          ease: "power2.out",
-        },
-        "-=0.3"
-      );
-
-      // Show "Let's Talk" button
-      tl.to(
-        letsTalkBtn,
-        {
-          opacity: 1,
-          pointerEvents: "auto",
-          x: 0,
-          duration: 0.3,
-          ease: "back.out(1.2)",
-        },
-        "-=0.2"
-      );
-    } else if (scrollY <= 80 && isScrolled) {
-      isScrolled = false;
-
-      // Timeline to return to the initial state
-      const tl = gsap.timeline();
-
-      // Hide "Let's Talk" button
-      tl.to(letsTalkBtn, {
-        opacity: 0,
-        pointerEvents: "none",
-        x: 20,
-        duration: 0.2,
-        ease: "power2.in",
-      });
-
-      // Fade out the background
-      tl.to(
-        navbarBg,
-        {
-          opacity: 0,
-          duration: 0.3,
-          ease: "power2.in",
-        },
-        "-=0.1"
-      );
-
-      // Animate the container back to full width
-      tl.to(
-        navbarInner,
-        {
-          maxWidth: "100%",
-          paddingTop: "1.5rem",
-          paddingBottom: "1.5rem",
-          duration: 0.4,
-          ease: "power3.out",
-        },
-        "-=0.3"
-      );
-    }
-  };
-
-  // Initialize navbar state on page load
-  initNavbar();
-
-  // Throttled scroll listener
-  let ticking = false;
+  // Hide logo on scroll
   window.addEventListener("scroll", () => {
-    if (!ticking) {
-      window.requestAnimationFrame(() => {
-        updateNavbar();
-        ticking = false;
-      });
-      ticking = true;
+    if (window.scrollY > 80) {
+      navbarLogo?.classList.add("opacity-0", "pointer-events-none");
+    } else {
+      navbarLogo?.classList.remove("opacity-0", "pointer-events-none");
     }
   });
 

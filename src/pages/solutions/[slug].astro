@@ -1,0 +1,261 @@
+---
+import type { GetStaticPaths } from "astro";
+import Layout from "@/layouts/Layout.astro";
+import Cta from "@/components/common/Cta.astro";
+import BreadCrumb from "@/components/common/BreadCrumb.astro";
+import { solutions } from "@/data/solutions";
+
+export const getStaticPaths = (() => {
+  return solutions.map((sol) => ({
+    params: { slug: sol.slug },
+    props: { sol },
+  }));
+}) satisfies GetStaticPaths;
+
+const { sol } = Astro.props;
+---
+
+<Layout
+  title={`Techedge | ${sol.title}`}
+  description={sol.description}
+  keywords={`${sol.title}, solar EPC Bangalore, Techedge solar`}
+>
+  <article class="bg-background-foreground pt-32 md:pt-40 pb-16 md:pb-24">
+
+    <!-- Header -->
+    <section class="container mx-auto px-4 max-w-7xl mb-12">
+      <BreadCrumb title={sol.title} />
+
+      <div class="flex items-center gap-4 mt-6 mb-4">
+        <div data-hero-el class="w-14 h-14 rounded-2xl bg-accent border border-secondary/30 flex items-center justify-center text-3xl shrink-0">
+          {sol.icon}
+        </div>
+        <div>
+          <p data-hero-el class="text-xs font-bold uppercase tracking-widest text-secondary mb-1">Solar Solution</p>
+          <h1 data-hero-el class="font-anton uppercase text-3xl md:text-5xl tracking-tight leading-none text-foreground">{sol.title}</h1>
+        </div>
+      </div>
+
+      <p data-hero-el class="text-lg md:text-xl font-grotesk text-secondary-foreground">{sol.tagline}</p>
+    </section>
+
+    <!-- Highlights strip -->
+    <section class="container mx-auto px-4 max-w-7xl mb-12 highlights-strip">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+        {sol.highlights.map((h) => (
+          <div data-highlight class="rounded-2xl border border-secondary/30 bg-accent p-4">
+            <div class="text-xs uppercase tracking-wider text-muted-foreground font-semibold mb-1">{h.label}</div>
+            <div class="text-lg font-bold text-secondary-foreground">{h.value}</div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Description + Benefits -->
+    <section class="container mx-auto px-4 max-w-7xl mb-12 overview-section">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div data-overview class="bg-white rounded-2xl border border-muted/30 p-8">
+          <h2 class="font-anton uppercase text-xl tracking-wide mb-4 text-foreground">Overview</h2>
+          <p class="text-muted-foreground font-grotesk leading-relaxed">{sol.description}</p>
+        </div>
+
+        <div data-overview class="bg-white rounded-2xl border border-muted/30 p-8">
+          <h2 class="font-anton uppercase text-xl tracking-wide mb-4 text-foreground">Key Benefits</h2>
+          <ul class="space-y-3">
+            {sol.benefits.map((b) => (
+              <li class="flex items-start gap-3 font-grotesk text-sm">
+                <span class="mt-0.5 shrink-0 text-base text-secondary">→</span>
+                <span class="text-muted-foreground">{b}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="container mx-auto px-4 max-w-7xl mb-12 how-it-works-section">
+      <div class="bg-white rounded-2xl border border-muted/30 p-8">
+        <h2 class="font-anton uppercase text-xl tracking-wide mb-6 text-foreground">How It Works</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+          {sol.howItWorks.map((step, i) => (
+            <div data-step class="relative">
+              <div class="flex items-center gap-3 mb-3">
+                <div class="w-8 h-8 rounded-full bg-secondary flex items-center justify-center text-sm font-bold text-foreground shrink-0">
+                  {i + 1}
+                </div>
+                {i < sol.howItWorks.length - 1 && (
+                  <div class="hidden lg:block flex-1 h-px bg-secondary/30"></div>
+                )}
+              </div>
+              <h3 class="font-semibold text-sm text-foreground mb-1">{step.step}</h3>
+              <p class="text-xs text-muted-foreground font-grotesk leading-relaxed">{step.desc}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Use Cases -->
+    <section class="container mx-auto px-4 max-w-7xl mb-12">
+      <div class="bg-white rounded-2xl border border-muted/30 p-8">
+        <h2 class="font-anton uppercase text-xl tracking-wide mb-4 text-foreground">Ideal For</h2>
+        <div class="flex flex-wrap gap-3">
+          {sol.useCases.map((uc) => (
+            <span class="px-4 py-2 rounded-full border border-secondary/40 bg-accent text-sm font-medium text-secondary-foreground">
+              {uc}
+            </span>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Partner Section -->
+    {sol.partner && (
+      <section class="container mx-auto px-4 max-w-7xl mb-12 partner-section">
+        <!-- Partner badge -->
+        <div data-partner-badge class="bg-foreground text-primary rounded-2xl p-8 mb-6 flex flex-col md:flex-row items-start md:items-center gap-6">
+          <div class="shrink-0 flex flex-col items-start gap-3">
+            <div class="text-xs font-bold uppercase tracking-widest text-secondary">Official Partner</div>
+            <a href={sol.partner.url} target="_blank" rel="noopener noreferrer"
+              class="flex items-center gap-4 group">
+              <div class="w-16 h-16 rounded-2xl bg-white flex items-center justify-center p-2 shrink-0">
+                <img
+                  src="/logos/rinac.com.png"
+                  alt="RINAC"
+                  width="52"
+                  height="52"
+                  class="w-12 h-12 object-contain"
+                  onerror="this.parentElement.innerHTML='<span class=\'text-foreground font-bold text-lg\'>RI</span>'"
+                />
+              </div>
+              <div>
+                <div class="font-anton uppercase text-2xl md:text-3xl tracking-tight leading-none group-hover:text-secondary transition-colors">
+                  {sol.partner.name}
+                </div>
+                <p class="text-primary/60 text-sm font-grotesk mt-1 italic">"{sol.partner.tagline}"</p>
+              </div>
+            </a>
+          </div>
+          <div class="md:border-l md:border-primary/20 md:pl-6 flex-1">
+            <div class="inline-flex items-center gap-2 bg-secondary/20 border border-secondary/40 rounded-full px-3 py-1 text-xs font-bold uppercase tracking-wider text-secondary mb-3">
+              {sol.partner.role}
+            </div>
+            <p class="text-primary/70 font-grotesk text-sm leading-relaxed">{sol.partner.about}</p>
+            <a href={sol.partner.url} target="_blank" rel="noopener noreferrer"
+              class="inline-flex items-center gap-2 mt-4 text-secondary font-semibold text-sm hover:gap-3 transition-all duration-200">
+              Visit {sol.partner.name} →
+            </a>
+          </div>
+        </div>
+
+        <!-- What RINAC Offers -->
+        <div class="bg-white rounded-2xl border border-muted/30 p-8">
+          <h2 class="font-anton uppercase text-xl tracking-wide mb-6 text-foreground">
+            What {sol.partner.name} Offers
+          </h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
+            {sol.partner.offerings.map((group, gi) => (
+              <div data-partner-offering>
+                <div class="flex items-center gap-2 mb-3">
+                  <span class="w-6 h-6 rounded-full bg-secondary flex items-center justify-center text-xs font-bold text-foreground shrink-0">
+                    {gi + 1}
+                  </span>
+                  <h3 class="font-anton uppercase text-sm tracking-wide text-foreground">{group.title}</h3>
+                </div>
+                <ul class="space-y-2">
+                  {group.items.map((item) => (
+                    <li class="flex items-start gap-2 text-xs font-grotesk text-muted-foreground">
+                      <span class="text-secondary mt-0.5 shrink-0">→</span>
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+    )}
+
+    <!-- Other solutions -->
+    <section class="container mx-auto px-4 max-w-7xl mb-12">
+      <h2 class="font-anton uppercase text-xl tracking-wide mb-4 text-foreground">Other Solutions</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+        {solutions.filter(s => s.slug !== sol.slug).map((s) => (
+          <a href={`/solutions/${s.slug}`}
+            data-other-card
+            class="other-card bg-white rounded-2xl border border-muted/30 p-5 flex items-center gap-4 transition-all duration-200">
+            <div class="w-10 h-10 rounded-xl bg-accent border border-secondary/30 flex items-center justify-center text-xl shrink-0">
+              {s.icon}
+            </div>
+            <div>
+              <div class="font-anton uppercase text-sm tracking-wide text-foreground leading-tight">{s.shortTitle}</div>
+              <div class="text-xs font-grotesk text-secondary-foreground mt-0.5">{s.tagline}</div>
+            </div>
+          </a>
+        ))}
+      </div>
+    </section>
+
+    <Cta />
+  </article>
+</Layout>
+
+<style>
+  .other-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+    border-color: var(--color-secondary);
+  }
+</style>
+
+<script>
+  import gsap from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  // Highlights
+  gsap.set("[data-highlight]", { opacity: 0, y: 24 });
+  gsap.to("[data-highlight]", {
+    opacity: 1, y: 0, duration: 0.6, ease: "power3.out", stagger: 0.1,
+    scrollTrigger: { trigger: ".highlights-strip", start: "top 85%", toggleActions: "play none none none" },
+  });
+
+  // Overview cards
+  gsap.set("[data-overview]", { opacity: 0, y: 32 });
+  gsap.to("[data-overview]", {
+    opacity: 1, y: 0, duration: 0.7, ease: "power3.out", stagger: 0.15,
+    scrollTrigger: { trigger: ".overview-section", start: "top 80%", toggleActions: "play none none none" },
+  });
+
+  // Steps
+  gsap.set("[data-step]", { opacity: 0, y: 24 });
+  gsap.to("[data-step]", {
+    opacity: 1, y: 0, duration: 0.6, ease: "power3.out", stagger: 0.12,
+    scrollTrigger: { trigger: ".how-it-works-section", start: "top 80%", toggleActions: "play none none none" },
+  });
+
+  // Partner section
+  const partnerBadge = document.querySelector("[data-partner-badge]");
+  if (partnerBadge) {
+    gsap.set(partnerBadge, { opacity: 0, y: 32 });
+    gsap.to(partnerBadge, {
+      opacity: 1, y: 0, duration: 0.7, ease: "power3.out",
+      scrollTrigger: { trigger: ".partner-section", start: "top 80%", toggleActions: "play none none none" },
+    });
+  }
+  gsap.set("[data-partner-offering]", { opacity: 0, y: 24 });
+  gsap.to("[data-partner-offering]", {
+    opacity: 1, y: 0, duration: 0.6, ease: "power3.out", stagger: 0.1,
+    scrollTrigger: { trigger: "[data-partner-offering]", start: "top 85%", toggleActions: "play none none none" },
+  });
+
+  // Other solution cards
+  gsap.set("[data-other-card]", { opacity: 0, y: 20 });
+  gsap.to("[data-other-card]", {
+    opacity: 1, y: 0, duration: 0.5, ease: "power3.out", stagger: 0.1,
+    scrollTrigger: { trigger: "[data-other-card]", start: "top 90%", toggleActions: "play none none none" },
+  });
+</script>

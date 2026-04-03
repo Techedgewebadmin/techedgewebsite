@@ -54,6 +54,27 @@ import { t } from "@/lib/utils";
       </p>
     </div>
 
+    <!-- Solutions List -->
+    <div class="mb-12">
+      <h2 class="text-sm font-grotesk font-semibold uppercase text-muted-foreground mb-4 tracking-widest">Our Solutions</h2>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+        {[
+          { icon: "☀️", title: "ON-GRID Solar", desc: "Grid-tied, net metering", href: "/solutions/on-grid-solar" },
+          { icon: "🏕️", title: "OFF-GRID Solar", desc: "Full energy independence", href: "/solutions/off-grid-solar" },
+          { icon: "⚡", title: "Hybrid Solar", desc: "Solar + battery + grid", href: "/solutions/hybrid-solar" },
+          { icon: "❄️", title: "Cold Storage Solar", desc: "Built with RINAC", href: "/solutions/hybrid-solar-cold-storage" },
+        ].map((sol) => (
+          <a href={sol.href}
+            class="group bg-white/5 border border-muted-foreground/20 hover:border-secondary rounded-xl p-4 flex flex-col gap-2 transition-all duration-200 hover:bg-white/10">
+            <span class="text-2xl">{sol.icon}</span>
+            <div class="font-anton uppercase text-sm tracking-wide text-primary leading-tight">{sol.title}</div>
+            <div class="text-xs text-muted-foreground font-grotesk">{sol.desc}</div>
+            <div class="text-xs text-secondary font-semibold mt-auto group-hover:gap-1 flex items-center gap-0.5 transition-all">Learn more →</div>
+          </a>
+        ))}
+      </div>
+    </div>
+
     <!-- Two Columns: Form first on mobile, Contact info first on desktop -->
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-28">
       <!-- Right Column Form -->

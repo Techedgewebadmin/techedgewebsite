@@ -17,9 +17,9 @@ import { t } from "@/lib/utils";
     </div>
 
     <!-- Features Grid -->
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 w-full pt-12">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 w-full pt-12 company-features-grid">
       {featuresCompany.map((feature) => (
-        <div class="bg-white p-6 rounded-2xl flex flex-col gap-4  border-2 border-muted border-dashed">
+        <div data-company-card class="bg-white p-6 rounded-2xl flex flex-col gap-4  border-2 border-muted border-dashed">
           <span class="inline-flex items-center justify-center size-10 rounded-lg bg-secondary text-foreground font-mono text-sm">
             {feature.number}
           </span>
@@ -33,3 +33,25 @@ import { t } from "@/lib/utils";
 
   </div>
 </section>
+
+<script>
+  import gsap from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  const cards = document.querySelectorAll("[data-company-card]");
+  gsap.set(cards, { opacity: 0, y: 32 });
+  gsap.to(cards, {
+    opacity: 1,
+    y: 0,
+    duration: 0.7,
+    ease: "power3.out",
+    stagger: 0.12,
+    scrollTrigger: {
+      trigger: ".company-features-grid",
+      start: "top 80%",
+      toggleActions: "play none none none",
+    },
+  });
+</script>

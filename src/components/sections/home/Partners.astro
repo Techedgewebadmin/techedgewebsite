@@ -1,69 +1,182 @@
 ---
 import Heading from "@/components/common/Heading.astro";
-import { Icon } from "astro-icon/components";
 import { t } from "@/lib/utils";
 
-const partners = [
-  // Row 1
-  { name: "panel", col: "col-start-1", row: "row-start-1" },
-  { name: "panel", col: "col-start-2", row: "row-start-1" },
-  { name: "panel", col: "col-start-4", row: "row-start-1" },
-  { name: "panel", col: "col-start-5", row: "row-start-1" },
-
-  // Row 2
-  { name: "panel", col: "col-start-2", row: "row-start-2" },
-  { name: "panel", col: "col-start-3", row: "row-start-2" },
-  { name: "panel", col: "col-start-5", row: "row-start-2" },
-
-  // Row 3
-  { name: "panel", col: "col-start-1", row: "row-start-3" },
-  { name: "panel", col: "col-start-3", row: "row-start-3" },
-  { name: "panel", col: "col-start-4", row: "row-start-3" },
-  { name: "panel", col: "col-start-5", row: "row-start-3" },
+const categories = [
+  {
+    title: "Solar Panels",
+    icon: "☀️",
+    desc: "Mono PERC, Bifacial & HJT modules from leading manufacturers.",
+    color: { bg: "#fefce8", text: "#a16207", border: "#fde047" },
+    brands: [
+      { name: "Adani Solar", domain: "adani.com" },
+      { name: "Goldi Solar", domain: "goldisolar.com" },
+      { name: "Waaree Solar", domain: "waaree.com" },
+      { name: "Vikram Solar", domain: "vikramsolar.com" },
+      { name: "RenewSys", domain: "renewsys.com" },
+      { name: "Canadian Solar", domain: "canadiansolar.com" },
+      { name: "Jinko Solar", domain: "jinkosolar.com" },
+      { name: "LONGi Solar", domain: "longi.com" },
+      { name: "Risen Energy", domain: "risen-energy.com" },
+    ],
+  },
+  {
+    title: "Inverters",
+    icon: "⚡",
+    desc: "String, micro & hybrid inverters for residential and commercial systems.",
+    color: { bg: "#eff6ff", text: "#1d4ed8", border: "#93c5fd" },
+    brands: [
+      { name: "Deye", domain: "deyeinverter.com" },
+      { name: "Sungrow", domain: "sungrowpower.com" },
+      { name: "Growatt", domain: "growatt.com" },
+      { name: "SMA", domain: "sma.de" },
+      { name: "Fronius", domain: "fronius.com" },
+      { name: "Delta", domain: "deltaww.com" },
+      { name: "GoodWe", domain: "goodwe.com" },
+      { name: "SolarEdge", domain: "solaredge.com" },
+      { name: "Huawei", domain: "huawei.com" },
+      { name: "Havells", domain: "havells.com" },
+    ],
+  },
+  {
+    title: "Lithium Batteries",
+    icon: "🔋",
+    desc: "LFP & NMC battery storage for off-grid and hybrid solar setups.",
+    color: { bg: "#f0fdf4", text: "#15803d", border: "#86efac" },
+    brands: [
+      { name: "Deye", domain: "deyeinverter.com" },
+      { name: "Luminous", domain: "luminousindia.com" },
+      { name: "Livguard", domain: "livguard.com" },
+      { name: "Exide", domain: "exideind.com" },
+      { name: "BYD", domain: "byd.com" },
+      { name: "Dyness", domain: "dyness.com" },
+      { name: "Pylontech", domain: "pylontech.us" },
+      { name: "Loom Solar", domain: "loomsolar.com" },
+    ],
+  },
+  {
+    title: "BOM Vendors",
+    icon: "🔧",
+    desc: "Cables · Connectors · ACDB · Mounting structures.",
+    color: { bg: "#f8fafc", text: "#475569", border: "#cbd5e1" },
+    brands: [
+      { name: "Polycab", domain: "polycab.com" },
+      { name: "KEI Cables", domain: "keicables.com" },
+      { name: "Havells", domain: "havells.com" },
+      { name: "Stäubli", domain: "staubli.com" },
+      { name: "Amphenol", domain: "amphenol.com" },
+      { name: "Clenergy", domain: "clenergy.com" },
+      { name: "K2 Systems", domain: "k2-systems.com" },
+      { name: "L&T Electrical", domain: "larsentoubro.com" },
+      { name: "Schneider Electric", domain: "se.com" },
+      { name: "ABB", domain: "abb.com" },
+    ],
+  },
 ];
+
 ---
 
-<section class="py-16 md:py-20">
+<section class="py-16 md:py-24">
   <div class="container mx-auto px-4 max-w-7xl">
-    <div class="mb-8">
+    <div class="mb-12">
       <Heading heading={t('partners.heading')} />
-      <h2
-        class="text-3xl md:text-4xl xl:text-6xl tracking-tight font-anton uppercase leading-none"
-      >
+      <h2 class="text-3xl md:text-4xl xl:text-6xl tracking-tight font-anton uppercase leading-none">
         {t('partners.title')}
       </h2>
     </div>
-    <!-- Grid Container -->
-    <div
-      class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 md:gap-6 auto-rows-[140px] md:auto-rows-[180px]"
-    >
-      {
-        partners.map((partner) => (
+
+    <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-5 partners-grid">
+      {categories.map((cat) => {
+        return (
           <div
-            class={`
-            ${partner.col} ${partner.row}
-            bg-secondary/60 rounded-2xl 
-            flex items-center justify-center p-8
-            hover:bg-secondary/30 transition-colors duration-300
-            group
-          `}
+            data-partner-card
+            class="partner-card bg-white rounded-2xl border p-5 flex flex-col gap-4 relative overflow-hidden transition-all duration-250"
+            style={`--c-bg:${cat.color.bg};--c-text:${cat.color.text};--c-border:${cat.color.border}`}
           >
-            <span class="text-foreground/80 font-anton text-xl md:text-2xl uppercase tracking-wide text-center group-hover:text-foreground transition-colors">
-              <Icon name={partner.name} size={80} />
-            </span>
+            {/* top accent line */}
+            <div class="card-accent absolute top-0 left-0 right-0 h-[3px] opacity-0 transition-opacity duration-250" style={`background:${cat.color.text}`}></div>
+
+            {/* header */}
+            <div class="flex items-center justify-between">
+              <div
+                class="w-9 h-9 rounded-xl border flex items-center justify-center text-lg"
+                style={`background:${cat.color.bg};border-color:${cat.color.border}`}
+              >
+                {cat.icon}
+              </div>
+            </div>
+
+            <div>
+              <h3 class="font-anton uppercase text-lg tracking-wide text-foreground leading-tight">{cat.title}</h3>
+              <p class="text-muted-foreground text-xs mt-1 leading-relaxed">{cat.desc}</p>
+            </div>
+
+            {/* brand logo boxes */}
+            <div class="flex flex-wrap gap-3 pt-1">
+              {cat.brands.map((brand) => (
+                <div class="flex flex-col items-center gap-1.5">
+                  <div class="w-14 h-14 rounded-xl border border-border bg-white shadow-sm flex items-center justify-center overflow-hidden">
+                    <img
+                      src={`/logos/${brand.domain}.png`}
+                      alt={brand.name}
+                      width="44"
+                      height="44"
+                      loading="lazy"
+                      class="w-11 h-11 object-contain p-1"
+                      onerror={`this.style.display='none';this.nextElementSibling.style.display='flex'`}
+                    />
+                    <span
+                      class="hidden w-full h-full items-center justify-center text-xs font-bold rounded-xl"
+                      style={`background:${cat.color.bg};color:${cat.color.text}`}
+                    >
+                      {brand.name.slice(0,2).toUpperCase()}
+                    </span>
+                  </div>
+                  <span class="text-[0.62rem] font-medium text-muted-foreground text-center leading-tight max-w-[56px] truncate">
+                    {brand.name}
+                  </span>
+                </div>
+              ))}
+            </div>
           </div>
-        ))
-      }
+        );
+      })}
     </div>
   </div>
 </section>
 
 <style>
-  /* Fallback for mobile where we might want a simpler grid */
-  @media (max-width: 1024px) {
-    .grid > div {
-      grid-column: auto;
-      grid-row: auto;
-    }
+  .partner-card {
+    border-color: var(--c-border, #e2e8f0);
+  }
+  .partner-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px rgba(0,0,0,0.10);
+    border-color: var(--color-secondary);
+  }
+  .partner-card:hover .card-accent {
+    opacity: 1;
   }
 </style>
+
+<script>
+  import gsap from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  const cards = document.querySelectorAll("[data-partner-card]");
+  gsap.set(cards, { opacity: 0, y: 40 });
+  gsap.to(cards, {
+    opacity: 1,
+    y: 0,
+    duration: 0.7,
+    ease: "power3.out",
+    stagger: 0.15,
+    scrollTrigger: {
+      trigger: ".partners-grid",
+      start: "top 80%",
+      toggleActions: "play none none none",
+    },
+  });
+</script>

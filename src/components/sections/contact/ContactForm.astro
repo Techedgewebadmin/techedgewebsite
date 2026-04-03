@@ -75,6 +75,27 @@ import Button from "@/components/ui/buttons/Button.astro";
     />
   </div>
 
+  <!-- Solution of Interest -->
+  <div class="space-y-3">
+    <label class="text-sm md:text-base font-grotesk font-medium uppercase text-muted block">
+      I'm Interested In
+    </label>
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+      {[
+        { value: "on-grid-solar", label: "☀️ ON-GRID Solar" },
+        { value: "off-grid-solar", label: "🏕️ OFF-GRID Solar" },
+        { value: "hybrid-solar", label: "⚡ Hybrid Solar" },
+        { value: "hybrid-solar-cold-storage", label: "❄️ Hybrid Solar Cold Storage" },
+      ].map((opt) => (
+        <label class="solution-option flex items-center gap-3 px-4 py-3 rounded-xl border-2 border-muted/40 cursor-pointer hover:border-secondary transition-colors has-[:checked]:border-secondary has-[:checked]:bg-secondary/10">
+          <input type="radio" name="solution" value={opt.value} class="accent-secondary shrink-0" />
+          <span class="font-grotesk text-sm font-medium">{opt.label}</span>
+        </label>
+      ))}
+    </div>
+    <input type="hidden" name="solution-interest" id="solution-interest-hidden" value="" />
+  </div>
+
   <!-- Subject -->
   <div class="space-y-2">
     <label

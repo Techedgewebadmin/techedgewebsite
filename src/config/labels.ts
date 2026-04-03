@@ -4,8 +4,8 @@ export const labels = {
 
   // Hero Section
   'index.hero.btn': 'Get Started',
-  'index.hero.h1': 'Clean and renewable energy',
-  'index.hero.description': 'A modern and eco-friendly design for a solar energy company, highlighting clean energy as simple, accesible solution. Minimalist, tecnology and nature come together to emphasize a sustainable future',
+  'index.hero.h1': 'Excellence in Solar Engineering',
+  'index.hero.description': 'Thinking about solar? We make it easy. Our team handles everything from assessment to installation, so you can start saving faster.',
 
   // Choose Us Section
   'choseus.title': 'The intelligent choice for visionaries in Clean Energy',
@@ -37,7 +37,7 @@ export const labels = {
   'testimonials.title': 'What our clients say',
 
   //Footer
-  'footer.title': 'Sustainable technology. Global reach. Trusted performance.',
+  'footer.title': 'Excellence in Solar Engineering.',
   'footer.other.title': 'OTHERS',
   'footer.menu.title': 'MENU',
 
@@ -76,9 +76,9 @@ export const labels = {
   'project.page.description': 'Explore our portfolio of successful solar installations across residential, commercial, and community sectors.',
 
   //Hero Section Project Page
-  'project.page.hero.btn': 'Get Started',
-  'project.page.hero.h1': 'Leaders in Elite Construction',
-  'project.page.hero.description': 'Our services span architecture, interior design, construction, renovation, and property maintenance.',
+  'project.page.hero.btn': 'Start Your Project',
+  'project.page.hero.h1': 'Our Solar Projects',
+  'project.page.hero.description': 'Real installations. Real savings. Explore our completed solar projects across residential, commercial, and industrial sectors.',
 
   //Contact Section
   'contact.title': 'Contact Us',
@@ -114,7 +114,7 @@ export const labels = {
   '404.quick.link': 'Or explore these pages:',
 
   //Meta (seo)
-  'meta.index.title': 'Techedge | Clean Energy Solutions',
+  'meta.index.title': 'Techedge | Excellence in Solar Engineering',
   'meta.index.description': 'We are a full-cycle EPC and renewable energy development company, focused on building and investing in clean energy infrastructure worldwide.',
   'meta.index.keywords': 'Techedge, Clean Energy Solutions, EPC, Renewable Energy Development, Clean Energy Infrastructure, Solar Energy, Solar Panel Installation, Solar Panel Maintenance, Solar Panel Repair, Solar Panel Replacement, Solar Panel Upgrade, Solar Panel Installation, Solar Panel Maintenance, Solar Panel Repair, Solar Panel Replacement, Solar Panel Upgrade',
 
