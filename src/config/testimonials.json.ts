@@ -3,29 +3,19 @@ export type Testimonial = {
   quote: string;
   author: string;
   role: string;
-  image: string;
 };
 
 export const testimonials: Testimonial[] = [
   {
     id: 1,
-    quote: "I recently engaged in a website development project with an outstanding team, and the results were nothing short of exceptional. The team exhibited an exemplary level of professionalism, expertise, and dedication throughout the entire process.",
-    author: "Joe Glodberg",
-    role: "CEO",
-    image: "https://i.pravatar.cc/150?img=11" // Placeholder
+    quote: "I had doubts about whether solar would actually work for a fuel station — the loads are heavy and continuous. Techedge did a proper site assessment, explained the system design clearly, and delivered exactly what they promised. Six years on, the system is still performing without a single issue. That kind of reliability says everything about their engineering.",
+    author: "Mr. Raghavendra M",
+    role: "Owner, Shri Durgha Fuels — HPCL Retail Outlet, Sagara",
   },
   {
     id: 2,
-    quote: "The solar installation was seamless and professional. We've seen a significant reduction in our energy bills and couldn't be happier with the service provided by the entire team.",
-    author: "Sarah Miller",
-    role: "Homeowner",
-    image: "https://i.pravatar.cc/150?img=5" // Placeholder
-  },
-  {
-    id: 3,
-    quote: "Their expertise in commercial solar solutions helped us achieve our sustainability goals while maximizing ROI. Highly recommended for any business looking to go green.",
-    author: "David Chen",
-    role: "Operations Director",
-    image: "https://i.pravatar.cc/150?img=3" // Placeholder
+    quote: "Techedge was involved from day one — DPR, AIF interest subvention, multiple site visits at every stage of planning and execution, right through to commissioning. What impressed me most was the attention to minute details and their deep knowledge of both cold storage operations and solar systems. They knew exactly what our facility needed. The hybrid system with battery backup has kept our compressors running without interruption through every power cut. A team that truly understands what they are building — and delivers on it.",
+    author: "Sri Chandrakanth",
+    role: "Owner, 80 MT Cold Storage Facility — Bilekere Hobli, Mysuru",
   }
 ];

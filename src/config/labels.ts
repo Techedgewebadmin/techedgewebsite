@@ -90,11 +90,11 @@ export const labels = {
   'contact.followUs': 'Follow Us',
 
   //About Page
-  'about.hero.heading': 'Solar Enterprise',
-  'about.hero.title': 'Powering the future world',
-  'about.hero.description': 'We\'re here to share the wonder of renewable energy and fuel your journey towards a sustainable future.',
-  'about.hero.card.title': 'Solar Solutions',
-  'about.hero.card.description': 'Advanced photovoltaic technology for maximum efficiency.',
+  'about.hero.heading': 'About Us',
+  'about.hero.title': 'India\'s Trusted Solar EPC Company',
+  'about.hero.description': 'We don\'t just install solar — we engineer energy independence. From residential rooftops to industrial campuses, built to perform for 25+ years.',
+  'about.hero.card.title': 'Techedge Solar',
+  'about.hero.card.description': 'EPC contractor with 100+ installations across residential, commercial & industrial sectors.',
 
   //Faq Section
   'faq.title': 'F.A.Q',
@@ -102,8 +102,8 @@ export const labels = {
   'faq.btn': 'Contact Us',
 
   //Company Overview Section
-  'companyoverview.h2': 'is a full-cycle EPC and renewable energy development company, focused on building and investing in clean energy infrastructure worldwide.',
-  'companyoverview.h3': 'We combine engineering precision with a developer\'s vision to deliver utility-scale, commercial, and industrial projects that are reliable, efficient, and profitable.',
+  'companyoverview.h2': 'is India\'s trusted solar EPC company — delivering end-to-end solar solutions for homes, businesses, and industries that generate real, measurable returns.',
+  'companyoverview.h3': 'Every project we take on comes with the same promise: precise engineering, transparent pricing, and a system that starts paying back from day one — and keeps doing so for decades.',
 
   //404 Page
   '404.h1': '404',

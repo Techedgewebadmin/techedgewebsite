@@ -8,26 +8,26 @@ export const featuresCompany: FeaturesCompany[] = [
   {
     number: "01",
     title: "Proven Track Record",
-    description: "Delivered over 50 projects for corporate and public sector"
+    description: "100+ successful installations across residential, commercial, and industrial sectors. Our projects consistently deliver on time, within budget, and above expected yield."
   },
   {
     number: "02",
     title: "Tier-One Technology",
-    description: "We work exclusively with trusted global suppliers"
+    description: "We source exclusively from globally certified suppliers — Tier-1 solar panels, inverters, and mounting systems — ensuring maximum efficiency, durability, and 25-year performance warranties."
   },
   {
     number: "03",
     title: "Expert Team",
-    description: "Experienced engineers, project managers, and technicians."
+    description: "Our in-house team of electrical engineers, energy consultants, and certified technicians handles every stage — from site survey and design to installation, commissioning, and after-sales support."
   },
   {
     number: "04",
     title: "Flexible Approach",
-    description: "From 10kW rooftops to multi-megawatt ground stations"
+    description: "Whether it's a 5kW home rooftop or a 5MW industrial ground-mount, we tailor every solution to the customer's load profile, budget, and grid conditions — no one-size-fits-all packages."
   },
   {
     number: "05",
     title: "Developer-Minded",
-    description: "We know what it takes to make projects successful"
+    description: "We think beyond installation. Our team evaluates ROI, subsidy eligibility, net metering approval, and long-term O&M — so your solar investment is optimised from day one through its entire lifecycle."
   }
 ];

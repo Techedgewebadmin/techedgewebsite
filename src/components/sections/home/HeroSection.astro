@@ -35,15 +35,24 @@ import Button from "@/components/ui/buttons/Button.astro";
       >
         {t("index.hero.description")}
       </p>
-      <Button
-        data-hero-el
-        href="/solutions"
-        variant="secondary"
-        class="font-anton text-base lg:text-xl uppercase max-w-sm"
-        size="lg"
-      >
-        {t("index.hero.btn")}
-      </Button>
+      <div data-hero-el class="flex flex-wrap gap-4">
+        <Button
+          href="/solutions"
+          variant="secondary"
+          class="font-anton text-base lg:text-xl uppercase"
+          size="lg"
+        >
+          {t("index.hero.btn")}
+        </Button>
+        <Button
+          href="/contact"
+          variant="secondary"
+          class="font-anton text-base lg:text-xl uppercase"
+          size="lg"
+        >
+          Free Site Survey
+        </Button>
+      </div>
     </div>
     <Icon
       data-hero-el

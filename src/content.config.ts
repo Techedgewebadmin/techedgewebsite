@@ -19,6 +19,8 @@ const projects = defineCollection({
       paybackPeriod: z.string(),
     }),
     client: z.string().optional(),
+    logo: z.string().optional(),
+    heroFit: z.enum(['cover', 'contain']).optional().default('cover'),
     challenges: z.array(z.string()).optional(),
     solutions: z.array(z.string()).optional(),
   }),

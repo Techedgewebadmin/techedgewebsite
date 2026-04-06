@@ -31,6 +31,8 @@ const {
   description,
   stats,
   client,
+  logo,
+  heroFit,
 } = project.data;
 ---
 
@@ -40,11 +42,11 @@ const {
   image={image.src}
 >
   <!-- Hero with project image background -->
-  <section class="fixed top-0 left-0 w-full h-dvh overflow-hidden z-0">
+  <section class={`fixed top-0 left-0 w-full h-dvh overflow-hidden z-0 ${heroFit === 'contain' ? 'bg-black' : ''}`}>
     <Image
       src={image}
       alt={title}
-      class="absolute inset-0 w-full h-full object-cover pointer-events-none"
+      class={`absolute inset-0 w-full h-full pointer-events-none ${heroFit === 'contain' ? 'object-contain' : 'object-cover'}`}
       loading="eager"
     />
     <div class="absolute inset-0 bg-black opacity-50 pointer-events-none"></div>
@@ -135,6 +137,18 @@ const {
                       <p class="text-foreground text-base font-grotesk">
                         {client}
                       </p>
+                    </div>
+                  )
+                }
+                {
+                  logo && (
+                    <div class="pt-2 border-t border-dashed border-muted">
+                      <p class="text-muted text-xs uppercase font-mono mb-3">Subsidy By</p>
+                      <img
+                        src={logo}
+                        alt="Partner logo"
+                        class="h-12 w-auto object-contain"
+                      />
                     </div>
                   )
                 }
