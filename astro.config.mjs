@@ -12,9 +12,14 @@ export default defineConfig({
   integrations: [
     react(),
     icon(),
-    sitemap()
+    sitemap({
+      filter: (page) => !page.includes('/404'),
+    })
   ],
   vite: {
-    plugins: [tailwind()]
+    plugins: [tailwind()],
+    resolve: {
+      dedupe: ['react', 'react-dom']
+    }
   }
 });

@@ -334,24 +334,7 @@ export const FullscreenMenu = () => {
               })}
             </ul>
 
-            <ul
-              data-menu-socials
-              className="opacity-0 hidden md:flex lg:flex-col gap-4 lg:gap-2 lg:flex-1 lg:text-end flex-wrap"
-              aria-label="Social links"
-            >
-              {socialLinks.map((s) => (
-                <li key={s.label} className="font-grotesk uppercase">
-                  <a
-                    href={s.href}
-                    className="text-background hover:text-secondary transition-colors text-sm md:text-base"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    {s.label}
-                  </a>
-                </li>
-              ))}
-            </ul>
+            <div data-menu-socials className="opacity-0" />
           </nav>
 
           <div

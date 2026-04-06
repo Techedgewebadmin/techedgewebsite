@@ -1,0 +1,121 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import { SolarServices } from "@/components/sections/home/our-service/SolarServices";
+import { SolarServicesMobile } from "@/components/sections/home/our-service/SolarServiceMobile";
+import { services } from "@/config/services.json";
+---
+
+<Layout
+  title="Techedge | Solar EPC Services — Design, Installation, O&M"
+  description="Full-cycle solar EPC services from Techedge — system design, installation, operations & maintenance, and project consulting. kW to MW, across India."
+  keywords="solar EPC services India, solar installation, solar O&M, solar system design, solar consulting Bangalore"
+>
+  <!-- Hero -->
+  <section class="fixed top-0 left-0 w-full h-dvh overflow-hidden z-0">
+    <video
+      class="absolute inset-0 w-full h-full object-cover pointer-events-none"
+      muted autoplay loop playsinline transition:persist
+    >
+      <source src="/videos/video5.mp4" type="video/mp4" />
+    </video>
+    <div class="absolute inset-0 bg-black opacity-50 pointer-events-none"></div>
+    <div class="relative z-10 h-full flex items-baseline-last justify-between p-4 lg:p-12">
+      <div class="max-w-3xl space-y-4 text-accent-foreground">
+        <span data-hero-el class="font-anton text-base md:text-lg lg:text-xl uppercase tracking-wide text-secondary">
+          What We Do
+        </span>
+        <h1 data-hero-el class="text-4xl lg:text-6xl xl:text-8xl font-anton uppercase leading-none">
+          Full-Cycle Solar EPC Services
+        </h1>
+        <p data-hero-el class="text-base lg:text-lg xl:text-xl mt-4 max-w-xl font-sans">
+          From site survey and system design to installation, grid commissioning, and long-term O&M — Techedge handles every stage of your solar project. kW to MW, across India.
+        </p>
+      </div>
+    </div>
+  </section>
+  <div class="h-dvh"></div>
+
+  <!-- Services Section -->
+  <div class="relative z-10 bg-background-foreground">
+    <section class="px-4 py-16 md:py-24 max-w-7xl mx-auto">
+
+      <div class="mb-12">
+        <span class="font-mono text-sm font-bold uppercase tracking-wider text-secondary">Our Services</span>
+        <h2 class="text-4xl md:text-5xl font-anton uppercase mt-2 text-foreground leading-tight">
+          Comprehensive Services for Your Solar Journey
+        </h2>
+        <p class="text-muted font-sans text-lg mt-4 max-w-2xl leading-relaxed">
+          We don't just sell solar systems — we engineer, install, and maintain them. Every service below is delivered by our in-house team with the same quality standard across every project size.
+        </p>
+      </div>
+
+      <div class="hidden lg:block">
+        <SolarServices client:load services={services} />
+      </div>
+      <div class="lg:hidden block">
+        <SolarServicesMobile client:load services={services} />
+      </div>
+
+    </section>
+
+    <!-- What's included grid -->
+    <section class="px-4 pb-16 md:pb-24 max-w-7xl mx-auto">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+        <div class="bg-white rounded-2xl border border-muted/30 p-8">
+          <div class="text-3xl mb-4">📐</div>
+          <h3 class="font-anton uppercase text-xl text-foreground mb-3">System Design & Engineering</h3>
+          <ul class="space-y-2 text-muted text-sm font-grotesk leading-relaxed">
+            <li>→ Site survey and roof/land assessment</li>
+            <li>→ Load analysis and consumption profiling</li>
+            <li>→ System sizing and equipment selection</li>
+            <li>→ Shadow analysis and layout optimisation</li>
+            <li>→ DPR preparation for bank/AIF financing</li>
+            <li>→ Single-line diagram and electrical drawings</li>
+          </ul>
+        </div>
+
+        <div class="bg-white rounded-2xl border border-muted/30 p-8">
+          <div class="text-3xl mb-4">🔧</div>
+          <h3 class="font-anton uppercase text-xl text-foreground mb-3">Installation & Integration</h3>
+          <ul class="space-y-2 text-muted text-sm font-grotesk leading-relaxed">
+            <li>→ MMS fabrication and structural installation</li>
+            <li>→ Panel mounting and alignment</li>
+            <li>→ DC/AC cabling and protection equipment</li>
+            <li>→ Inverter and battery commissioning</li>
+            <li>→ Grid interconnection and net metering</li>
+            <li>→ Full commissioning report and handover</li>
+          </ul>
+        </div>
+
+        <div class="bg-white rounded-2xl border border-muted/30 p-8">
+          <div class="text-3xl mb-4">⚙️</div>
+          <h3 class="font-anton uppercase text-xl text-foreground mb-3">Operations & Maintenance</h3>
+          <ul class="space-y-2 text-muted text-sm font-grotesk leading-relaxed">
+            <li>→ Scheduled panel cleaning</li>
+            <li>→ Monthly performance monitoring</li>
+            <li>→ Inverter health and firmware checks</li>
+            <li>→ Annual structural and earthing inspection</li>
+            <li>→ Fault diagnosis and repair</li>
+            <li>→ Generation reports and optimisation</li>
+          </ul>
+        </div>
+
+        <div class="bg-white rounded-2xl border border-muted/30 p-8">
+          <div class="text-3xl mb-4">📋</div>
+          <h3 class="font-anton uppercase text-xl text-foreground mb-3">Consulting & Support</h3>
+          <ul class="space-y-2 text-muted text-sm font-grotesk leading-relaxed">
+            <li>→ Subsidy and incentive application (MNRE, PM Surya Ghar)</li>
+            <li>→ AIF interest subvention for agri-infrastructure</li>
+            <li>→ Net metering and DISCOM approval liaison</li>
+            <li>→ Bank financing documentation</li>
+            <li>→ ROI and payback analysis</li>
+            <li>→ Post-commissioning technical support</li>
+          </ul>
+        </div>
+
+      </div>
+    </section>
+
+  </div>
+</Layout>

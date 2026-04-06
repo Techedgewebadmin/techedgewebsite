@@ -32,6 +32,6 @@ export const contactInfo: ContactInfo = {
   },
   email: "sales@techedgeindia.co.in",
   phone: "(+91) 98440 97096",
-  workingHours: "",
-  workingDays: "",
+  workingHours: "9:00 AM – 6:00 PM",
+  workingDays: "Monday – Saturday",
 };

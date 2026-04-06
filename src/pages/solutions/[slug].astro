@@ -1,7 +1,6 @@
 ---
 import type { GetStaticPaths } from "astro";
 import Layout from "@/layouts/Layout.astro";
-import Cta from "@/components/common/Cta.astro";
 import BreadCrumb from "@/components/common/BreadCrumb.astro";
 import { solutions } from "@/data/solutions";
 
@@ -220,7 +219,6 @@ const { sol } = Astro.props;
       </div>
     </section>
 
-    <Cta />
   </article>
 </Layout>
 

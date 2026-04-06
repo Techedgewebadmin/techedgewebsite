@@ -3,7 +3,6 @@ import Layout from "@/layouts/Layout.astro";
 import { getCollection } from "astro:content";
 import { t } from "@/lib/utils";
 
-import Cta from "@/components/common/Cta.astro";
 import HeroSectionProjects from "@/components/sections/projects/HeroSectionProjects.astro";
 import ProjectList from "@/components/sections/projects/ProjectList.astro";
 
@@ -21,6 +20,5 @@ const projectsFilter = projects.sort(
   <HeroSectionProjects projects={projects} />
   <div class="relative z-10 bg-background-foreground">
     <ProjectList projects={projectsFilter} />
-    <Cta />
   </div>
 </Layout>

@@ -25,7 +25,7 @@ export const labels = {
   // Our Projects Section
   'ourprojects.heading': 'Our Projects',
   'ourprojects.title': 'Real Results. Real Impact.',
-  'ourprojects.description': 'We\'ve helped homeowners, businesses, and organizations worldwide make the switch to clean, reliable solar energy. Explore a few of our success stories below.',
+  'ourprojects.description': 'We\'ve helped homeowners, businesses, and industries across India make the switch to clean, reliable solar energy. Explore a few of our success stories below.',
   'ourprojects.btn': 'View All Projects',
 
   // Partners Section
@@ -115,20 +115,20 @@ export const labels = {
 
   //Meta (seo)
   'meta.index.title': 'Techedge | Excellence in Solar Engineering',
-  'meta.index.description': 'We are a full-cycle EPC and renewable energy development company, focused on building and investing in clean energy infrastructure worldwide.',
-  'meta.index.keywords': 'Techedge, Clean Energy Solutions, EPC, Renewable Energy Development, Clean Energy Infrastructure, Solar Energy, Solar Panel Installation, Solar Panel Maintenance, Solar Panel Repair, Solar Panel Replacement, Solar Panel Upgrade, Solar Panel Installation, Solar Panel Maintenance, Solar Panel Repair, Solar Panel Replacement, Solar Panel Upgrade',
+  'meta.index.description': 'India\'s trusted solar EPC company — on-grid, off-grid, and hybrid solar systems for homes, businesses, and industries. Free site survey. 3–5 year payback.',
+  'meta.index.keywords': 'solar EPC company India, solar installation Bangalore, rooftop solar Karnataka, on-grid solar, hybrid solar system, solar panel installation, solar O&M',
 
-  'meta.about.title': 'Techedge | About Us',
-  'meta.about.description': 'We are a full-cycle EPC and renewable energy development company, focused on building and investing in clean energy infrastructure worldwide.',
-  'meta.about.keywords': 'Techedge, Clean Energy Solutions, EPC, Renewable Energy Development, Clean Energy Infrastructure, Solar Energy, Solar Panel Installation, Solar Panel Maintenance, Solar Panel Repair, Solar Panel Replacement, Solar Panel Upgrade, Solar Panel Installation, Solar Panel Maintenance, Solar Panel Repair, Solar Panel Replacement, Solar Panel Upgrade',
+  'meta.about.title': 'Techedge | About Us — India\'s Trusted Solar EPC Company',
+  'meta.about.description': 'Techedge is India\'s trusted full-cycle solar EPC company. From DPR and design to installation, commissioning, and O&M — we handle every stage of your solar project.',
+  'meta.about.keywords': 'Techedge solar, solar EPC India, solar company Bangalore, solar installation Karnataka, solar engineering India',
 
-  'meta.contact.title': 'Techedge | Contact Us',
-  'meta.contact.description': 'Everything you need to know before starting your project. But if you still have questions, we\'re here to help.',
-  'meta.contact.keywords': 'Techedge, Clean Energy Solutions, EPC, Renewable Energy Development, Clean Energy Infrastructure, Solar Energy, Solar Panel Installation, Solar Panel Maintenance, Solar Panel Repair, Solar Panel Replacement, Solar Panel Upgrade, Solar Panel Installation, Solar Panel Maintenance, Solar Panel Repair, Solar Panel Replacement, Solar Panel Upgrade',
+  'meta.contact.title': 'Techedge | Contact Us — Free Site Survey',
+  'meta.contact.description': 'Get a free solar site survey from Techedge. We assess your rooftop, calculate savings, and give you a detailed ROI report — at no cost.',
+  'meta.contact.keywords': 'free solar site survey, solar consultation India, contact Techedge, solar quote Bangalore',
 
-  'meta.projects.title': 'Techedge | Projects',
-  'meta.projects.description': 'Explore our portfolio of successful solar installations across residential, commercial, and community sectors.',
-  'meta.projects.keywords': 'Techedge, Clean Energy Solutions, EPC, Renewable Energy Development, Clean Energy Infrastructure, Solar Energy, Solar Panel Installation, Solar Panel Maintenance, Solar Panel Repair, Solar Panel Replacement, Solar Panel Upgrade, Solar Panel Installation, Solar Panel Maintenance, Solar Panel Repair, Solar Panel Replacement, Solar Panel Upgrade',
+  'meta.projects.title': 'Techedge | Solar Projects — Real Installations, Real Savings',
+  'meta.projects.description': 'Explore completed solar installations by Techedge — HPCL fuel station, solar hybrid cold storage, and more. Real projects with verified savings data.',
+  'meta.projects.keywords': 'solar projects India, solar case study, HPCL solar, cold storage solar, solar installation Karnataka',
 
   'meta.404.title': '404 - Page Not Found',
   'meta.404.description': 'The page you\'re looking for doesn\'t exist',
