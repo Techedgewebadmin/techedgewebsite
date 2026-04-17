@@ -5,7 +5,7 @@ export const labels = {
   // Hero Section
   'index.hero.btn': 'Get Started',
   'index.hero.h1': 'Best Investment Your Roof Will Ever Make',
-  'index.hero.description': 'Electricity rates rise every year — solar doesn\'t. Pay back in 3–4 years, save for 25. One free site survey is all it takes to get started.',
+  'index.hero.description': 'Electricity rates rise every year — solar doesn\'t. Pay back in 3–4 years, save for 25 years. Book a free site survey.',
 
   // Choose Us Section
   'choseus.title': 'The intelligent choice for visionaries in Clean Energy',
@@ -94,7 +94,7 @@ export const labels = {
   'about.hero.title': 'India\'s Trusted Solar EPC Company',
   'about.hero.description': 'We don\'t just install solar — we engineer energy independence. From residential rooftops to industrial campuses, built to perform for 25+ years.',
   'about.hero.card.title': 'Techedge Solar',
-  'about.hero.card.description': 'EPC contractor with 100+ installations across residential, commercial & industrial sectors.',
+  'about.hero.card.description': 'EPC contractor with 200+ installations across residential, commercial & industrial sectors. Biggest project: 1 MW.',
 
   //Faq Section
   'faq.title': 'F.A.Q',

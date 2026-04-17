@@ -1,0 +1,19 @@
+---
+import "../styles/global.css";
+import BaseHead from "../components/common/BaseHead.astro";
+import SolarCalculator from "../components/sections/calculator/SolarCalculator";
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <BaseHead
+      title="Solar Investment Calculator — ROI, IRR & Payback | Techedge"
+      description="Calculate your solar ROI, IRR, payback period and 25-year savings instantly. Compare self-funded vs bank loan scenarios. Free tool by Techedge Solar EPC."
+      keywords="solar investment calculator India, solar ROI calculator, solar payback period, solar IRR, solar loan EMI calculator"
+    />
+  </head>
+  <body class="bg-[#111]">
+    <SolarCalculator client:load />
+  </body>
+</html>

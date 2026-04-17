@@ -93,6 +93,13 @@ export const TestimonialsCarousel = () => {
 
               {/* Author */}
               <div className="flex items-center gap-4 pt-4 border-t border-white/10">
+                {testimonial.photo && (
+                  <img
+                    src={testimonial.photo}
+                    alt={testimonial.author}
+                    className="w-12 h-12 rounded-full object-cover object-top border-2 border-secondary shrink-0"
+                  />
+                )}
                 <div>
                   <h4 className="text-foreground font-anton text-lg tracking-wide">{testimonial.author}</h4>
                   <p className="text-muted text-xs font-sans uppercase tracking-wider">{testimonial.role}</p>

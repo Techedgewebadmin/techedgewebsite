@@ -13,7 +13,7 @@ A ₹20 lakh solar installation at your fuel station, cold storage, or factory d
 Two benefits stack together:
 
 1. **40% Accelerated Depreciation** under the Income Tax Act (Section 32) — reduces your taxable income by ₹8 lakhs in Year 1 alone on a ₹20 lakh system
-2. **GST Input Tax Credit** — if your business is GST-registered, you can claim back the GST paid on solar system components as ITC (panels at 5%, inverters and BOS at 12–18%)
+2. **GST Input Tax Credit** — if your business is GST-registered, you can claim back the GST paid on solar system components as ITC
 
 Together, these can reduce your effective system cost by ₹3–5 lakhs on a mid-sized commercial installation. Most business owners either don't know about them or don't claim them correctly.
 
@@ -105,7 +105,7 @@ You **cannot** claim ITC if:
 | Item | Amount |
 |---|---|
 | System cost (ex-GST) | ₹21,00,000 |
-| GST paid (blended ~9%) | ₹1,89,000 |
+| GST paid | ₹1,89,000 |
 | **Total invoice value** | **₹22,89,000** |
 | Less: GST ITC claimable | −₹1,89,000 |
 | Less: AD tax saving (Year 1, 25% tax) | −₹2,62,500 |

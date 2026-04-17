@@ -21,6 +21,7 @@ const { title, description, image, keywords } = Astro.props;
 
   <body class="bg-background-foreground">
     <LoadingScreen client:load />
+
     <Navbar />
     <slot />
     <Footer />
@@ -70,4 +71,5 @@ const { title, description, image, keywords } = Astro.props;
 
   /** Wait until LoadingScreen says the app is ready */
   window.addEventListener("app:ready", animateHero, { once: true });
+
 </script>

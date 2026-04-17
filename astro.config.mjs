@@ -20,6 +20,17 @@ export default defineConfig({
     plugins: [tailwind()],
     resolve: {
       dedupe: ['react', 'react-dom']
+    },
+    optimizeDeps: {
+      exclude: ['canvg', 'html2canvas', 'dompurify']
+    },
+    ssr: {
+      noExternal: ['recharts']
+    },
+    build: {
+      rollupOptions: {
+        external: ['canvg']
+      }
     }
   }
 });

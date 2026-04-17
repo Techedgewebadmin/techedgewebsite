@@ -8,7 +8,7 @@ export const featuresCompany: FeaturesCompany[] = [
   {
     number: "01",
     title: "Proven Track Record",
-    description: "100+ successful installations across residential, commercial, and industrial sectors. Our projects consistently deliver on time, within budget, and above expected yield."
+    description: "200+ successful installations across residential, commercial, and industrial sectors — from 5 kWp home rooftops to a 1 MW industrial plant. Our projects consistently deliver on time, within budget, and above expected yield."
   },
   {
     number: "02",
