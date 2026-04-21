@@ -34,6 +34,7 @@ const projects = defineCollection({
     client: z.string().optional(),
     clientImage: image().optional(),
     additionalImages: z.array(image()).optional(),
+    galleryImages: z.array(image()).optional(),
     logo: z.string().optional(),
     heroFit: z.enum(['cover', 'contain']).optional().default('cover'),
     challenges: z.array(z.string()).optional(),

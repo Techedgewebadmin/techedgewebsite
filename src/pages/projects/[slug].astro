@@ -33,6 +33,7 @@ const {
   client,
   clientImage,
   additionalImages,
+  galleryImages,
   logo,
   heroFit,
 } = project.data;
@@ -333,6 +334,26 @@ const collageInstall = hasCollage ? additionalImages![1] : null;
           <article class="project-page">
             <Content />
           </article>
+
+          <!-- Photo Gallery Grid (industrial / multi-image projects) -->
+          {galleryImages && galleryImages.length > 0 && (
+            <div class="mt-10 mb-2">
+              <h3 class="font-anton uppercase text-xl text-foreground mb-4 tracking-wide">Photo Gallery</h3>
+              <div class="grid grid-cols-2 md:grid-cols-3 gap-3">
+                {galleryImages.map((img, i) => (
+                  <div class="relative aspect-video overflow-hidden rounded-xl group">
+                    <Image
+                      src={img}
+                      alt={`${title} — site photo ${i + 1}`}
+                      class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      width={480}
+                      height={270}
+                    />
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
 
           <!-- Client Testimonial Photo Card -->
           {clientImage && client && (
