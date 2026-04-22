@@ -1,0 +1,359 @@
+---
+import type { GetStaticPaths } from "astro";
+import Layout from "@/layouts/Layout.astro";
+import { deyeProducts, type DeyeProduct } from "@/data/deye-products";
+
+export const prerender = true;
+
+export const getStaticPaths = (() => {
+  return deyeProducts.map(p => ({
+    params: { slug: p.slug },
+    props: { product: p },
+  }));
+}) satisfies GetStaticPaths;
+
+const { product: p } = Astro.props as { product: DeyeProduct };
+
+const formatPrice = (n: number) =>
+  new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', maximumFractionDigits: 0 }).format(n);
+
+const formatPriceWithGst = (n: number, gst: number) =>
+  formatPrice(Math.round(n * (1 + gst / 100)));
+
+// Category icon
+const catIcon: Record<string, string> = {
+  'On-Grid': '⚡',
+  'Micro': '🔲',
+  'Hybrid': '🔋',
+  'Battery': '🏭',
+  'All-in-One': '📦',
+};
+
+const specLabels: Record<string, string> = {
+  efficiency: 'Max Efficiency',
+  ipRating: 'Protection Rating',
+  mpptTrackers: 'MPPT Trackers',
+  mpptVoltage: 'MPPT Voltage Range',
+  maxInputVoltage: 'Max DC Input Voltage',
+  batteryVoltage: 'Battery Voltage Range',
+  dimensions: 'Dimensions (W×H×D)',
+  weight: 'Weight',
+  chemistry: 'Battery Chemistry',
+  nominalCapacity: 'Nominal Capacity',
+  nominalVoltage: 'Nominal Voltage',
+  cycleLife: 'Cycle Life',
+};
+
+const hasSpecs = Object.keys(p.specs).length > 0 && Object.values(p.specs).some(v => v !== undefined);
+
+// Related products — same category, different product, up to 4
+const related = deyeProducts
+  .filter(r => r.category === p.category && r.id !== p.id)
+  .slice(0, 4);
+
+// Price with GST
+const priceWithGst = Math.round(p.sellingPrice * (1 + p.gstRate / 100));
+
+// Schema.org structured data for SEO
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": p.name,
+  "description": p.seoDescription,
+  "brand": { "@type": "Brand", "name": "Deye" },
+  "offers": {
+    "@type": "Offer",
+    "priceCurrency": "INR",
+    "price": p.sellingPrice.toFixed(2),
+    "availability": "https://schema.org/InStock",
+    "seller": { "@type": "Organization", "name": "Techedge India" }
+  },
+  "model": p.model,
+};
+---
+
+<Layout
+  title={p.seoTitle}
+  description={p.seoDescription}
+>
+  <!-- Structured Data -->
+  <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+
+  <!-- Breadcrumb -->
+  <div class="pt-28 pb-0 px-4 bg-background-foreground">
+    <div class="max-w-7xl mx-auto">
+      <nav class="flex items-center gap-2 text-xs text-muted font-semibold">
+        <a href="/" class="hover:text-secondary transition-colors">Home</a>
+        <span>/</span>
+        <a href="/products/" class="hover:text-secondary transition-colors">Products</a>
+        <span>/</span>
+        <span class="text-foreground">{p.name}</span>
+      </nav>
+    </div>
+  </div>
+
+  <!-- Hero product section -->
+  <section class="py-10 px-4 bg-background-foreground">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16">
+
+      <!-- Left: Product info -->
+      <div class="lg:col-span-7">
+        <!-- Category + subcategory badges -->
+        <div class="flex flex-wrap items-center gap-2 mb-4">
+          <span class="text-sm font-bold uppercase tracking-widest text-secondary">
+            {catIcon[p.category]} {p.category}
+          </span>
+          <span class="text-xs font-semibold uppercase text-muted bg-muted-foreground/10 px-3 py-1 rounded-full">
+            {p.subcategory}
+          </span>
+          {p.phase && p.phase !== 'N/A' && (
+            <span class="text-xs font-semibold uppercase text-muted bg-muted-foreground/10 px-3 py-1 rounded-full">
+              {p.phase}
+            </span>
+          )}
+        </div>
+
+        <!-- Product name -->
+        <h1 class="font-anton text-3xl md:text-5xl uppercase text-foreground leading-none mb-3">
+          {p.name}
+        </h1>
+
+        <!-- Model number -->
+        <p class="font-mono text-sm text-muted mb-6">
+          Model: <span class="text-foreground font-semibold">{p.model}</span>
+        </p>
+
+        <!-- Key highlight row -->
+        <div class="flex flex-wrap gap-3 mb-8">
+          {p.specs.efficiency && (
+            <div class="bg-secondary/10 border border-secondary/30 rounded-xl px-4 py-2 text-center">
+              <p class="text-xl font-bold text-secondary">{p.specs.efficiency}</p>
+              <p class="text-[10px] uppercase text-muted font-semibold">Max Efficiency</p>
+            </div>
+          )}
+          {p.specs.ipRating && (
+            <div class="bg-muted-foreground/10 rounded-xl px-4 py-2 text-center">
+              <p class="text-xl font-bold text-foreground">{p.specs.ipRating}</p>
+              <p class="text-[10px] uppercase text-muted font-semibold">Protection</p>
+            </div>
+          )}
+          {p.warranty && (
+            <div class="bg-muted-foreground/10 rounded-xl px-4 py-2 text-center">
+              <p class="text-xl font-bold text-foreground">{p.warranty}</p>
+              <p class="text-[10px] uppercase text-muted font-semibold">Warranty</p>
+            </div>
+          )}
+          {p.specs.mpptTrackers && (
+            <div class="bg-muted-foreground/10 rounded-xl px-4 py-2 text-center">
+              <p class="text-xl font-bold text-foreground">{p.specs.mpptTrackers}</p>
+              <p class="text-[10px] uppercase text-muted font-semibold">MPPT Trackers</p>
+            </div>
+          )}
+          {p.specs.cycleLife && (
+            <div class="bg-muted-foreground/10 rounded-xl px-4 py-2 text-center">
+              <p class="text-base font-bold text-foreground">{p.specs.cycleLife}</p>
+              <p class="text-[10px] uppercase text-muted font-semibold">Cycle Life</p>
+            </div>
+          )}
+        </div>
+
+        <!-- Description (SEO) -->
+        <p class="text-muted leading-relaxed mb-8">{p.seoDescription}</p>
+
+        <!-- Features list -->
+        <div class="mb-8">
+          <h2 class="font-grotesk font-bold text-foreground text-lg mb-4 uppercase tracking-wide">Key Features</h2>
+          <ul class="space-y-2">
+            {p.features.map(f => (
+              <li class="flex items-start gap-3 text-sm text-muted">
+                <span class="text-secondary font-bold mt-0.5 shrink-0">✓</span>
+                <span>{f}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <!-- Use cases -->
+        <div>
+          <h2 class="font-grotesk font-bold text-foreground text-lg mb-4 uppercase tracking-wide">Ideal For</h2>
+          <div class="flex flex-wrap gap-2">
+            {p.useCases.map(uc => (
+              <span class="text-xs bg-muted-foreground/10 border border-muted/20 px-3 py-1.5 rounded-full text-muted">
+                {uc}
+              </span>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: Pricing card + specs -->
+      <div class="lg:col-span-5">
+        <div class="lg:sticky lg:top-24 space-y-5">
+
+          <!-- Pricing card -->
+          <div class="bg-muted-foreground/5 border-2 border-secondary/30 rounded-2xl p-6">
+            <p class="text-xs uppercase font-bold text-muted tracking-widest mb-1">Our Selling Price</p>
+            <p class="text-4xl font-grotesk font-bold text-secondary mb-1">
+              {formatPrice(p.sellingPrice)}
+            </p>
+            <p class="text-xs text-muted mb-4">excl. {p.gstRate}% GST</p>
+
+            <div class="bg-muted-foreground/10 rounded-xl px-4 py-3 mb-5">
+              <div class="flex justify-between text-sm">
+                <span class="text-muted">Price excl. GST</span>
+                <span class="text-foreground font-semibold">{formatPrice(p.sellingPrice)}</span>
+              </div>
+              <div class="flex justify-between text-sm mt-1">
+                <span class="text-muted">GST ({p.gstRate}%)</span>
+                <span class="text-foreground font-semibold">
+                  {formatPrice(Math.round(p.sellingPrice * p.gstRate / 100))}
+                </span>
+              </div>
+              <div class="flex justify-between text-sm font-bold mt-2 pt-2 border-t border-muted/20">
+                <span class="text-foreground">Total (incl. GST)</span>
+                <span class="text-secondary">{formatPrice(priceWithGst)}</span>
+              </div>
+            </div>
+
+            <div class="space-y-2 text-xs text-muted mb-5">
+              <p>✓ EPC supply price + 15% margin</p>
+              <p>✓ Transport charges extra (at actuals)</p>
+              <p>✓ Installation charges extra</p>
+              <p>✓ Prices valid April 2026</p>
+            </div>
+
+            <a
+              href="/contact"
+              class="block w-full bg-secondary text-black font-anton text-lg uppercase text-center py-4 rounded-xl hover:bg-secondary/90 transition-colors mb-3"
+            >
+              Get a Quote
+            </a>
+            <a
+              href="tel:+919876543210"
+              class="block w-full bg-muted-foreground/10 text-foreground font-grotesk font-semibold text-sm text-center py-3 rounded-xl hover:bg-muted-foreground/20 transition-colors border border-muted/20"
+            >
+              📞 Call for Bulk Pricing
+            </a>
+          </div>
+
+          <!-- Specs table -->
+          {hasSpecs && (
+            <div class="bg-muted-foreground/5 border border-muted/20 rounded-2xl p-6">
+              <h3 class="font-grotesk font-bold text-foreground uppercase tracking-wide mb-4">
+                Technical Specifications
+              </h3>
+              <dl class="space-y-3">
+                {Object.entries(p.specs).map(([key, val]) => val ? (
+                  <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-0.5 pb-3 border-b border-muted/10 last:border-0 last:pb-0">
+                    <dt class="text-xs uppercase text-muted font-semibold tracking-wide">
+                      {specLabels[key] ?? key}
+                    </dt>
+                    <dd class="text-sm font-semibold text-foreground sm:text-right">
+                      {String(val)}
+                    </dd>
+                  </div>
+                ) : null)}
+                <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-0.5 pb-3 border-b border-muted/10 last:border-0 last:pb-0">
+                  <dt class="text-xs uppercase text-muted font-semibold tracking-wide">Warranty</dt>
+                  <dd class="text-sm font-semibold text-foreground sm:text-right">{p.warranty}</dd>
+                </div>
+              </dl>
+            </div>
+          )}
+
+          <!-- Source link -->
+          <p class="text-xs text-muted text-center">
+            Specifications sourced from
+            <a href="https://www.deyeinverter.com" target="_blank" rel="noopener" class="text-secondary hover:underline">
+              deyeinverter.com
+            </a>
+          </p>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GST & warranty notes -->
+  <section class="py-8 px-4 bg-muted-foreground/5 border-t border-muted/10">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-4 text-sm text-muted">
+      <div class="flex gap-3">
+        <span class="text-xl">🛡️</span>
+        <div>
+          <p class="font-bold text-foreground mb-1">Warranty</p>
+          <p>On-grid ≤10 kW: 10 yrs | &gt;10 kW: 8 yrs | Hybrid: 5 yrs | LiFePO4: 10 yrs | Hybrid+Battery combo: 10 yrs</p>
+        </div>
+      </div>
+      <div class="flex gap-3">
+        <span class="text-xl">🧾</span>
+        <div>
+          <p class="font-bold text-foreground mb-1">GST Rates</p>
+          <p>Solar inverters: 5% GST | Batteries, accessories & ESS systems: 18% GST</p>
+        </div>
+      </div>
+      <div class="flex gap-3">
+        <span class="text-xl">📦</span>
+        <div>
+          <p class="font-bold text-foreground mb-1">Supply & Installation</p>
+          <p>Transport charges at actuals. Installation by Techedge-certified engineers extra.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Related products -->
+  {related.length > 0 && (
+    <section class="py-16 px-4">
+      <div class="max-w-7xl mx-auto">
+        <h2 class="font-anton text-2xl md:text-3xl uppercase text-foreground mb-8">
+          More {p.category} Products
+        </h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          {related.map(r => (
+            <a
+              href={`/products/${r.slug}/`}
+              class="group bg-muted-foreground/5 hover:bg-muted-foreground/10 border border-muted/20 hover:border-secondary/40 rounded-2xl p-5 transition-all"
+            >
+              <span class="text-[10px] font-bold uppercase tracking-widest text-secondary bg-secondary/10 px-2 py-0.5 rounded-full">
+                {r.subcategory}
+              </span>
+              <h3 class="font-grotesk font-bold text-foreground text-sm leading-snug mt-3 mb-1 group-hover:text-secondary transition-colors">
+                {r.name}
+              </h3>
+              <p class="text-muted text-xs font-mono mb-3">{r.model}</p>
+              <p class="text-lg font-bold text-secondary">{formatPrice(r.sellingPrice)}</p>
+              <p class="text-[10px] text-muted">excl. {r.gstRate}% GST</p>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- Bottom CTA -->
+  <section class="py-20 px-4 bg-secondary/5 border-t border-muted/10">
+    <div class="max-w-2xl mx-auto text-center">
+      <h2 class="font-anton text-3xl md:text-4xl uppercase text-foreground mb-4">
+        Ready to Go Solar?
+      </h2>
+      <p class="text-muted mb-8">
+        Get a free site survey and customised system design from Techedge — Bengaluru's trusted solar EPC partner with 200+ installations.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a
+          href="/contact"
+          class="bg-secondary text-black font-anton text-lg uppercase px-8 py-4 rounded-xl hover:bg-secondary/90 transition-colors"
+        >
+          Get a Free Site Survey
+        </a>
+        <a
+          href="/projects"
+          class="bg-muted-foreground/10 text-foreground font-anton text-lg uppercase px-8 py-4 rounded-xl hover:bg-muted-foreground/20 transition-colors border border-muted/30"
+        >
+          See Our Projects
+        </a>
+      </div>
+    </div>
+  </section>
+
+</Layout>

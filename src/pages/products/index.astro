@@ -1,0 +1,181 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import { deyeProducts, categoryMeta, type ProductCategory } from "@/data/deye-products";
+
+const categories: ProductCategory[] = ['On-Grid', 'Micro', 'Hybrid', 'Battery', 'All-in-One'];
+
+// Group products by category
+const byCategory = categories.map(cat => ({
+  cat,
+  meta: categoryMeta[cat],
+  products: deyeProducts.filter(p => p.category === cat),
+}));
+
+const formatPrice = (n: number) =>
+  new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', maximumFractionDigits: 0 }).format(n);
+---
+
+<Layout
+  title="Deye Solar Inverters & Batteries — India Price List | Techedge"
+  description="Buy Deye solar inverters and batteries in India at the best price. 86 products: on-grid (1.5–136 kW), hybrid (3–125 kW), micro inverters, LiFePO4 batteries and containerised ESS. Authorised dealer — Techedge India, Bengaluru."
+  keywords="Deye inverter price India, Deye solar inverter, Deye hybrid inverter, Deye battery, solar inverter Bengaluru, buy Deye inverter online"
+>
+
+  <!-- Hero -->
+  <section class="bg-background-foreground pt-32 pb-12 px-4">
+    <div class="max-w-7xl mx-auto">
+      <div class="mb-2">
+        <span class="text-secondary text-sm font-bold uppercase tracking-widest">Deye Authorised Dealer</span>
+      </div>
+      <h1 class="font-anton text-4xl md:text-6xl xl:text-7xl uppercase text-foreground leading-none mb-4">
+        Deye Solar Products
+      </h1>
+      <p class="text-muted text-lg max-w-2xl mb-8">
+        86 products — on-grid, hybrid, micro inverters, LiFePO4 batteries and container ESS solutions.
+        All prices include our <strong class="text-foreground">+15% service & supply margin</strong>.
+        GST extra (5% inverters / 18% batteries).
+      </p>
+      <!-- Stats bar -->
+      <div class="flex flex-wrap gap-4 mb-6">
+        {[
+          { label: 'Products', value: '86' },
+          { label: 'Categories', value: '5' },
+          { label: 'Power Range', value: '1.5–136 kW' },
+          { label: 'Battery Range', value: '5–4340 kWh' },
+        ].map(s => (
+          <div class="bg-muted-foreground/10 rounded-xl px-5 py-3 border border-muted/20">
+            <p class="text-2xl font-grotesk font-bold text-foreground">{s.value}</p>
+            <p class="text-xs text-muted uppercase font-semibold">{s.label}</p>
+          </div>
+        ))}
+      </div>
+      <!-- Warranty note -->
+      <div class="bg-secondary/10 border border-secondary/30 rounded-xl px-5 py-4 max-w-2xl text-sm text-foreground">
+        <strong>Warranty:</strong> On-grid ≤10 kW — 10 yrs &nbsp;|&nbsp; On-grid &gt;10 kW — 8 yrs &nbsp;|&nbsp;
+        Hybrid inverters — 5 yrs &nbsp;|&nbsp; LiFePO4 batteries — 10 yrs &nbsp;|&nbsp;
+        Hybrid + Deye battery combo — 10 yrs comprehensive
+      </div>
+    </div>
+  </section>
+
+  <!-- Category jump links -->
+  <nav class="sticky top-0 z-30 bg-background-foreground border-b border-muted/20 shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 py-3 flex gap-3 overflow-x-auto scrollbar-none">
+      {byCategory.map(({ cat, meta }) => (
+        <a
+          href={`#${cat.toLowerCase().replace(/[\s\/]/g, '-')}`}
+          class="flex-shrink-0 flex items-center gap-2 px-4 py-2 rounded-full bg-muted-foreground/10 hover:bg-secondary/20 text-foreground text-sm font-semibold transition-colors"
+        >
+          <span>{meta.icon}</span>
+          <span>{meta.label}</span>
+        </a>
+      ))}
+    </div>
+  </nav>
+
+  <!-- Product sections by category -->
+  {byCategory.map(({ cat, meta, products }) => (
+    <section
+      id={cat.toLowerCase().replace(/[\s\/]/g, '-')}
+      class="py-16 px-4 border-b border-muted/10"
+    >
+      <div class="max-w-7xl mx-auto">
+        <!-- Category header -->
+        <div class="mb-10">
+          <div class="flex items-center gap-3 mb-2">
+            <span class="text-4xl">{meta.icon}</span>
+            <h2 class="font-anton text-3xl md:text-4xl uppercase text-foreground">{meta.label}</h2>
+          </div>
+          <p class="text-muted max-w-2xl">{meta.description}</p>
+        </div>
+
+        <!-- Product grid -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+          {products.map(p => (
+            <a
+              href={`/products/${p.slug}/`}
+              class="group bg-muted-foreground/5 hover:bg-muted-foreground/10 border border-muted/20 hover:border-secondary/40 rounded-2xl p-5 transition-all duration-200 flex flex-col"
+            >
+              <!-- Category badge -->
+              <div class="flex items-center gap-2 mb-3">
+                <span class="text-[10px] font-bold uppercase tracking-widest text-secondary bg-secondary/10 px-2 py-0.5 rounded-full">
+                  {p.subcategory}
+                </span>
+                {p.phase && p.phase !== 'N/A' && (
+                  <span class="text-[10px] font-bold uppercase tracking-widest text-muted bg-muted-foreground/10 px-2 py-0.5 rounded-full">
+                    {p.phase}
+                  </span>
+                )}
+              </div>
+
+              <!-- Name -->
+              <h3 class="font-grotesk font-bold text-foreground text-sm leading-snug mb-1 group-hover:text-secondary transition-colors">
+                {p.name}
+              </h3>
+
+              <!-- Model -->
+              <p class="text-muted text-xs font-mono mb-3">{p.model}</p>
+
+              <!-- Key spec -->
+              {p.specs.efficiency && (
+                <p class="text-xs text-muted mb-1">⚡ Efficiency: <span class="text-foreground font-semibold">{p.specs.efficiency}</span></p>
+              )}
+              {p.specs.nominalCapacity && (
+                <p class="text-xs text-muted mb-1">🔋 Capacity: <span class="text-foreground font-semibold">{p.specs.nominalCapacity}</span></p>
+              )}
+              {p.warranty && (
+                <p class="text-xs text-muted mb-1">🛡️ Warranty: <span class="text-foreground font-semibold">{p.warranty}</span></p>
+              )}
+
+              <!-- Spacer -->
+              <div class="flex-1" />
+
+              <!-- Price -->
+              <div class="mt-4 pt-4 border-t border-muted/20">
+                <p class="text-[10px] uppercase text-muted font-semibold mb-0.5">Our Price (excl. GST)</p>
+                <p class="text-xl font-grotesk font-bold text-secondary">
+                  {formatPrice(p.sellingPrice)}
+                </p>
+                <p class="text-[10px] text-muted">+ {p.gstRate}% GST applicable</p>
+              </div>
+
+              <!-- CTA arrow -->
+              <div class="mt-3 flex items-center gap-1 text-secondary text-xs font-semibold">
+                <span>View specs & details</span>
+                <span class="group-hover:translate-x-1 transition-transform">→</span>
+              </div>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+  ))}
+
+  <!-- Bottom CTA -->
+  <section class="py-20 px-4 bg-secondary/5">
+    <div class="max-w-3xl mx-auto text-center">
+      <h2 class="font-anton text-3xl md:text-4xl uppercase text-foreground mb-4">
+        Need Help Choosing the Right Product?
+      </h2>
+      <p class="text-muted mb-8">
+        Our team will help you select the right inverter and battery combination for your home or business.
+        Free consultation — no obligation.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a
+          href="/contact"
+          class="bg-secondary text-black font-anton text-lg uppercase px-8 py-4 rounded-xl hover:bg-secondary/90 transition-colors"
+        >
+          Get a Free Quote
+        </a>
+        <a
+          href="/calculator"
+          class="bg-muted-foreground/10 text-foreground font-anton text-lg uppercase px-8 py-4 rounded-xl hover:bg-muted-foreground/20 transition-colors border border-muted/30"
+        >
+          Calculate My ROI
+        </a>
+      </div>
+    </div>
+  </section>
+
+</Layout>
