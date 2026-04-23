@@ -2,7 +2,6 @@ import { defineConfig } from 'astro/config';
 import tailwind from '@tailwindcss/vite';
 import react from '@astrojs/react';
 import icon from 'astro-icon';
-import sitemap from '@astrojs/sitemap';
 import netlify from '@astrojs/netlify';
 
 export default defineConfig({
@@ -12,9 +11,6 @@ export default defineConfig({
   integrations: [
     react(),
     icon(),
-    sitemap({
-      filter: (page) => !page.includes('/404'),
-    })
   ],
   vite: {
     plugins: [tailwind()],
