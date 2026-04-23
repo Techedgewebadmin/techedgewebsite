@@ -70,6 +70,13 @@ const formatPrice = (n: number) =>
           <span>{meta.label}</span>
         </a>
       ))}
+      <a
+        href="#partner-brands"
+        class="flex-shrink-0 flex items-center gap-2 px-4 py-2 rounded-full bg-muted-foreground/10 hover:bg-secondary/20 text-foreground text-sm font-semibold transition-colors"
+      >
+        <span>♻️</span>
+        <span>Partner Brands</span>
+      </a>
     </div>
   </nav>
 
@@ -150,6 +157,64 @@ const formatPrice = (n: number) =>
       </div>
     </section>
   ))}
+
+  <!-- Partner Brands -->
+  <section id="partner-brands" class="py-16 px-4 border-b border-muted/10">
+    <div class="max-w-7xl mx-auto">
+      <div class="mb-8">
+        <span class="text-secondary text-xs font-bold uppercase tracking-widest">Also Available</span>
+        <h2 class="font-anton text-3xl md:text-4xl uppercase text-foreground mt-1">Partner Brands</h2>
+        <p class="text-muted mt-2 max-w-xl">We supply products from trusted partner brands alongside our Deye range.</p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+
+        <!-- Nunam -->
+        <a
+          href="https://nunam.com/products/"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="group bg-muted-foreground/5 hover:bg-muted-foreground/10 border border-muted/20 hover:border-secondary/40 rounded-2xl p-6 flex flex-col transition-all duration-200"
+        >
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-10 h-10 rounded-xl bg-secondary/10 flex items-center justify-center text-xl shrink-0">♻️</div>
+            <div>
+              <p class="font-bold text-foreground text-sm group-hover:text-secondary transition-colors">Nunam</p>
+              <p class="text-[10px] text-muted uppercase font-semibold tracking-wide">Upcycled EV Batteries</p>
+            </div>
+          </div>
+
+          <p class="text-sm text-muted leading-relaxed mb-4">
+            Affordable LiFePO4 battery modules made from upcycled electric vehicle batteries — up to 30% cheaper than standard lithium-ion systems.
+          </p>
+
+          <!-- Key product -->
+          <div class="bg-muted-foreground/10 rounded-xl p-4 mb-4 space-y-2">
+            <p class="text-xs font-bold text-foreground uppercase tracking-wide">NESS Series 5</p>
+            <div class="grid grid-cols-2 gap-2 text-xs text-muted">
+              <span>🔋 Capacity: <strong class="text-foreground">5 kWh</strong></span>
+              <span>⚡ Voltage: <strong class="text-foreground">48 V</strong></span>
+              <span>🔄 Cycles: <strong class="text-foreground">2,000+</strong></span>
+              <span>📈 Scalable: <strong class="text-foreground">up to 50 kWh</strong></span>
+              <span>🛡️ Warranty: <strong class="text-foreground">5 years</strong></span>
+              <span>🌿 Type: <strong class="text-foreground">Upcycled LiFePO4</strong></span>
+            </div>
+          </div>
+
+          <div class="flex-1" />
+          <div class="flex items-center gap-1 text-secondary text-xs font-semibold mt-2">
+            <span>View Nunam products</span>
+            <span class="group-hover:translate-x-1 transition-transform">↗</span>
+          </div>
+        </a>
+
+      </div>
+
+      <p class="text-xs text-muted mt-6">
+        * Partner brand products are linked to the manufacturer's website. Contact Techedge for availability and pricing in India.
+      </p>
+    </div>
+  </section>
 
   <!-- Bottom CTA -->
   <section class="py-20 px-4 bg-secondary/5">
