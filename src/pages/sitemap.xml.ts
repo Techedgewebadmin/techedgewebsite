@@ -2,6 +2,8 @@ import type { APIRoute } from 'astro';
 import { getCollection } from 'astro:content';
 import { deyeProducts } from '@/data/deye-products';
 
+export const prerender = true;
+
 const SITE = 'https://techedgeindia.co.in';
 
 const staticPages = [
