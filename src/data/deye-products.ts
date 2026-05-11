@@ -2,17 +2,51 @@ export type ProductCategory = 'On-Grid' | 'Micro' | 'Hybrid' | 'Battery' | 'All-
 
 export interface ProductSpecs {
   efficiency?: string;
+  euroEfficiency?: string;
   ipRating?: string;
   mpptVoltage?: string;
   maxInputVoltage?: string;
   batteryVoltage?: string;
+  batteryVoltageRange?: string;
   mpptTrackers?: number;
   dimensions?: string;
   weight?: string;
   chemistry?: string;
   cycleLife?: string;
   nominalCapacity?: string;
+  usableEnergy?: string;
   nominalVoltage?: string;
+  systemNominalVoltage?: string;
+  moduleEnergy?: string;
+  moduleVoltage?: string;
+  moduleCapacity?: string;
+  modulesInSystem?: string;
+  chargeCurrentRecommended?: string;
+  chargeCurrentMax?: string;
+  maxChargeCurrent?: string;
+  maxDischargeCurrent?: string;
+  recommendedDoD?: string;
+  operatingTempDischarge?: string;
+  operatingTempCharge?: string;
+  operatingTemp?: string;
+  storageTemp?: string;
+  thermalManagement?: string;
+  systemWeight?: string;
+  communication?: string;
+  display?: string;
+  altitude?: string;
+  humidity?: string;
+  certification?: string;
+  ratedAcPower?: string;
+  maxApparentPower?: string;
+  acVoltage?: string;
+  gridFrequency?: string;
+  powerFactor?: string;
+  thd?: string;
+  cooling?: string;
+  topology?: string;
+  scalability?: string;
+  peakPowerSupport?: string;
 }
 
 export interface DeyeProduct {
@@ -1080,30 +1114,113 @@ export const deyeProducts: DeyeProduct[] = [
     seoDescription: 'Deye BOS-G Rack 3U HRACK (13 Layer) — holds 13 BOS-GM5.1 HV modules. Larger capacity battery rack for commercial ESS. Best price from Techedge India.',
   },
   {
-    id: 56, slug: 'deye-bos-b-pro-241kwh-ci-ess-solution',
-    name: 'Deye BOS-B Pro — 241 kWh C&I ESS Solution',
-    model: 'BOS-B Pro (241 kWh)',
+    id: 56, slug: 'deye-bos-b-215kwh-ci-ess-solution',
+    name: 'Deye BOS-B — 214.5 kWh C&I ESS Solution',
+    model: 'BOS-B (15 × BOS-B-Pack14.3)',
     category: 'Battery', subcategory: 'C&I Solution',
-    capacityKwh: 241, epcPrice: 3327375, sellingPrice: sp(3327375), gstRate: 18,
-    warranty: '5 years',
-    specs: { chemistry: 'LiFePO4', nominalCapacity: '241 kWh' },
-    features: ['241 kWh commercial-grade LiFePO4 storage', 'Designed for C&I peak shaving & demand management', 'Integrated BMS and safety systems', 'Scalable modular architecture'],
-    useCases: ['C&I peak demand shaving', 'Industrial energy cost reduction', 'Grid-scale commercial energy storage', 'Factory / warehouse backup power'],
-    seoTitle: 'Deye BOS-B Pro 241 kWh C&I ESS Battery Solution India | Techedge',
-    seoDescription: 'Deye BOS-B Pro 241 kWh commercial energy storage system — LiFePO4, for C&I peak shaving and demand management. Contact Techedge India for pricing and project design.',
+    capacityKwh: 215, epcPrice: 3327375, sellingPrice: sp(3327375), gstRate: 18,
+    warranty: '10 years',
+    specs: {
+      chemistry: 'LiFePO4',
+      nominalCapacity: '214.5 kWh',
+      usableEnergy: '193.05 kWh',
+      systemNominalVoltage: '768 V',
+      moduleEnergy: '14.3 kWh per module',
+      moduleVoltage: '51.2 Vdc',
+      moduleCapacity: '280 Ah',
+      modulesInSystem: '15 modules',
+      chargeCurrentRecommended: '140 A',
+      chargeCurrentMax: '168 A',
+      cycleLife: '≥6000 cycles (25°C, 0.5C/0.5C, EOL 70%)',
+      recommendedDoD: '90%',
+      operatingTempDischarge: '-20 ~ 55°C',
+      operatingTempCharge: '0 ~ 55°C',
+      storageTemp: '0 ~ 35°C',
+      thermalManagement: 'Smart fan cooling',
+      ipRating: 'IP20',
+      dimensions: '2150 × 1136 × 800 mm (W×H×D)',
+      systemWeight: '~1944 kg',
+      communication: 'TCP / RS485 / CAN',
+      display: 'LCD — SOC & Fault Code',
+      altitude: '≤3000 m',
+      humidity: '5% ~ 85%',
+      certification: 'CE / IEC62619 / IEC62040 / UN38.3',
+    },
+    features: [
+      '214.5 kWh LiFePO4 system energy (193.05 kWh usable at 90% DoD)',
+      '15 × BOS-B-Pack14.3 modules (14.3 kWh / 280 Ah / 51.2 V each)',
+      '≥6000 cycle life at 25°C, 0.5C — outlasts standard Li-ion by 2×',
+      '10-year warranty — lowest total cost of ownership in class',
+      'Scalable: 14–16 racks per PCS, up to 32 racks per cluster',
+      'Smart fan cooling with independent BMS for each module',
+      'TCP / RS485 / CAN communication — integrates with Deye PCS & EMS',
+      'LCD display showing real-time SOC and fault codes',
+      'IP20-rated enclosure, rack-mounted, indoor installation',
+      'Supports peak shaving, time-of-use arbitrage and backup power',
+    ],
+    useCases: [
+      'C&I peak demand shaving & demand charge reduction',
+      'Solar self-consumption maximisation for factories & warehouses',
+      'Time-of-use energy arbitrage for industrial facilities',
+      'Backup power for data centres and critical loads',
+      'Microgrid & off-grid commercial power systems',
+      'Grid-scale commercial energy storage projects',
+    ],
+    seoTitle: 'Deye BOS-B 214.5 kWh C&I ESS Battery Solution India | Techedge',
+    seoDescription: 'Deye BOS-B 214.5 kWh commercial LiFePO4 energy storage system — 193 kWh usable, ≥6000 cycles, 10-yr warranty, IP20. For C&I peak shaving & solar integration. Buy from Techedge India.',
   },
   {
     id: 57, slug: 'deye-pcs-100kw-power-conversion-system',
     name: 'Deye PCS 100 kW Power Conversion System',
-    model: 'PCS (100K)',
+    model: 'SUN-100K-PCS01HP3',
     category: 'Battery', subcategory: 'C&I Solution',
     powerKw: 100, epcPrice: 413250, sellingPrice: sp(413250), gstRate: 18,
     warranty: '5 years',
-    specs: { efficiency: '98%+' },
-    features: ['100 kW bidirectional power conversion', 'Grid-tied and off-grid operation', 'For large commercial ESS systems'],
-    useCases: ['C&I commercial energy storage', 'Industrial microgrid systems', 'Utility-scale applications'],
-    seoTitle: 'Deye 100 kW PCS Power Conversion System India | Techedge',
-    seoDescription: 'Deye 100 kW bidirectional PCS for commercial energy storage systems. For C&I solar + battery projects. Contact Techedge India for project consultation.',
+    specs: {
+      efficiency: '98.5%',
+      euroEfficiency: '97.8%',
+      ratedAcPower: '100 kW',
+      maxApparentPower: '110 kVA',
+      batteryVoltageRange: '630–1000 V',
+      maxChargeCurrent: '175 A',
+      maxDischargeCurrent: '175 A',
+      acVoltage: '220/380 V, 230/400 V (three phase)',
+      gridFrequency: '50/60 Hz',
+      powerFactor: '-1 ~ 1',
+      thd: '<3% of nominal power',
+      ipRating: 'IP65',
+      dimensions: '543 × 310 × 775 mm (W×H×D)',
+      weight: '70.35 kg',
+      cooling: 'Intelligent Air Cooling',
+      operatingTemp: '-40°C to 60°C (>45°C derating)',
+      altitude: '4000 m',
+      communication: 'WIFI, RS485, CAN, Meter',
+      display: 'LCD',
+      topology: 'Non-Isolated',
+      scalability: 'Up to 2.5 MW (5 × 500 kW STS with 5 PCS per STS)',
+      peakPowerSupport: 'Up to 170% of rated power',
+      certification: 'IEC/EN 62477-1',
+    },
+    features: [
+      '100 kW bidirectional PCS — 98.5% max efficiency, 97.8% Euro efficiency',
+      'Battery voltage range 630–1000 V, self-adaption to BMS charging strategy',
+      'Peak power support up to 170% of rated power for load spikes',
+      'Scalable to 2.5 MW: 5 × STS modules, each with up to 5 × 100 kW PCS',
+      'Zero-export and time-of-use control — no separate EMS needed',
+      'IP65-rated enclosure — suitable for harsh commercial environments',
+      'Intelligent air cooling; operates -40°C to 60°C',
+      'WIFI, RS485, CAN & Meter communication interfaces',
+      'Compatible with Deye BOS-B battery clusters and MPPT module',
+    ],
+    useCases: [
+      'C&I commercial energy storage (paired with BOS-B battery)',
+      'Industrial microgrid and off-grid power systems',
+      'Solar + storage integration for factories and warehouses',
+      'Peak shaving and demand charge reduction',
+      'Utility-scale and grid-scale storage projects up to 2.5 MW',
+    ],
+    seoTitle: 'Deye SUN-100K-PCS01HP3 100 kW PCS Power Conversion System India | Techedge',
+    seoDescription: 'Deye 100 kW bidirectional PCS (SUN-100K-PCS01HP3) — 98.5% efficiency, IP65, scalable to 2.5 MW. For C&I solar + ESS projects. Contact Techedge India for pricing.',
   },
   {
     id: 58, slug: 'deye-pcs-125kw-power-conversion-system',
