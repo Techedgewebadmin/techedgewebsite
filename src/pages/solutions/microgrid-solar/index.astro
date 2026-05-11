@@ -1,0 +1,735 @@
+---
+import Layout from "@/layouts/Layout.astro";
+
+const schemaJson = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Solar Microgrid Solution — 100kW–2.5MW",
+  "description": "Complete solar microgrid solution for NGOs, CSR programs and off-grid communities. Deye BOS-B 214.5 kWh LiFePO4 ESS + 100kW PCS + 200kWp MPPT + 500kW STS. Worldwide supply and design by Techedge.",
+  "provider": {
+    "@type": "Organization",
+    "name": "Techedge India",
+    "url": "https://techedgeindia.co.in"
+  },
+  "areaServed": "Worldwide",
+  "serviceType": "Solar Microgrid Design & Supply",
+  "offers": {
+    "@type": "Offer",
+    "availability": "https://schema.org/InStock",
+    "seller": { "@type": "Organization", "name": "Techedge India" }
+  }
+});
+
+const faqs = [
+  {
+    q: "What is a solar microgrid?",
+    a: "A solar microgrid is a self-contained energy system combining solar panels, battery storage, a power conversion system (PCS) and automatic transfer switching (STS) that can operate independently of the main grid — or stay connected and switch seamlessly between solar, grid and generator power."
+  },
+  {
+    q: "How much does a 100 kW solar microgrid cost?",
+    a: "A 100 kW solar microgrid using Deye BOS-B 214.5 kWh ESS, SUN-100K-PCS01HP3, MPPT module and STS switching starts from approximately USD 120,000–160,000 depending on site conditions, battery cluster count, civil works and logistics. Contact Techedge for a site-specific design and quote."
+  },
+  {
+    q: "Can the system work without a grid connection?",
+    a: "Yes. The BOS-B + PCS + MPPT combination provides fully off-grid operation. The STS module adds optional seamless backup from a diesel generator or grid connection with <20ms switching time, ensuring zero disruption to critical loads."
+  },
+  {
+    q: "How long can the BOS-B battery provide backup power?",
+    a: "One BOS-B cluster (214.5 kWh, 193 kWh usable at 90% DoD) can power a 50 kW average load for approximately 3–4 hours, or a 20 kW rural health clinic for 8–10 hours overnight. Multiple clusters can be paralleled for longer autonomy."
+  },
+  {
+    q: "Is this system eligible for CSR funding under the Companies Act?",
+    a: "Yes. Solar microgrids for rural communities, schools, health centres and water supply fall under Schedule VII of the Companies Act 2013 (environmental sustainability and rural development). They are also eligible under MNRE's off-grid and decentralised solar programme and state-level subsidies."
+  },
+  {
+    q: "What certifications does the Deye BOS-B system carry?",
+    a: "The BOS-B battery system is certified to CE, IEC62619, IEC62040 and UN38.3. The PCS module holds IEC/EN 62477-1 and IEC/EN 62116 certification, meeting international standards for grid-tied and off-grid installations worldwide."
+  },
+  {
+    q: "Can the solar MPPT module replace a separate solar inverter?",
+    a: "Yes. The Deye MPPT module (SUN-MPPT-L01-EU-AM8) handles up to 200 kWp of solar panels across 8 independent MPP trackers and feeds DC directly into the BOS-B battery via the PCS. No separate solar inverter is required, reducing system complexity and cost."
+  },
+  {
+    q: "How scalable is the system?",
+    a: "Highly scalable. One STS module supports up to five 100 kW PCS units (500 kW). Up to five STS modules can be paralleled to reach 2.5 MW. Battery capacity scales by adding BOS-B clusters — each cluster adds 214.5 kWh, and a single PCS supports up to 16 clusters (3,440 kWh per PCS stack)."
+  },
+];
+---
+
+<Layout
+  title="Solar Microgrid Solution 100kW–2.5MW | NGO, CSR & Off-Grid | Techedge"
+  description="Complete solar microgrid — Deye BOS-B 214.5 kWh LiFePO4 + 100kW PCS + 200kWp MPPT + 500kW STS. Zero grid dependency. For NGOs, CSR programs and off-grid communities worldwide. Design & supply by Techedge."
+  keywords="solar microgrid solution, off-grid solar storage, NGO solar project, CSR solar energy, Deye BOS-B microgrid, 100kW microgrid India, solar microgrid for schools hospitals, community microgrid, solar ESS solution, off-grid power system"
+>
+
+  <!-- Schema.org -->
+  <script type="application/ld+json" set:html={schemaJson} />
+
+  <!-- ── HERO ─────────────────────────────────────────────────────────────── -->
+  <section class="relative bg-background-foreground pt-32 pb-16 px-4 overflow-hidden border-b border-muted/10">
+    <!-- subtle grid bg -->
+    <div class="absolute inset-0 opacity-[0.03]" style="background-image: linear-gradient(#fff 1px, transparent 1px), linear-gradient(90deg, #fff 1px, transparent 1px); background-size: 40px 40px;" />
+
+    <div class="relative max-w-7xl mx-auto">
+      <div class="max-w-4xl">
+        <span class="inline-block text-secondary text-xs font-bold uppercase tracking-widest mb-4 bg-secondary/10 px-3 py-1 rounded-full">
+          ⚡ Solar Microgrid Solution
+        </span>
+        <h1 class="font-anton text-5xl md:text-7xl xl:text-8xl uppercase text-foreground leading-none mb-6">
+          Power Any Community.<br />
+          <span class="text-secondary">Zero Grid Needed.</span>
+        </h1>
+        <p class="text-muted text-lg md:text-xl max-w-2xl mb-8 leading-relaxed">
+          A complete, self-sufficient energy system — solar, storage, and automatic
+          grid/generator backup — engineered for NGOs, CSR projects and off-grid
+          communities worldwide.
+        </p>
+
+        <!-- System pill tags -->
+        <div class="flex flex-wrap gap-2 mb-10">
+          {[
+            '☀️ 200 kWp Solar (MPPT)',
+            '🔋 214.5 kWh LiFePO4 Storage',
+            '⚡ 100 kW PCS',
+            '🔄 500 kW STS Switching',
+            '🌍 Worldwide Supply',
+          ].map(tag => (
+            <span class="text-xs font-semibold px-3 py-1.5 rounded-full bg-muted-foreground/10 border border-muted/20 text-foreground">
+              {tag}
+            </span>
+          ))}
+        </div>
+
+        <!-- Hero stats -->
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-10">
+          {[
+            { v: '100 kW', l: 'AC Output Power' },
+            { v: '214.5 kWh', l: 'Battery Storage' },
+            { v: '≥6,000', l: 'Cycle Life' },
+            { v: '<20ms', l: 'Grid/Gen Switching' },
+          ].map(s => (
+            <div class="bg-muted-foreground/5 border border-muted/20 rounded-2xl px-4 py-4">
+              <p class="font-anton text-2xl md:text-3xl text-secondary">{s.v}</p>
+              <p class="text-xs text-muted uppercase font-semibold mt-1">{s.l}</p>
+            </div>
+          ))}
+        </div>
+
+        <div class="flex flex-col sm:flex-row gap-4">
+          <a href="/contact" class="bg-secondary text-black font-anton text-lg uppercase px-8 py-4 rounded-xl hover:bg-secondary/90 transition-colors text-center">
+            Design My Microgrid
+          </a>
+          <a href="#system" class="bg-muted-foreground/10 text-foreground font-bold text-sm uppercase px-8 py-4 rounded-xl hover:bg-muted-foreground/20 transition-colors border border-muted/30 text-center tracking-widest">
+            View System →
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── PROBLEM STATEMENT ─────────────────────────────────────────────────── -->
+  <section class="py-16 px-4 bg-muted-foreground/3 border-b border-muted/10">
+    <div class="max-w-7xl mx-auto">
+      <div class="grid md:grid-cols-2 gap-12 items-center">
+        <div>
+          <span class="text-secondary text-xs font-bold uppercase tracking-widest">The Problem</span>
+          <h2 class="font-anton text-3xl md:text-4xl uppercase text-foreground mt-2 mb-6">
+            760 Million People.<br />No Reliable Power.
+          </h2>
+          <p class="text-muted leading-relaxed mb-4">
+            Across Asia, Africa and Latin America, communities, clinics and schools
+            depend on expensive diesel generators — or go without power entirely.
+            Diesel is noisy, polluting, costly, and fails supply chains in remote areas.
+          </p>
+          <p class="text-muted leading-relaxed">
+            For NGOs and CSR-funded projects, the challenge is building energy
+            infrastructure that's <strong class="text-foreground">reliable, low-maintenance, and financially justifiable</strong>
+            over a 10–15 year project horizon.
+          </p>
+        </div>
+        <div class="grid grid-cols-2 gap-4">
+          {[
+            { icon: '🛢️', title: 'Diesel Cost', desc: 'USD 0.30–0.60/kWh, rising every year' },
+            { icon: '🔇', title: 'Noise & Pollution', desc: 'CO₂, NOₓ emissions — unacceptable near clinics and schools' },
+            { icon: '⛽', title: 'Supply Chain', desc: 'Fuel delivery unreliable in remote and disaster-prone areas' },
+            { icon: '🔋', title: 'Lead-Acid', desc: 'Short lifespan, acid leakage risks, frequent replacement cost' },
+          ].map(c => (
+            <div class="bg-muted-foreground/5 border border-muted/20 rounded-2xl p-5">
+              <span class="text-2xl mb-2 block">{c.icon}</span>
+              <p class="font-bold text-foreground text-sm mb-1">{c.title}</p>
+              <p class="text-muted text-xs leading-relaxed">{c.desc}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── SYSTEM ARCHITECTURE ───────────────────────────────────────────────── -->
+  <section id="system" class="py-20 px-4 border-b border-muted/10">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-14">
+        <span class="text-secondary text-xs font-bold uppercase tracking-widest">Complete System</span>
+        <h2 class="font-anton text-3xl md:text-5xl uppercase text-foreground mt-2 mb-4">
+          Four Modules. One Integrated Solution.
+        </h2>
+        <p class="text-muted max-w-2xl mx-auto">
+          The Deye BOS-B C&I ESS is a factory-integrated system — no separate solar inverter required.
+          Solar DC flows directly from the MPPT module into storage and load.
+        </p>
+      </div>
+
+      <!-- Architecture flow -->
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-12">
+        {[
+          {
+            icon: '☀️',
+            label: 'MPPT Module',
+            model: 'SUN-MPPT-L01-EU-AM8',
+            color: 'border-yellow-500/40 bg-yellow-500/5',
+            badge: 'Solar Input',
+            specs: ['Up to 200 kWp PV', '8 independent MPPT trackers', '40 A per tracker', 'MPPT range 180–850 V', 'Max efficiency >99%', 'IP65'],
+            note: 'No separate inverter needed'
+          },
+          {
+            icon: '⚡',
+            label: 'PCS Module',
+            model: 'SUN-100K-PCS01HP3',
+            color: 'border-secondary/40 bg-secondary/5',
+            badge: 'Power Conversion',
+            specs: ['100 kW bidirectional', '98.5% max efficiency', 'Battery: 630–1000 V', 'Peak power 170% rated', 'Zero-export control', 'IP65'],
+            note: 'Scalable to 2.5 MW'
+          },
+          {
+            icon: '🔋',
+            label: 'BOS-B Battery',
+            model: 'BOS-B (15 × Pack14.3)',
+            color: 'border-green-500/40 bg-green-500/5',
+            badge: 'Energy Storage',
+            specs: ['214.5 kWh total', '193 kWh usable (90% DoD)', 'LiFePO4 chemistry', '≥6,000 cycle life', '768 V nominal', '10-year warranty'],
+            note: 'Add clusters for more storage'
+          },
+          {
+            icon: '🔄',
+            label: 'STS Module',
+            model: 'SUN-STS500L',
+            color: 'border-blue-500/40 bg-blue-500/5',
+            badge: 'Grid/Gen Switching',
+            specs: ['500 kW switching capacity', '<20ms transfer time', 'Grid + Generator + Off-grid', 'Independent load paths', '3-phase 220/380 V', 'Seamless, no power cut'],
+            note: 'Diesel gen backup optional'
+          },
+        ].map((m, i) => (
+          <div class={`relative rounded-2xl border-2 ${m.color} p-6 flex flex-col`}>
+            {i < 3 && (
+              <div class="hidden md:flex absolute -right-5 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-background-foreground border border-muted/30 items-center justify-center text-secondary font-bold text-lg">
+                →
+              </div>
+            )}
+            <div class="flex items-start gap-3 mb-4">
+              <span class="text-3xl">{m.icon}</span>
+              <div>
+                <span class="text-[10px] font-bold uppercase tracking-widest text-secondary bg-secondary/10 px-2 py-0.5 rounded-full">
+                  {m.badge}
+                </span>
+                <h3 class="font-bold text-foreground mt-1">{m.label}</h3>
+                <p class="text-muted text-xs font-mono">{m.model}</p>
+              </div>
+            </div>
+            <ul class="space-y-1.5 flex-1">
+              {m.specs.map(s => (
+                <li class="text-xs text-muted flex gap-2">
+                  <span class="text-secondary shrink-0">✓</span>
+                  <span>{s}</span>
+                </li>
+              ))}
+            </ul>
+            <p class="mt-4 text-[10px] font-bold uppercase tracking-widest text-muted border-t border-muted/20 pt-3">
+              {m.note}
+            </p>
+          </div>
+        ))}
+      </div>
+
+      <!-- Energy flow diagram -->
+      <div class="bg-muted-foreground/5 border border-muted/20 rounded-2xl p-8">
+        <h3 class="font-bold text-foreground mb-6 text-center uppercase tracking-widest text-sm">Energy Flow</h3>
+        <div class="flex flex-wrap justify-center items-center gap-3 text-sm font-semibold">
+          {[
+            { label: 'Solar Panels', sub: 'Up to 200 kWp', color: 'bg-yellow-500/20 border-yellow-500/40' },
+            '→',
+            { label: 'MPPT Module', sub: '180–850 V DC', color: 'bg-yellow-500/10 border-yellow-500/30' },
+            '→',
+            { label: 'BOS-B Battery', sub: '768 V DC bus', color: 'bg-green-500/10 border-green-500/30' },
+            '⟷',
+            { label: 'PCS Module', sub: '100 kW AC/DC', color: 'bg-secondary/10 border-secondary/30' },
+            '→',
+            { label: 'STS Module', sub: 'Grid/Gen/Load', color: 'bg-blue-500/10 border-blue-500/30' },
+            '→',
+            { label: 'AC Loads', sub: 'Community power', color: 'bg-muted-foreground/10 border-muted/30' },
+          ].map(item =>
+            typeof item === 'string' ? (
+              <span class="text-secondary text-xl font-bold">{item}</span>
+            ) : (
+              <div class={`border rounded-xl px-4 py-3 text-center ${item.color}`}>
+                <p class="text-foreground text-xs font-bold">{item.label}</p>
+                <p class="text-muted text-[10px]">{item.sub}</p>
+              </div>
+            )
+          )}
+        </div>
+        <p class="text-center text-xs text-muted mt-6">
+          Grid or diesel generator connects to STS for backup — automatically engaged in &lt;20ms when solar + battery cannot meet demand.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── WHO IT'S FOR ──────────────────────────────────────────────────────── -->
+  <section class="py-20 px-4 bg-muted-foreground/3 border-b border-muted/10">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-14">
+        <span class="text-secondary text-xs font-bold uppercase tracking-widest">Who It's For</span>
+        <h2 class="font-anton text-3xl md:text-5xl uppercase text-foreground mt-2">
+          Built for Impact at Scale
+        </h2>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-8">
+
+        <!-- NGOs -->
+        <div class="bg-muted-foreground/5 border border-muted/20 hover:border-secondary/40 rounded-2xl p-8 transition-colors group">
+          <div class="w-14 h-14 rounded-2xl bg-green-500/10 border border-green-500/20 flex items-center justify-center text-3xl mb-6">🌍</div>
+          <h3 class="font-anton text-2xl uppercase text-foreground mb-3 group-hover:text-secondary transition-colors">NGOs &<br />Humanitarian Orgs</h3>
+          <p class="text-muted text-sm leading-relaxed mb-5">
+            Power health clinics, schools, water pumps and emergency shelters in off-grid and disaster-affected areas. Eliminate diesel dependency permanently.
+          </p>
+          <ul class="space-y-2">
+            {[
+              'Rural electrification projects',
+              'Refugee camp power systems',
+              'Remote health post backup',
+              'Clean water pumping stations',
+              'UN SDG 7 — Affordable Clean Energy',
+              'Donor-reportable impact metrics',
+            ].map(i => (
+              <li class="flex gap-2 text-xs text-muted">
+                <span class="text-green-400 shrink-0">✓</span> {i}
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <!-- CSR -->
+        <div class="bg-muted-foreground/5 border border-muted/20 hover:border-secondary/40 rounded-2xl p-8 transition-colors group">
+          <div class="w-14 h-14 rounded-2xl bg-secondary/10 border border-secondary/20 flex items-center justify-center text-3xl mb-6">🏢</div>
+          <h3 class="font-anton text-2xl uppercase text-foreground mb-3 group-hover:text-secondary transition-colors">Corporate CSR<br />Programs</h3>
+          <p class="text-muted text-sm leading-relaxed mb-5">
+            Fulfill your Companies Act Schedule VII obligations with high-impact, auditable clean energy infrastructure. Measurable CO₂ reduction, ESG reporting ready.
+          </p>
+          <ul class="space-y-2">
+            {[
+              'Companies Act 2013 — Schedule VII compliant',
+              'ESG / GRI / BRSR reportable',
+              'Measurable carbon offset (kgCO₂/kWh)',
+              'Community school & clinic electrification',
+              'Branding and visibility at project site',
+              'Third-party impact verification available',
+            ].map(i => (
+              <li class="flex gap-2 text-xs text-muted">
+                <span class="text-secondary shrink-0">✓</span> {i}
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <!-- Government -->
+        <div class="bg-muted-foreground/5 border border-muted/20 hover:border-secondary/40 rounded-2xl p-8 transition-colors group">
+          <div class="w-14 h-14 rounded-2xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center text-3xl mb-6">🏛️</div>
+          <h3 class="font-anton text-2xl uppercase text-foreground mb-3 group-hover:text-secondary transition-colors">Government &<br />Utilities</h3>
+          <p class="text-muted text-sm leading-relaxed mb-5">
+            Deploy grid-edge microgrids to electrify last-mile communities, stabilise weak-grid areas and meet renewable energy targets under national and state programmes.
+          </p>
+          <ul class="space-y-2">
+            {[
+              'MNRE off-grid & decentralised solar',
+              'Smart village / Gram Swaraj programmes',
+              'State DISCOM grid-edge storage',
+              'World Bank / ADB funded projects',
+              'Island and remote territory electrification',
+              'Disaster resilience and grid hardening',
+            ].map(i => (
+              <li class="flex gap-2 text-xs text-muted">
+                <span class="text-secondary shrink-0">✓</span> {i}
+              </li>
+            ))}
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── USE CASES ─────────────────────────────────────────────────────────── -->
+  <section class="py-20 px-4 border-b border-muted/10">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-14">
+        <span class="text-secondary text-xs font-bold uppercase tracking-widest">Real-World Applications</span>
+        <h2 class="font-anton text-3xl md:text-5xl uppercase text-foreground mt-2">
+          Where This System Deploys
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {[
+          {
+            icon: '🏥',
+            title: 'Rural Health Clinics',
+            body: 'Uninterrupted power for cold chain vaccines, surgical lighting, oxygen concentrators and electronic records. 193 kWh usable = 10–12 hrs of critical load at night.',
+            tags: ['Cold chain', 'Surgical power', 'Off-grid capable'],
+          },
+          {
+            icon: '🏫',
+            title: 'Schools & Education Centres',
+            body: 'Power classrooms, computer labs and e-learning systems in areas without reliable grid. One BOS-B cluster powers a 300-student school for a full school day.',
+            tags: ['E-learning', 'Computer labs', 'Day + evening'],
+          },
+          {
+            icon: '💧',
+            title: 'Water Treatment & Pumping',
+            body: 'Solar-powered water treatment plants and community pumping stations. Consistent power eliminates hand-pump reliance and diesel pump costs.',
+            tags: ['Pump stations', 'Treatment plants', 'SDG 6'],
+          },
+          {
+            icon: '📡',
+            title: 'Telecom & Connectivity',
+            body: 'Power remote cell towers, satellite communication hubs and emergency broadcast infrastructure. Eliminate generator maintenance in hard-to-reach sites.',
+            tags: ['Cell towers', 'Emergency comms', 'Remote sites'],
+          },
+          {
+            icon: '🏝️',
+            title: 'Island & Resort Microgrids',
+            body: 'Replace 100% diesel generation on islands and eco-resorts with clean solar storage. Dramatic fuel cost reduction and carbon footprint elimination.',
+            tags: ['Full diesel replacement', 'Eco-resort', 'Islands'],
+          },
+          {
+            icon: '🚨',
+            title: 'Disaster Relief Infrastructure',
+            body: 'Rapidly deployable microgrid for post-disaster emergency response camps. Rack-mounted modules reduce site setup to days, not weeks.',
+            tags: ['Rapid deployment', 'Emergency power', 'Resilience'],
+          },
+        ].map(uc => (
+          <div class="bg-muted-foreground/5 border border-muted/20 rounded-2xl p-6 hover:border-secondary/30 transition-colors group">
+            <span class="text-4xl mb-4 block">{uc.icon}</span>
+            <h3 class="font-bold text-foreground text-base mb-2 group-hover:text-secondary transition-colors">{uc.title}</h3>
+            <p class="text-muted text-sm leading-relaxed mb-4">{uc.body}</p>
+            <div class="flex flex-wrap gap-1.5">
+              {uc.tags.map(t => (
+                <span class="text-[10px] font-bold uppercase tracking-widest text-secondary bg-secondary/10 px-2 py-0.5 rounded-full">
+                  {t}
+                </span>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ── TECH SPECS TABLE ──────────────────────────────────────────────────── -->
+  <section class="py-20 px-4 bg-muted-foreground/3 border-b border-muted/10">
+    <div class="max-w-5xl mx-auto">
+      <div class="text-center mb-12">
+        <span class="text-secondary text-xs font-bold uppercase tracking-widest">Technical Specifications</span>
+        <h2 class="font-anton text-3xl md:text-4xl uppercase text-foreground mt-2">
+          System at a Glance
+        </h2>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-6">
+
+        <!-- Battery -->
+        <div class="bg-muted-foreground/5 border border-muted/20 rounded-2xl overflow-hidden">
+          <div class="bg-green-500/10 border-b border-green-500/20 px-6 py-4">
+            <p class="font-bold text-foreground">🔋 BOS-B Battery System</p>
+            <p class="text-xs text-muted font-mono">BOS-B (15 × BOS-B-Pack14.3)</p>
+          </div>
+          <table class="w-full text-sm">
+            {[
+              ['System Energy', '214.5 kWh'],
+              ['Usable Energy', '193.05 kWh (90% DoD)'],
+              ['Module Energy', '14.3 kWh × 15 modules'],
+              ['System Voltage', '768 V nominal'],
+              ['Chemistry', 'LiFePO4'],
+              ['Cycle Life', '≥6,000 (25°C, 0.5C)'],
+              ['Warranty', '10 years'],
+              ['Charge Temp', '0 ~ 55°C'],
+              ['Discharge Temp', '-20 ~ 55°C'],
+              ['IP Rating', 'IP20 (indoor)'],
+              ['Certification', 'CE / IEC62619 / UN38.3'],
+            ].map(([k, v]) => (
+              <tr class="border-b border-muted/10 last:border-0">
+                <td class="px-6 py-2.5 text-muted">{k}</td>
+                <td class="px-6 py-2.5 text-foreground font-semibold text-right">{v}</td>
+              </tr>
+            ))}
+          </table>
+        </div>
+
+        <!-- PCS -->
+        <div class="bg-muted-foreground/5 border border-muted/20 rounded-2xl overflow-hidden">
+          <div class="bg-secondary/10 border-b border-secondary/20 px-6 py-4">
+            <p class="font-bold text-foreground">⚡ PCS + MPPT + STS</p>
+            <p class="text-xs text-muted font-mono">SUN-100K-PCS01HP3 + MPPT-L01-EU-AM8 + STS500L</p>
+          </div>
+          <table class="w-full text-sm">
+            {[
+              ['PCS Rated Power', '100 kW'],
+              ['Max Efficiency', '98.5%'],
+              ['Peak Power Support', '170% of rated'],
+              ['Battery Voltage', '630–1000 V'],
+              ['MPPT Input', 'Up to 200 kWp'],
+              ['MPPT Trackers', '8 × 40 A independent'],
+              ['MPPT Efficiency', '>99%'],
+              ['STS Capacity', '500 kW'],
+              ['Transfer Time', '<20ms (seamless)'],
+              ['AC Output', '220/380 V, 3-phase'],
+              ['PCS IP Rating', 'IP65'],
+            ].map(([k, v]) => (
+              <tr class="border-b border-muted/10 last:border-0">
+                <td class="px-6 py-2.5 text-muted">{k}</td>
+                <td class="px-6 py-2.5 text-foreground font-semibold text-right">{v}</td>
+              </tr>
+            ))}
+          </table>
+        </div>
+
+      </div>
+
+      <!-- Scalability note -->
+      <div class="mt-6 bg-secondary/5 border border-secondary/20 rounded-2xl px-6 py-5 text-sm text-muted">
+        <strong class="text-foreground">Scalability:</strong> One PCS supports up to 16 BOS-B clusters (3,440 kWh). One STS supports up to 5 × 100 kW PCS modules (500 kW). Up to 5 STS units in parallel = <strong class="text-secondary">2.5 MW / 17,200 kWh</strong> per site.
+      </div>
+    </div>
+  </section>
+
+  <!-- ── WHY BOS-B vs DIESEL / LEAD ACID ──────────────────────────────────── -->
+  <section class="py-20 px-4 border-b border-muted/10">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-14">
+        <span class="text-secondary text-xs font-bold uppercase tracking-widest">Comparison</span>
+        <h2 class="font-anton text-3xl md:text-5xl uppercase text-foreground mt-2">
+          Why LiFePO₄ Wins Every Time
+        </h2>
+      </div>
+
+      <div class="overflow-x-auto">
+        <table class="w-full text-sm border border-muted/20 rounded-2xl overflow-hidden">
+          <thead>
+            <tr class="bg-muted-foreground/10">
+              <th class="px-6 py-4 text-left text-muted font-semibold uppercase text-xs tracking-widest">Criterion</th>
+              <th class="px-6 py-4 text-center font-bold text-foreground">🔋 Deye BOS-B<br/><span class="text-secondary font-normal text-xs">LiFePO₄</span></th>
+              <th class="px-6 py-4 text-center text-muted">🪫 Lead-Acid<br/><span class="font-normal text-xs">VRLA / AGM</span></th>
+              <th class="px-6 py-4 text-center text-muted">🛢️ Diesel<br/><span class="font-normal text-xs">Generator</span></th>
+            </tr>
+          </thead>
+          <tbody>
+            {[
+              ['Cycle Life', '≥6,000 cycles', '500–800 cycles', 'N/A (fuel cost)'],
+              ['Warranty', '10 years', '1–2 years', '2–3 years'],
+              ['Depth of Discharge', '90%', '50%', '—'],
+              ['Energy Cost (LCOE)', 'USD 0.04–0.08/kWh', 'USD 0.18–0.25/kWh', 'USD 0.30–0.60/kWh'],
+              ['Maintenance', 'Near zero', 'Quarterly checks', 'Monthly + fuel delivery'],
+              ['Emissions', 'Zero', 'Zero', 'CO₂, NOₓ, particulates'],
+              ['Noise', 'Silent', 'Silent', '75–85 dB'],
+              ['Remote Monitoring', 'Cloud EMS + CAN', 'Limited', 'Manual'],
+              ['Donor / CSR Reporting', 'kWh + CO₂ data', 'Limited', 'Fuel cost only'],
+            ].map(([criterion, bos, lead, diesel]) => (
+              <tr class="border-t border-muted/10 hover:bg-muted-foreground/3 transition-colors">
+                <td class="px-6 py-3 text-muted font-medium">{criterion}</td>
+                <td class="px-6 py-3 text-center text-secondary font-semibold">{bos}</td>
+                <td class="px-6 py-3 text-center text-muted">{lead}</td>
+                <td class="px-6 py-3 text-center text-muted">{diesel}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CSR / FUNDING ANGLE ───────────────────────────────────────────────── -->
+  <section class="py-20 px-4 bg-muted-foreground/3 border-b border-muted/10">
+    <div class="max-w-7xl mx-auto">
+      <div class="grid md:grid-cols-2 gap-12 items-center">
+        <div>
+          <span class="text-secondary text-xs font-bold uppercase tracking-widest">Funding & Compliance</span>
+          <h2 class="font-anton text-3xl md:text-4xl uppercase text-foreground mt-2 mb-6">
+            Built for CSR,<br />Grant & ESG Funding
+          </h2>
+          <p class="text-muted leading-relaxed mb-6">
+            Solar microgrids qualify under multiple funding frameworks. Techedge provides
+            technical documentation, energy output projections and carbon offset calculations
+            to support your funding applications and impact reporting.
+          </p>
+          <div class="space-y-4">
+            {[
+              {
+                icon: '📋',
+                title: 'Companies Act 2013 — Schedule VII',
+                desc: 'CSR spend on rural electrification, environmental sustainability and healthcare infrastructure. Solar microgrids qualify under multiple sub-clauses.'
+              },
+              {
+                icon: '🌱',
+                title: 'UN SDG 7 — Affordable Clean Energy',
+                desc: 'Directly contributes to SDG 7 (clean energy access) and SDG 13 (climate action). Quantifiable kWh delivered and CO₂ avoided per year.'
+              },
+              {
+                icon: '🏦',
+                title: 'World Bank / ADB / Green Climate Fund',
+                desc: 'Eligible for multilateral development bank grants and concessional loans for off-grid renewable energy in developing economies.'
+              },
+              {
+                icon: '📊',
+                title: 'ESG / GRI / BRSR Reporting',
+                desc: 'Cloud EMS provides granular energy data — kWh generated, stored and consumed — ready for BRSR, GRI Standards and ESG reporting frameworks.'
+              },
+            ].map(f => (
+              <div class="flex gap-4">
+                <span class="text-2xl shrink-0">{f.icon}</span>
+                <div>
+                  <p class="font-bold text-foreground text-sm">{f.title}</p>
+                  <p class="text-muted text-xs leading-relaxed mt-1">{f.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <!-- Impact metrics box -->
+        <div class="bg-secondary/5 border border-secondary/20 rounded-2xl p-8">
+          <h3 class="font-bold text-foreground mb-6 uppercase tracking-widest text-sm">Estimated Annual Impact — 1 × BOS-B System</h3>
+          <div class="space-y-5">
+            {[
+              { icon: '☀️', label: 'Solar Energy Captured', value: '200–280 MWh/yr', note: 'Based on 5–7 peak sun hours/day' },
+              { icon: '🔋', label: 'Energy Stored & Dispatched', value: '160–200 MWh/yr', note: '193 kWh usable, 1–2 cycles/day' },
+              { icon: '🌿', label: 'CO₂ Avoided', value: '130–200 tCO₂/yr', note: 'vs. diesel at 0.7 kgCO₂/kWh' },
+              { icon: '🏘️', label: 'Beneficiaries Powered', value: '200–500 people', note: 'Clinic + school + community' },
+              { icon: '💰', label: 'Diesel Cost Saved', value: 'USD 50,000–80,000/yr', note: 'At USD 0.40/kWh diesel generation cost' },
+            ].map(m => (
+              <div class="flex items-start gap-4 border-b border-secondary/10 pb-4 last:border-0 last:pb-0">
+                <span class="text-2xl shrink-0">{m.icon}</span>
+                <div class="flex-1 min-w-0">
+                  <p class="text-muted text-xs uppercase font-semibold">{m.label}</p>
+                  <p class="font-grotesk font-bold text-secondary text-lg">{m.value}</p>
+                  <p class="text-muted text-xs">{m.note}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+          <p class="text-[10px] text-muted mt-6">* Estimates based on typical deployment. Actual figures depend on site solar irradiance, load profile and system configuration. Techedge provides site-specific energy yield reports.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CERTIFICATIONS ────────────────────────────────────────────────────── -->
+  <section class="py-14 px-4 border-b border-muted/10">
+    <div class="max-w-5xl mx-auto text-center">
+      <span class="text-secondary text-xs font-bold uppercase tracking-widest">Standards & Certifications</span>
+      <h2 class="font-anton text-2xl md:text-3xl uppercase text-foreground mt-2 mb-8">
+        International Grade. Ready for Any Market.
+      </h2>
+      <div class="flex flex-wrap justify-center gap-3">
+        {[
+          'CE Certified',
+          'IEC 62619 (Battery Safety)',
+          'IEC 62040 (UPS Systems)',
+          'UN 38.3 (Transport Safety)',
+          'IEC/EN 62477-1 (PCS)',
+          'IEC 62116 (Anti-Islanding)',
+          'IEC 61727 (Grid Connection)',
+          'IEC/EN 62109-1 (MPPT)',
+          'NRS 097 / G99 / VDE-AR-N 4105',
+          'IEC/EN 61439-1/-2 (STS)',
+        ].map(cert => (
+          <span class="text-xs font-semibold px-4 py-2 rounded-full bg-muted-foreground/5 border border-muted/20 text-muted">
+            {cert}
+          </span>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FAQ ───────────────────────────────────────────────────────────────── -->
+  <section class="py-20 px-4 bg-muted-foreground/3 border-b border-muted/10">
+    <div class="max-w-3xl mx-auto">
+      <div class="text-center mb-12">
+        <span class="text-secondary text-xs font-bold uppercase tracking-widest">FAQ</span>
+        <h2 class="font-anton text-3xl md:text-4xl uppercase text-foreground mt-2">
+          Common Questions
+        </h2>
+      </div>
+
+      <script type="application/ld+json" set:html={JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": faqs.map(f => ({
+          "@type": "Question",
+          "name": f.q,
+          "acceptedAnswer": { "@type": "Answer", "text": f.a }
+        }))
+      })} />
+
+      <div class="space-y-4">
+        {faqs.map((faq, i) => (
+          <details class="group bg-muted-foreground/5 border border-muted/20 rounded-2xl overflow-hidden">
+            <summary class="flex justify-between items-center px-6 py-5 cursor-pointer list-none font-bold text-foreground text-sm hover:text-secondary transition-colors">
+              <span>{faq.q}</span>
+              <span class="text-secondary text-lg shrink-0 ml-4 group-open:rotate-45 transition-transform">+</span>
+            </summary>
+            <div class="px-6 pb-5 text-muted text-sm leading-relaxed border-t border-muted/10 pt-4">
+              {faq.a}
+            </div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CTA ───────────────────────────────────────────────────────────────── -->
+  <section class="py-24 px-4 bg-secondary/5">
+    <div class="max-w-3xl mx-auto text-center">
+      <span class="text-secondary text-xs font-bold uppercase tracking-widest">Get Started</span>
+      <h2 class="font-anton text-4xl md:text-5xl uppercase text-foreground mt-3 mb-4">
+        Ready to Power Your Community?
+      </h2>
+      <p class="text-muted text-lg mb-4 max-w-xl mx-auto">
+        Share your site location, load requirement and project type.
+        Our engineers will design a complete microgrid system with energy yield
+        projections, CAPEX breakdown and payback analysis — at no charge.
+      </p>
+      <p class="text-muted text-sm mb-10">
+        🌍 Worldwide supply &nbsp;·&nbsp; 📐 Free system design &nbsp;·&nbsp; 📄 CSR documentation support
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="/contact" class="bg-secondary text-black font-anton text-xl uppercase px-10 py-5 rounded-xl hover:bg-secondary/90 transition-colors">
+          Design My Microgrid — Free
+        </a>
+        <a href="/products/deye-bos-b-215kwh-ci-ess-solution/" class="bg-muted-foreground/10 text-foreground font-bold text-sm uppercase px-8 py-5 rounded-xl hover:bg-muted-foreground/20 transition-colors border border-muted/30 tracking-widest">
+          BOS-B Specs →
+        </a>
+      </div>
+
+      <!-- Trust signals -->
+      <div class="flex flex-wrap justify-center gap-6 mt-12 text-xs text-muted">
+        {[
+          '🛡️ 10-yr battery warranty',
+          '⚡ Deye authorised dealer',
+          '📦 Worldwide supply & logistics',
+          '📊 Energy yield report included',
+        ].map(t => <span>{t}</span>)}
+      </div>
+    </div>
+  </section>
+
+</Layout>

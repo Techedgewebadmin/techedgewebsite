@@ -35,7 +35,7 @@ export const GET: APIRoute = async () => {
     url('/terms/',      '0.3', 'yearly'),
 
     // Solution pages
-    ...['on-grid-solar', 'off-grid-solar', 'hybrid-solar', 'hybrid-solar-cold-storage']
+    ...['on-grid-solar', 'off-grid-solar', 'hybrid-solar', 'hybrid-solar-cold-storage', 'microgrid-solar']
       .map(s => url(`/solutions/${s}/`, '0.8', 'monthly')),
 
     // Projects (auto from content collection)

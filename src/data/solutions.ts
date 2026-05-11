@@ -231,4 +231,42 @@ export const solutions: Solution[] = [
       ],
     },
   },
+  {
+    slug: "microgrid-solar",
+    title: "Solar Microgrid",
+    shortTitle: "Microgrid",
+    icon: "🌍",
+    tagline: "Zero grid dependency for communities worldwide",
+    description:
+      "A complete solar microgrid system — Deye BOS-B 214.5 kWh LiFePO₄ storage, 100 kW PCS, 200 kWp MPPT and 500 kW STS switching — for NGOs, CSR programs and off-grid communities. Scalable from 100 kW to 2.5 MW. Worldwide supply and design by Techedge.",
+    color: { bg: "#f0fdf4", text: "#166534", border: "#86efac" },
+    highlights: [
+      { label: "Storage", value: "214.5 kWh" },
+      { label: "AC Power", value: "100 kW" },
+      { label: "Solar Input", value: "200 kWp" },
+      { label: "Scalable To", value: "2.5 MW" },
+    ],
+    benefits: [
+      "Zero diesel — eliminate fuel costs and supply chain risks",
+      "≥6,000 cycle LiFePO₄ battery with 10-year warranty",
+      "Seamless grid/generator backup switching in <20ms",
+      "No separate solar inverter — MPPT feeds DC direct to battery",
+      "CSR & NGO project documentation and impact reports",
+      "Worldwide supply, logistics and commissioning support",
+    ],
+    useCases: [
+      "Rural health clinics and hospitals",
+      "Schools and educational centres",
+      "Water treatment and pumping stations",
+      "Telecom towers and connectivity hubs",
+      "Island and eco-resort microgrids",
+      "Disaster relief and emergency response",
+    ],
+    howItWorks: [
+      { step: "Solar panels feed MPPT module", desc: "Up to 200 kWp of PV connects to the 8-tracker MPPT module — no separate inverter required." },
+      { step: "PCS converts and controls power flow", desc: "The 100 kW bidirectional PCS manages charging, discharging and AC output at 98.5% efficiency." },
+      { step: "BOS-B stores surplus energy", desc: "214.5 kWh LiFePO₄ battery stores daytime solar for night-time and peak demand use." },
+      { step: "STS switches sources seamlessly", desc: "The STS module auto-switches between solar/battery, grid and generator in under 20ms — zero disruption to critical loads." },
+    ],
+  },
 ];
