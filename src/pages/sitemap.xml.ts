@@ -1,6 +1,8 @@
 import type { APIRoute } from 'astro';
 import { getCollection } from 'astro:content';
 import { deyeProducts } from '@/data/deye-products';
+import { allTechedgeProducts } from '@/data/techedge-products';
+import { goldiProducts } from '@/data/goldi-products';
 
 export const prerender = true;
 
@@ -35,8 +37,14 @@ export const GET: APIRoute = async () => {
     url('/terms/',      '0.3', 'yearly'),
 
     // Solution pages
-    ...['on-grid-solar', 'off-grid-solar', 'hybrid-solar', 'hybrid-solar-cold-storage', 'microgrid-solar']
+    ...['on-grid-solar', 'off-grid-solar', 'hybrid-solar', 'hybrid-solar-cold-storage', 'mini-grid', 'microgrid-solar']
       .map(s => url(`/solutions/${s}/`, '0.8', 'monthly')),
+
+    // Brand sub-pages
+    url('/products/deye/',     '0.8', 'weekly'),
+    url('/products/goldi/',    '0.8', 'monthly'),
+    url('/products/techedge/', '0.8', 'monthly'),
+    url('/products/nunam/',    '0.7', 'monthly'),
 
     // Projects (auto from content collection)
     ...projects.map(p => url(`/projects/${p.id}/`, '0.8', 'monthly')),
@@ -49,8 +57,14 @@ export const GET: APIRoute = async () => {
       p.data.date ? new Date(p.data.date).toISOString().split('T')[0] : today
     )),
 
-    // Product pages (auto from deye-products.ts)
+    // Product pages — Deye (86 products)
     ...deyeProducts.map(p => url(`/products/${p.slug}/`, '0.7', 'monthly')),
+
+    // Product pages — Techedge (12 products)
+    ...allTechedgeProducts.map(p => url(`/products/${p.slug}/`, '0.7', 'monthly')),
+
+    // Product pages — Goldi Solar (5 variants)
+    ...goldiProducts.map(p => url(`/products/${p.slug}/`, '0.7', 'monthly')),
   ];
 
   const xml = `<?xml version="1.0" encoding="UTF-8"?>

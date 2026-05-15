@@ -1,0 +1,162 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import { techedgeLanterns, techedgeHomekits, allTechedgeProducts } from "@/data/techedge-products";
+
+const formatPrice = (n: number) =>
+  new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', maximumFractionDigits: 0 }).format(n);
+---
+
+<Layout
+  title="Techedge Solar Lanterns & Home Kits — NGO & CSR Bulk Supply India"
+  description="Techedge solar lanterns (2–6hr backup) and solar home light kits (3–13hr backup) for rural electrification, NGO distribution and CSR programs. MOQ 25 units. Pan-India supply."
+  keywords="solar lantern bulk supply India, solar home kit NGO, CSR solar lighting, rural electrification kit, off-grid solar lantern, solar home lighting system India"
+>
+
+  <!-- Breadcrumb -->
+  <div class="pt-28 pb-0 px-4 bg-background-foreground">
+    <div class="max-w-7xl mx-auto">
+      <nav class="flex items-center gap-2 text-xs text-muted font-semibold">
+        <a href="/" class="hover:text-secondary transition-colors">Home</a>
+        <span>/</span>
+        <a href="/products/" class="hover:text-secondary transition-colors">Products</a>
+        <span>/</span>
+        <span class="text-foreground">Techedge</span>
+      </nav>
+    </div>
+  </div>
+
+  <!-- Hero -->
+  <section class="bg-background-foreground pt-8 pb-14 px-4 border-b border-muted/10">
+    <div class="max-w-7xl mx-auto">
+      <span class="text-secondary text-xs font-bold uppercase tracking-widest mb-3 block">Techedge Products</span>
+      <h1 class="font-anton text-4xl md:text-6xl xl:text-7xl uppercase text-foreground leading-none mb-4">
+        Solar Lanterns<br />& Home Kits
+      </h1>
+      <p class="text-muted text-lg max-w-2xl mb-8">
+        Portable solar lanterns and complete home lighting systems — for rural households,
+        NGO programs and CSR-funded electrification projects. MOQ 25 units. Pan-India supply.
+      </p>
+      <div class="flex flex-wrap gap-4 mb-6">
+        {[
+          { v: '3', l: 'Lantern Models' },
+          { v: '9', l: 'Home Kit Models' },
+          { v: '2–13 hrs', l: 'Backup Range' },
+          { v: 'MOQ 25', l: 'Minimum Order' },
+        ].map(s => (
+          <div class="bg-muted-foreground/10 rounded-xl px-5 py-3 border border-muted/20">
+            <p class="text-2xl font-grotesk font-bold text-foreground">{s.v}</p>
+            <p class="text-xs text-muted uppercase font-semibold">{s.l}</p>
+          </div>
+        ))}
+      </div>
+      <div class="bg-muted-foreground/5 border border-muted/20 rounded-xl px-5 py-4 max-w-2xl text-sm text-muted">
+        <strong class="text-foreground">Ordering:</strong> MOQ 25 units · Sample charges 20% extra · Freight at actuals · Delivery against PO with 100% advance · 12% GST applicable
+      </div>
+    </div>
+  </section>
+
+  <!-- Sticky nav -->
+  <nav class="sticky top-0 z-30 bg-background-foreground border-b border-muted/20 shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 py-3 flex gap-3 overflow-x-auto scrollbar-none">
+      <a href="#solar-lanterns" class="flex-shrink-0 flex items-center gap-2 px-4 py-2 rounded-full bg-muted-foreground/10 hover:bg-secondary/20 text-foreground text-sm font-semibold transition-colors">
+        🔦 Solar Lanterns
+      </a>
+      <a href="#home-kits" class="flex-shrink-0 flex items-center gap-2 px-4 py-2 rounded-full bg-muted-foreground/10 hover:bg-secondary/20 text-foreground text-sm font-semibold transition-colors">
+        🏠 Home Light Kits
+      </a>
+    </div>
+  </nav>
+
+  <!-- Solar Lanterns -->
+  <section id="solar-lanterns" class="py-16 px-4 border-b border-muted/10">
+    <div class="max-w-7xl mx-auto">
+      <div class="mb-10">
+        <div class="flex items-center gap-3 mb-2">
+          <span class="text-4xl">🔦</span>
+          <h2 class="font-anton text-3xl md:text-4xl uppercase text-foreground">Solar Lanterns</h2>
+        </div>
+        <p class="text-muted max-w-2xl">Portable solar-charged lanterns — 2 to 6-hour backup. Ideal for individual household distribution.</p>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+        {techedgeLanterns.map(p => (
+          <a href={`/products/${p.slug}/`} class="group bg-muted-foreground/5 hover:bg-muted-foreground/10 border border-muted/20 hover:border-secondary/40 rounded-2xl p-6 transition-all flex flex-col">
+            <h3 class="font-grotesk font-bold text-foreground text-base leading-snug mb-1 group-hover:text-secondary transition-colors">{p.name}</h3>
+            <p class="text-muted text-xs font-mono mb-4">{p.model}</p>
+            <div class="space-y-2 flex-1">
+              <p class="text-sm text-muted">⏱️ Backup: <span class="font-bold text-foreground">{p.backupHours} hours</span></p>
+              <p class="text-sm text-muted">🔋 Battery: <span class="font-bold text-foreground">{p.batterySpec}</span></p>
+              <p class="text-sm text-muted">☀️ Panel: <span class="font-bold text-foreground">{p.panelSpec}</span></p>
+            </div>
+            <div class="mt-5 pt-5 border-t border-muted/20">
+              <p class="text-[10px] uppercase text-muted font-semibold mb-0.5">From (MOQ 25) excl. GST</p>
+              <p class="text-2xl font-grotesk font-bold text-secondary">{formatPrice(p.sellingPrice)}</p>
+              <p class="text-[10px] text-muted">+ 12% GST</p>
+            </div>
+            <div class="mt-3 flex items-center gap-1 text-secondary text-xs font-semibold">
+              View specs & MOQ pricing <span class="group-hover:translate-x-1 transition-transform">→</span>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Home Kits -->
+  <section id="home-kits" class="py-16 px-4 border-b border-muted/10">
+    <div class="max-w-7xl mx-auto">
+      <div class="mb-10">
+        <div class="flex items-center gap-3 mb-2">
+          <span class="text-4xl">🏠</span>
+          <h2 class="font-anton text-3xl md:text-4xl uppercase text-foreground">Solar Home Light Kits</h2>
+        </div>
+        <p class="text-muted max-w-2xl">Complete solar home lighting systems — panel, battery, controller and LED bulbs. 3 to 13-hour backup. Entry-level to full-household coverage.</p>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+        {techedgeHomekits.map(p => (
+          <a href={`/products/${p.slug}/`} class="group bg-muted-foreground/5 hover:bg-muted-foreground/10 border border-muted/20 hover:border-secondary/40 rounded-2xl p-5 transition-all flex flex-col">
+            <div class="mb-1">
+              <span class="text-[10px] font-bold uppercase tracking-widest text-muted bg-muted-foreground/10 px-2 py-0.5 rounded-full">{p.subcategory}</span>
+            </div>
+            <h3 class="font-grotesk font-bold text-foreground text-sm leading-snug mt-2 mb-1 group-hover:text-secondary transition-colors">{p.name}</h3>
+            <p class="text-muted text-xs font-mono mb-3">{p.model}</p>
+            <div class="space-y-1.5 flex-1">
+              <p class="text-xs text-muted">⏱️ Backup: <span class="text-foreground font-semibold">{p.backupHours} Hours</span></p>
+              <p class="text-xs text-muted">💡 Load: <span class="text-foreground font-semibold">{p.loadSpec}</span></p>
+              <p class="text-xs text-muted">🔋 Battery: <span class="text-foreground font-semibold">{p.batterySpec}</span></p>
+              <p class="text-xs text-muted">☀️ Panel: <span class="text-foreground font-semibold">{p.panelSpec}</span></p>
+            </div>
+            <div class="mt-4 pt-4 border-t border-muted/20">
+              <p class="text-[10px] uppercase text-muted font-semibold mb-0.5">From (MOQ 25) excl. GST</p>
+              <p class="text-xl font-grotesk font-bold text-secondary">{formatPrice(p.sellingPrice)}</p>
+              <p class="text-[10px] text-muted">+ 12% GST · Bulk pricing available</p>
+            </div>
+            <div class="mt-3 flex items-center gap-1 text-secondary text-xs font-semibold">
+              <span>View specs & pricing</span>
+              <span class="group-hover:translate-x-1 transition-transform">→</span>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-20 px-4 bg-secondary/5">
+    <div class="max-w-3xl mx-auto text-center">
+      <h2 class="font-anton text-3xl md:text-4xl uppercase text-foreground mb-4">Bulk Order or CSR Program?</h2>
+      <p class="text-muted mb-8">
+        Contact us for volume pricing, custom packaging and CSR program documentation.
+        We supply pan-India with full logistics support.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="/contact" class="bg-secondary text-black font-anton text-lg uppercase px-8 py-4 rounded-xl hover:bg-secondary/90 transition-colors">
+          Request Bulk Quote
+        </a>
+        <a href="/solutions/microgrid-solar/" class="bg-muted-foreground/10 text-foreground font-anton text-lg uppercase px-8 py-4 rounded-xl hover:bg-muted-foreground/20 transition-colors border border-muted/30">
+          Microgrid Solution
+        </a>
+      </div>
+    </div>
+  </section>
+
+</Layout>

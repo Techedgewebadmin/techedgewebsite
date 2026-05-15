@@ -1,0 +1,896 @@
+---
+import Layout from "@/layouts/Layout.astro";
+---
+
+<Layout
+  title="Solar Mini Grid Solutions — Village Electrification India & Africa | Techedge"
+  description="Solar mini grid systems for rural villages, NGOs, CSR programs and remote communities across India and Africa. 150kWp solar + 214.5kWh LiFePO₄ battery + 100kW PCS. Full EPC, commissioning and project documentation. Contact Techedge for a free assessment."
+  keywords="solar mini grid India, village electrification solar, NGO solar project India, CSR solar rural electrification, solar mini grid Africa, off-grid village power, rural solar microgrid, solar BESS village, community solar project, remote electrification India, solar mini grid NGO, mini grid Africa Kenya Tanzania Nigeria"
+>
+
+  <!-- ══════════════════════════════════════════════════════════ -->
+  <!-- HERO -->
+  <!-- ══════════════════════════════════════════════════════════ -->
+  <section class="bg-background-foreground pt-32 pb-16 px-4 border-b border-muted/10">
+    <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center">
+      <div>
+        <nav class="flex items-center gap-2 text-xs text-muted font-semibold mb-6">
+          <a href="/" class="hover:text-secondary transition-colors">Home</a>
+          <span>/</span>
+          <a href="/solutions/" class="hover:text-secondary transition-colors">Solutions</a>
+          <span>/</span>
+          <span class="text-foreground">Solar Mini Grid</span>
+        </nav>
+        <span class="text-secondary text-xs font-bold uppercase tracking-widest mb-3 block">🌍 NGO · CSR · Rural Electrification</span>
+        <h1 class="font-anton text-4xl md:text-6xl xl:text-7xl uppercase text-foreground leading-none mb-4">
+          Solar<br />
+          <span class="text-secondary">Mini Grid</span><br />
+          Solutions
+        </h1>
+        <p class="text-muted text-lg leading-relaxed mb-4">
+          Power entire villages — homes, schools, clinics, water pumps — with a complete
+          solar mini grid. 150 kWp solar + 214.5 kWh LiFePO₄ BESS + 100 kW PCS.
+          No diesel. No grid required. Full EPC by Techedge India.
+        </p>
+        <p class="text-muted text-sm mb-8">
+          Deployed for NGOs, CSR programs, Rotary Clubs, climate funds and government agencies across
+          <strong class="text-foreground">India and Africa</strong>.
+        </p>
+
+        <!-- Lead CTAs -->
+        <div class="flex flex-col sm:flex-row gap-3 mb-6">
+          <a href="/contact" class="bg-secondary text-black font-anton text-lg uppercase px-8 py-4 rounded-xl hover:bg-secondary/90 transition-colors text-center">
+            Free Project Assessment
+          </a>
+          <a href="tel:+917829810381" class="bg-muted-foreground/10 border border-muted/30 text-foreground font-bold text-sm uppercase px-8 py-4 rounded-xl hover:bg-muted-foreground/20 transition-colors text-center tracking-widest">
+            📞 +91 78298 10381
+          </a>
+        </div>
+        <div class="flex flex-wrap gap-2">
+          {['✅ Full EPC turnkey', '✅ CSR documentation', '✅ Impact reports', '✅ Pan-India & Africa'].map(t => (
+            <span class="text-xs font-semibold px-3 py-1.5 rounded-full bg-secondary/10 border border-secondary/20 text-secondary">{t}</span>
+          ))}
+        </div>
+      </div>
+
+      <!-- Stats panel -->
+      <div class="grid grid-cols-2 gap-4">
+        {[
+          { icon: '⚡', v: '150 kWp', l: 'Solar PV Capacity' },
+          { icon: '🔋', v: '214.5 kWh', l: 'LiFePO₄ BESS' },
+          { icon: '🔌', v: '100 kW', l: 'AC Output (PCS)' },
+          { icon: '🏘️', v: '50–200', l: 'Households / System' },
+          { icon: '🌞', v: '675 kWh', l: 'Daily Generation' },
+          { icon: '📈', v: '10+ yrs', l: 'Battery Warranty' },
+          { icon: '🌍', v: 'India + Africa', l: 'Deployment Regions' },
+          { icon: '💰', v: '₹75L – 1.4Cr', l: 'Indicative Budget' },
+        ].map(s => (
+          <div class="bg-muted-foreground/5 border border-muted/20 rounded-2xl p-4 text-center">
+            <p class="text-2xl mb-1">{s.icon}</p>
+            <p class="font-grotesk font-bold text-foreground text-lg">{s.v}</p>
+            <p class="text-xs text-muted uppercase font-semibold">{s.l}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════════ -->
+  <!-- WHAT IS A SOLAR MINI GRID -->
+  <!-- ══════════════════════════════════════════════════════════ -->
+  <section class="py-16 px-4 border-b border-muted/10">
+    <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-start">
+      <div>
+        <span class="text-secondary text-xs font-bold uppercase tracking-widest mb-3 block">Overview</span>
+        <h2 class="font-anton text-3xl md:text-4xl uppercase text-foreground mb-6">What Is a Solar Mini Grid?</h2>
+        <p class="text-muted leading-relaxed mb-4">
+          A <strong class="text-foreground">Solar Mini Grid</strong> is a localised electricity generation and distribution system that powers
+          an entire community — independently of the national grid. Using solar panels, battery storage,
+          and smart power management, it delivers reliable 24/7 electricity to homes, schools, clinics,
+          water systems, and productive loads.
+        </p>
+        <p class="text-muted leading-relaxed mb-4">
+          Unlike rooftop solar (which serves a single building), a mini grid builds a
+          <strong class="text-foreground">shared AC distribution network</strong> — typically 415V 3-phase backbone
+          with 230V single-phase household supply — serving dozens or hundreds of end consumers.
+        </p>
+        <p class="text-muted leading-relaxed">
+          Generator or grid backup can be integrated via an Automatic Transfer Switch (STS)
+          for uninterrupted supply during extended cloudy periods.
+        </p>
+      </div>
+      <div class="space-y-3">
+        <h3 class="font-bold text-foreground text-sm uppercase tracking-wide mb-4">Mini Grid Powers All Of This</h3>
+        {[
+          ['🏠', 'Residential Homes', 'Lighting, fans, charging, appliances'],
+          ['🏫', 'Schools & Colleges', 'Lighting, computers, projectors'],
+          ['🏥', 'Health Clinics', 'Medical equipment, refrigeration, lighting'],
+          ['💧', 'Water Pumps', 'Drinking water, irrigation'],
+          ['📡', 'Telecom Towers', '24/7 connectivity infrastructure'],
+          ['🧊', 'Cold Storage', 'Perishables, vaccines, food preservation'],
+          ['🔨', 'Productive Loads', 'Grain mills, workshops, EV charging'],
+          ['🛒', 'Shops & Commerce', 'Commercial loads, POS, refrigeration'],
+        ].map(([icon, title, desc]) => (
+          <div class="flex items-start gap-3 bg-muted-foreground/5 rounded-xl px-4 py-3 border border-muted/10">
+            <span class="text-xl flex-shrink-0">{icon}</span>
+            <div>
+              <p class="font-semibold text-foreground text-sm">{title}</p>
+              <p class="text-muted text-xs">{desc}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════════ -->
+  <!-- SYSTEM ARCHITECTURE -->
+  <!-- ══════════════════════════════════════════════════════════ -->
+  <section class="py-16 px-4 bg-muted-foreground/3 border-b border-muted/10">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-12">
+        <span class="text-secondary text-xs font-bold uppercase tracking-widest">System Design</span>
+        <h2 class="font-anton text-3xl md:text-4xl uppercase text-foreground mt-2">Recommended Village System</h2>
+        <p class="text-muted text-sm mt-2 max-w-xl mx-auto">Deye commercial-grade components. No compromise on reliability.</p>
+      </div>
+
+      <!-- Architecture diagram -->
+      <div class="bg-muted-foreground/5 border border-muted/20 rounded-2xl p-6 md:p-10 mb-10 text-center font-mono text-sm">
+        <div class="flex flex-wrap justify-center items-center gap-2 text-foreground">
+          <span class="bg-yellow-500/20 border border-yellow-500/30 rounded-xl px-4 py-2 font-bold">☀️ Solar PV<br/><span class="text-xs font-sans text-muted">100–150 kWp</span></span>
+          <span class="text-muted text-xl">→</span>
+          <span class="bg-secondary/20 border border-secondary/30 rounded-xl px-4 py-2 font-bold">📡 MPPT<br/><span class="text-xs font-sans text-muted">200kWp, 8-tracker</span></span>
+          <span class="text-muted text-xl">→</span>
+          <span class="bg-blue-500/20 border border-blue-500/30 rounded-xl px-4 py-2 font-bold">⚙️ PCS<br/><span class="text-xs font-sans text-muted">100kW bidirectional</span></span>
+          <span class="text-muted text-xl">↔</span>
+          <span class="bg-orange-500/20 border border-orange-500/30 rounded-xl px-4 py-2 font-bold">🔋 BOS-B BESS<br/><span class="text-xs font-sans text-muted">214.5 kWh LiFePO₄</span></span>
+        </div>
+        <div class="flex justify-center mt-3 mb-3 text-muted text-xl">↓</div>
+        <div class="flex flex-wrap justify-center items-center gap-2">
+          <span class="bg-purple-500/20 border border-purple-500/30 rounded-xl px-4 py-2 font-bold text-foreground">🔀 STS<br/><span class="text-xs font-sans text-muted">500kW, &lt;20ms switch</span></span>
+          <span class="text-muted text-xl">→</span>
+          <span class="bg-green-500/20 border border-green-500/30 rounded-xl px-4 py-2 font-bold text-foreground">🌐 AC Mini Grid<br/><span class="text-xs font-sans text-muted">415V 3-phase distribution</span></span>
+        </div>
+        <div class="flex justify-center mt-3 text-muted text-xl">↓</div>
+        <div class="flex flex-wrap justify-center gap-2 mt-2 text-xs text-foreground">
+          {['🏠 Homes (230V)', '🏫 Schools', '🏥 Clinics', '💧 Pumps', '📡 Telecom', '🧊 Cold Storage'].map(t => (
+            <span class="bg-muted-foreground/10 border border-muted/20 rounded-full px-3 py-1">{t}</span>
+          ))}
+        </div>
+        <p class="text-xs text-muted mt-4">Grid / DG backup via STS auto-switching</p>
+      </div>
+
+      <!-- Spec table -->
+      <div class="overflow-x-auto">
+        <table class="w-full text-sm border border-muted/20 rounded-2xl overflow-hidden">
+          <thead>
+            <tr class="bg-muted-foreground/10">
+              <th class="px-5 py-3 text-left text-xs text-muted uppercase font-semibold tracking-widest">Component</th>
+              <th class="px-5 py-3 text-left font-bold text-secondary">Specification</th>
+              <th class="px-5 py-3 text-left text-xs text-muted uppercase font-semibold tracking-widest">Product</th>
+            </tr>
+          </thead>
+          <tbody>
+            {[
+              ['Solar PV Capacity', '100–150 kWp (expandable)', 'Goldi Solar TOPCon Bifacial'],
+              ['Battery Storage', '214.5 kWh LiFePO₄ (scalable to 429 kWh)', 'Deye BOS-B ESS'],
+              ['PCS Hybrid Inverter', '100 kW, 98.5% efficiency, bidirectional', 'Deye SUN-100K-PCS01HP3'],
+              ['MPPT Solar Controller', '200 kWp, 8 independent trackers', 'Deye MPPT Module'],
+              ['STS Transfer System', '500 kW, <20ms switching', 'Deye STS Module'],
+              ['Battery Cycle Life', '≥6,000 cycles @ 80% DoD', 'Deye BOS-B (10-yr warranty)'],
+              ['Distribution Voltage', '415V 3-Phase backbone', 'LT panel design by Techedge'],
+              ['Household Supply', '230V Single Phase', 'Per IEC/IS standards'],
+            ].map(([comp, spec, prod]) => (
+              <tr class="border-t border-muted/10 hover:bg-muted-foreground/3">
+                <td class="px-5 py-3 font-semibold text-foreground text-sm">{comp}</td>
+                <td class="px-5 py-3 text-foreground">{spec}</td>
+                <td class="px-5 py-3 text-muted text-xs">{prod}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════════ -->
+  <!-- EXAMPLE VILLAGE PROJECT -->
+  <!-- ══════════════════════════════════════════════════════════ -->
+  <section class="py-16 px-4 border-b border-muted/10">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-12">
+        <span class="text-secondary text-xs font-bold uppercase tracking-widest">Project Example</span>
+        <h2 class="font-anton text-3xl md:text-4xl uppercase text-foreground mt-2">Typical Village Mini Grid Project</h2>
+        <p class="text-muted text-sm mt-2">Illustrative community configuration — actual sizing done after site survey</p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-6 mb-10">
+        <!-- Community -->
+        <div class="bg-muted-foreground/5 border border-muted/20 rounded-2xl p-6">
+          <h3 class="font-bold text-foreground mb-4 flex items-center gap-2"><span class="text-2xl">🏘️</span> Community Infrastructure</h3>
+          <div class="space-y-2">
+            {[
+              ['Homes', '50'],
+              ['Shops / Stalls', '10'],
+              ['School', '1'],
+              ['Healthcare Centre', '1'],
+              ['Water Pumps', '2'],
+              ['Telecom Tower', '1'],
+              ['Cold Storage Unit', '1'],
+            ].map(([l, v]) => (
+              <div class="flex justify-between text-sm border-b border-muted/10 pb-2">
+                <span class="text-muted">{l}</span>
+                <span class="font-bold text-foreground">{v}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <!-- Daily consumption -->
+        <div class="bg-muted-foreground/5 border border-muted/20 rounded-2xl p-6">
+          <h3 class="font-bold text-foreground mb-4 flex items-center gap-2"><span class="text-2xl">⚡</span> Daily Energy Demand</h3>
+          <div class="space-y-2">
+            {[
+              ['Residential Homes', '200 kWh'],
+              ['Shops', '40 kWh'],
+              ['School', '15 kWh'],
+              ['Clinic', '20 kWh'],
+              ['Water Pumps', '50 kWh'],
+              ['Telecom Tower', '15 kWh'],
+              ['Cold Storage', '80 kWh'],
+            ].map(([l, v]) => (
+              <div class="flex justify-between text-sm border-b border-muted/10 pb-2">
+                <span class="text-muted">{l}</span>
+                <span class="font-bold text-foreground">{v}</span>
+              </div>
+            ))}
+            <div class="flex justify-between text-sm pt-1">
+              <span class="font-bold text-foreground">Total Daily Demand</span>
+              <span class="font-bold text-secondary text-base">420 kWh/day</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Solar generation -->
+        <div class="bg-muted-foreground/5 border border-muted/20 rounded-2xl p-6">
+          <h3 class="font-bold text-foreground mb-4 flex items-center gap-2"><span class="text-2xl">🌞</span> Solar Generation</h3>
+          <div class="space-y-4">
+            <div class="bg-secondary/10 border border-secondary/20 rounded-xl p-4 text-center">
+              <p class="text-xs text-muted uppercase font-semibold mb-1">150 kWp × 4.5 Peak Sun Hours</p>
+              <p class="font-anton text-4xl text-secondary">675 kWh</p>
+              <p class="text-xs text-muted">per day (India/Africa average)</p>
+            </div>
+            <div class="space-y-2 text-sm">
+              <div class="flex justify-between border-b border-muted/10 pb-2">
+                <span class="text-muted">Daytime load covered</span>
+                <span class="font-bold text-foreground text-green-400">✓ 100%</span>
+              </div>
+              <div class="flex justify-between border-b border-muted/10 pb-2">
+                <span class="text-muted">Battery charged daily</span>
+                <span class="font-bold text-foreground text-green-400">✓ Full</span>
+              </div>
+              <div class="flex justify-between border-b border-muted/10 pb-2">
+                <span class="text-muted">Night backup (214.5 kWh)</span>
+                <span class="font-bold text-foreground">~8–10 hrs</span>
+              </div>
+              <div class="flex justify-between">
+                <span class="text-muted">Surplus / export</span>
+                <span class="font-bold text-foreground">~255 kWh</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mid-page CTA -->
+      <div class="bg-secondary/5 border border-secondary/20 rounded-2xl p-8 text-center">
+        <h3 class="font-anton text-2xl uppercase text-foreground mb-2">Get a System Sized for Your Village</h3>
+        <p class="text-muted text-sm mb-6">Share community details — we'll design the system and send a full project report within 3 working days.</p>
+        <div class="flex flex-col sm:flex-row gap-3 justify-center">
+          <a href="/contact" class="bg-secondary text-black font-anton text-lg uppercase px-8 py-4 rounded-xl hover:bg-secondary/90 transition-colors">
+            Request Project Report
+          </a>
+          <a href="https://wa.me/917829810381?text=Hi%2C%20I%20need%20a%20solar%20mini%20grid%20project%20assessment%20for%20my%20village%2FNGO%20program." target="_blank" rel="noopener noreferrer" class="bg-green-600 text-white font-bold text-sm uppercase px-8 py-4 rounded-xl hover:bg-green-700 transition-colors text-center tracking-widest">
+            💬 WhatsApp Us
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════════ -->
+  <!-- BUDGET TABLE -->
+  <!-- ══════════════════════════════════════════════════════════ -->
+  <section class="py-16 px-4 bg-muted-foreground/3 border-b border-muted/10">
+    <div class="max-w-5xl mx-auto">
+      <div class="text-center mb-10">
+        <span class="text-secondary text-xs font-bold uppercase tracking-widest">Budget Guide</span>
+        <h2 class="font-anton text-3xl md:text-4xl uppercase text-foreground mt-2">Approximate Project Budget</h2>
+        <p class="text-muted text-sm mt-2">Indicative estimates for 150 kWp / 214.5 kWh system. Actual costs depend on site, terrain and scope.</p>
+      </div>
+
+      <!-- Core infrastructure table -->
+      <div class="overflow-x-auto mb-6">
+        <table class="w-full text-sm border border-muted/20 rounded-2xl overflow-hidden">
+          <thead>
+            <tr class="bg-muted-foreground/10">
+              <th class="px-5 py-3 text-left text-xs text-muted uppercase font-semibold tracking-widest">Component</th>
+              <th class="px-5 py-3 text-right font-bold text-secondary">Approx. Budget (₹)</th>
+            </tr>
+          </thead>
+          <tbody>
+            {[
+              ['150 kWp Solar PV Modules (Goldi TOPCon)', '27 – 32 Lakhs'],
+              ['214.5 kWh LiFePO₄ Battery (Deye BOS-B)', '32 – 38 Lakhs'],
+              ['100 kW PCS Inverter (Deye)', '4 – 5 Lakhs'],
+              ['MPPT Solar Controller (200 kWp)', '2 – 3 Lakhs'],
+              ['STS Auto Transfer System (500 kW)', '5 – 6 Lakhs'],
+              ['LT Panels, Protection & Earthing', '5 – 8 Lakhs'],
+              ['Installation & Commissioning', '5 – 8 Lakhs'],
+              ['Smart Metering & SCADA', '3 – 5 Lakhs'],
+            ].map(([comp, budget]) => (
+              <tr class="border-t border-muted/10 hover:bg-muted-foreground/3">
+                <td class="px-5 py-3 text-foreground">{comp}</td>
+                <td class="px-5 py-3 text-right font-bold text-foreground">₹ {budget}</td>
+              </tr>
+            ))}
+          </tbody>
+          <tfoot>
+            <tr class="border-t-2 border-secondary/30 bg-secondary/5">
+              <td class="px-5 py-4 font-bold text-foreground">Total — Core System (excl. distribution)</td>
+              <td class="px-5 py-4 text-right font-anton text-xl text-secondary">₹ 83 – 105 Lakhs</td>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+
+      <!-- Distribution add-on -->
+      <div class="grid md:grid-cols-2 gap-6 mb-8">
+        <div class="bg-muted-foreground/5 border border-muted/20 rounded-2xl p-6">
+          <h3 class="font-bold text-foreground mb-3">+ Village Distribution Network</h3>
+          <p class="text-muted text-sm mb-3">Poles, LT lines, service connections, metering per household.</p>
+          <div class="space-y-2 text-sm">
+            <div class="flex justify-between border-b border-muted/10 pb-2">
+              <span class="text-muted">Distribution infrastructure</span>
+              <span class="font-bold text-foreground">₹10 – 20 Lakhs</span>
+            </div>
+            <div class="flex justify-between">
+              <span class="font-bold text-foreground">Full Village Electrification</span>
+              <span class="font-bold text-secondary text-base">₹1 Cr – 1.4 Cr</span>
+            </div>
+          </div>
+          <p class="text-xs text-muted mt-3">Varies by village size, terrain, inter-household distance and backup requirements.</p>
+        </div>
+        <div class="bg-muted-foreground/5 border border-muted/20 rounded-2xl p-6">
+          <h3 class="font-bold text-foreground mb-3">Scalable BESS — Add Capacity</h3>
+          <p class="text-muted text-sm mb-3">Add a second Deye BOS-B unit to double storage without replacing any other equipment.</p>
+          <div class="space-y-2 text-sm">
+            <div class="flex justify-between border-b border-muted/10 pb-2">
+              <span class="text-muted">1× Deye BOS-B</span>
+              <span class="font-bold text-foreground">214.5 kWh</span>
+            </div>
+            <div class="flex justify-between border-b border-muted/10 pb-2">
+              <span class="text-muted">2× Deye BOS-B</span>
+              <span class="font-bold text-foreground">429 kWh</span>
+            </div>
+            <div class="flex justify-between">
+              <span class="text-muted">Max expandable</span>
+              <span class="font-bold text-secondary">Up to 2.5 MWh</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-muted-foreground/5 border border-muted/20 rounded-xl px-5 py-4 text-xs text-muted text-center">
+        All figures are indicative. GST, freight, civil works and project management fees are additional. Contact Techedge for a detailed bill of materials and site-specific quote.
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════════ -->
+  <!-- NGO / CSR FUNDING MODEL -->
+  <!-- ══════════════════════════════════════════════════════════ -->
+  <section class="py-16 px-4 border-b border-muted/10">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-12">
+        <span class="text-secondary text-xs font-bold uppercase tracking-widest">Funding</span>
+        <h2 class="font-anton text-3xl md:text-4xl uppercase text-foreground mt-2">NGO & CSR Funding Model</h2>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-10 items-start">
+        <!-- Funding structure -->
+        <div>
+          <h3 class="font-bold text-foreground mb-4">Typical Funding Mix</h3>
+          <div class="space-y-3 mb-8">
+            {[
+              { source: 'NGO / CSR Grant', pct: '40–70%', color: 'bg-secondary/20 border-secondary/40' },
+              { source: 'Climate Finance (GCF, GEF, World Bank)', pct: '20–40%', color: 'bg-blue-500/20 border-blue-500/40' },
+              { source: 'Community Participation', pct: '5–10%', color: 'bg-green-500/20 border-green-500/40' },
+              { source: 'Revenue from Tariffs (operational)', pct: 'Ongoing', color: 'bg-orange-500/20 border-orange-500/40' },
+            ].map(f => (
+              <div class={`flex items-center justify-between rounded-xl px-4 py-3 border ${f.color}`}>
+                <span class="text-foreground font-semibold text-sm">{f.source}</span>
+                <span class="font-bold text-foreground">{f.pct}</span>
+              </div>
+            ))}
+          </div>
+
+          <h3 class="font-bold text-foreground mb-4">Example Consumer Tariffs</h3>
+          <div class="overflow-x-auto">
+            <table class="w-full text-sm border border-muted/20 rounded-2xl overflow-hidden">
+              <thead>
+                <tr class="bg-muted-foreground/10">
+                  <th class="px-4 py-2 text-left text-xs text-muted uppercase font-semibold">Consumer Type</th>
+                  <th class="px-4 py-2 text-right text-xs text-muted uppercase font-semibold">Tariff (₹/unit)</th>
+                </tr>
+              </thead>
+              <tbody>
+                {[
+                  ['Residential — Basic', '₹3 – 5'],
+                  ['Shops / Commercial', '₹8 – 15'],
+                  ['Water Pumps / Irrigation', '₹4 – 8'],
+                  ['Telecom / Tower', '₹12 – 20'],
+                  ['Cold Storage / Productive', '₹10 – 18'],
+                ].map(([t, r]) => (
+                  <tr class="border-t border-muted/10">
+                    <td class="px-4 py-2 text-foreground">{t}</td>
+                    <td class="px-4 py-2 text-right font-bold text-secondary">{r}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Sustainability through productive loads -->
+        <div>
+          <h3 class="font-bold text-foreground mb-4">💡 Why Productive Loads Make Mini Grids Viable</h3>
+          <p class="text-muted text-sm leading-relaxed mb-6">
+            Mini grids become financially self-sustaining when combined with <strong class="text-foreground">productive loads</strong> —
+            income-generating activities that pay higher tariffs and run during peak solar hours,
+            improving solar utilisation and revenue.
+          </p>
+          <div class="grid grid-cols-2 gap-3 mb-6">
+            {[
+              ['🌾', 'Grain Mills'],
+              ['🧊', 'Cold Storage'],
+              ['📡', 'Telecom Towers'],
+              ['🚿', 'Water Kiosks'],
+              ['🚗', 'EV Charging'],
+              ['🍞', 'Food Processing'],
+              ['💻', 'Digital Centres'],
+              ['🌿', 'Agri-processing'],
+            ].map(([icon, label]) => (
+              <div class="bg-muted-foreground/5 border border-muted/10 rounded-xl px-3 py-2 flex items-center gap-2 text-sm font-semibold text-foreground">
+                <span>{icon}</span>{label}
+              </div>
+            ))}
+          </div>
+          <div class="bg-green-500/10 border border-green-500/20 rounded-xl px-5 py-4 text-sm">
+            <p class="font-bold text-green-400 mb-1">Impact on Project ROI</p>
+            <p class="text-muted">Productive loads improve solar utilisation, increase revenue per kWh, and reduce payback period — making the mini grid operationally independent of grants within 5–7 years.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- CTA -->
+      <div class="mt-12 bg-secondary/5 border border-secondary/20 rounded-2xl p-8 text-center">
+        <h3 class="font-anton text-2xl uppercase text-foreground mb-2">We Handle All Project Documentation</h3>
+        <p class="text-muted text-sm mb-6">CSR impact reports, SDG alignment documentation, carbon credit estimates, funding proposal support — Techedge provides everything your NGO or CSR team needs.</p>
+        <div class="flex flex-col sm:flex-row gap-3 justify-center">
+          <a href="/contact" class="bg-secondary text-black font-anton text-lg uppercase px-8 py-4 rounded-xl hover:bg-secondary/90 transition-colors">
+            Request Documentation Pack
+          </a>
+          <a href="tel:+917829810381" class="bg-muted-foreground/10 border border-muted/30 text-foreground font-bold text-sm uppercase px-8 py-4 rounded-xl hover:bg-muted-foreground/20 transition-colors tracking-widest">
+            📞 +91 78298 10381
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════════ -->
+  <!-- WHO THIS IS FOR -->
+  <!-- ══════════════════════════════════════════════════════════ -->
+  <section class="py-16 px-4 bg-muted-foreground/3 border-b border-muted/10">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-12">
+        <span class="text-secondary text-xs font-bold uppercase tracking-widest">Who We Work With</span>
+        <h2 class="font-anton text-3xl md:text-4xl uppercase text-foreground mt-2">Organizations We Support</h2>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {[
+          {
+            icon: '🤝',
+            title: 'NGOs & Development Agencies',
+            body: 'Greenpeace, Oxfam, CRY, GIZ, UNICEF, and local NGOs working on rural electrification, water, education and health projects.',
+          },
+          {
+            icon: '🏦',
+            title: 'CSR Foundations',
+            body: 'Corporate CSR programs from FMCG, IT, banking and manufacturing sectors seeking measurable SDG-aligned rural energy impact.',
+          },
+          {
+            icon: '🌀',
+            title: 'Rotary & Lions Clubs',
+            body: 'Service club-funded projects for village electrification, school lighting, and health clinic power across India and Africa.',
+          },
+          {
+            icon: '🌍',
+            title: 'Climate Finance Bodies',
+            body: 'Green Climate Fund (GCF), GEF, World Bank-funded programs and bilateral climate finance agencies seeking scalable clean energy deployment.',
+          },
+          {
+            icon: '🏛️',
+            title: 'Government Agencies',
+            body: 'State rural electrification bodies, MNRE-aligned programs, and international development government agencies.',
+          },
+          {
+            icon: '📈',
+            title: 'Impact Investors',
+            body: 'Social impact funds, ESG investors and development finance institutions (DFIs) funding clean energy access projects in emerging markets.',
+          },
+        ].map(f => (
+          <div class="bg-muted-foreground/5 border border-muted/20 rounded-2xl p-6 hover:border-secondary/30 transition-colors">
+            <span class="text-3xl mb-4 block">{f.icon}</span>
+            <h3 class="font-bold text-foreground mb-2">{f.title}</h3>
+            <p class="text-muted text-sm leading-relaxed">{f.body}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════════ -->
+  <!-- DEPLOYMENT REGIONS -->
+  <!-- ══════════════════════════════════════════════════════════ -->
+  <section class="py-16 px-4 border-b border-muted/10">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-12">
+        <span class="text-secondary text-xs font-bold uppercase tracking-widest">Geography</span>
+        <h2 class="font-anton text-3xl md:text-4xl uppercase text-foreground mt-2">Deployment Regions</h2>
+        <p class="text-muted text-sm mt-2">Techedge supplies and supports mini grid projects across India and internationally.</p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-8">
+        <!-- India -->
+        <div class="bg-muted-foreground/5 border border-muted/20 rounded-2xl p-6">
+          <h3 class="font-anton text-xl uppercase text-foreground mb-4 flex items-center gap-2">🇮🇳 India</h3>
+          <div class="space-y-2">
+            {[
+              'Karnataka tribal & rural regions',
+              'North East India (Assam, Nagaland, Manipur)',
+              'Himalayan villages (HP, Uttarakhand, J&K)',
+              'Andaman & Lakshadweep Islands',
+              'Odisha & Chhattisgarh forest settlements',
+              'Maharashtra & MP agricultural clusters',
+              'Rajasthan remote hamlets',
+              'West Bengal Sundarbans',
+            ].map(r => (
+              <div class="flex items-start gap-2 text-sm">
+                <span class="text-secondary mt-0.5 flex-shrink-0">▸</span>
+                <span class="text-muted">{r}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <!-- Africa -->
+        <div class="bg-muted-foreground/5 border border-muted/20 rounded-2xl p-6">
+          <h3 class="font-anton text-xl uppercase text-foreground mb-4 flex items-center gap-2">🌍 Africa</h3>
+          <div class="space-y-2 mb-4">
+            {[
+              'Kenya — rural villages, agricultural clusters',
+              'Tanzania — remote communities, islands',
+              'Nigeria — off-grid settlements',
+              'Uganda — healthcare, schools',
+              'Ethiopia — highlands, rural towns',
+              'Zambia — mining community electrification',
+              'Ghana — off-grid rural regions',
+              'Rwanda — hilly & remote terrain',
+            ].map(r => (
+              <div class="flex items-start gap-2 text-sm">
+                <span class="text-secondary mt-0.5 flex-shrink-0">▸</span>
+                <span class="text-muted">{r}</span>
+              </div>
+            ))}
+          </div>
+          <div class="bg-orange-500/10 border border-orange-500/20 rounded-xl px-3 py-2 text-xs text-muted">
+            <strong class="text-foreground">Africa supply:</strong> Techedge ships equipment internationally. Local EPC partners coordinated on request.
+          </div>
+        </div>
+
+        <!-- Islands & Remote -->
+        <div class="bg-muted-foreground/5 border border-muted/20 rounded-2xl p-6">
+          <h3 class="font-anton text-xl uppercase text-foreground mb-4 flex items-center gap-2">🏝️ Islands & Remote</h3>
+          <p class="text-muted text-sm mb-4 leading-relaxed">
+            Mini grids are the most cost-effective solution for locations where grid extension is
+            prohibitively expensive or physically impossible.
+          </p>
+          <div class="space-y-3">
+            {[
+              ['🏝️', 'Islands', 'No submarine cable needed'],
+              ['🏔️', 'Mountain Villages', 'Bypasses difficult terrain'],
+              ['🌲', 'Forest Settlements', 'No land acquisition for lines'],
+              ['🏜️', 'Desert Communities', 'High solar irradiance advantage'],
+              ['🌊', 'Coastal Hamlets', 'Replaces diesel generators'],
+            ].map(([icon, title, sub]) => (
+              <div class="flex items-start gap-3">
+                <span class="text-xl flex-shrink-0">{icon}</span>
+                <div>
+                  <p class="font-semibold text-foreground text-sm">{title}</p>
+                  <p class="text-muted text-xs">{sub}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════════ -->
+  <!-- BENEFITS -->
+  <!-- ══════════════════════════════════════════════════════════ -->
+  <section class="py-16 px-4 bg-muted-foreground/3 border-b border-muted/10">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-12">
+        <span class="text-secondary text-xs font-bold uppercase tracking-widest">Impact</span>
+        <h2 class="font-anton text-3xl md:text-4xl uppercase text-foreground mt-2">Why Solar Mini Grids Work</h2>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {[
+          {
+            icon: '⚡',
+            title: 'Reliable 24/7 Electricity',
+            body: '214.5 kWh battery delivers 8–10 hours of night backup. Daytime solar covers 100% of community demand.',
+          },
+          {
+            icon: '🛢️',
+            title: 'Zero Diesel Dependency',
+            body: 'Eliminate fuel logistics, price volatility, and generator maintenance — ₹8–20/unit diesel cost replaced by solar at <₹3/unit LCOE.',
+          },
+          {
+            icon: '🌿',
+            title: 'Climate & SDG Impact',
+            body: 'A 150 kWp mini grid avoids ~180 tonnes of CO₂/year — measurable, reportable impact for CSR programs and climate funds.',
+          },
+          {
+            icon: '📚',
+            title: 'Education & Healthcare',
+            body: 'Schools run computers and projectors. Clinics refrigerate vaccines. Children study after dark. Maternal health improves.',
+          },
+          {
+            icon: '💧',
+            title: 'Water Access',
+            body: 'Solar-powered pumps deliver clean drinking water and irrigation — reducing waterborne disease and enabling double-cropping.',
+          },
+          {
+            icon: '📈',
+            title: 'Rural Economic Growth',
+            body: 'Powered shops, grain mills, and food processing create local income. Telecom connectivity unlocks financial inclusion.',
+          },
+          {
+            icon: '👩',
+            title: 'Women Empowerment',
+            body: 'Lighting enables home enterprises, tailoring, and handicraft after sunset. Safety improves after dark.',
+          },
+          {
+            icon: '🔄',
+            title: 'Scalable & Modular',
+            body: 'Start with 214.5 kWh BESS. Add a second BOS-B for 429 kWh. Scale solar to 300+ kWp as the community grows.',
+          },
+          {
+            icon: '🛡️',
+            title: '10-Year Battery Warranty',
+            body: 'Deye BOS-B carries a 10-year warranty — critical for donor accountability and long-term project planning.',
+          },
+        ].map(f => (
+          <div class="bg-muted-foreground/5 border border-muted/20 rounded-2xl p-6 hover:border-secondary/30 transition-colors">
+            <span class="text-3xl mb-4 block">{f.icon}</span>
+            <h3 class="font-bold text-foreground mb-2">{f.title}</h3>
+            <p class="text-muted text-sm leading-relaxed">{f.body}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════════ -->
+  <!-- FAQ -->
+  <!-- ══════════════════════════════════════════════════════════ -->
+  <section class="py-16 px-4 border-b border-muted/10">
+    <div class="max-w-4xl mx-auto">
+      <div class="text-center mb-12">
+        <span class="text-secondary text-xs font-bold uppercase tracking-widest">FAQ</span>
+        <h2 class="font-anton text-3xl uppercase text-foreground mt-2">Common Questions</h2>
+      </div>
+      <div class="space-y-4" itemscope itemtype="https://schema.org/FAQPage">
+        {[
+          {
+            q: 'What is the minimum village size for a solar mini grid?',
+            a: 'Our standard system serves communities of 50–200 households. Smaller villages (20–50 homes) can be served by a scaled-down system (50–80 kWp solar, 107 kWh BESS). Larger towns up to 500+ households can be served with a 300 kWp+ system using multiple BOS-B units.',
+          },
+          {
+            q: 'How long does a mini grid project take from enquiry to commissioning?',
+            a: 'Typically 6–12 months: 1 month for site assessment and system design, 2–3 months for procurement and manufacturing, 2–4 months for civil and installation, 1 month for commissioning and testing. Timeline varies by location, customs (for Africa), and site complexity.',
+          },
+          {
+            q: 'Can the system work without any grid connection?',
+            a: 'Yes. The Deye BOS-B + PCS + MPPT system is fully standalone off-grid. An optional diesel generator can be integrated via the STS module for backup during extended cloudy periods — but for most India and Africa locations, 150 kWp solar fully covers community needs year-round.',
+          },
+          {
+            q: 'What happens to excess solar generation?',
+            a: 'Daytime surplus charges the 214.5 kWh battery bank. Once the battery is full, excess power can be directed to productive loads (pumping, cold storage, processing) or throttled via the MPPT controller. A second BOS-B unit (adding 214.5 kWh) can absorb additional surplus for larger communities.',
+          },
+          {
+            q: 'Can Techedge supply and support projects in Africa?',
+            a: 'Yes. Techedge supplies Deye and Goldi Solar equipment internationally. We handle export documentation, freight coordination, and can connect you with local installation partners in Kenya, Tanzania, Nigeria, Uganda, Ghana, Rwanda and other markets.',
+          },
+          {
+            q: 'What CSR / SDG documentation does Techedge provide?',
+            a: 'We provide: system design reports, projected CO₂ savings calculations, SDG alignment mapping (SDG 7, 3, 4, 6, 13), community beneficiary reports, energy access impact metrics, and completion certificates — all suitable for corporate CSR disclosures and donor reporting.',
+          },
+          {
+            q: 'Is the Deye BOS-B battery safe for rural deployment?',
+            a: 'Yes. The BOS-B uses LiFePO₄ (lithium iron phosphate) chemistry — the safest lithium battery format. No thermal runaway risk, non-toxic cathode, stable at high ambient temperatures (operating range −20°C to +55°C). Certified to IEC 62619 and UN38.3. Suitable for tropical and high-altitude environments.',
+          },
+          {
+            q: 'What is the total cost of a village mini grid project?',
+            a: 'Core system (150 kWp solar + 214.5 kWh battery + 100 kW PCS): ₹83–105 Lakhs. Full village electrification including LT distribution poles, lines and household connections: ₹1 Crore to ₹1.4 Crore. All figures are indicative — contact Techedge for a site-specific detailed estimate.',
+          },
+        ].map(({ q, a }) => (
+          <div class="bg-muted-foreground/5 border border-muted/20 rounded-2xl p-6" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+            <h3 class="font-bold text-foreground mb-3" itemprop="name">{q}</h3>
+            <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+              <p class="text-muted text-sm leading-relaxed" itemprop="text">{a}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════════ -->
+  <!-- WHY TECHEDGE -->
+  <!-- ══════════════════════════════════════════════════════════ -->
+  <section class="py-16 px-4 bg-muted-foreground/3 border-b border-muted/10">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-12">
+        <span class="text-secondary text-xs font-bold uppercase tracking-widest">Why Techedge</span>
+        <h2 class="font-anton text-3xl uppercase text-foreground mt-2">Your Mini Grid Partner</h2>
+      </div>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+        {[
+          { icon: '🏭', title: 'Commercial-Grade Equipment', desc: 'Deye BOS-B, PCS, MPPT & STS — enterprise-tier, not residential' },
+          { icon: '📋', title: 'Full EPC Turnkey', desc: 'Design → Supply → Install → Commission → Handover' },
+          { icon: '🌍', title: 'India & International', desc: 'Pan-India EPC. International equipment supply & coordination' },
+          { icon: '📄', title: 'CSR Documentation', desc: 'Full impact reports, SDG mapping, CO₂ calculations' },
+          { icon: '🔋', title: '10-Year Battery Warranty', desc: 'Deye BOS-B — accountability for the full project lifecycle' },
+          { icon: '☎️', title: 'Dedicated Project Manager', desc: 'Single point of contact from assessment to commissioning' },
+          { icon: '🌿', title: 'Carbon Credits Support', desc: 'Guidance on VCS/Gold Standard carbon credit eligibility' },
+          { icon: '📡', title: 'Remote Monitoring', desc: 'SCADA-based real-time monitoring — energy, battery, faults' },
+        ].map(f => (
+          <div class="bg-muted-foreground/5 border border-muted/20 rounded-2xl p-5 text-center">
+            <span class="text-3xl block mb-3">{f.icon}</span>
+            <h3 class="font-bold text-foreground text-sm mb-1">{f.title}</h3>
+            <p class="text-muted text-xs leading-relaxed">{f.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════════ -->
+  <!-- FINAL CTA -->
+  <!-- ══════════════════════════════════════════════════════════ -->
+  <section class="py-20 px-4 bg-secondary/5">
+    <div class="max-w-3xl mx-auto text-center">
+      <span class="text-secondary text-xs font-bold uppercase tracking-widest mb-3 block">Get Started</span>
+      <h2 class="font-anton text-3xl md:text-5xl uppercase text-foreground mb-4">
+        Ready to Electrify<br />Your Community?
+      </h2>
+      <p class="text-muted mb-2">
+        Share your community details — village size, location, loads — and we'll send a
+        <strong class="text-foreground">full project report within 3 working days</strong>.
+        Free. No commitment.
+      </p>
+      <p class="text-muted text-sm mb-10">
+        NGOs, CSR teams, Rotary Clubs, government agencies and impact investors welcome.
+        India and international enquiries.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center mb-8">
+        <a href="/contact" class="bg-secondary text-black font-anton text-xl uppercase px-10 py-5 rounded-xl hover:bg-secondary/90 transition-colors shadow-lg">
+          Get Free Project Assessment
+        </a>
+        <a href="https://wa.me/917829810381?text=Hi%2C%20I%20need%20a%20solar%20mini%20grid%20project%20assessment." target="_blank" rel="noopener noreferrer" class="bg-green-600 text-white font-bold text-sm uppercase px-10 py-5 rounded-xl hover:bg-green-700 transition-colors tracking-widest">
+          💬 WhatsApp Now
+        </a>
+      </div>
+      <a href="tel:+917829810381" class="text-foreground font-bold text-xl hover:text-secondary transition-colors">
+        📞 +91 78298 10381
+      </a>
+      <p class="text-muted text-xs mt-2">Mon–Sat · 9 AM – 6 PM IST</p>
+      <div class="flex flex-wrap justify-center gap-6 mt-10 text-xs text-muted">
+        {[
+          '🏅 Deye Authorised Dealer',
+          '☀️ Goldi Solar Authorised Dealer',
+          '🌍 India & International Supply',
+          '📋 Full EPC Turnkey',
+          '🌿 CSR & NGO Documentation',
+        ].map(t => <span>{t}</span>)}
+      </div>
+    </div>
+  </section>
+
+  <!-- Schema.org Service + FAQPage -->
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Service",
+        "name": "Solar Mini Grid Solutions — Village Electrification",
+        "description": "Turnkey solar mini grid systems for rural village electrification across India and Africa. 150 kWp solar PV, 214.5 kWh Deye BOS-B LiFePO₄ battery, 100 kW PCS, MPPT and STS. Full EPC, CSR documentation, impact reports.",
+        "provider": {
+          "@type": "Organization",
+          "name": "Techedge India",
+          "url": "https://techedgeindia.co.in",
+          "telephone": "+917829810381"
+        },
+        "areaServed": ["India", "Kenya", "Tanzania", "Nigeria", "Uganda", "Ethiopia", "Ghana", "Rwanda", "Zambia"],
+        "serviceType": "Solar EPC — Mini Grid",
+        "offers": {
+          "@type": "Offer",
+          "description": "Indicative project cost ₹83–140 Lakhs for full village electrification (150 kWp / 214.5 kWh system)",
+          "priceCurrency": "INR"
+        }
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What is the minimum village size for a solar mini grid?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Our standard system serves communities of 50–200 households. Smaller villages (20–50 homes) can be served by a scaled-down system (50–80 kWp solar, 107 kWh BESS). Larger towns up to 500+ households can be served with a 300 kWp+ system using multiple BOS-B units."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How long does a mini grid project take from enquiry to commissioning?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Typically 6–12 months: 1 month for site assessment and system design, 2–3 months for procurement and manufacturing, 2–4 months for civil and installation, 1 month for commissioning and testing."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can the system work without any grid connection?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. The Deye BOS-B + PCS + MPPT system is fully standalone off-grid. An optional diesel generator can be integrated via the STS module for backup during extended cloudy periods."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What is the total cost of a village mini grid project?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Core system (150 kWp solar + 214.5 kWh battery + 100 kW PCS): ₹83–105 Lakhs. Full village electrification including LT distribution: ₹1 Crore to ₹1.4 Crore. Contact Techedge for a site-specific detailed estimate."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can Techedge supply and support projects in Africa?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. Techedge supplies Deye and Goldi Solar equipment internationally and can connect you with local installation partners in Kenya, Tanzania, Nigeria, Uganda, Ghana, Rwanda and other markets."
+            }
+          }
+        ]
+      }
+    ]
+  })} />
+
+</Layout>

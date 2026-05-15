@@ -1,0 +1,260 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import { goldiProducts } from "@/data/goldi-products";
+---
+
+<Layout
+  title="Goldi Solar Panels India — HELOC PLUS 600–620 Wp TOPCon Bifacial | Techedge"
+  description="Buy Goldi Solar HELOC PLUS bifacial TOPCon modules (600–620 Wp) in India. 22.95% efficiency, 30-year warranty, Made in India. Authorised dealer & EPC installation — Techedge India, Bengaluru."
+  keywords="Goldi Solar panel India, GS12R-T132-GF price, HELOC PLUS TOPCon bifacial module, solar panel 600W India, Goldi Solar authorised dealer Bengaluru"
+>
+
+  <!-- Breadcrumb -->
+  <div class="pt-28 pb-0 px-4 bg-background-foreground">
+    <div class="max-w-7xl mx-auto">
+      <nav class="flex items-center gap-2 text-xs text-muted font-semibold">
+        <a href="/" class="hover:text-secondary transition-colors">Home</a>
+        <span>/</span>
+        <a href="/products/" class="hover:text-secondary transition-colors">Products</a>
+        <span>/</span>
+        <span class="text-foreground">Goldi Solar</span>
+      </nav>
+    </div>
+  </div>
+
+  <!-- Hero -->
+  <section class="bg-background-foreground pt-8 pb-14 px-4 border-b border-muted/10">
+    <div class="max-w-7xl mx-auto">
+      <div class="flex items-center gap-3 mb-3">
+        <span class="text-secondary text-xs font-bold uppercase tracking-widest">Goldi Solar — Authorised Dealer & EPC</span>
+      </div>
+      <h1 class="font-anton text-4xl md:text-6xl xl:text-7xl uppercase text-foreground leading-none mb-4">
+        Goldi Solar<br />
+        <span class="text-secondary">HELOC PLUS Series</span>
+      </h1>
+      <p class="text-muted text-lg max-w-2xl mb-8">
+        N-type TOPCon bifacial monocrystalline modules — 600–620 Wp, up to 22.95% efficiency.
+        Made in India. 30-year linear performance warranty. Supply and EPC installation by Techedge.
+      </p>
+
+      <!-- Stats -->
+      <div class="flex flex-wrap gap-4 mb-8">
+        {[
+          { v: '600–620 Wp', l: 'Power Range' },
+          { v: '22.95%', l: 'Max Efficiency' },
+          { v: '30 Years', l: 'Performance Warranty' },
+          { v: 'Made in India', l: 'Origin' },
+        ].map(s => (
+          <div class="bg-muted-foreground/10 rounded-xl px-5 py-3 border border-muted/20">
+            <p class="text-xl font-grotesk font-bold text-foreground">{s.v}</p>
+            <p class="text-xs text-muted uppercase font-semibold">{s.l}</p>
+          </div>
+        ))}
+      </div>
+
+      <!-- Key advantages -->
+      <div class="flex flex-wrap gap-2">
+        {[
+          '☀️ N-type TOPCon',
+          '🔄 Bifacial 80±5%',
+          '📉 Low LID / Le-TID',
+          '💧 Anti-PID Guarantee',
+          '🌧️ Low-Light Performance',
+          '🏭 ISO 9001 / 14001 / 45001',
+          '⚡ 1500V System Voltage',
+          '🇮🇳 Made in India',
+        ].map(t => (
+          <span class="text-xs font-semibold px-3 py-1.5 rounded-full bg-muted-foreground/10 border border-muted/20 text-foreground">{t}</span>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Products grid -->
+  <section class="py-16 px-4 border-b border-muted/10">
+    <div class="max-w-7xl mx-auto">
+      <div class="mb-10">
+        <h2 class="font-anton text-2xl md:text-3xl uppercase text-foreground mb-2">GS12R-T132-GF Series</h2>
+        <p class="text-muted max-w-2xl text-sm">
+          Five power variants — same dimensions and mechanical specs, optimised efficiency at each wattage tier.
+          Contact Techedge for current per-Wp pricing and bulk project quotes.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4">
+        {goldiProducts.map(p => (
+          <a
+            href={`/products/${p.slug}/`}
+            class="group bg-muted-foreground/5 hover:bg-muted-foreground/10 border border-muted/20 hover:border-secondary/40 rounded-2xl p-5 transition-all duration-200 flex flex-col"
+          >
+            <span class="text-[10px] font-bold uppercase tracking-widest text-secondary bg-secondary/10 px-2 py-0.5 rounded-full mb-3 self-start">
+              {p.series}
+            </span>
+
+            <h3 class="font-anton text-2xl text-secondary mb-1">{p.powerWp} Wp</h3>
+            <p class="font-mono text-xs text-muted mb-4">{p.model}</p>
+
+            <div class="space-y-1.5 flex-1">
+              <p class="text-xs text-muted">⚡ Efficiency: <span class="text-foreground font-semibold">{p.efficiency}%</span></p>
+              <p class="text-xs text-muted">🔄 Bifacial rear: <span class="text-foreground font-semibold">{p.rearPowerWp} Wp</span></p>
+              <p class="text-xs text-muted">🔵 Vmp: <span class="text-foreground font-semibold">{p.vmpV} V</span></p>
+              <p class="text-xs text-muted">🔵 Imp: <span class="text-foreground font-semibold">{p.impA} A</span></p>
+              <p class="text-xs text-muted">🛡️ Product warranty: <span class="text-foreground font-semibold">{p.productWarranty}</span></p>
+              <p class="text-xs text-muted">📈 Performance: <span class="text-foreground font-semibold">{p.performanceWarranty}</span></p>
+            </div>
+
+            <div class="mt-4 pt-4 border-t border-muted/20">
+              <p class="text-[10px] uppercase text-muted font-semibold mb-1">Pricing</p>
+              <p class="text-sm font-bold text-foreground">Contact for quote</p>
+              <p class="text-[10px] text-muted">+ 5% GST · Per Wp pricing</p>
+            </div>
+
+            <div class="mt-3 flex items-center gap-1 text-secondary text-xs font-semibold">
+              <span>View full specs</span>
+              <span class="group-hover:translate-x-1 transition-transform">→</span>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Goldi TOPCon -->
+  <section class="py-16 px-4 bg-muted-foreground/3 border-b border-muted/10">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-12">
+        <span class="text-secondary text-xs font-bold uppercase tracking-widest">Technology</span>
+        <h2 class="font-anton text-3xl md:text-4xl uppercase text-foreground mt-2">Why N-type TOPCon Wins</h2>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {[
+          {
+            icon: '📉',
+            title: 'Lower Degradation',
+            body: 'N-type TOPCon degrades at ~0.4%/yr vs PERC at ~0.6%/yr — delivering 5–8% more lifetime energy over 30 years.',
+          },
+          {
+            icon: '🔄',
+            title: 'Bifacial Gain',
+            body: '80±5% bifaciality factor. Ground-mounted systems can gain 10–30% additional energy from rear-side irradiance.',
+          },
+          {
+            icon: '🌧️',
+            title: 'Weak-Light Performance',
+            body: 'HELOC PLUS generates usable power on overcast and hazy days — critical for India\'s monsoon regions.',
+          },
+          {
+            icon: '🌡️',
+            title: 'Better Temperature Coefficient',
+            body: '-0.30%/°C Pmax coefficient — produces more power on hot Indian summer days vs older PERC technology.',
+          },
+          {
+            icon: '🛡️',
+            title: 'Anti-PID Guarantee',
+            body: 'Excellent Anti-PID performance for humid coastal and high-salinity environments — no derating required.',
+          },
+          {
+            icon: '🇮🇳',
+            title: 'Made in India',
+            body: 'ISO 9001:2015, 14001:2015 & 45001:2018 certified facility. ALMM listed. Eligible for government tenders.',
+          },
+        ].map(f => (
+          <div class="bg-muted-foreground/5 border border-muted/20 rounded-2xl p-6">
+            <span class="text-3xl mb-4 block">{f.icon}</span>
+            <h3 class="font-bold text-foreground mb-2">{f.title}</h3>
+            <p class="text-muted text-sm leading-relaxed">{f.body}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Specs comparison table -->
+  <section class="py-16 px-4 border-b border-muted/10">
+    <div class="max-w-5xl mx-auto">
+      <div class="text-center mb-10">
+        <span class="text-secondary text-xs font-bold uppercase tracking-widest">Specifications</span>
+        <h2 class="font-anton text-3xl uppercase text-foreground mt-2">GS12R Series — Full Comparison</h2>
+      </div>
+      <div class="overflow-x-auto">
+        <table class="w-full text-sm border border-muted/20 rounded-2xl overflow-hidden">
+          <thead>
+            <tr class="bg-muted-foreground/10">
+              <th class="px-4 py-3 text-left text-xs text-muted uppercase font-semibold tracking-widest">Parameter</th>
+              {goldiProducts.map(p => (
+                <th class="px-4 py-3 text-center font-bold text-secondary">{p.powerWp} Wp</th>
+              ))}
+            </tr>
+          </thead>
+          <tbody>
+            {[
+              ['Efficiency (%)', goldiProducts.map(p => p.efficiency + '%')],
+              ['Voc (V)', goldiProducts.map(p => p.vocV)],
+              ['Vmp (V)', goldiProducts.map(p => p.vmpV)],
+              ['Isc (A)', goldiProducts.map(p => p.iscA)],
+              ['Imp (A)', goldiProducts.map(p => p.impA)],
+              ['Rear Power (Wp)', goldiProducts.map(p => p.rearPowerWp)],
+              ['Temp Coeff Pmax', goldiProducts.map(p => p.temperatureCoeffPmax)],
+              ['Max System V', goldiProducts.map(p => p.maxSystemVoltage + ' V')],
+              ['Weight (kg)', goldiProducts.map(p => p.weight)],
+              ['Modules/Pallet', goldiProducts.map(p => p.modulesPerPallet)],
+              ['Modules/Container', goldiProducts.map(p => p.modulesPerContainer)],
+            ].map(([label, vals]) => (
+              <tr class="border-t border-muted/10 hover:bg-muted-foreground/3">
+                <td class="px-4 py-3 text-muted font-medium text-xs uppercase tracking-wide">{label}</td>
+                {(vals as (string | number)[]).map(v => (
+                  <td class="px-4 py-3 text-center text-foreground font-semibold">{v}</td>
+                ))}
+              </tr>
+            ))}
+            <tr class="border-t border-muted/10">
+              <td class="px-4 py-3 text-muted font-medium text-xs uppercase tracking-wide">Dimensions</td>
+              <td colspan="5" class="px-4 py-3 text-center text-foreground font-semibold">2382 × 1134 × 30 mm (all variants)</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="text-xs text-muted mt-4 text-center">
+        All values at STC (1000 W/m², 25°C, AM 1.5). Measurement tolerance ±3%. Bifaciality factor 80±5%.
+      </p>
+    </div>
+  </section>
+
+  <!-- Certifications -->
+  <section class="py-12 px-4 bg-muted-foreground/3 border-b border-muted/10">
+    <div class="max-w-5xl mx-auto text-center">
+      <span class="text-secondary text-xs font-bold uppercase tracking-widest">Certifications</span>
+      <h2 class="font-anton text-2xl uppercase text-foreground mt-2 mb-6">International Standards</h2>
+      <div class="flex flex-wrap justify-center gap-2">
+        {['IEC 61215:2021', 'IEC 61730:2023', 'IS 14286:2010 / IEC 61215:2005', 'IEC 62716 (Anti-PID)', 'IEC 60068-2-62', 'IEC CD 61215-2:2018', 'UL 61730-1&2', 'IEC 62804', 'CEC', 'ISO 9001:2015', 'ISO 14001:2015', 'ISO 45001:2018'].map(c => (
+          <span class="text-xs font-semibold px-3 py-1.5 rounded-full bg-muted-foreground/5 border border-muted/20 text-muted">{c}</span>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-20 px-4 bg-secondary/5">
+    <div class="max-w-3xl mx-auto text-center">
+      <h2 class="font-anton text-3xl md:text-4xl uppercase text-foreground mb-4">
+        Get a Quote for Goldi Solar Panels
+      </h2>
+      <p class="text-muted mb-8">
+        Contact Techedge for current per-Wp pricing, bulk project quotes and EPC installation.
+        We supply pan-India and install across Karnataka and South India.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="/contact" class="bg-secondary text-black font-anton text-lg uppercase px-8 py-4 rounded-xl hover:bg-secondary/90 transition-colors">
+          Get a Project Quote
+        </a>
+        <a href="/solutions/" class="bg-muted-foreground/10 text-foreground font-anton text-lg uppercase px-8 py-4 rounded-xl hover:bg-muted-foreground/20 transition-colors border border-muted/30">
+          View Solar Solutions
+        </a>
+      </div>
+      <div class="flex flex-wrap justify-center gap-6 mt-10 text-xs text-muted">
+        {['🏅 Goldi Solar Authorised Dealer', '⚡ EPC Design & Installation', '🌍 Supply Pan-India', '🧾 5% GST on PV Modules'].map(t => <span>{t}</span>)}
+      </div>
+    </div>
+  </section>
+
+</Layout>

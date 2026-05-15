@@ -1,243 +1,181 @@
 ---
 import Layout from "@/layouts/Layout.astro";
-import { deyeProducts, categoryMeta, type ProductCategory } from "@/data/deye-products";
-
-const categories: ProductCategory[] = ['On-Grid', 'Micro', 'Hybrid', 'Battery', 'All-in-One'];
-
-// Group products by category
-const byCategory = categories.map(cat => ({
-  cat,
-  meta: categoryMeta[cat],
-  products: deyeProducts.filter(p => p.category === cat),
-}));
-
-const formatPrice = (n: number) =>
-  new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', maximumFractionDigits: 0 }).format(n);
+import { deyeProducts } from "@/data/deye-products";
+import { allTechedgeProducts } from "@/data/techedge-products";
+import { goldiProducts } from "@/data/goldi-products";
 ---
 
 <Layout
-  title="Deye Solar Inverters & Batteries — India Price List | Techedge"
-  description="Buy Deye solar inverters and batteries in India at the best price. 86 products: on-grid (1.5–136 kW), hybrid (3–125 kW), micro inverters, LiFePO4 batteries and containerised ESS. Authorised dealer — Techedge India, Bengaluru."
-  keywords="Deye inverter price India, Deye solar inverter, Deye hybrid inverter, Deye battery, solar inverter Bengaluru, buy Deye inverter online"
+  title="Solar Products — Deye, Goldi Solar, Techedge & Nunam | Techedge India"
+  description="Solar products from Techedge India — Deye inverters & batteries, Goldi Solar TOPCon modules, Techedge solar kits for NGOs, and Nunam upcycled batteries. Authorised dealer, Bengaluru."
+  keywords="Deye solar inverter India, Goldi Solar panel India, Techedge solar kit, Nunam battery India, solar products Bengaluru"
 >
 
   <!-- Hero -->
-  <section class="bg-background-foreground pt-32 pb-12 px-4">
+  <section class="bg-background-foreground pt-32 pb-16 px-4 border-b border-muted/10">
     <div class="max-w-7xl mx-auto">
-      <div class="mb-2">
-        <span class="text-secondary text-sm font-bold uppercase tracking-widest">Deye Authorised Dealer</span>
-      </div>
-      <h1 class="font-anton text-4xl md:text-6xl xl:text-7xl uppercase text-foreground leading-none mb-4">
-        Deye Solar Products
+      <span class="text-secondary text-xs font-bold uppercase tracking-widest mb-4 block">Our Products</span>
+      <h1 class="font-anton text-5xl md:text-7xl uppercase text-foreground leading-none mb-4">
+        Solar Products
       </h1>
       <p class="text-muted text-lg max-w-2xl mb-8">
-        86 products — on-grid, hybrid, micro inverters, LiFePO4 batteries and container ESS solutions.
-        All prices include our <strong class="text-foreground">+15% service & supply margin</strong>.
-        GST extra (5% inverters / 18% batteries).
+        Four trusted brands. One source. Deye inverters and batteries, Goldi Solar TOPCon panels,
+        Techedge solar kits for NGOs and CSR, and Nunam upcycled LiFePO₄ batteries.
       </p>
-      <!-- Stats bar -->
-      <div class="flex flex-wrap gap-4 mb-6">
+      <div class="flex flex-wrap gap-4">
         {[
-          { label: 'Products', value: '86' },
-          { label: 'Categories', value: '5' },
-          { label: 'Power Range', value: '1.5–136 kW' },
-          { label: 'Battery Range', value: '5–4340 kWh' },
+          { v: String(deyeProducts.length), l: 'Deye Products' },
+          { v: String(goldiProducts.length), l: 'Goldi Modules' },
+          { v: String(allTechedgeProducts.length), l: 'Techedge Kits' },
+          { v: 'Nunam', l: 'Upcycled Batteries' },
         ].map(s => (
-          <div class="bg-muted-foreground/10 rounded-xl px-5 py-3 border border-muted/20">
-            <p class="text-2xl font-grotesk font-bold text-foreground">{s.value}</p>
-            <p class="text-xs text-muted uppercase font-semibold">{s.label}</p>
+          <div class="bg-muted-foreground/5 border border-muted/20 rounded-xl px-5 py-3">
+            <p class="text-2xl font-grotesk font-bold text-foreground">{s.v}</p>
+            <p class="text-xs text-muted uppercase font-semibold">{s.l}</p>
           </div>
         ))}
       </div>
-      <!-- Warranty note -->
-      <div class="bg-secondary/10 border border-secondary/30 rounded-xl px-5 py-4 max-w-2xl text-sm text-foreground">
-        <strong>Warranty:</strong> On-grid ≤10 kW — 10 yrs &nbsp;|&nbsp; On-grid &gt;10 kW — 8 yrs &nbsp;|&nbsp;
-        Hybrid inverters — 5 yrs &nbsp;|&nbsp; LiFePO4 batteries — 10 yrs &nbsp;|&nbsp;
-        Hybrid + Deye battery combo — 10 yrs comprehensive
-      </div>
     </div>
   </section>
 
-  <!-- Category jump links -->
-  <nav class="sticky top-0 z-30 bg-background-foreground border-b border-muted/20 shadow-sm">
-    <div class="max-w-7xl mx-auto px-4 py-3 flex gap-3 overflow-x-auto scrollbar-none">
-      {byCategory.map(({ cat, meta }) => (
-        <a
-          href={`#${cat.toLowerCase().replace(/[\s\/]/g, '-')}`}
-          class="flex-shrink-0 flex items-center gap-2 px-4 py-2 rounded-full bg-muted-foreground/10 hover:bg-secondary/20 text-foreground text-sm font-semibold transition-colors"
-        >
-          <span>{meta.icon}</span>
-          <span>{meta.label}</span>
-        </a>
-      ))}
-      <a
-        href="#partner-brands"
-        class="flex-shrink-0 flex items-center gap-2 px-4 py-2 rounded-full bg-muted-foreground/10 hover:bg-secondary/20 text-foreground text-sm font-semibold transition-colors"
-      >
-        <span>♻️</span>
-        <span>Partner Brands</span>
-      </a>
-    </div>
-  </nav>
+  <!-- Brand cards -->
+  <section class="py-20 px-4">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
 
-  <!-- Product sections by category -->
-  {byCategory.map(({ cat, meta, products }) => (
-    <section
-      id={cat.toLowerCase().replace(/[\s\/]/g, '-')}
-      class="py-16 px-4 border-b border-muted/10"
-    >
-      <div class="max-w-7xl mx-auto">
-        <!-- Category header -->
-        <div class="mb-10">
-          <div class="flex items-center gap-3 mb-2">
-            <span class="text-4xl">{meta.icon}</span>
-            <h2 class="font-anton text-3xl md:text-4xl uppercase text-foreground">{meta.label}</h2>
-          </div>
-          <p class="text-muted max-w-2xl">{meta.description}</p>
+      <!-- Deye -->
+      <a href="/products/deye/" class="group bg-muted-foreground/5 hover:bg-muted-foreground/10 border-2 border-muted/20 hover:border-secondary/50 rounded-2xl p-8 flex flex-col transition-all duration-200">
+        <div class="w-14 h-14 rounded-2xl bg-secondary/10 border border-secondary/20 flex items-center justify-center text-3xl mb-5">⚡</div>
+        <div class="mb-2 flex flex-wrap items-center gap-2">
+          <h2 class="font-anton text-2xl uppercase text-foreground group-hover:text-secondary transition-colors">Deye</h2>
+          <span class="text-[10px] font-bold uppercase tracking-widest text-secondary bg-secondary/10 px-2 py-0.5 rounded-full">Authorised Dealer</span>
         </div>
-
-        <!-- Product grid -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
-          {products.map(p => (
-            <a
-              href={`/products/${p.slug}/`}
-              class="group bg-muted-foreground/5 hover:bg-muted-foreground/10 border border-muted/20 hover:border-secondary/40 rounded-2xl p-5 transition-all duration-200 flex flex-col"
-            >
-              <!-- Category badge -->
-              <div class="flex items-center gap-2 mb-3">
-                <span class="text-[10px] font-bold uppercase tracking-widest text-secondary bg-secondary/10 px-2 py-0.5 rounded-full">
-                  {p.subcategory}
-                </span>
-                {p.phase && p.phase !== 'N/A' && (
-                  <span class="text-[10px] font-bold uppercase tracking-widest text-muted bg-muted-foreground/10 px-2 py-0.5 rounded-full">
-                    {p.phase}
-                  </span>
-                )}
-              </div>
-
-              <!-- Name -->
-              <h3 class="font-grotesk font-bold text-foreground text-sm leading-snug mb-1 group-hover:text-secondary transition-colors">
-                {p.name}
-              </h3>
-
-              <!-- Model -->
-              <p class="text-muted text-xs font-mono mb-3">{p.model}</p>
-
-              <!-- Key spec -->
-              {p.specs.efficiency && (
-                <p class="text-xs text-muted mb-1">⚡ Efficiency: <span class="text-foreground font-semibold">{p.specs.efficiency}</span></p>
-              )}
-              {p.specs.nominalCapacity && (
-                <p class="text-xs text-muted mb-1">🔋 Capacity: <span class="text-foreground font-semibold">{p.specs.nominalCapacity}</span></p>
-              )}
-              {p.warranty && (
-                <p class="text-xs text-muted mb-1">🛡️ Warranty: <span class="text-foreground font-semibold">{p.warranty}</span></p>
-              )}
-
-              <!-- Spacer -->
-              <div class="flex-1" />
-
-              <!-- Price -->
-              <div class="mt-4 pt-4 border-t border-muted/20">
-                <p class="text-[10px] uppercase text-muted font-semibold mb-0.5">Our Price (excl. GST)</p>
-                <p class="text-xl font-grotesk font-bold text-secondary">
-                  {formatPrice(p.sellingPrice)}
-                </p>
-                <p class="text-[10px] text-muted">+ {p.gstRate}% GST applicable</p>
-              </div>
-
-              <!-- CTA arrow -->
-              <div class="mt-3 flex items-center gap-1 text-secondary text-xs font-semibold">
-                <span>View specs & details</span>
-                <span class="group-hover:translate-x-1 transition-transform">→</span>
-              </div>
-            </a>
+        <p class="text-muted text-sm leading-relaxed mb-5">
+          Commercial-grade solar inverters and LiFePO₄ batteries. On-grid, hybrid, micro and C&I ESS — 1.5 kW to 2.5 MW.
+        </p>
+        <div class="grid grid-cols-2 gap-2 mb-5 text-xs">
+          {[
+            ['⚡', 'On-Grid', '1.5–136 kW'],
+            ['🔋', 'Hybrid', '3–125 kW'],
+            ['🔲', 'Micro', '300–2200 W'],
+            ['🏭', 'ESS', '5 kWh–2.5 MWh'],
+          ].map(([icon, label, val]) => (
+            <div class="bg-muted-foreground/10 rounded-xl px-3 py-2">
+              <p class="font-bold text-foreground">{icon} {label}</p>
+              <p class="text-muted">{val}</p>
+            </div>
           ))}
         </div>
-      </div>
-    </section>
-  ))}
+        <div class="flex-1" />
+        <div class="flex items-center justify-between mt-4 pt-4 border-t border-muted/10">
+          <span class="text-muted text-xs">{deyeProducts.length} products</span>
+          <span class="text-secondary font-bold text-sm group-hover:translate-x-1 transition-transform">View all →</span>
+        </div>
+      </a>
 
-  <!-- Partner Brands -->
-  <section id="partner-brands" class="py-16 px-4 border-b border-muted/10">
-    <div class="max-w-7xl mx-auto">
-      <div class="mb-8">
-        <span class="text-secondary text-xs font-bold uppercase tracking-widest">Also Available</span>
-        <h2 class="font-anton text-3xl md:text-4xl uppercase text-foreground mt-1">Partner Brands</h2>
-        <p class="text-muted mt-2 max-w-xl">We supply products from trusted partner brands alongside our Deye range.</p>
-      </div>
-
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-
-        <!-- Nunam -->
-        <a
-          href="https://nunam.com/products/"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="group bg-muted-foreground/5 hover:bg-muted-foreground/10 border border-muted/20 hover:border-secondary/40 rounded-2xl p-6 flex flex-col transition-all duration-200"
-        >
-          <div class="flex items-center gap-3 mb-4">
-            <div class="w-10 h-10 rounded-xl bg-secondary/10 flex items-center justify-center text-xl shrink-0">♻️</div>
-            <div>
-              <p class="font-bold text-foreground text-sm group-hover:text-secondary transition-colors">Nunam</p>
-              <p class="text-[10px] text-muted uppercase font-semibold tracking-wide">Upcycled EV Batteries</p>
+      <!-- Goldi Solar -->
+      <a href="/products/goldi/" class="group bg-muted-foreground/5 hover:bg-muted-foreground/10 border-2 border-muted/20 hover:border-yellow-500/50 rounded-2xl p-8 flex flex-col transition-all duration-200">
+        <div class="w-14 h-14 rounded-2xl bg-yellow-500/10 border border-yellow-500/20 flex items-center justify-center text-3xl mb-5">☀️</div>
+        <div class="mb-2 flex flex-wrap items-center gap-2">
+          <h2 class="font-anton text-2xl uppercase text-foreground group-hover:text-yellow-400 transition-colors">Goldi Solar</h2>
+          <span class="text-[10px] font-bold uppercase tracking-widest text-yellow-400 bg-yellow-500/10 px-2 py-0.5 rounded-full border border-yellow-500/20">Authorised Dealer</span>
+        </div>
+        <p class="text-muted text-sm leading-relaxed mb-5">
+          N-type TOPCon bifacial monocrystalline modules — 600–620 Wp, up to 22.95% efficiency, 30-year warranty. Made in India.
+        </p>
+        <div class="grid grid-cols-2 gap-2 mb-5 text-xs">
+          {[
+            ['☀️', 'HELOC PLUS', 'TOPCon N-type'],
+            ['🔄', 'Bifacial', '80±5%'],
+            ['📈', 'Efficiency', 'Up to 22.95%'],
+            ['🛡️', 'Warranty', '30 years'],
+          ].map(([icon, label, val]) => (
+            <div class="bg-muted-foreground/10 rounded-xl px-3 py-2">
+              <p class="font-bold text-foreground">{icon} {label}</p>
+              <p class="text-muted">{val}</p>
             </div>
-          </div>
+          ))}
+        </div>
+        <div class="flex-1" />
+        <div class="flex items-center justify-between mt-4 pt-4 border-t border-muted/10">
+          <span class="text-muted text-xs">{goldiProducts.length} variants · EPC supply</span>
+          <span class="text-yellow-400 font-bold text-sm group-hover:translate-x-1 transition-transform">View all →</span>
+        </div>
+      </a>
 
-          <p class="text-sm text-muted leading-relaxed mb-4">
-            Affordable LiFePO4 battery modules made from upcycled electric vehicle batteries — up to 30% cheaper than standard lithium-ion systems.
-          </p>
-
-          <!-- Key product -->
-          <div class="bg-muted-foreground/10 rounded-xl p-4 mb-4 space-y-2">
-            <p class="text-xs font-bold text-foreground uppercase tracking-wide">NESS Series 5</p>
-            <div class="grid grid-cols-2 gap-2 text-xs text-muted">
-              <span>🔋 Capacity: <strong class="text-foreground">5 kWh</strong></span>
-              <span>⚡ Voltage: <strong class="text-foreground">48 V</strong></span>
-              <span>🔄 Cycles: <strong class="text-foreground">2,000+</strong></span>
-              <span>📈 Scalable: <strong class="text-foreground">up to 50 kWh</strong></span>
-              <span>🛡️ Warranty: <strong class="text-foreground">5 years</strong></span>
-              <span>🌿 Type: <strong class="text-foreground">Upcycled LiFePO4</strong></span>
+      <!-- Techedge -->
+      <a href="/products/techedge/" class="group bg-muted-foreground/5 hover:bg-muted-foreground/10 border-2 border-muted/20 hover:border-green-500/50 rounded-2xl p-8 flex flex-col transition-all duration-200">
+        <div class="w-14 h-14 rounded-2xl bg-green-500/10 border border-green-500/20 flex items-center justify-center text-3xl mb-5">🌿</div>
+        <div class="mb-2 flex flex-wrap items-center gap-2">
+          <h2 class="font-anton text-2xl uppercase text-foreground group-hover:text-green-400 transition-colors">Techedge</h2>
+          <span class="text-[10px] font-bold uppercase tracking-widest text-green-400 bg-green-500/10 px-2 py-0.5 rounded-full border border-green-500/20">Our Brand</span>
+        </div>
+        <p class="text-muted text-sm leading-relaxed mb-5">
+          Solar lanterns and home light kits for rural electrification, NGO distribution and CSR programs. MOQ 25 units.
+        </p>
+        <div class="grid grid-cols-2 gap-2 mb-5 text-xs">
+          {[
+            ['🔦', 'Lanterns', '2–6 hr backup'],
+            ['🏠', 'Home Kits', '3–13 hr backup'],
+            ['💡', 'Max Load', '4 × 5W LED'],
+            ['📦', 'MOQ', '25 units'],
+          ].map(([icon, label, val]) => (
+            <div class="bg-muted-foreground/10 rounded-xl px-3 py-2">
+              <p class="font-bold text-foreground">{icon} {label}</p>
+              <p class="text-muted">{val}</p>
             </div>
-          </div>
+          ))}
+        </div>
+        <div class="flex-1" />
+        <div class="flex items-center justify-between mt-4 pt-4 border-t border-muted/10">
+          <span class="text-muted text-xs">{allTechedgeProducts.length} products</span>
+          <span class="text-green-400 font-bold text-sm group-hover:translate-x-1 transition-transform">View all →</span>
+        </div>
+      </a>
 
-          <div class="flex-1" />
-          <div class="flex items-center gap-1 text-secondary text-xs font-semibold mt-2">
-            <span>View Nunam products</span>
-            <span class="group-hover:translate-x-1 transition-transform">↗</span>
-          </div>
-        </a>
+      <!-- Nunam -->
+      <a href="/products/nunam/" class="group bg-muted-foreground/5 hover:bg-muted-foreground/10 border-2 border-muted/20 hover:border-orange-500/50 rounded-2xl p-8 flex flex-col transition-all duration-200">
+        <div class="w-14 h-14 rounded-2xl bg-orange-500/10 border border-orange-500/20 flex items-center justify-center text-3xl mb-5">♻️</div>
+        <div class="mb-2 flex flex-wrap items-center gap-2">
+          <h2 class="font-anton text-2xl uppercase text-foreground group-hover:text-orange-400 transition-colors">Nunam</h2>
+          <span class="text-[10px] font-bold uppercase tracking-widest text-orange-400 bg-orange-500/10 px-2 py-0.5 rounded-full border border-orange-500/20">Supply Partner</span>
+        </div>
+        <p class="text-muted text-sm leading-relaxed mb-5">
+          Upcycled LiFePO₄ battery modules from EV batteries — up to 30% cheaper than new lithium. Available in India through Techedge.
+        </p>
+        <div class="grid grid-cols-2 gap-2 mb-5 text-xs">
+          {[
+            ['🔋', 'NESS Series 5', '5 kWh / 48V'],
+            ['🔄', 'Cycle Life', '2,000+'],
+            ['📈', 'Scalable', 'Up to 50 kWh'],
+            ['🛡️', 'Warranty', '5 years'],
+          ].map(([icon, label, val]) => (
+            <div class="bg-muted-foreground/10 rounded-xl px-3 py-2">
+              <p class="font-bold text-foreground">{icon} {label}</p>
+              <p class="text-muted">{val}</p>
+            </div>
+          ))}
+        </div>
+        <div class="flex-1" />
+        <div class="flex items-center justify-between mt-4 pt-4 border-t border-muted/10">
+          <span class="text-muted text-xs">Enquire for India pricing</span>
+          <span class="text-orange-400 font-bold text-sm group-hover:translate-x-1 transition-transform">Learn more →</span>
+        </div>
+      </a>
 
-      </div>
-
-      <p class="text-xs text-muted mt-6">
-        * Partner brand products are linked to the manufacturer's website. Contact Techedge for availability and pricing in India.
-      </p>
     </div>
   </section>
 
-  <!-- Bottom CTA -->
-  <section class="py-20 px-4 bg-secondary/5">
+  <!-- CTA -->
+  <section class="py-16 px-4 bg-secondary/5 border-t border-muted/10">
     <div class="max-w-3xl mx-auto text-center">
-      <h2 class="font-anton text-3xl md:text-4xl uppercase text-foreground mb-4">
-        Need Help Choosing the Right Product?
-      </h2>
-      <p class="text-muted mb-8">
-        Our team will help you select the right inverter and battery combination for your home or business.
-        Free consultation — no obligation.
-      </p>
+      <h2 class="font-anton text-3xl md:text-4xl uppercase text-foreground mb-4">Not Sure Which Product?</h2>
+      <p class="text-muted mb-8">Our team recommends the right product for your requirement — residential, commercial, NGO or CSR project.</p>
       <div class="flex flex-col sm:flex-row gap-4 justify-center">
-        <a
-          href="/contact"
-          class="bg-secondary text-black font-anton text-lg uppercase px-8 py-4 rounded-xl hover:bg-secondary/90 transition-colors"
-        >
-          Get a Free Quote
+        <a href="/contact" class="bg-secondary text-black font-anton text-lg uppercase px-8 py-4 rounded-xl hover:bg-secondary/90 transition-colors">
+          Free Consultation
         </a>
-        <a
-          href="/calculator"
-          class="bg-muted-foreground/10 text-foreground font-anton text-lg uppercase px-8 py-4 rounded-xl hover:bg-muted-foreground/20 transition-colors border border-muted/30"
-        >
-          Calculate My ROI
+        <a href="/solutions/" class="bg-muted-foreground/10 text-foreground font-anton text-lg uppercase px-8 py-4 rounded-xl hover:bg-muted-foreground/20 transition-colors border border-muted/30">
+          View Solutions
         </a>
       </div>
     </div>

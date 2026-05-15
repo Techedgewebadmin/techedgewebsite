@@ -1,0 +1,162 @@
+---
+import Layout from "@/layouts/Layout.astro";
+---
+
+<Layout
+  title="Nunam Upcycled LiFePO4 Batteries India — Supply via Techedge"
+  description="Nunam upcycled LiFePO4 battery modules from repurposed EV batteries — up to 30% cheaper than new lithium systems. Available in India through Techedge. NESS Series 5: 5 kWh, 48V, scalable to 50 kWh."
+  keywords="Nunam battery India, upcycled LiFePO4 battery, NESS Series 5, second-life EV battery India, affordable solar battery storage India"
+>
+
+  <!-- Breadcrumb -->
+  <div class="pt-28 pb-0 px-4 bg-background-foreground">
+    <div class="max-w-7xl mx-auto">
+      <nav class="flex items-center gap-2 text-xs text-muted font-semibold">
+        <a href="/" class="hover:text-secondary transition-colors">Home</a>
+        <span>/</span>
+        <a href="/products/" class="hover:text-secondary transition-colors">Products</a>
+        <span>/</span>
+        <span class="text-foreground">Nunam</span>
+      </nav>
+    </div>
+  </div>
+
+  <!-- Hero -->
+  <section class="bg-background-foreground pt-8 pb-14 px-4 border-b border-muted/10">
+    <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center">
+      <div>
+        <span class="text-secondary text-xs font-bold uppercase tracking-widest mb-3 block">Supply Partner</span>
+        <h1 class="font-anton text-4xl md:text-6xl uppercase text-foreground leading-none mb-4">
+          Nunam<br />
+          <span class="text-secondary">Upcycled Batteries</span>
+        </h1>
+        <p class="text-muted text-lg leading-relaxed mb-6">
+          LiFePO₄ battery modules made from repurposed electric vehicle batteries — delivering
+          reliable solar storage at up to <strong class="text-foreground">30% lower cost</strong> than new lithium systems.
+          Available in India through Techedge.
+        </p>
+        <div class="flex flex-wrap gap-2 mb-8">
+          {[
+            '♻️ Second-life EV batteries',
+            '🔋 LiFePO₄ chemistry',
+            '💰 30% cheaper than new',
+            '📈 Scalable to 50 kWh',
+            '🌿 Circular economy',
+            '🛡️ 5-year warranty',
+          ].map(t => (
+            <span class="text-xs font-semibold px-3 py-1.5 rounded-full bg-muted-foreground/10 border border-muted/20 text-foreground">{t}</span>
+          ))}
+        </div>
+        <div class="flex flex-col sm:flex-row gap-4">
+          <a href="/contact" class="bg-secondary text-black font-anton text-lg uppercase px-8 py-4 rounded-xl hover:bg-secondary/90 transition-colors text-center">
+            Enquire for India Pricing
+          </a>
+          <a href="https://nunam.com/products/" target="_blank" rel="noopener noreferrer" class="bg-muted-foreground/10 text-foreground font-bold text-sm uppercase px-8 py-4 rounded-xl hover:bg-muted-foreground/20 transition-colors border border-muted/30 text-center tracking-widest">
+            nunam.com ↗
+          </a>
+        </div>
+      </div>
+
+      <!-- Product card -->
+      <div class="bg-muted-foreground/5 border-2 border-orange-500/30 rounded-2xl p-8">
+        <div class="flex items-center gap-3 mb-6">
+          <span class="text-4xl">♻️</span>
+          <div>
+            <h2 class="font-bold text-foreground text-xl">NESS Series 5</h2>
+            <p class="text-muted text-xs uppercase font-semibold tracking-wide">Flagship Product</p>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-2 gap-4 mb-6">
+          {[
+            { icon: '🔋', label: 'Capacity', value: '5 kWh' },
+            { icon: '⚡', label: 'Voltage', value: '48 V' },
+            { icon: '🔄', label: 'Cycle Life', value: '2,000+' },
+            { icon: '📈', label: 'Scalable', value: 'Up to 50 kWh' },
+            { icon: '🛡️', label: 'Warranty', value: '5 years' },
+            { icon: '🌿', label: 'Chemistry', value: 'LiFePO₄' },
+          ].map(s => (
+            <div class="bg-muted-foreground/10 rounded-xl px-4 py-3">
+              <p class="text-[10px] uppercase text-muted font-semibold">{s.icon} {s.label}</p>
+              <p class="font-bold text-foreground mt-1">{s.value}</p>
+            </div>
+          ))}
+        </div>
+
+        <div class="bg-orange-500/5 border border-orange-500/20 rounded-xl px-4 py-3 text-sm text-muted">
+          <strong class="text-foreground">India pricing:</strong> Contact Techedge for current pricing, availability and delivery lead times.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Nunam -->
+  <section class="py-16 px-4 bg-muted-foreground/3 border-b border-muted/10">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-12">
+        <span class="text-secondary text-xs font-bold uppercase tracking-widest">Why Nunam</span>
+        <h2 class="font-anton text-3xl md:text-4xl uppercase text-foreground mt-2">The Case for Second-Life Batteries</h2>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {[
+          {
+            icon: '💰',
+            title: 'Up to 30% Cheaper',
+            body: 'Upcycled EV battery cells cost significantly less than new lithium — making solar storage accessible for NGOs, SMEs and community projects.',
+          },
+          {
+            icon: '🌿',
+            title: 'Circular Economy',
+            body: 'EV batteries still retain 70–80% of their original capacity when removed from vehicles. Nunam repurposes them, extending their useful life by 5–10 years.',
+          },
+          {
+            icon: '🔋',
+            title: 'LiFePO₄ Safety',
+            body: 'All Nunam modules use LiFePO₄ chemistry — the safest lithium format. No thermal runaway risk, non-toxic, stable at high temperatures.',
+          },
+          {
+            icon: '📈',
+            title: 'Modular & Scalable',
+            body: 'Start with 5 kWh (one NESS Series 5 module) and scale up to 50 kWh — ideal for growing load requirements without replacing the entire system.',
+          },
+          {
+            icon: '🇩🇪',
+            title: 'German Engineering',
+            body: 'Nunam is a German company with operations in India — combining European quality standards with local manufacturing and service support.',
+          },
+          {
+            icon: '🤝',
+            title: 'Available via Techedge',
+            body: 'Techedge is the supply partner for Nunam batteries in India — providing full integration with Deye hybrid inverters and local after-sales support.',
+          },
+        ].map(f => (
+          <div class="bg-muted-foreground/5 border border-muted/20 rounded-2xl p-6">
+            <span class="text-3xl mb-4 block">{f.icon}</span>
+            <h3 class="font-bold text-foreground mb-2">{f.title}</h3>
+            <p class="text-muted text-sm leading-relaxed">{f.body}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Pairing note -->
+  <section class="py-14 px-4 border-b border-muted/10">
+    <div class="max-w-4xl mx-auto bg-secondary/5 border border-secondary/20 rounded-2xl p-8 text-center">
+      <h3 class="font-anton text-2xl uppercase text-foreground mb-3">Pairs with Deye Hybrid Inverters</h3>
+      <p class="text-muted text-sm leading-relaxed mb-6">
+        Nunam NESS batteries are compatible with Deye hybrid inverter systems (scalable 5–15 modules per inverter).
+        Techedge can design and install complete solar + Nunam storage systems for homes, SMEs and community projects.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="/contact" class="bg-secondary text-black font-anton text-lg uppercase px-8 py-4 rounded-xl hover:bg-secondary/90 transition-colors">
+          Design a System
+        </a>
+        <a href="/products/deye/" class="bg-muted-foreground/10 text-foreground font-bold text-sm uppercase px-8 py-4 rounded-xl hover:bg-muted-foreground/20 transition-colors border border-muted/30 tracking-widest">
+          View Deye Inverters →
+        </a>
+      </div>
+    </div>
+  </section>
+
+</Layout>
