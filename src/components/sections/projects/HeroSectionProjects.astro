@@ -35,28 +35,70 @@ const totalCO2 = "1,700+";
     class="relative z-10 h-full flex flex-col lg:flex-row items-start lg:items-baseline-last justify-end lg:justify-between p-4 lg:p-12 gap-6 lg:gap-0"
   >
     <div class="max-w-3xl space-y-4 text-accent-foreground">
-      <h1
-        data-hero-el
-        class="text-4xl lg:text-6xl xl:text-8xl font-anton uppercase"
-      >
-        {t("project.page.hero.h1")}
-      </h1>
 
-      <p
-        data-hero-el
-        class="text-base lg:text-lg xl:text-xl mt-4 max-w-xl font-sans"
-      >
-        {t('project.page.hero.description')}
-      </p>
-      <Button
-        data-hero-el
-        href="/contact"
-        variant="secondary"
-        class="font-anton text-base lg:text-xl uppercase max-w-sm"
-        size="lg"
-      >
-        {t("project.page.hero.btn")}
-      </Button>
+      <!-- Slide 1: Identity -->
+      <div class="proj-slide" data-slide="0">
+        <h1 data-hero-el class="text-4xl lg:text-6xl xl:text-8xl font-anton uppercase leading-none">
+          Real Results.<br/>Real Impact.
+        </h1>
+        <p data-hero-el class="text-base lg:text-lg xl:text-xl mt-4 max-w-xl font-sans">
+          {t('project.page.hero.description')}
+        </p>
+        <Button
+          data-hero-el
+          href="/contact"
+          variant="secondary"
+          class="font-anton text-base lg:text-xl uppercase max-w-sm mt-4"
+          size="lg"
+        >
+          {t("project.page.hero.btn")}
+        </Button>
+      </div>
+
+      <!-- Slide 2: Scale -->
+      <div class="proj-slide hidden" data-slide="1">
+        <p class="text-sm font-bold uppercase tracking-widest text-secondary mb-3">Our Portfolio</p>
+        <h1 class="text-4xl lg:text-6xl xl:text-8xl font-anton uppercase leading-none">
+          Industrial.<br/>Residential.<br/>Agricultural.
+        </h1>
+        <p class="text-base lg:text-lg xl:text-xl mt-4 max-w-xl font-sans">
+          From 1 MW factory rooftops to rural goshalas — solar designed and installed for every scale and sector across India.
+        </p>
+        <Button
+          href="/projects"
+          variant="secondary"
+          class="font-anton text-base lg:text-xl uppercase max-w-sm mt-4"
+          size="lg"
+        >
+          View All Projects
+        </Button>
+      </div>
+
+      <!-- Slide 3: Impact -->
+      <div class="proj-slide hidden" data-slide="2">
+        <p class="text-sm font-bold uppercase tracking-widest text-secondary mb-3">Environmental Impact</p>
+        <h1 class="text-4xl lg:text-6xl xl:text-8xl font-anton uppercase leading-none">
+          1,700+<br/>Tonnes CO₂<br/>Saved.
+        </h1>
+        <p class="text-base lg:text-lg xl:text-xl mt-4 max-w-xl font-sans">
+          Every system installed is working 365 days a year — generating clean power, cutting bills, and reducing emissions for 25 years.
+        </p>
+        <Button
+          href="/contact"
+          variant="secondary"
+          class="font-anton text-base lg:text-xl uppercase max-w-sm mt-4"
+          size="lg"
+        >
+          Start Your Project
+        </Button>
+      </div>
+
+      <!-- Dot nav -->
+      <div class="flex items-center gap-2 pt-2" data-hero-el>
+        <button class="proj-dot rounded-full transition-all duration-300" data-target="0" style="width:20px;height:4px;background:#86efac" aria-label="Slide 1"></button>
+        <button class="proj-dot rounded-full transition-all duration-300" data-target="1" style="width:8px;height:4px;background:rgba(255,255,255,0.3)" aria-label="Slide 2"></button>
+        <button class="proj-dot rounded-full transition-all duration-300" data-target="2" style="width:8px;height:4px;background:rgba(255,255,255,0.3)" aria-label="Slide 3"></button>
+      </div>
     </div>
 
     <!-- Cards adaptadas a mobile -->
@@ -133,4 +175,71 @@ const totalCO2 = "1,700+";
 
 <!-- Spacer so that the content starts after the hero -->
 <div class="h-dvh"></div>
+
+<script>
+  const slides   = document.querySelectorAll('.proj-slide');
+  const dots     = document.querySelectorAll('.proj-dot');
+  const DURATION = 5500;
+  let current = 0;
+  let timer: ReturnType<typeof setTimeout>;
+
+  function goTo(idx: number) {
+    // Fade out current slide
+    const outEl = slides[current] as HTMLElement;
+    outEl.style.transition = 'opacity 0.35s ease, transform 0.35s ease';
+    outEl.style.opacity = '0';
+    outEl.style.transform = 'translateY(-12px)';
+
+    setTimeout(() => {
+      outEl.classList.add('hidden');
+      outEl.style.opacity = '';
+      outEl.style.transform = '';
+      outEl.style.transition = '';
+      current = idx;
+
+      const inEl = slides[current] as HTMLElement;
+      inEl.classList.remove('hidden');
+      inEl.style.opacity = '0';
+      inEl.style.transform = 'translateY(12px)';
+      inEl.style.transition = '';
+
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          inEl.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+          inEl.style.opacity = '1';
+          inEl.style.transform = 'translateY(0)';
+        });
+      });
+    }, 370);
+
+    // Update dots
+    dots.forEach((d, i) => {
+      const el = d as HTMLElement;
+      if (i === idx) {
+        el.style.width = '20px';
+        el.style.background = '#86efac';
+      } else {
+        el.style.width = '8px';
+        el.style.background = 'rgba(255,255,255,0.3)';
+      }
+    });
+  }
+
+  function next() {
+    goTo((current + 1) % slides.length);
+    clearTimeout(timer);
+    timer = setTimeout(next, DURATION);
+  }
+
+  // Boot
+  timer = setTimeout(next, DURATION);
+
+  dots.forEach((dot, i) => {
+    dot.addEventListener('click', () => {
+      clearTimeout(timer);
+      goTo(i);
+      timer = setTimeout(next, DURATION);
+    });
+  });
+</script>
 

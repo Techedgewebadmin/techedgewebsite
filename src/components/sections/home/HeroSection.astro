@@ -18,44 +18,138 @@ import Button from "@/components/ui/buttons/Button.astro";
 
   <div class="absolute inset-0 bg-black opacity-30 pointer-events-none"></div>
 
-  <div
-    class="relative z-10 h-full flex items-baseline-last justify-between p-4 lg:p-12"
-  >
-    <div class="max-w-3xl space-y-4 text-accent-foreground">
-      <h1
-        data-hero-el
-        class="text-4xl lg:text-6xl xl:text-8xl font-anton uppercase"
-      >
-        {t("index.hero.h1")}
-      </h1>
+  <div class="relative z-10 h-full flex items-baseline-last justify-between p-4 lg:p-12">
 
-      <p
-        data-hero-el
-        class="text-base lg:text-lg xl:text-xl mt-4 max-w-xl font-sans"
-      >
-        {t("index.hero.description")}
-      </p>
-      <div data-hero-el class="flex flex-wrap gap-4">
-        <Button
-          href="/solutions"
-          variant="secondary"
-          class="font-anton text-base lg:text-xl uppercase"
-          size="lg"
-        >
-          {t("index.hero.btn")}
-        </Button>
-        <Button
-          href="/contact"
-          variant="secondary"
-          class="font-anton text-base lg:text-xl uppercase"
-          size="lg"
-        >
-          Free Site Survey
-        </Button>
+    <div class="max-w-3xl text-accent-foreground">
+
+      <!-- Slide 1: Identity -->
+      <div class="home-slide" data-slide="0">
+        <p class="text-xs font-bold uppercase tracking-widest text-secondary mb-3 opacity-80">Bengaluru's Solar EPC Partner</p>
+        <h1 class="text-4xl lg:text-6xl xl:text-8xl font-anton uppercase leading-none">
+          {t("index.hero.h1")}
+        </h1>
+        <p class="text-base lg:text-lg xl:text-xl mt-4 max-w-xl font-sans">
+          {t("index.hero.description")}
+        </p>
+        <div class="flex flex-wrap gap-4 mt-6">
+          <Button href="/solutions" variant="secondary" class="font-anton text-base lg:text-xl uppercase" size="lg">
+            {t("index.hero.btn")}
+          </Button>
+          <Button href="/contact" variant="secondary" class="font-anton text-base lg:text-xl uppercase" size="lg">
+            Free Site Survey
+          </Button>
+        </div>
+      </div>
+
+      <!-- Slide 2: Solutions -->
+      <div class="home-slide hidden" data-slide="1">
+        <p class="text-xs font-bold uppercase tracking-widest text-secondary mb-3 opacity-80">Our Solutions</p>
+        <h1 class="text-4xl lg:text-6xl xl:text-8xl font-anton uppercase leading-none">
+          Every Roof.<br/>Every Load.
+        </h1>
+        <p class="text-base lg:text-lg xl:text-xl mt-4 max-w-xl font-sans">
+          On-grid, hybrid, off-grid, cold storage, agri pump — Techedge designs and installs the right solar solution for your site, your load, and your budget. End to end.
+        </p>
+        <div class="flex flex-wrap gap-4 mt-6">
+          <Button href="/solutions" variant="secondary" class="font-anton text-base lg:text-xl uppercase" size="lg">
+            Explore Solutions
+          </Button>
+        </div>
+      </div>
+
+      <!-- Slide 3: Projects -->
+      <div class="home-slide hidden" data-slide="2">
+        <p class="text-xs font-bold uppercase tracking-widest text-secondary mb-3 opacity-80">Our Track Record</p>
+        <h1 class="text-4xl lg:text-6xl xl:text-8xl font-anton uppercase leading-none">
+          200+ Projects.<br/>2+ MW Done.
+        </h1>
+        <p class="text-base lg:text-lg xl:text-xl mt-4 max-w-xl font-sans">
+          1 MW industrial rooftop in Bengaluru. 45 kW cold storage in Satara. HPCL fuel station. 5 kWp homes saving ₹50,000 a year. Every project engineered properly, installed cleanly, built to last 25 years.
+        </p>
+        <div class="flex flex-wrap gap-4 mt-6">
+          <Button href="/projects" variant="secondary" class="font-anton text-base lg:text-xl uppercase" size="lg">
+            View Our Projects
+          </Button>
+        </div>
+      </div>
+
+      <!-- Slide 4: Products -->
+      <div class="home-slide hidden" data-slide="3">
+        <p class="text-xs font-bold uppercase tracking-widest text-secondary mb-3 opacity-80">Our Products</p>
+        <h1 class="text-4xl lg:text-6xl xl:text-8xl font-anton uppercase leading-none">
+          Only The Best<br/>In The Market.
+        </h1>
+        <p class="text-base lg:text-lg xl:text-xl mt-4 max-w-xl font-sans">
+          Techedge works with the best — Deye inverters trusted across 190 countries, Goldi Solar bifacial panels certified in India, Techedge home kits for rural and NGO supply. Every product chosen for reliability, not margin.
+        </p>
+        <div class="flex flex-wrap gap-4 mt-6">
+          <Button href="/products" variant="secondary" class="font-anton text-base lg:text-xl uppercase" size="lg">
+            Browse Products
+          </Button>
+        </div>
+      </div>
+
+      <!-- Slide 5: Contact -->
+      <div class="home-slide hidden" data-slide="4">
+        <p class="text-xs font-bold uppercase tracking-widest text-secondary mb-3 opacity-80">Start Here</p>
+        <h1 class="text-4xl lg:text-6xl xl:text-8xl font-anton uppercase leading-none">
+          Free Survey.<br/>Fixed Quote.
+        </h1>
+        <p class="text-base lg:text-lg xl:text-xl mt-4 max-w-xl font-sans">
+          Our engineers visit your site, assess your rooftop and load, and return with a full system design — panel count, inverter spec, shadow analysis, generation forecast, payback period, and a fixed price. No charge. No obligation.
+        </p>
+        <div class="flex flex-wrap gap-4 mt-6">
+          <Button href="/contact" variant="secondary" class="font-anton text-base lg:text-xl uppercase" size="lg">
+            Book a Free Survey
+          </Button>
+        </div>
+      </div>
+
+      <!-- Slide 6: Why Techedge -->
+      <div class="home-slide hidden" data-slide="5">
+        <p class="text-xs font-bold uppercase tracking-widest text-secondary mb-3 opacity-80">Why Techedge</p>
+        <h1 class="text-4xl lg:text-6xl xl:text-8xl font-anton uppercase leading-none">
+          10 Years.<br/>One Standard.
+        </h1>
+        <p class="text-base lg:text-lg xl:text-xl mt-4 max-w-xl font-sans">
+          Every installation designed by engineers, not salespeople. Every system sized to your actual load — not oversold. Every project backed by post-installation support and a team that picks up the phone.
+        </p>
+        <div class="flex flex-wrap gap-4 mt-6">
+          <Button href="/contact" variant="secondary" class="font-anton text-base lg:text-xl uppercase" size="lg">
+            Talk to an Engineer
+          </Button>
+        </div>
+      </div>
+
+      <!-- Slide 7: Blog / Knowledge -->
+      <div class="home-slide hidden" data-slide="6">
+        <p class="text-xs font-bold uppercase tracking-widest text-secondary mb-3 opacity-80">Solar Knowledge</p>
+        <h1 class="text-4xl lg:text-6xl xl:text-8xl font-anton uppercase leading-none">
+          Know Before<br/>You Buy.
+        </h1>
+        <p class="text-base lg:text-lg xl:text-xl mt-4 max-w-xl font-sans">
+          On-grid vs hybrid. Payback periods. Net metering explained. How cold storage solar works. Read our guides — written by engineers, not marketers — before you spend a rupee.
+        </p>
+        <div class="flex flex-wrap gap-4 mt-6">
+          <Button href="/blog" variant="secondary" class="font-anton text-base lg:text-xl uppercase" size="lg">
+            Read Our Blog
+          </Button>
+        </div>
+      </div>
+
+      <!-- Dot nav -->
+      <div class="flex items-center gap-2 mt-6">
+        <button class="home-dot rounded-full transition-all duration-300" data-target="0" style="width:20px;height:4px;background:#86efac" aria-label="Slide 1"></button>
+        <button class="home-dot rounded-full transition-all duration-300" data-target="1" style="width:8px;height:4px;background:rgba(255,255,255,0.35)" aria-label="Slide 2"></button>
+        <button class="home-dot rounded-full transition-all duration-300" data-target="2" style="width:8px;height:4px;background:rgba(255,255,255,0.35)" aria-label="Slide 3"></button>
+        <button class="home-dot rounded-full transition-all duration-300" data-target="3" style="width:8px;height:4px;background:rgba(255,255,255,0.35)" aria-label="Slide 4"></button>
+        <button class="home-dot rounded-full transition-all duration-300" data-target="4" style="width:8px;height:4px;background:rgba(255,255,255,0.35)" aria-label="Slide 5"></button>
+        <button class="home-dot rounded-full transition-all duration-300" data-target="5" style="width:8px;height:4px;background:rgba(255,255,255,0.35)" aria-label="Slide 6"></button>
+        <button class="home-dot rounded-full transition-all duration-300" data-target="6" style="width:8px;height:4px;background:rgba(255,255,255,0.35)" aria-label="Slide 7"></button>
       </div>
     </div>
+
     <Icon
-      data-hero-el
       name="arrow"
       size={56}
       class="rotate-180 hidden lg:block text-accent-foreground"
@@ -65,3 +159,57 @@ import Button from "@/components/ui/buttons/Button.astro";
 
 <!-- Spacer so that the content starts after the hero -->
 <div class="h-dvh"></div>
+
+<script>
+  const slides   = document.querySelectorAll('.home-slide');
+  const dots     = document.querySelectorAll('.home-dot');
+  const DURATION = 5500;
+  let current = 0;
+  let timer: ReturnType<typeof setTimeout>;
+
+  function goTo(idx: number) {
+    const outEl = slides[current] as HTMLElement;
+    outEl.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
+    outEl.style.opacity = '0';
+    outEl.style.transform = 'translateY(-14px)';
+
+    setTimeout(() => {
+      outEl.classList.add('hidden');
+      outEl.style.cssText = '';
+      current = idx;
+
+      const inEl = slides[current] as HTMLElement;
+      inEl.classList.remove('hidden');
+      inEl.style.opacity = '0';
+      inEl.style.transform = 'translateY(14px)';
+
+      requestAnimationFrame(() => requestAnimationFrame(() => {
+        inEl.style.transition = 'opacity 0.55s ease, transform 0.55s ease';
+        inEl.style.opacity = '1';
+        inEl.style.transform = 'translateY(0)';
+      }));
+    }, 420);
+
+    dots.forEach((d, i) => {
+      const el = d as HTMLElement;
+      el.style.width  = i === idx ? '20px' : '8px';
+      el.style.background = i === idx ? '#86efac' : 'rgba(255,255,255,0.35)';
+    });
+  }
+
+  function next() {
+    goTo((current + 1) % slides.length);
+    clearTimeout(timer);
+    timer = setTimeout(next, DURATION);
+  }
+
+  timer = setTimeout(next, DURATION);
+
+  dots.forEach((dot, i) => {
+    dot.addEventListener('click', () => {
+      clearTimeout(timer);
+      goTo(i);
+      timer = setTimeout(next, DURATION);
+    });
+  });
+</script>

@@ -76,6 +76,33 @@ const related = isDeye
     : allTechedgeProducts.filter(r => r.category === t.category && r.id !== t.id).slice(0, 4);
 const priceWithGst = isDeye ? Math.round(p.sellingPrice * (1 + p.gstRate / 100)) : 0;
 
+// ── HERO SLIDE DATA (unified across all three brands) ─────────────────────────
+const heroName  = isDeye ? dp!.name  : isGoldi ? gp!.name  : tp!.name;
+const heroModel = isDeye ? dp!.model : isGoldi ? gp!.model : tp!.model;
+const heroBrand = isDeye ? 'Deye'    : isGoldi ? 'Goldi Solar' : 'Techedge';
+const heroBrandColor = isDeye ? '#f97316' : isGoldi ? '#eab308' : '#86efac';
+
+const heroStats: { value: string; label: string }[] = isDeye ? [
+  ...(dp!.specs.efficiency ? [{ value: dp!.specs.efficiency, label: 'Max Efficiency' }] : []),
+  ...(dp!.specs.ipRating   ? [{ value: dp!.specs.ipRating,   label: 'IP Rating' }]      : []),
+  ...(dp!.specs.mpptTrackers ? [{ value: String(dp!.specs.mpptTrackers), label: 'MPPT Trackers' }] : []),
+  { value: dp!.warranty, label: 'Warranty' },
+].slice(0, 4) : isGoldi ? [
+  { value: `${gp!.efficiency}%`,         label: 'Efficiency' },
+  { value: `${gp!.powerWp} Wp`,          label: 'Power (STC)' },
+  { value: gp!.performanceWarranty,       label: 'Performance' },
+  { value: gp!.productWarranty,           label: 'Product Warranty' },
+] : [
+  { value: `${tp!.backupHours} hrs`,      label: 'Backup Time' },
+  { value: tp!.batterySpec,               label: 'Battery' },
+  { value: tp!.panelSpec,                 label: 'Solar Panel' },
+  ...(tp!.loadSpec ? [{ value: tp!.loadSpec, label: 'Load' }] : []),
+].slice(0, 4);
+
+const heroFeatures = (isDeye ? dp!.features : isGoldi ? gp!.features : tp!.features).slice(0, 3);
+const heroUseCases = isDeye ? dp!.useCases  : isGoldi ? gp!.useCases  : tp!.useCases;
+const heroDesc     = isDeye ? dp!.seoDescription : isGoldi ? gp!.seoDescription : tp!.seoDescription;
+
 // Schema.org
 const schema = isDeye ? {
   "@context": "https://schema.org", "@type": "Product",
@@ -134,6 +161,154 @@ const schema = isDeye ? {
       </nav>
     </div>
   </div>
+
+  <!-- ── ROTATING PRODUCT HERO ─────────────────────────────────────────────── -->
+  <div class="relative overflow-hidden" style="background:#0a1628; min-height:360px;">
+    <!-- Ambient glow -->
+    <div class="absolute inset-0 pointer-events-none" style={`background: radial-gradient(ellipse at 75% 40%, ${heroBrandColor}18 0%, transparent 60%)`}></div>
+
+    <div class="relative z-10 max-w-7xl mx-auto px-4 lg:px-8">
+
+      <!-- ── SLIDE 1: Identity ─────────────── -->
+      <div class="hero-slide py-12 lg:py-16" data-slide="0">
+        <div class="flex flex-wrap items-center gap-2 mb-5">
+          <span class="text-xs font-bold uppercase tracking-widest px-3 py-1 rounded-full" style={`color:${heroBrandColor}; background:${heroBrandColor}18; border:1px solid ${heroBrandColor}40`}>
+            {heroBrand}
+          </span>
+          {isDeye && <span class="text-xs font-semibold uppercase text-white/50 bg-white/5 px-3 py-1 rounded-full border border-white/10">{dp!.category}</span>}
+          {isGoldi && <span class="text-xs font-semibold uppercase text-white/50 bg-white/5 px-3 py-1 rounded-full border border-white/10">{gp!.series}</span>}
+          {!isDeye && !isGoldi && <span class="text-xs font-semibold uppercase text-white/50 bg-white/5 px-3 py-1 rounded-full border border-white/10">{tp!.category}</span>}
+        </div>
+        <h1 class="font-anton text-4xl md:text-6xl lg:text-7xl uppercase text-white leading-none mb-2">
+          {heroName}
+        </h1>
+        <p class="font-mono text-sm text-white/40 mb-8">Model: {heroModel}</p>
+        <div class="flex flex-wrap gap-4">
+          {heroStats.map(s => (
+            <div class="rounded-2xl px-5 py-3 text-center" style="background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1);">
+              <p class="text-2xl font-bold" style={`color:${heroBrandColor}`}>{s.value}</p>
+              <p class="text-[10px] uppercase tracking-wider text-white/40 font-semibold mt-0.5">{s.label}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- ── SLIDE 2: Features ─────────────── -->
+      <div class="hero-slide py-12 lg:py-16 hidden" data-slide="1">
+        <p class="text-xs font-bold uppercase tracking-widest mb-6" style={`color:${heroBrandColor}`}>Key Features</p>
+        <div class="space-y-5">
+          {heroFeatures.map((f, i) => (
+            <div class="flex items-start gap-4">
+              <span class="text-xl font-bold shrink-0 mt-0.5" style={`color:${heroBrandColor}`}>0{i + 1}</span>
+              <p class="text-white/90 text-lg md:text-xl font-light leading-snug">{f}</p>
+            </div>
+          ))}
+        </div>
+        <p class="text-white/30 text-xs mt-8 font-mono">{heroModel}</p>
+      </div>
+
+      <!-- ── SLIDE 3: Applications ─────────── -->
+      <div class="hero-slide py-12 lg:py-16 hidden" data-slide="2">
+        <p class="text-xs font-bold uppercase tracking-widest mb-6" style={`color:${heroBrandColor}`}>Ideal For</p>
+        <div class="flex flex-wrap gap-3 mb-8">
+          {heroUseCases.map(uc => (
+            <span class="text-sm font-semibold px-4 py-2 rounded-full text-white/80" style="background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.12);">
+              {uc}
+            </span>
+          ))}
+        </div>
+        <p class="text-white/40 text-sm max-w-2xl leading-relaxed">{heroDesc.slice(0, 160)}…</p>
+      </div>
+    </div>
+
+    <!-- Progress bar -->
+    <div class="absolute bottom-0 left-0 h-[2px] w-full" style="background:rgba(255,255,255,0.08)">
+      <div id="phero-bar" class="h-full" style={`background:${heroBrandColor}; width:0%`}></div>
+    </div>
+
+    <!-- Dot nav -->
+    <div class="absolute bottom-5 right-6 flex items-center gap-2">
+      {[0,1,2].map(i => (
+        <button class="phero-dot transition-all duration-300 rounded-full" data-target={i}
+          style={i === 0 ? `width:20px; height:4px; background:${heroBrandColor}` : 'width:8px; height:4px; background:rgba(255,255,255,0.25)'}
+          aria-label={`Slide ${i+1}`}
+        ></button>
+      ))}
+    </div>
+  </div>
+
+  <script define:vars={{ heroBrandColor }}>
+    const slides   = document.querySelectorAll('.hero-slide');
+    const dots     = document.querySelectorAll('.phero-dot');
+    const bar      = document.getElementById('phero-bar');
+    const DURATION = 5500;
+    let current = 0;
+    let timer, barTween;
+
+    function startBar() {
+      if (!bar) return;
+      bar.style.transition = 'none';
+      bar.style.width = '0%';
+      requestAnimationFrame(() => {
+        bar.style.transition = `width ${DURATION}ms linear`;
+        bar.style.width = '100%';
+      });
+    }
+
+    function goTo(idx) {
+      // Hide current
+      slides[current].style.opacity = '0';
+      slides[current].style.transform = 'translateY(-16px)';
+      setTimeout(() => {
+        slides[current].classList.add('hidden');
+        slides[current].style.opacity = '';
+        slides[current].style.transform = '';
+        current = idx;
+        slides[current].classList.remove('hidden');
+        slides[current].style.opacity = '0';
+        slides[current].style.transform = 'translateY(16px)';
+        requestAnimationFrame(() => {
+          slides[current].style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+          slides[current].style.opacity = '1';
+          slides[current].style.transform = 'translateY(0)';
+          setTimeout(() => { slides[current].style.transition = ''; }, 520);
+        });
+      }, 350);
+
+      // Update dots
+      dots.forEach((d, i) => {
+        if (i === idx) {
+          d.style.width = '20px';
+          d.style.height = '4px';
+          d.style.background = heroBrandColor;
+        } else {
+          d.style.width = '8px';
+          d.style.height = '4px';
+          d.style.background = 'rgba(255,255,255,0.25)';
+        }
+      });
+
+      startBar();
+    }
+
+    function next() {
+      goTo((current + 1) % slides.length);
+      clearTimeout(timer);
+      timer = setTimeout(next, DURATION);
+    }
+
+    // Boot
+    startBar();
+    timer = setTimeout(next, DURATION);
+
+    dots.forEach((dot, i) => {
+      dot.addEventListener('click', () => {
+        clearTimeout(timer);
+        goTo(i);
+        timer = setTimeout(next, DURATION);
+      });
+    });
+  </script>
 
   <!-- ── DEYE PRODUCT LAYOUT ─────────────────────────────────────────────── -->
   {isDeye && (
