@@ -14,6 +14,16 @@ stats:
   energyGenerated: "49,275 kWh/year"
   paybackPeriod: "~3 years"
 client: "Sri Chandrakanth"
+additionalImages:
+  - "../../assets/projects/cold-storage-mysuru.jpeg"
+galleryImages:
+  - "../../assets/projects/cold-storage-mysuru.jpeg"
+mapUrl: "https://maps.google.com/maps?q=Bilekere+Hobli+Hunasur+Taluk+Mysuru+Karnataka&output=embed&z=14"
+testimonials:
+  - quote: "Techedge was involved from day one — DPR, AIF interest subvention, multiple site visits at every stage of planning and execution, right through to commissioning. What impressed me most was the attention to minute details and their deep knowledge of both cold storage operations and solar systems. The hybrid system with battery backup has kept our compressors running without interruption through every power cut."
+    author: "Sri Chandrakanth"
+    role: "Owner, 80 MT Cold Storage Facility — Bilekere Hobli, Mysuru"
+    rating: 5
 challenges:
   - "Cold storage requires uninterrupted 24/7 power — any outage risks crores of produce loss"
   - "High energy demand from compressors running round the clock"

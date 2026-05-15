@@ -14,6 +14,12 @@ stats:
   energyGenerated: "89,100 kWh/year"
   paybackPeriod: "~16 months"
 client: "Mandprabha Farmer Producer Company"
+additionalImages:
+  - "../../assets/projects/mandprabha-fpc-millet-processing.jpeg"
+  - "../../assets/projects/mandprabha-fpc-satara-aerial.jpeg"
+galleryImages:
+  - "../../assets/projects/mandprabha-fpc-satara-aerial.jpeg"
+  - "../../assets/projects/mandprabha-fpc-millet-processing.jpeg"
 mapUrl: "https://maps.google.com/maps?q=Mandprabha+Farmer+Producer+Company+Shinganapur+Satara+Maharashtra+415508&output=embed&z=16"
 testimonials:
   - quote: "Our electricity bill was killing the business — over one lakh in peak months. Techedge came in, studied our bills, applied for the SELCO grant on our behalf, and installed the entire system. Now we save over ₹61,000 every month. That money goes back to our farmer members. I didn't have to worry about a single document or approval — they handled everything end to end."

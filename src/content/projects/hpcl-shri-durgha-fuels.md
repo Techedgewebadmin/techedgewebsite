@@ -15,6 +15,16 @@ stats:
 client: "Shri Durgha Fuels"
 logo: "/logos/hpcl.png"
 heroFit: "contain"
+additionalImages:
+  - "../../assets/projects/hpcl-fuel-station.jpeg"
+galleryImages:
+  - "../../assets/projects/hpcl-fuel-station.jpeg"
+mapUrl: "https://maps.google.com/maps?q=Mankodu+Soraba+Road+Sagara+Shimoga+Karnataka&output=embed&z=15"
+testimonials:
+  - quote: "I had doubts about whether solar would actually work for a fuel station — the loads are heavy and continuous. Techedge did a proper site assessment, explained the system design clearly, and delivered exactly what they promised. Six years on, the system is still performing without a single issue. That kind of reliability says everything about their engineering."
+    author: "Mr. Raghavendra M"
+    role: "Owner, Shri Durgha Fuels — HPCL Retail Outlet, Sagara"
+    rating: 5
 challenges:
   - "Ensuring uninterrupted fuel station operations during installation"
   - "Roof space planning around canopy and service areas"

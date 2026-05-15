@@ -51,6 +51,22 @@ const collageInstall = hasCollage ? additionalImages![1] : null;
   description={description}
   image={image.src}
 >
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": title,
+    "description": description,
+    "datePublished": date,
+    "author": { "@type": "Organization", "name": "Techedge Solar", "url": "https://techedge.in" },
+    "publisher": { "@type": "Organization", "name": "Techedge Solar", "url": "https://techedge.in" },
+    "url": Astro.url.href,
+    "mainEntityOfPage": { "@type": "WebPage", "@id": Astro.url.href },
+    "about": {
+      "@type": "LocalBusiness",
+      "name": client || "Techedge Solar Client",
+      "address": { "@type": "PostalAddress", "addressLocality": location, "addressCountry": "IN" },
+    },
+  })} />
   <!-- Hero: collage layout (owner + install shots) OR single full-bleed image -->
   {hasCollage ? (
     <section class="fixed top-0 left-0 w-full h-dvh overflow-hidden z-0 bg-black">

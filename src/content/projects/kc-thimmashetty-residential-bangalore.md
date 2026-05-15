@@ -18,6 +18,16 @@ additionalImages:
   - "../../assets/projects/kc-thimmashetty-client.jpeg"
   - "../../assets/projects/kc-thimmashetty-aerial.jpeg"
 heroFit: "cover"
+galleryImages:
+  - "../../assets/projects/kc-thimmashetty-panels.jpeg"
+  - "../../assets/projects/kc-thimmashetty-aerial.jpeg"
+  - "../../assets/projects/kc-thimmashetty-client.jpeg"
+mapUrl: "https://maps.google.com/maps?q=Bengaluru+Karnataka+Residential+Solar&output=embed&z=13"
+testimonials:
+  - quote: "We recently got our home solar system installed by TechEdge India, and the overall experience was really smooth. From the initial discussion to the final setup, everything was handled in a clear and straightforward way. The installation was done neatly, and the team made sure we understood how everything works. Since the installation, we've already started noticing a drop in our electricity bills. Would definitely recommend TechEdge India to anyone thinking about going solar."
+    author: "K.C. Thimmashetty"
+    role: "Homeowner — 5 kWp Residential Solar, Bengaluru"
+    rating: 5
 challenges:
   - "Optimising panel layout on a sloped metal sheet roof with limited flat area"
   - "Coordinating BESCOM net metering approval for a residential connection"

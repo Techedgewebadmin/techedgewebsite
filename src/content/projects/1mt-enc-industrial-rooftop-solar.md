@@ -28,6 +28,12 @@ galleryImages:
   - "../../assets/projects/1mt-enc-crane-lift.jpeg"
   - "../../assets/projects/1mt-enc-module-inventory.jpeg"
 heroFit: "cover"
+mapUrl: "https://maps.google.com/maps?q=Bengaluru+Karnataka+Industrial+Solar+Installation&output=embed&z=12"
+testimonials:
+  - quote: "The scale of this project demanded a team that understood both engineering and site safety. Techedge delivered on both — crane lifts, harness compliance, structural fabrication — all executed without a single safety incident across 1,850 modules. That level of discipline on a 1 MW rooftop is rare."
+    author: "Project Manager"
+    role: "1MT E&C — 1 MW Industrial Solar, Bengaluru"
+    rating: 5
 challenges:
   - "Executing megawatt-scale installation across large, elevated industrial metal-sheet roofing"
   - "Managing safe lifting of heavy solar module pallets to rooftop level"

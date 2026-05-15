@@ -28,6 +28,19 @@ const formattedDate = new Date(date).toLocaleDateString("en-IN", {
 
 <Layout title={`${title} | Techedge Blog`} description={description} keywords={tags?.join(", ")}>
 
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": title,
+    "description": description,
+    "datePublished": date,
+    "author": { "@type": "Organization", "name": author || "Techedge Team", "url": "https://techedge.in" },
+    "publisher": { "@type": "Organization", "name": "Techedge Solar", "url": "https://techedge.in", "logo": { "@type": "ImageObject", "url": "https://techedge.in/favicon.svg" } },
+    "keywords": tags?.join(", "),
+    "url": Astro.url.href,
+    "mainEntityOfPage": { "@type": "WebPage", "@id": Astro.url.href },
+  })} />
+
   <!-- Hero image -->
   <section class="fixed top-0 left-0 w-full h-dvh overflow-hidden z-0">
     <Image
