@@ -36,10 +36,10 @@ solutions:
       <span style="background:rgba(134,239,172,0.1);border:1px solid rgba(134,239,172,0.2);color:#86efac;font-size:11px;font-weight:700;padding:5px 12px;border-radius:99px;text-transform:uppercase;letter-spacing:0.06em;">♀ Women-Led Enterprise</span>
       <span style="background:rgba(134,239,172,0.1);border:1px solid rgba(134,239,172,0.2);color:#86efac;font-size:11px;font-weight:700;padding:5px 12px;border-radius:99px;text-transform:uppercase;letter-spacing:0.06em;">⚡ 45 kW On-Grid · Satara</span>
     </div>
-    <p class="text-white text-base md:text-lg leading-relaxed max-w-3xl">
-      <strong class="text-white">Mandprabha Farmer Producer Company</strong> — a women-led millet processing enterprise in rural Satara, Maharashtra — was spending <strong style="color:#fca5a5;">₹74,630/month</strong> on electricity. Peak months crossed ₹1 lakh. That single cost was threatening the entire enterprise and the farming community it supports.
+    <p style="color:white;font-size:1rem;line-height:1.75;max-width:48rem;margin:0;">
+      <strong style="color:white;">Mandprabha Farmer Producer Company</strong> — a women-led millet processing enterprise in rural Satara, Maharashtra — was spending <strong style="color:#fca5a5;">₹74,630/month</strong> on electricity. Peak months crossed ₹1 lakh. That single cost was threatening the entire enterprise and the farming community it supports.
     </p>
-    <p class="text-white text-sm mt-4 leading-relaxed max-w-2xl">
+    <p style="color:white;font-size:0.875rem;line-height:1.75;max-width:40rem;margin-top:1rem;">
       Techedge identified the SELCO Foundation grant, built the financial case, prepared every document, engineered the system, installed it, and now maintains it — end to end.
     </p>
   </div>
@@ -120,7 +120,7 @@ solutions:
       <span class="text-4xl flex-shrink-0">🌟</span>
       <div>
         <p class="font-bold text-lg mb-2" style="color:#86efac;">SELCO Foundation Solar Grant — ₹7,64,180 Approved</p>
-        <p class="text-white text-sm leading-relaxed mb-4">
+        <p style="color:white;font-size:0.875rem;line-height:1.75;margin-bottom:1rem;">
           <a href="https://selcofoundation.org" style="color:#86efac;">SELCO Foundation</a> is India's leading clean energy grant body for underserved entrepreneurs. Securing a SELCO grant requires mission-alignment documentation, financial modelling, and evidence of genuine ownership intent. Techedge prepared the complete grant application package for this millet processing unit.
         </p>
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
@@ -498,7 +498,7 @@ solutions:
 
 <div class="not-prose rounded-2xl my-6" style="background:#0f172a;border-left:4px solid #15803d;">
   <div class="p-7 md:p-8">
-    <p class="text-sm leading-loose italic" style="color:white;">
+    <p style="color:white;font-size:0.875rem;line-height:2;font-style:italic;margin:0;">
       "Rural entrepreneurs like Mrs. Nilakhe are running serious businesses — millet processing, farmer networks, supply chains. Their electricity bill is one of the biggest threats to viability. When we came in, we didn't just quote a solar system. We studied her MSEDCL bills, built her ROI model, identified the SELCO grant she qualified for, wrote every document, designed and installed the system, and now manage it. That's what end-to-end means. The ₹7.64 lakh SELCO grant we secured for her — that's money that stays in the rural economy, supports the farming community, and makes her enterprise energy-independent for 25 years."
     </p>
     <p class="text-xs font-bold mt-4 uppercase tracking-widest" style="color:#86efac;">— Techedge, May 2026</p>
@@ -512,8 +512,8 @@ solutions:
 <div class="not-prose rounded-2xl overflow-hidden my-6" style="background:linear-gradient(135deg,#0f2818,#14532d);">
   <div class="p-7 md:p-8 text-center">
     <p class="text-xs font-bold uppercase tracking-widest mb-3" style="color:#86efac;">SELCO · GIZ · Gram Vikas · Clean Energy Grants</p>
-    <h3 class="text-white text-xl md:text-2xl font-bold mb-3">NGOs, FPCs, Rural Enterprises — You May Qualify</h3>
-    <p class="text-sm leading-relaxed max-w-xl mx-auto mb-6" style="color:white;">
+    <h3 style="color:white;font-size:1.25rem;font-weight:800;margin-bottom:0.75rem;">NGOs, FPCs, Rural Enterprises — You May Qualify</h3>
+    <p style="color:white;font-size:0.875rem;line-height:1.75;max-width:36rem;margin:0 auto 1.5rem;">
       Farmer Producer Companies, NGOs, rural enterprises and social businesses may qualify for SELCO Foundation, GIZ or Gram Vikas solar grants. Techedge identifies your eligibility, prepares the full application, and delivers the solar system — end to end, across Maharashtra and India.
     </p>
     <a href="/contact" class="inline-block bg-white font-bold text-sm px-7 py-3 rounded-full hover:bg-green-50 transition-colors" style="color:#14532d;">
