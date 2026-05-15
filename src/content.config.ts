@@ -39,6 +39,13 @@ const projects = defineCollection({
     heroFit: z.enum(['cover', 'contain']).optional().default('cover'),
     challenges: z.array(z.string()).optional(),
     solutions: z.array(z.string()).optional(),
+    testimonials: z.array(z.object({
+      quote: z.string(),
+      author: z.string(),
+      role: z.string(),
+      rating: z.number().default(5),
+    })).optional(),
+    mapUrl: z.string().optional(),
   }),
 });
 

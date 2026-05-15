@@ -14,6 +14,16 @@ stats:
   energyGenerated: "89,100 kWh/year"
   paybackPeriod: "~16 months"
 client: "Mandprabha Farmer Producer Company"
+mapUrl: "https://maps.google.com/maps?q=Mandprabha+Farmer+Producer+Company+Shinganapur+Satara+Maharashtra+415508&output=embed&z=16"
+testimonials:
+  - quote: "Our electricity bill was killing the business — over one lakh in peak months. Techedge came in, studied our bills, applied for the SELCO grant on our behalf, and installed the entire system. Now we save over ₹61,000 every month. That money goes back to our farmer members. I didn't have to worry about a single document or approval — they handled everything end to end."
+    author: "Mrs. Arati Abhay Nilakhe"
+    role: "Founder, Mandprabha Farmer Producer Company — Shinganapur, Satara"
+    rating: 5
+  - quote: "As a women-led FPC sourcing millets from small farmers, every rupee of profit matters. The solar system has made our processing unit financially stable and energy-independent. We now plan our procurement better because we know our energy cost is fixed for 25 years. Techedge understood our business, not just the solar system."
+    author: "Mandprabha FPC Committee"
+    role: "Board of Directors, Mandprabha Farmer Producer Company"
+    rating: 5
 challenges:
   - "High industrial electricity bills — ₹74,630/month at ₹18.60/unit effective rate on MSEDCL LT-V B II tariff"
   - "Client is a rural women entrepreneur with limited access to capital — full project cost of ₹17.64 Lakhs not self-fundable"
