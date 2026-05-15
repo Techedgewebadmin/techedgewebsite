@@ -95,16 +95,58 @@ Techedge designed and installed a **30 kWp hybrid solar system** integrated with
 
 ## Project Investment
 
-| Item | Amount |
-|---|---|
-| **Total Project Cost** | **₹35,00,000** |
-| RINAC Cold Storage | 80 MT |
-| Subsidy | Nil |
-| **Net Investment** | **₹35,00,000** |
+<div class="not-prose my-6" style="border-radius:16px;overflow:hidden;border:1px solid #e2e8f0;">
+  <div style="background:#1e293b;padding:12px 20px;"><span style="color:white;font-weight:700;font-size:13px;">PROJECT INVESTMENT</span></div>
+  <table style="width:100%;border-collapse:collapse;">
+    <thead>
+      <tr style="background:#f1f5f9;">
+        <th style="text-align:left;padding:9px 20px;font-size:11px;color:#1e293b;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;">Item</th>
+        <th style="text-align:left;padding:9px 20px;font-size:11px;color:#1e293b;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;">Amount</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr style="background:#ffffff;border-bottom:1px solid #f1f5f9;">
+        <td style="padding:9px 20px;font-size:12px;color:#475569;">Total Project Cost</td>
+        <td style="padding:9px 20px;font-size:12px;color:#475569;">₹35,00,000</td>
+      </tr>
+      <tr style="background:#f8fafc;border-bottom:1px solid #f1f5f9;">
+        <td style="padding:9px 20px;font-size:12px;color:#475569;">RINAC Cold Storage</td>
+        <td style="padding:9px 20px;font-size:12px;color:#475569;">80 MT</td>
+      </tr>
+      <tr style="background:#ffffff;border-bottom:1px solid #f1f5f9;">
+        <td style="padding:9px 20px;font-size:12px;color:#475569;">Subsidy</td>
+        <td style="padding:9px 20px;font-size:12px;color:#475569;">Nil</td>
+      </tr>
+      <tr style="background:#14532d;">
+        <td style="padding:9px 20px;font-size:12px;color:#ffffff;font-weight:700;">Net Investment</td>
+        <td style="padding:9px 20px;font-size:12px;color:#86efac;font-weight:700;">₹35,00,000</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 
 ---
 
 ## ROI & Savings
+
+<div class="not-prose grid grid-cols-2 sm:grid-cols-4 gap-4 my-6">
+  <div style="background:#0f172a;border-radius:16px;padding:16px;text-align:center;">
+    <p style="color:#86efac;font-size:1.15rem;font-weight:800;">~₹98,300</p>
+    <p style="color:#94a3b8;font-size:0.75rem;margin-top:4px;">Monthly Savings</p>
+  </div>
+  <div style="background:#0f172a;border-radius:16px;padding:16px;text-align:center;">
+    <p style="color:#86efac;font-size:1.15rem;font-weight:800;">~3 Years</p>
+    <p style="color:#94a3b8;font-size:0.75rem;margin-top:4px;">Payback Period</p>
+  </div>
+  <div style="background:#0f172a;border-radius:16px;padding:16px;text-align:center;">
+    <p style="color:#86efac;font-size:1.15rem;font-weight:800;">~₹18.65L</p>
+    <p style="color:#94a3b8;font-size:0.75rem;margin-top:4px;">Savings Till Date</p>
+  </div>
+  <div style="background:#0f172a;border-radius:16px;padding:16px;text-align:center;">
+    <p style="color:#86efac;font-size:1.15rem;font-weight:800;">₹2.95Cr+</p>
+    <p style="color:#94a3b8;font-size:0.75rem;margin-top:4px;">25-Year Value</p>
+  </div>
+</div>
 
 > *ROI is calculated for the Solar system only. Cold storage (RINAC) cost is not considered.*
 
@@ -154,4 +196,8 @@ For a cold storage owner, the cost of a single spoilage event can exceed the ent
 
 > *"A ₹35 lakh investment that saves ~₹98,000 every month — eliminating both electricity bills and diesel costs — while ensuring your produce never spoils. Paid back in 3 years, then pure profit for 22 more."*
 
-**[Get a Free Site Survey →](/contact)**
+<div class="not-prose rounded-2xl my-6" style="background:linear-gradient(135deg,#0f2818,#14532d);padding:24px 28px;text-align:center;">
+  <p style="color:#86efac;font-weight:700;font-size:0.8rem;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:8px;">Ready to protect your cold storage with solar?</p>
+  <p style="color:#d1fae5;font-size:0.875rem;line-height:1.7;margin-bottom:20px;">We'll assess your facility, size the right system, and show you the exact savings and payback — at no cost to you.</p>
+  <a href="/contact" style="display:inline-block;background:white;color:#14532d;font-weight:700;font-size:0.875rem;padding:10px 28px;border-radius:8px;text-decoration:none;">Get a Free Site Survey →</a>
+</div>

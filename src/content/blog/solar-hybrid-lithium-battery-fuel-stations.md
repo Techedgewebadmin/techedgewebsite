@@ -53,13 +53,44 @@ The battery — charged from solar during the day — handles critical loads for
 
 ### Result
 
-| Scenario | With DG Only | With Solar Hybrid |
-|---|---|---|
-| Daytime running cost | ₹7–₹8/unit from grid | ₹0 marginal from solar |
-| Power cut coverage | Diesel at ₹90+/litre | Battery (solar-charged) |
-| DG runtime per month | 40–80 hours | 5–10 hours (deep backup only) |
-| Monthly diesel spend | ₹40,000–₹80,000 | ₹5,000–₹10,000 |
-| Noise and emissions | Continuous when grid is down | Zero during battery operation |
+<div class="not-prose my-6" style="border-radius:16px;overflow:hidden;border:1px solid #e2e8f0;">
+  <table style="width:100%;border-collapse:collapse;">
+    <thead>
+      <tr style="background:#1e293b;">
+        <th style="text-align:left;padding:12px 20px;color:white;font-weight:700;font-size:13px;">Scenario</th>
+        <th style="text-align:left;padding:12px 20px;color:white;font-weight:700;font-size:13px;">With DG Only</th>
+        <th style="text-align:left;padding:12px 20px;color:white;font-weight:700;font-size:13px;">With Solar Hybrid</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr style="background:#ffffff;border-bottom:1px solid #f1f5f9;">
+        <td style="padding:9px 20px;font-size:14px;color:#1e293b;font-weight:600;">Daytime running cost</td>
+        <td style="padding:9px 20px;font-size:14px;color:#dc2626;">₹7–₹8/unit from grid</td>
+        <td style="padding:9px 20px;font-size:14px;color:#15803d;font-weight:600;">₹0 marginal from solar</td>
+      </tr>
+      <tr style="background:#f8fafc;border-bottom:1px solid #f1f5f9;">
+        <td style="padding:9px 20px;font-size:14px;color:#1e293b;font-weight:600;">Power cut coverage</td>
+        <td style="padding:9px 20px;font-size:14px;color:#dc2626;">Diesel at ₹90+/litre</td>
+        <td style="padding:9px 20px;font-size:14px;color:#15803d;font-weight:600;">Battery (solar-charged)</td>
+      </tr>
+      <tr style="background:#ffffff;border-bottom:1px solid #f1f5f9;">
+        <td style="padding:9px 20px;font-size:14px;color:#1e293b;font-weight:600;">DG runtime per month</td>
+        <td style="padding:9px 20px;font-size:14px;color:#dc2626;">40–80 hours</td>
+        <td style="padding:9px 20px;font-size:14px;color:#15803d;font-weight:600;">5–10 hours (deep backup only)</td>
+      </tr>
+      <tr style="background:#f8fafc;border-bottom:1px solid #f1f5f9;">
+        <td style="padding:9px 20px;font-size:14px;color:#1e293b;font-weight:600;">Monthly diesel spend</td>
+        <td style="padding:9px 20px;font-size:14px;color:#dc2626;">₹40,000–₹80,000</td>
+        <td style="padding:9px 20px;font-size:14px;color:#15803d;font-weight:600;">₹5,000–₹10,000</td>
+      </tr>
+      <tr style="background:#ffffff;">
+        <td style="padding:9px 20px;font-size:14px;color:#1e293b;font-weight:600;">Noise and emissions</td>
+        <td style="padding:9px 20px;font-size:14px;color:#dc2626;">Continuous when grid is down</td>
+        <td style="padding:9px 20px;font-size:14px;color:#15803d;font-weight:600;">Zero during battery operation</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 
 ---
 
@@ -82,16 +113,50 @@ A 30 kWh lithium battery bank can realistically deliver 25 kWh of usable energy 
 
 A fuel retail outlet with 2–4 dispensers, office lighting, CCTV, and AC has typical connected load of 15–25 kW. A solar hybrid system for this station would look like:
 
-| Component | Specification |
-|---|---|
-| Solar PV | 25–40 kWp |
-| Inverter | 20–30 kW hybrid inverter |
-| Battery | 30–60 kWh LFP |
-| Canopy / rooftop area needed | 1,500–2,500 sq. ft. |
-| Approx. system cost | ₹18–30 Lakhs |
-| Monthly savings | ₹40,000–₹70,000 |
-| Payback period | 3–4 years |
-| System life | 25 years (panels) / 10+ years (battery) |
+<div class="not-prose my-6" style="border-radius:16px;overflow:hidden;border:1px solid #e2e8f0;">
+  <table style="width:100%;border-collapse:collapse;">
+    <thead>
+      <tr style="background:#1e293b;">
+        <th style="text-align:left;padding:12px 20px;color:white;font-weight:700;font-size:13px;">Component</th>
+        <th style="text-align:left;padding:12px 20px;color:white;font-weight:700;font-size:13px;">Specification</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr style="background:#ffffff;border-bottom:1px solid #f1f5f9;">
+        <td style="padding:9px 20px;font-size:14px;color:#1e293b;font-weight:600;">Solar PV</td>
+        <td style="padding:9px 20px;font-size:14px;color:#1e293b;">25–40 kWp</td>
+      </tr>
+      <tr style="background:#f8fafc;border-bottom:1px solid #f1f5f9;">
+        <td style="padding:9px 20px;font-size:14px;color:#1e293b;font-weight:600;">Inverter</td>
+        <td style="padding:9px 20px;font-size:14px;color:#1e293b;">20–30 kW hybrid inverter</td>
+      </tr>
+      <tr style="background:#ffffff;border-bottom:1px solid #f1f5f9;">
+        <td style="padding:9px 20px;font-size:14px;color:#1e293b;font-weight:600;">Battery</td>
+        <td style="padding:9px 20px;font-size:14px;color:#1e293b;">30–60 kWh LFP</td>
+      </tr>
+      <tr style="background:#f8fafc;border-bottom:1px solid #f1f5f9;">
+        <td style="padding:9px 20px;font-size:14px;color:#1e293b;font-weight:600;">Canopy / rooftop area needed</td>
+        <td style="padding:9px 20px;font-size:14px;color:#1e293b;">1,500–2,500 sq. ft.</td>
+      </tr>
+      <tr style="background:#ffffff;border-bottom:1px solid #f1f5f9;">
+        <td style="padding:9px 20px;font-size:14px;color:#1e293b;font-weight:600;">Approx. system cost</td>
+        <td style="padding:9px 20px;font-size:14px;color:#1e293b;">₹18–30 Lakhs</td>
+      </tr>
+      <tr style="background:#f8fafc;border-bottom:1px solid #f1f5f9;">
+        <td style="padding:9px 20px;font-size:14px;color:#1e293b;font-weight:600;">Monthly savings</td>
+        <td style="padding:9px 20px;font-size:14px;color:#15803d;font-weight:600;">₹40,000–₹70,000</td>
+      </tr>
+      <tr style="background:#ffffff;border-bottom:1px solid #f1f5f9;">
+        <td style="padding:9px 20px;font-size:14px;color:#1e293b;font-weight:600;">Payback period</td>
+        <td style="padding:9px 20px;font-size:14px;color:#14532d;font-weight:700;">3–4 years</td>
+      </tr>
+      <tr style="background:#f8fafc;">
+        <td style="padding:9px 20px;font-size:14px;color:#1e293b;font-weight:600;">System life</td>
+        <td style="padding:9px 20px;font-size:14px;color:#1e293b;">25 years (panels) / 10+ years (battery)</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 
 For stations with larger forecourts or multiple service lines, the system scales proportionally. The canopy — already a structural requirement at fuel stations — doubles as an ideal solar mounting surface.
 
@@ -101,18 +166,18 @@ For stations with larger forecourts or multiple service lines, the system scales
 
 Solar hybrid systems are applicable to dealer outlets of major fuel retailers operating in India, including:
 
-<div class="fuel-brands-grid">
-  <div class="fuel-brand">
-    <img src="/logos/hpcl.png" alt="HPCL - Hindustan Petroleum" />
-    <span>Hindustan Petroleum (HPCL)</span>
+<div class="not-prose flex flex-wrap gap-4 my-6">
+  <div style="display:flex;flex-direction:column;align-items:center;gap:8px;padding:16px 20px;background:#f8fafc;border:1px solid #e2e8f0;border-radius:12px;min-width:140px;">
+    <img src="/logos/hpcl.png" alt="HPCL - Hindustan Petroleum" style="width:64px;height:64px;object-fit:contain;border-radius:8px;background:#ffffff;padding:4px;" />
+    <span style="font-size:12px;color:#475569;font-weight:500;text-align:center;">Hindustan Petroleum (HPCL)</span>
   </div>
-  <div class="fuel-brand">
-    <img src="/logos/bpcl.png" alt="BPCL - Bharat Petroleum" />
-    <span>Bharat Petroleum (BPCL)</span>
+  <div style="display:flex;flex-direction:column;align-items:center;gap:8px;padding:16px 20px;background:#f8fafc;border:1px solid #e2e8f0;border-radius:12px;min-width:140px;">
+    <img src="/logos/bpcl.png" alt="BPCL - Bharat Petroleum" style="width:64px;height:64px;object-fit:contain;border-radius:8px;background:#ffffff;padding:4px;" />
+    <span style="font-size:12px;color:#475569;font-weight:500;text-align:center;">Bharat Petroleum (BPCL)</span>
   </div>
-  <div class="fuel-brand">
-    <img src="/logos/iocl.png" alt="Indian Oil (IOCL)" />
-    <span>Indian Oil (IOCL)</span>
+  <div style="display:flex;flex-direction:column;align-items:center;gap:8px;padding:16px 20px;background:#f8fafc;border:1px solid #e2e8f0;border-radius:12px;min-width:140px;">
+    <img src="/logos/iocl.png" alt="Indian Oil (IOCL)" style="width:64px;height:64px;object-fit:contain;border-radius:8px;background:#ffffff;padding:4px;" />
+    <span style="font-size:12px;color:#475569;font-weight:500;text-align:center;">Indian Oil (IOCL)</span>
   </div>
 </div>
 
@@ -125,17 +190,51 @@ Each fuel retailer has specific electrical standards and safety codes (IS 5572 f
 For a 25 kWp solar + 40 kWh battery system at a mid-sized fuel retail outlet:
 
 **Year 1 Savings**
-- Solar generation: ~3,000 units/month × ₹7.50/unit = ₹22,500/month from grid savings
-- Diesel reduction: 50–60 hours DG runtime saved × ₹600/hour = ₹30,000–₹36,000/month
-- **Total monthly savings: ₹50,000–₹58,000**
-- **Annual savings: ₹6–7 Lakhs**
+
+<div class="not-prose grid grid-cols-1 sm:grid-cols-2 gap-4 my-6">
+  <div style="background:#f8fafc;border:1px solid #e2e8f0;border-left:4px solid #166634;border-radius:16px;padding:20px;">
+    <p style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;color:#166634;margin:0 0 8px;">Grid Savings</p>
+    <p style="font-size:22px;font-weight:800;color:#14532d;margin:0 0 4px;">₹22,500/month</p>
+    <p style="font-size:13px;color:#475569;margin:0;">~3,000 units/month × ₹7.50/unit from reduced grid draw</p>
+  </div>
+  <div style="background:#f8fafc;border:1px solid #e2e8f0;border-left:4px solid #166634;border-radius:16px;padding:20px;">
+    <p style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;color:#166634;margin:0 0 8px;">Diesel Savings</p>
+    <p style="font-size:22px;font-weight:800;color:#14532d;margin:0 0 4px;">₹30,000–₹36,000/month</p>
+    <p style="font-size:13px;color:#475569;margin:0;">50–60 DG hours saved × ₹600/hour in fuel and running costs</p>
+  </div>
+</div>
+
+<div class="not-prose my-4" style="background:#14532d;border-radius:12px;padding:16px 24px;display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between;">
+  <div>
+    <p style="font-size:12px;color:#86efac;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;margin:0 0 4px;">Total Monthly Savings</p>
+    <p style="font-size:28px;font-weight:800;color:white;margin:0;">₹50,000–₹58,000</p>
+  </div>
+  <div>
+    <p style="font-size:12px;color:#86efac;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;margin:0 0 4px;">Annual Savings</p>
+    <p style="font-size:28px;font-weight:800;color:white;margin:0;">₹6–7 Lakhs</p>
+  </div>
+</div>
 
 **25-Year Projection**
-- Total savings (with 5% annual escalation in grid/diesel rates): **₹2.5–3 Crores**
-- System cost: ₹22–26 Lakhs
-- Net benefit over lifetime: **₹2+ Crores**
 
-The return is not marginal — it is transformative for a fuel station's operating economics.
+<div class="not-prose my-6" style="background:#f0fdf4;border:1px solid #bbf7d0;border-left:4px solid #16a34a;border-radius:16px;padding:24px 28px;">
+  <p style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;color:#15803d;margin:0 0 12px;">25-Year Lifetime Value</p>
+  <div style="display:flex;flex-wrap:wrap;gap:24px;">
+    <div>
+      <p style="font-size:13px;color:#166534;margin:0 0 2px;">Total savings (5% annual escalation)</p>
+      <p style="font-size:22px;font-weight:800;color:#14532d;margin:0;">₹2.5–3 Crores</p>
+    </div>
+    <div>
+      <p style="font-size:13px;color:#166534;margin:0 0 2px;">System cost</p>
+      <p style="font-size:22px;font-weight:800;color:#1e293b;margin:0;">₹22–26 Lakhs</p>
+    </div>
+    <div>
+      <p style="font-size:13px;color:#166534;margin:0 0 2px;">Net benefit over lifetime</p>
+      <p style="font-size:22px;font-weight:800;color:#14532d;margin:0;">₹2+ Crores</p>
+    </div>
+  </div>
+  <p style="font-size:13px;color:#166534;margin:16px 0 0;">The return is not marginal — it is transformative for a fuel station's operating economics.</p>
+</div>
 
 ---
 
@@ -185,49 +284,12 @@ If even two of these apply, the payback math works.
 
 Techedge offers no-cost technical assessments for fuel retail stations — covering load analysis, canopy/rooftop survey, system sizing, diesel savings projection, and DISCOM approval roadmap.
 
-**Call: +91 98440 97096**
-
-**[Request a Free Assessment →](/contact)**
-
-<style>
-.fuel-brands-grid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1.5rem;
-  margin: 1.5rem 0;
-  align-items: center;
-}
-.fuel-brand {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.5rem;
-  text-align: center;
-  font-size: 0.75rem;
-  color: #666;
-  font-weight: 500;
-}
-.fuel-brand img {
-  width: 64px;
-  height: 64px;
-  object-fit: contain;
-  border-radius: 8px;
-  background: #f5f5f5;
-  padding: 4px;
-}
-.fuel-brand-badge {
-  width: 64px;
-  height: 64px;
-  border-radius: 8px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: 900;
-  font-size: 1.2rem;
-  color: white;
-}
-.bpcl-badge { background: #e8500a; }
-.iocl-badge { background: #cc0000; }
-.shell-badge { background: #DD1D21; font-size: 1.4rem; }
-.nayara-badge { background: #5b2d8e; }
-</style>
+<div class="not-prose my-8" style="background:linear-gradient(135deg,#0f2818,#14532d);border-radius:16px;padding:28px 32px;">
+  <p style="color:#86efac;font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;margin:0 0 8px;">Free Site Assessment</p>
+  <p style="color:white;font-size:20px;font-weight:700;margin:0 0 6px;">Find out how much your fuel station can save</p>
+  <p style="color:#bbf7d0;font-size:14px;margin:0 0 20px;">We cover load analysis, canopy survey, system sizing, diesel savings projection, and DISCOM approval roadmap — at no cost.</p>
+  <div style="display:flex;flex-wrap:wrap;gap:12px;align-items:center;">
+    <a href="/contact" style="display:inline-block;background:#16a34a;color:white;font-weight:700;font-size:14px;padding:12px 24px;border-radius:8px;text-decoration:none;">Request a Free Assessment →</a>
+    <span style="color:#86efac;font-size:14px;font-weight:600;">or call +91 98440 97096</span>
+  </div>
+</div>

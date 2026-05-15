@@ -29,14 +29,42 @@ This is significantly higher than the standard 15% depreciation applicable to ge
 
 ### Who Can Claim It
 
-| Entity Type | Can Claim AD? |
-|---|---|
-| Private Limited / Public Limited Company | ✅ Yes |
-| LLP (Limited Liability Partnership) | ✅ Yes |
-| Partnership Firm | ✅ Yes |
-| Proprietorship (with business income) | ✅ Yes |
-| Individual (residential, non-business) | ❌ No |
-| HUF | ❌ No |
+<div class="not-prose my-6" style="border-radius:16px;overflow:hidden;border:1px solid #e2e8f0;">
+  <table style="width:100%;border-collapse:collapse;">
+    <thead>
+      <tr style="background:#1e293b;">
+        <th style="text-align:left;padding:12px 20px;color:white;font-weight:700;font-size:13px;">Entity Type</th>
+        <th style="text-align:left;padding:12px 20px;color:white;font-weight:700;font-size:13px;">Can Claim AD?</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr style="background:#ffffff;border-bottom:1px solid #f1f5f9;">
+        <td style="padding:9px 20px;font-size:14px;color:#1e293b;">Private Limited / Public Limited Company</td>
+        <td style="padding:9px 20px;font-size:14px;color:#15803d;font-weight:600;">✅ Yes</td>
+      </tr>
+      <tr style="background:#f8fafc;border-bottom:1px solid #f1f5f9;">
+        <td style="padding:9px 20px;font-size:14px;color:#1e293b;">LLP (Limited Liability Partnership)</td>
+        <td style="padding:9px 20px;font-size:14px;color:#15803d;font-weight:600;">✅ Yes</td>
+      </tr>
+      <tr style="background:#ffffff;border-bottom:1px solid #f1f5f9;">
+        <td style="padding:9px 20px;font-size:14px;color:#1e293b;">Partnership Firm</td>
+        <td style="padding:9px 20px;font-size:14px;color:#15803d;font-weight:600;">✅ Yes</td>
+      </tr>
+      <tr style="background:#f8fafc;border-bottom:1px solid #f1f5f9;">
+        <td style="padding:9px 20px;font-size:14px;color:#1e293b;">Proprietorship (with business income)</td>
+        <td style="padding:9px 20px;font-size:14px;color:#15803d;font-weight:600;">✅ Yes</td>
+      </tr>
+      <tr style="background:#ffffff;border-bottom:1px solid #f1f5f9;">
+        <td style="padding:9px 20px;font-size:14px;color:#1e293b;">Individual (residential, non-business)</td>
+        <td style="padding:9px 20px;font-size:14px;color:#dc2626;font-weight:600;">❌ No</td>
+      </tr>
+      <tr style="background:#f8fafc;">
+        <td style="padding:9px 20px;font-size:14px;color:#1e293b;">HUF</td>
+        <td style="padding:9px 20px;font-size:14px;color:#dc2626;font-weight:600;">❌ No</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 
 You must be filing your taxes under the **old tax regime** with business income. Companies opting for the new concessional tax rate under Section 115BAA cannot claim additional depreciation — but can still claim normal depreciation.
 
@@ -48,14 +76,63 @@ Solar systems depreciate under the WDV method — 40% each year on the remaining
 
 **Example: ₹20 Lakh Solar System**
 
-| Year | Opening WDV | Depreciation @ 40% | Closing WDV | Tax Saved (@ 25%) |
-|---|---|---|---|---|
-| Year 1 | ₹20,00,000 | ₹8,00,000 | ₹12,00,000 | **₹2,00,000** |
-| Year 2 | ₹12,00,000 | ₹4,80,000 | ₹7,20,000 | ₹1,20,000 |
-| Year 3 | ₹7,20,000 | ₹2,88,000 | ₹4,32,000 | ₹72,000 |
-| Year 4 | ₹4,32,000 | ₹1,73,000 | ₹2,59,000 | ₹43,000 |
-| Year 5 | ₹2,59,000 | ₹1,04,000 | ₹1,55,000 | ₹26,000 |
-| **Total (5 Years)** | | **₹18,45,000** | | **₹4,61,000** |
+<div class="not-prose my-6" style="border-radius:16px;overflow:hidden;border:1px solid #e2e8f0;">
+  <table style="width:100%;border-collapse:collapse;">
+    <thead>
+      <tr style="background:#1e293b;">
+        <th style="text-align:left;padding:12px 20px;color:white;font-weight:700;font-size:13px;">Year</th>
+        <th style="text-align:left;padding:12px 20px;color:white;font-weight:700;font-size:13px;">Opening WDV</th>
+        <th style="text-align:left;padding:12px 20px;color:white;font-weight:700;font-size:13px;">Depreciation @ 40%</th>
+        <th style="text-align:left;padding:12px 20px;color:white;font-weight:700;font-size:13px;">Closing WDV</th>
+        <th style="text-align:left;padding:12px 20px;color:white;font-weight:700;font-size:13px;">Tax Saved (@ 25%)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr style="background:#f0fdf4;border-bottom:1px solid #dcfce7;">
+        <td style="padding:9px 20px;font-size:14px;color:#166534;font-weight:700;">Year 1</td>
+        <td style="padding:9px 20px;font-size:14px;color:#166534;font-weight:700;">₹20,00,000</td>
+        <td style="padding:9px 20px;font-size:14px;color:#166534;font-weight:700;">₹8,00,000</td>
+        <td style="padding:9px 20px;font-size:14px;color:#166534;font-weight:700;">₹12,00,000</td>
+        <td style="padding:9px 20px;font-size:14px;color:#166534;font-weight:700;">₹2,00,000</td>
+      </tr>
+      <tr style="background:#ffffff;border-bottom:1px solid #f1f5f9;">
+        <td style="padding:9px 20px;font-size:14px;color:#1e293b;">Year 2</td>
+        <td style="padding:9px 20px;font-size:14px;color:#1e293b;">₹12,00,000</td>
+        <td style="padding:9px 20px;font-size:14px;color:#1e293b;">₹4,80,000</td>
+        <td style="padding:9px 20px;font-size:14px;color:#1e293b;">₹7,20,000</td>
+        <td style="padding:9px 20px;font-size:14px;color:#15803d;">₹1,20,000</td>
+      </tr>
+      <tr style="background:#f8fafc;border-bottom:1px solid #f1f5f9;">
+        <td style="padding:9px 20px;font-size:14px;color:#1e293b;">Year 3</td>
+        <td style="padding:9px 20px;font-size:14px;color:#1e293b;">₹7,20,000</td>
+        <td style="padding:9px 20px;font-size:14px;color:#1e293b;">₹2,88,000</td>
+        <td style="padding:9px 20px;font-size:14px;color:#1e293b;">₹4,32,000</td>
+        <td style="padding:9px 20px;font-size:14px;color:#15803d;">₹72,000</td>
+      </tr>
+      <tr style="background:#ffffff;border-bottom:1px solid #f1f5f9;">
+        <td style="padding:9px 20px;font-size:14px;color:#1e293b;">Year 4</td>
+        <td style="padding:9px 20px;font-size:14px;color:#1e293b;">₹4,32,000</td>
+        <td style="padding:9px 20px;font-size:14px;color:#1e293b;">₹1,73,000</td>
+        <td style="padding:9px 20px;font-size:14px;color:#1e293b;">₹2,59,000</td>
+        <td style="padding:9px 20px;font-size:14px;color:#15803d;">₹43,000</td>
+      </tr>
+      <tr style="background:#f8fafc;border-bottom:1px solid #f1f5f9;">
+        <td style="padding:9px 20px;font-size:14px;color:#1e293b;">Year 5</td>
+        <td style="padding:9px 20px;font-size:14px;color:#1e293b;">₹2,59,000</td>
+        <td style="padding:9px 20px;font-size:14px;color:#1e293b;">₹1,04,000</td>
+        <td style="padding:9px 20px;font-size:14px;color:#1e293b;">₹1,55,000</td>
+        <td style="padding:9px 20px;font-size:14px;color:#15803d;">₹26,000</td>
+      </tr>
+      <tr style="background:#14532d;">
+        <td style="padding:10px 20px;font-size:14px;color:white;font-weight:700;">Total (5 Years)</td>
+        <td style="padding:10px 20px;font-size:14px;color:white;font-weight:700;"></td>
+        <td style="padding:10px 20px;font-size:14px;color:white;font-weight:700;">₹18,45,000</td>
+        <td style="padding:10px 20px;font-size:14px;color:white;font-weight:700;"></td>
+        <td style="padding:10px 20px;font-size:14px;color:white;font-weight:700;">₹4,61,000</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 
 **Tax savings of ₹4.6 lakhs over 5 years on a ₹20 lakh system** — with ₹2 lakhs in the very first year.
 
@@ -102,17 +179,54 @@ You **cannot** claim ITC if:
 
 **Scenario: 30 kWp Solar System for a Fuel Station or Cold Storage**
 
-| Item | Amount |
-|---|---|
-| System cost (ex-GST) | ₹21,00,000 |
-| GST paid | ₹1,89,000 |
-| **Total invoice value** | **₹22,89,000** |
-| Less: GST ITC claimable | −₹1,89,000 |
-| Less: AD tax saving (Year 1, 25% tax) | −₹2,62,500 |
-| Less: AD tax saving (Years 2–5) | −₹3,28,000 |
-| **Effective cost over 5 years** | **₹15,09,500** |
-| Monthly energy savings | ~₹22,000–₹28,000 |
-| **Actual payback (with tax benefits)** | **~2.8–3.2 years** |
+<div class="not-prose my-6" style="border-radius:16px;overflow:hidden;border:1px solid #e2e8f0;">
+  <table style="width:100%;border-collapse:collapse;">
+    <thead>
+      <tr style="background:#1e293b;">
+        <th style="text-align:left;padding:12px 20px;color:white;font-weight:700;font-size:13px;">Item</th>
+        <th style="text-align:left;padding:12px 20px;color:white;font-weight:700;font-size:13px;">Amount</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr style="background:#ffffff;border-bottom:1px solid #f1f5f9;">
+        <td style="padding:9px 20px;font-size:14px;color:#1e293b;">System cost (ex-GST)</td>
+        <td style="padding:9px 20px;font-size:14px;color:#1e293b;">₹21,00,000</td>
+      </tr>
+      <tr style="background:#f8fafc;border-bottom:1px solid #f1f5f9;">
+        <td style="padding:9px 20px;font-size:14px;color:#1e293b;">GST paid</td>
+        <td style="padding:9px 20px;font-size:14px;color:#1e293b;">₹1,89,000</td>
+      </tr>
+      <tr style="background:#ffffff;border-bottom:1px solid #f1f5f9;">
+        <td style="padding:9px 20px;font-size:14px;color:#1e293b;font-weight:700;">Total invoice value</td>
+        <td style="padding:9px 20px;font-size:14px;color:#1e293b;font-weight:700;">₹22,89,000</td>
+      </tr>
+      <tr style="background:#f8fafc;border-bottom:1px solid #f1f5f9;">
+        <td style="padding:9px 20px;font-size:14px;color:#15803d;">Less: GST ITC claimable</td>
+        <td style="padding:9px 20px;font-size:14px;color:#15803d;">−₹1,89,000</td>
+      </tr>
+      <tr style="background:#ffffff;border-bottom:1px solid #f1f5f9;">
+        <td style="padding:9px 20px;font-size:14px;color:#15803d;">Less: AD tax saving (Year 1, 25% tax)</td>
+        <td style="padding:9px 20px;font-size:14px;color:#15803d;">−₹2,62,500</td>
+      </tr>
+      <tr style="background:#f8fafc;border-bottom:1px solid #f1f5f9;">
+        <td style="padding:9px 20px;font-size:14px;color:#15803d;">Less: AD tax saving (Years 2–5)</td>
+        <td style="padding:9px 20px;font-size:14px;color:#15803d;">−₹3,28,000</td>
+      </tr>
+      <tr style="background:#ffffff;border-bottom:1px solid #f1f5f9;">
+        <td style="padding:9px 20px;font-size:14px;color:#1e293b;font-weight:700;">Effective cost over 5 years</td>
+        <td style="padding:9px 20px;font-size:14px;color:#14532d;font-weight:700;">₹15,09,500</td>
+      </tr>
+      <tr style="background:#f8fafc;border-bottom:1px solid #f1f5f9;">
+        <td style="padding:9px 20px;font-size:14px;color:#15803d;">Monthly energy savings</td>
+        <td style="padding:9px 20px;font-size:14px;color:#15803d;">~₹22,000–₹28,000</td>
+      </tr>
+      <tr style="background:#ffffff;">
+        <td style="padding:9px 20px;font-size:14px;color:#1e293b;font-weight:700;">Actual payback (with tax benefits)</td>
+        <td style="padding:9px 20px;font-size:14px;color:#14532d;font-weight:700;">~2.8–3.2 years</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 
 Without tax benefits, payback was 4.5 years. With them, it's under 3.
 
@@ -185,12 +299,39 @@ These two commercial segments have among the highest solar ROI in India — and 
 
 ## Summary
 
-| Benefit | Who Gets It | Typical Value (₹20L system) |
-|---|---|---|
-| Accelerated Depreciation (Year 1) | Companies, firms, proprietorships | ₹2.0–2.4 lakhs |
-| AD benefit (Years 2–5) | Same | ₹2.6–3.1 lakhs |
-| GST Input Tax Credit | GST-registered businesses | ₹1.2–1.8 lakhs |
-| **Total combined benefit** | | **₹5.8–7.3 lakhs** |
+<div class="not-prose my-6" style="border-radius:16px;overflow:hidden;border:1px solid #e2e8f0;">
+  <table style="width:100%;border-collapse:collapse;">
+    <thead>
+      <tr style="background:#1e293b;">
+        <th style="text-align:left;padding:12px 20px;color:white;font-weight:700;font-size:13px;">Benefit</th>
+        <th style="text-align:left;padding:12px 20px;color:white;font-weight:700;font-size:13px;">Who Gets It</th>
+        <th style="text-align:left;padding:12px 20px;color:white;font-weight:700;font-size:13px;">Typical Value (₹20L system)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr style="background:#ffffff;border-bottom:1px solid #f1f5f9;">
+        <td style="padding:9px 20px;font-size:14px;color:#1e293b;">Accelerated Depreciation (Year 1)</td>
+        <td style="padding:9px 20px;font-size:14px;color:#1e293b;">Companies, firms, proprietorships</td>
+        <td style="padding:9px 20px;font-size:14px;color:#15803d;font-weight:600;">₹2.0–2.4 lakhs</td>
+      </tr>
+      <tr style="background:#f8fafc;border-bottom:1px solid #f1f5f9;">
+        <td style="padding:9px 20px;font-size:14px;color:#1e293b;">AD benefit (Years 2–5)</td>
+        <td style="padding:9px 20px;font-size:14px;color:#1e293b;">Same</td>
+        <td style="padding:9px 20px;font-size:14px;color:#15803d;font-weight:600;">₹2.6–3.1 lakhs</td>
+      </tr>
+      <tr style="background:#ffffff;border-bottom:1px solid #f1f5f9;">
+        <td style="padding:9px 20px;font-size:14px;color:#1e293b;">GST Input Tax Credit</td>
+        <td style="padding:9px 20px;font-size:14px;color:#1e293b;">GST-registered businesses</td>
+        <td style="padding:9px 20px;font-size:14px;color:#15803d;font-weight:600;">₹1.2–1.8 lakhs</td>
+      </tr>
+      <tr style="background:#14532d;">
+        <td style="padding:10px 20px;font-size:14px;color:white;font-weight:700;">Total combined benefit</td>
+        <td style="padding:10px 20px;font-size:14px;color:white;font-weight:700;"></td>
+        <td style="padding:10px 20px;font-size:14px;color:white;font-weight:700;">₹5.8–7.3 lakhs</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 
 On a ₹20 lakh system, that is a **29–37% reduction in effective cost** through tax policy alone.
 
@@ -200,8 +341,14 @@ On a ₹20 lakh system, that is a **29–37% reduction in effective cost** throu
 
 Techedge provides detailed financial projections for every commercial installation — including energy savings, AD benefit timeline, and ITC eligibility — before you sign anything.
 
-**Call: +91 98440 97096**
-
-**[Request a Financial Assessment →](/contact)**
+<div class="not-prose my-8" style="background:linear-gradient(135deg,#0f2818,#14532d);border-radius:16px;padding:28px 32px;">
+  <p style="color:#86efac;font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;margin:0 0 8px;">Get a Free Financial Assessment</p>
+  <p style="color:white;font-size:20px;font-weight:700;margin:0 0 6px;">Know your exact AD benefit and ITC before you invest</p>
+  <p style="color:#bbf7d0;font-size:14px;margin:0 0 20px;">We model your tax savings, payback period, and effective cost — tailored to your business structure and tax regime.</p>
+  <div style="display:flex;flex-wrap:wrap;gap:12px;align-items:center;">
+    <a href="/contact" style="display:inline-block;background:#16a34a;color:white;font-weight:700;font-size:14px;padding:12px 24px;border-radius:8px;text-decoration:none;">Request a Financial Assessment →</a>
+    <span style="color:#86efac;font-size:14px;font-weight:600;">or call +91 98440 97096</span>
+  </div>
+</div>
 
 > *This article provides general information only and does not constitute tax or financial advice. Consult your Chartered Accountant for guidance specific to your business and tax situation.*

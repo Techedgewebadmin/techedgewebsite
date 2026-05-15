@@ -63,11 +63,39 @@ If your apartment has unused rooftop space, a grid-tied solar system can power y
 
 For a typical apartment complex borewell setup:
 
-| Pump Rating | Recommended Solar Size | Approx. Cost | Monthly Savings |
-|---|---|---|---|
-| 3–5 HP | 5–8 kWp | ₹2.5–4 Lakhs | ₹5,000–₹8,000 |
-| 7.5–10 HP | 10–15 kWp | ₹5–7 Lakhs | ₹10,000–₹15,000 |
-| 10–15 HP | 15–20 kWp | ₹7–10 Lakhs | ₹14,000–₹20,000 |
+<div class="not-prose my-6" style="border-radius:16px;overflow:hidden;border:1px solid #e2e8f0;">
+  <div style="background:#1e293b;padding:12px 20px;"><span style="color:white;font-weight:700;font-size:13px;">System Sizing by Pump Rating</span></div>
+  <table style="width:100%;border-collapse:collapse;">
+    <thead>
+      <tr style="background:#f1f5f9;">
+        <th style="text-align:left;padding:9px 20px;font-size:11px;color:#1e293b;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;">Pump Rating</th>
+        <th style="text-align:left;padding:9px 20px;font-size:11px;color:#1e293b;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;">Solar Size</th>
+        <th style="text-align:left;padding:9px 20px;font-size:11px;color:#1e293b;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;">Approx. Cost</th>
+        <th style="text-align:right;padding:9px 20px;font-size:11px;color:#1e293b;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;">Monthly Savings</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="background:#ffffff;border-bottom:1px solid #f1f5f9;padding:9px 20px;font-size:12px;color:#1e293b;font-weight:600;">3–5 HP</td>
+        <td style="background:#ffffff;border-bottom:1px solid #f1f5f9;padding:9px 20px;font-size:12px;color:#1e293b;">5–8 kWp</td>
+        <td style="background:#ffffff;border-bottom:1px solid #f1f5f9;padding:9px 20px;font-size:12px;color:#dc2626;">₹2.5–4 Lakhs</td>
+        <td style="background:#ffffff;border-bottom:1px solid #f1f5f9;padding:9px 20px;font-size:13px;font-weight:700;color:#15803d;text-align:right;">₹5,000–₹8,000</td>
+      </tr>
+      <tr>
+        <td style="background:#f8fafc;border-bottom:1px solid #f1f5f9;padding:9px 20px;font-size:12px;color:#1e293b;font-weight:600;">7.5–10 HP</td>
+        <td style="background:#f8fafc;border-bottom:1px solid #f1f5f9;padding:9px 20px;font-size:12px;color:#1e293b;">10–15 kWp</td>
+        <td style="background:#f8fafc;border-bottom:1px solid #f1f5f9;padding:9px 20px;font-size:12px;color:#dc2626;">₹5–7 Lakhs</td>
+        <td style="background:#f8fafc;border-bottom:1px solid #f1f5f9;padding:9px 20px;font-size:13px;font-weight:700;color:#15803d;text-align:right;">₹10,000–₹15,000</td>
+      </tr>
+      <tr>
+        <td style="background:#ffffff;border-bottom:1px solid #f1f5f9;padding:9px 20px;font-size:12px;color:#1e293b;font-weight:600;">10–15 HP</td>
+        <td style="background:#ffffff;border-bottom:1px solid #f1f5f9;padding:9px 20px;font-size:12px;color:#1e293b;">15–20 kWp</td>
+        <td style="background:#ffffff;border-bottom:1px solid #f1f5f9;padding:9px 20px;font-size:12px;color:#dc2626;">₹7–10 Lakhs</td>
+        <td style="background:#ffffff;border-bottom:1px solid #f1f5f9;padding:9px 20px;font-size:13px;font-weight:700;color:#15803d;text-align:right;">₹14,000–₹20,000</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 
 Payback period: **3–4 years**. Savings continue for 25+ years.
 

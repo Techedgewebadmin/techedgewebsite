@@ -63,11 +63,25 @@ Panels were installed across two roof sections to work around obstructions and m
 
 ## Project Investment
 
-| Item | Amount |
-|---|---|
-| Total System Cost (incl. GST) | ₹2,50,000 |
-| Financing | Self-funded |
-| **Net Investment** | **₹2,50,000** |
+<div class="not-prose my-6" style="border-radius:16px;overflow:hidden;border:1px solid #e2e8f0;">
+  <div style="background:#1e293b;padding:12px 20px;"><span style="color:white;font-weight:700;font-size:13px;">Project Investment</span></div>
+  <table style="width:100%;border-collapse:collapse;">
+    <tbody>
+      <tr>
+        <td style="background:#ffffff;border-bottom:1px solid #f1f5f9;padding:9px 20px;font-size:12px;color:#1e293b;">Total System Cost (incl. GST)</td>
+        <td style="background:#ffffff;border-bottom:1px solid #f1f5f9;padding:9px 20px;font-size:13px;font-weight:700;color:#dc2626;text-align:right;">₹2,50,000</td>
+      </tr>
+      <tr>
+        <td style="background:#f8fafc;border-bottom:1px solid #f1f5f9;padding:9px 20px;font-size:12px;color:#1e293b;">Financing</td>
+        <td style="background:#f8fafc;border-bottom:1px solid #f1f5f9;padding:9px 20px;font-size:12px;color:#1e293b;text-align:right;">Self-funded</td>
+      </tr>
+      <tr>
+        <td style="background:#14532d;border-bottom:1px solid #f1f5f9;padding:9px 20px;font-size:12px;color:white;font-weight:700;">Net Investment</td>
+        <td style="background:#14532d;border-bottom:1px solid #f1f5f9;padding:9px 20px;font-size:13px;font-weight:700;color:white;text-align:right;">₹2,50,000</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 
 ---
 
@@ -94,15 +108,47 @@ Panels were installed across two roof sections to work around obstructions and m
 
 ಕೆ.ಸಿ. ತಿಮ್ಮಶೆಟ್ಟಿ ಅವರು ಬೆಂಗಳೂರಿನಲ್ಲಿ ತಮ್ಮ ಮನೆಯ ಮೇಲ್ಛಾವಣಿಯ ಮೇಲೆ 5 kWp ಸೌರ ವ್ಯವಸ್ಥೆ ಅಳವಡಿಸಿದ್ದಾರೆ. ಫಲಿತಾಂಶ ತಕ್ಷಣವೇ ಕಾಣಿಸಿಕೊಂಡಿತು.
 
-| ವಿವರ | ಫಲಿತಾಂಶ |
-|---|---|
-| 💰 ಒಟ್ಟು ಹೂಡಿಕೆ | ₹2,50,000 |
-| ⚡ BESCOM ಬಿಲ್ ಕಡಿತ | 60–70% ಕಡಿಮೆ |
-| 📅 ತಿಂಗಳಿಗೆ ಉಳಿತಾಯ | ₹3,600 – ₹4,200 |
-| 📈 ವರ್ಷಕ್ಕೆ ಉಳಿತಾಯ | ₹45,000 – ₹50,000 |
-| 🔄 ಹೂಡಿಕೆ ವಾಪಸ್ ಅವಧಿ | 3.5 ವರ್ಷ |
-| 🏆 25 ವರ್ಷದ ಒಟ್ಟು ಆದಾಯ | ₹14–16 ಲಕ್ಷ |
-| ✅ ತೊಂದರೆ-ರಹಿತ ಕಾರ್ಯಾಚರಣೆ | 4+ ವರ್ಷ |
+<div class="not-prose my-6" style="border-radius:16px;overflow:hidden;border:1px solid #e2e8f0;">
+  <div style="background:#1e293b;padding:12px 20px;"><span style="color:white;font-weight:700;font-size:13px;">ಫಲಿತಾಂಶ ಸಾರಾಂಶ — Results at a Glance</span></div>
+  <table style="width:100%;border-collapse:collapse;">
+    <thead>
+      <tr style="background:#f1f5f9;">
+        <th style="text-align:left;padding:9px 20px;font-size:11px;color:#1e293b;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;">ವಿವರ</th>
+        <th style="text-align:right;padding:9px 20px;font-size:11px;color:#1e293b;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;">ಫಲಿತಾಂಶ</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="background:#ffffff;border-bottom:1px solid #f1f5f9;padding:9px 20px;font-size:12px;color:#1e293b;">💰 ಒಟ್ಟು ಹೂಡಿಕೆ</td>
+        <td style="background:#ffffff;border-bottom:1px solid #f1f5f9;padding:9px 20px;font-size:13px;font-weight:700;color:#dc2626;text-align:right;">₹2,50,000</td>
+      </tr>
+      <tr>
+        <td style="background:#f8fafc;border-bottom:1px solid #f1f5f9;padding:9px 20px;font-size:12px;color:#1e293b;">⚡ BESCOM ಬಿಲ್ ಕಡಿತ</td>
+        <td style="background:#f8fafc;border-bottom:1px solid #f1f5f9;padding:9px 20px;font-size:13px;font-weight:700;color:#15803d;text-align:right;">60–70% ಕಡಿಮೆ</td>
+      </tr>
+      <tr>
+        <td style="background:#ffffff;border-bottom:1px solid #f1f5f9;padding:9px 20px;font-size:12px;color:#1e293b;">📅 ತಿಂಗಳಿಗೆ ಉಳಿತಾಯ</td>
+        <td style="background:#ffffff;border-bottom:1px solid #f1f5f9;padding:9px 20px;font-size:13px;font-weight:700;color:#15803d;text-align:right;">₹3,600 – ₹4,200</td>
+      </tr>
+      <tr>
+        <td style="background:#f8fafc;border-bottom:1px solid #f1f5f9;padding:9px 20px;font-size:12px;color:#1e293b;">📈 ವರ್ಷಕ್ಕೆ ಉಳಿತಾಯ</td>
+        <td style="background:#f8fafc;border-bottom:1px solid #f1f5f9;padding:9px 20px;font-size:13px;font-weight:700;color:#15803d;text-align:right;">₹45,000 – ₹50,000</td>
+      </tr>
+      <tr>
+        <td style="background:#ffffff;border-bottom:1px solid #f1f5f9;padding:9px 20px;font-size:12px;color:#1e293b;">🔄 ಹೂಡಿಕೆ ವಾಪಸ್ ಅವಧಿ</td>
+        <td style="background:#ffffff;border-bottom:1px solid #f1f5f9;padding:9px 20px;font-size:13px;font-weight:700;color:#15803d;text-align:right;">3.5 ವರ್ಷ</td>
+      </tr>
+      <tr>
+        <td style="background:#f8fafc;border-bottom:1px solid #f1f5f9;padding:9px 20px;font-size:12px;color:#1e293b;">🏆 25 ವರ್ಷದ ಒಟ್ಟು ಆದಾಯ</td>
+        <td style="background:#f8fafc;border-bottom:1px solid #f1f5f9;padding:9px 20px;font-size:13px;font-weight:700;color:#15803d;text-align:right;">₹14–16 ಲಕ್ಷ</td>
+      </tr>
+      <tr>
+        <td style="background:#14532d;padding:9px 20px;font-size:12px;color:white;font-weight:700;">✅ ತೊಂದರೆ-ರಹಿತ ಕಾರ್ಯಾಚರಣೆ</td>
+        <td style="background:#14532d;padding:9px 20px;font-size:13px;font-weight:700;color:white;text-align:right;">4+ ವರ್ಷ</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 
 > 🌱 **ವಿದ್ಯುತ್ ದರ ಪ್ರತಿ ವರ್ಷ ಏರುತ್ತದೆ — ಸೌರ ಶಕ್ತಿ ಬೆಲೆ ಏರಲ್ಲ.** BESCOM ನೆಟ್ ಮೀಟರಿಂಗ್ ಮೂಲಕ ಹೆಚ್ಚುವರಿ ವಿದ್ಯುತ್ ಅನ್ನು ಗ್ರಿಡ್‌ಗೆ ಕಳುಹಿಸಿ ಮತ್ತಷ್ಟು ಉಳಿಸಿ.
 

@@ -36,21 +36,67 @@ That's the math. But real savings depend on three things:
 
 For a **15–30 kWp system** (small factory, fuel station, retail outlet):
 
-| Metric | Value |
-|---|---|
-| System cost (net after subsidy) | ₹7–20 Lakhs |
-| Monthly savings | ₹15,000 – ₹45,000 |
-| Payback period | 3–5 years |
-| 25-year savings | ₹40–₹80 Lakhs |
+<div class="not-prose my-6" style="border-radius:16px;overflow:hidden;border:1px solid #e2e8f0;">
+  <div style="background:#1e293b;padding:12px 20px;"><span style="color:white;font-weight:700;font-size:13px;">Commercial Solar — 15–30 kWp System</span></div>
+  <table style="width:100%;border-collapse:collapse;">
+    <thead>
+      <tr style="background:#f1f5f9;">
+        <th style="text-align:left;padding:9px 20px;font-size:11px;color:#1e293b;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;">Metric</th>
+        <th style="text-align:left;padding:9px 20px;font-size:11px;color:#1e293b;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;">Value</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="background:#ffffff;border-bottom:1px solid #f1f5f9;padding:9px 20px;font-size:12px;color:#1e293b;">System cost (net after subsidy)</td>
+        <td style="background:#ffffff;border-bottom:1px solid #f1f5f9;padding:9px 20px;font-size:13px;font-weight:700;color:#15803d;text-align:right;">₹7–20 Lakhs</td>
+      </tr>
+      <tr>
+        <td style="background:#f8fafc;border-bottom:1px solid #f1f5f9;padding:9px 20px;font-size:12px;color:#1e293b;">Monthly savings</td>
+        <td style="background:#f8fafc;border-bottom:1px solid #f1f5f9;padding:9px 20px;font-size:13px;font-weight:700;color:#15803d;text-align:right;">₹15,000 – ₹45,000</td>
+      </tr>
+      <tr>
+        <td style="background:#ffffff;border-bottom:1px solid #f1f5f9;padding:9px 20px;font-size:12px;color:#1e293b;">Payback period</td>
+        <td style="background:#ffffff;border-bottom:1px solid #f1f5f9;padding:9px 20px;font-size:13px;font-weight:700;color:#15803d;text-align:right;">3–5 years</td>
+      </tr>
+      <tr>
+        <td style="background:#f8fafc;border-bottom:1px solid #f1f5f9;padding:9px 20px;font-size:12px;color:#1e293b;">25-year savings</td>
+        <td style="background:#f8fafc;border-bottom:1px solid #f1f5f9;padding:9px 20px;font-size:13px;font-weight:700;color:#15803d;text-align:right;">₹40–₹80 Lakhs</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 
 For a **50–100 kWp system** (mid-size manufacturing, cold storage):
 
-| Metric | Value |
-|---|---|
-| System cost | ₹25–55 Lakhs |
-| Monthly savings | ₹60,000 – ₹1.2 Lakhs |
-| Payback period | 3–4 years |
-| 25-year savings | ₹1.5–₹3 Crore |
+<div class="not-prose my-6" style="border-radius:16px;overflow:hidden;border:1px solid #e2e8f0;">
+  <div style="background:#1e293b;padding:12px 20px;"><span style="color:white;font-weight:700;font-size:13px;">Commercial Solar — 50–100 kWp System</span></div>
+  <table style="width:100%;border-collapse:collapse;">
+    <thead>
+      <tr style="background:#f1f5f9;">
+        <th style="text-align:left;padding:9px 20px;font-size:11px;color:#1e293b;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;">Metric</th>
+        <th style="text-align:left;padding:9px 20px;font-size:11px;color:#1e293b;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;">Value</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="background:#ffffff;border-bottom:1px solid #f1f5f9;padding:9px 20px;font-size:12px;color:#1e293b;">System cost</td>
+        <td style="background:#ffffff;border-bottom:1px solid #f1f5f9;padding:9px 20px;font-size:13px;font-weight:700;color:#15803d;text-align:right;">₹25–55 Lakhs</td>
+      </tr>
+      <tr>
+        <td style="background:#f8fafc;border-bottom:1px solid #f1f5f9;padding:9px 20px;font-size:12px;color:#1e293b;">Monthly savings</td>
+        <td style="background:#f8fafc;border-bottom:1px solid #f1f5f9;padding:9px 20px;font-size:13px;font-weight:700;color:#15803d;text-align:right;">₹60,000 – ₹1.2 Lakhs</td>
+      </tr>
+      <tr>
+        <td style="background:#ffffff;border-bottom:1px solid #f1f5f9;padding:9px 20px;font-size:12px;color:#1e293b;">Payback period</td>
+        <td style="background:#ffffff;border-bottom:1px solid #f1f5f9;padding:9px 20px;font-size:13px;font-weight:700;color:#15803d;text-align:right;">3–4 years</td>
+      </tr>
+      <tr>
+        <td style="background:#f8fafc;border-bottom:1px solid #f1f5f9;padding:9px 20px;font-size:12px;color:#1e293b;">25-year savings</td>
+        <td style="background:#f8fafc;border-bottom:1px solid #f1f5f9;padding:9px 20px;font-size:13px;font-weight:700;color:#15803d;text-align:right;">₹1.5–₹3 Crore</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 
 ---
 
@@ -79,10 +125,21 @@ A properly designed hybrid solar system with battery backup eliminates this cost
 
 Don't go solar based on vague promises. Ask your installer for:
 
-1. Your **site-specific generation estimate** (based on actual irradiation data, not generic numbers)
-2. A **detailed investment vs. savings table** — year by year
-3. **References** from similar installations they've done
+<div class="not-prose my-6" style="border-radius:16px;overflow:hidden;border:1px solid #e2e8f0;">
+  <div style="background:#1e293b;padding:12px 20px;"><span style="color:white;font-weight:700;font-size:13px;">What to Ask Before You Sign</span></div>
+  <div style="background:#ffffff;padding:20px 24px;">
+    <ol style="margin:0;padding-left:20px;display:flex;flex-direction:column;gap:12px;">
+      <li style="font-size:13px;color:#1e293b;line-height:1.6;">Your <strong>site-specific generation estimate</strong> — based on actual irradiation data, not generic numbers</li>
+      <li style="font-size:13px;color:#1e293b;line-height:1.6;">A <strong>detailed investment vs. savings table</strong> — year by year</li>
+      <li style="font-size:13px;color:#1e293b;line-height:1.6;"><strong>References</strong> from similar installations they've done</li>
+    </ol>
+  </div>
+</div>
 
 Or just call us. We'll do a free site survey and give you the actual numbers.
 
-**[Get a Free Site Survey →](/contact)**
+<div class="not-prose rounded-2xl my-6" style="background:linear-gradient(135deg,#0f2818,#14532d);padding:28px 32px;text-align:center;">
+  <p style="color:white;font-size:18px;font-weight:700;margin:0 0 8px;">Ready for real numbers?</p>
+  <p style="color:#bbf7d0;font-size:14px;margin:0 0 20px;">We'll do a free site survey and show you exactly what solar saves for your specific business.</p>
+  <a href="/contact" style="display:inline-block;background:white;color:#14532d;font-weight:700;font-size:14px;padding:12px 28px;border-radius:8px;text-decoration:none;">Get a Free Site Survey →</a>
+</div>

@@ -60,15 +60,54 @@ The system was designed for maximum yield in Shimoga's high-irradiation climate,
 
 ## Project Investment
 
-| Item | Amount |
-|---|---|
-| Total System Cost (incl. GST) | ₹9,00,000 |
-| HPCL Subsidy | ₹2,00,000 |
-| **Net Investment** | **₹7,00,000** |
+<div class="not-prose my-6" style="border-radius:16px;overflow:hidden;border:1px solid #e2e8f0;">
+  <div style="background:#1e293b;padding:12px 20px;"><span style="color:white;font-weight:700;font-size:13px;">Project Investment</span></div>
+  <table style="width:100%;border-collapse:collapse;">
+    <thead>
+      <tr style="background:#f1f5f9;">
+        <th style="text-align:left;padding:9px 20px;font-size:11px;color:#1e293b;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;">Item</th>
+        <th style="text-align:left;padding:9px 20px;font-size:11px;color:#1e293b;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;">Amount</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr style="background:#ffffff;border-bottom:1px solid #f1f5f9;">
+        <td style="padding:9px 20px;font-size:12px;color:#475569;">Total System Cost (incl. GST)</td>
+        <td style="padding:9px 20px;font-size:13px;font-weight:700;color:#1e293b;text-align:right;">₹9,00,000</td>
+      </tr>
+      <tr style="background:#f8fafc;border-bottom:1px solid #f1f5f9;">
+        <td style="padding:9px 20px;font-size:12px;color:#475569;">HPCL Subsidy</td>
+        <td style="padding:9px 20px;font-size:13px;font-weight:700;color:#1e293b;text-align:right;">₹2,00,000</td>
+      </tr>
+      <tr style="background:#14532d;">
+        <td style="padding:9px 20px;font-size:12px;font-weight:700;color:white;">Net Investment</td>
+        <td style="padding:9px 20px;font-size:13px;font-weight:700;color:white;text-align:right;">₹7,00,000</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 
 ---
 
 ## ROI & Savings
+
+<div class="not-prose grid grid-cols-2 md:grid-cols-4 gap-3 my-4">
+  <div style="background:#0f172a;border-radius:16px;padding:16px;text-align:center;">
+    <p style="font-size:1.25rem;font-weight:800;color:#86efac;margin:0;">₹15,000–16,000</p>
+    <p style="font-size:10px;color:#6ee7b7;text-transform:uppercase;font-weight:600;margin:4px 0 0;letter-spacing:0.05em;">Monthly Savings</p>
+  </div>
+  <div style="background:#0f172a;border-radius:16px;padding:16px;text-align:center;">
+    <p style="font-size:1.25rem;font-weight:800;color:#86efac;margin:0;">3.8 Years</p>
+    <p style="font-size:10px;color:#6ee7b7;text-transform:uppercase;font-weight:600;margin:4px 0 0;letter-spacing:0.05em;">Payback Period</p>
+  </div>
+  <div style="background:#0f172a;border-radius:16px;padding:16px;text-align:center;">
+    <p style="font-size:1.25rem;font-weight:800;color:#86efac;margin:0;">~₹12.3 Lakhs</p>
+    <p style="font-size:10px;color:#6ee7b7;text-transform:uppercase;font-weight:600;margin:4px 0 0;letter-spacing:0.05em;">Total Savings Till Date</p>
+  </div>
+  <div style="background:#0f172a;border-radius:16px;padding:16px;text-align:center;">
+    <p style="font-size:1.25rem;font-weight:800;color:#86efac;margin:0;">₹65–70 Lakhs</p>
+    <p style="font-size:10px;color:#6ee7b7;text-transform:uppercase;font-weight:600;margin:4px 0 0;letter-spacing:0.05em;">25-Year Savings</p>
+  </div>
+</div>
 
 ### Generation & Monthly Savings
 - **Daily generation:** ~67.5 units @ ₹7.50/unit (BESCOM, Shimoga)
@@ -121,4 +160,8 @@ From a **₹7 lakh net investment** to over **₹12.3 lakhs in savings already a
 
 If a fuel station in Sagara can generate this kind of return, imagine what solar can do for your business.
 
-**[Get a Free Site Survey →](/contact)**
+<div class="not-prose rounded-2xl my-6" style="background:linear-gradient(135deg,#0f2818,#14532d);padding:24px 28px;text-align:center;">
+  <p style="color:#86efac;font-size:13px;font-weight:600;margin:0 0 12px;text-transform:uppercase;letter-spacing:0.05em;">See What Solar Can Do for Your Business</p>
+  <p style="color:#d1fae5;font-size:15px;margin:0 0 20px;">If a fuel station in Sagara can achieve ₹65–70 lakhs in lifetime savings, imagine what solar can do for your commercial premises.</p>
+  <a href="/contact" style="display:inline-block;background:white;color:#14532d;font-weight:700;font-size:13px;padding:10px 24px;border-radius:99px;text-decoration:none;">Get a Free Site Survey →</a>
+</div>

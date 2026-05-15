@@ -91,25 +91,74 @@ Solar module pallets were lifted from ground-level staging to rooftop using a **
 
 ## Project Impact
 
-| Metric | Value |
-|---|---|
-| System Capacity | 1 MW (1000 kWp) |
-| Solar Panels | ~1,850+ modules |
-| Energy Generated | ~14,00,000 kWh/year |
-| CO₂ Reduced | ~1,050 tonnes/year |
-| Equivalent Trees Planted | ~47,000 trees |
-| Module Brand | Premier Energies |
-| Mounting System | Hot-Dip GI Steel + Rail-and-Clamp |
+<div class="not-prose my-6" style="border-radius:16px;overflow:hidden;border:1px solid #e2e8f0;">
+  <div style="background:#1e293b;padding:12px 20px;"><span style="color:white;font-weight:700;font-size:13px;">Project Impact — 1 MW Industrial Rooftop Solar</span></div>
+  <table style="width:100%;border-collapse:collapse;">
+    <thead>
+      <tr style="background:#f1f5f9;">
+        <th style="text-align:left;padding:9px 20px;font-size:11px;color:#1e293b;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;">Metric</th>
+        <th style="text-align:left;padding:9px 20px;font-size:11px;color:#1e293b;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;">Value</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr style="background:#ffffff;border-bottom:1px solid #f1f5f9;">
+        <td style="padding:9px 20px;font-size:12px;color:#475569;">System Capacity</td>
+        <td style="padding:9px 20px;font-size:13px;font-weight:700;color:#1e293b;text-align:right;">1 MW (1000 kWp)</td>
+      </tr>
+      <tr style="background:#f8fafc;border-bottom:1px solid #f1f5f9;">
+        <td style="padding:9px 20px;font-size:12px;color:#475569;">Solar Panels</td>
+        <td style="padding:9px 20px;font-size:13px;font-weight:700;color:#1e293b;text-align:right;">~1,850+ modules</td>
+      </tr>
+      <tr style="background:#ffffff;border-bottom:1px solid #f1f5f9;">
+        <td style="padding:9px 20px;font-size:12px;color:#475569;">Energy Generated</td>
+        <td style="padding:9px 20px;font-size:13px;font-weight:700;color:#15803d;text-align:right;">~14,00,000 kWh/year</td>
+      </tr>
+      <tr style="background:#f8fafc;border-bottom:1px solid #f1f5f9;">
+        <td style="padding:9px 20px;font-size:12px;color:#475569;">CO₂ Reduced</td>
+        <td style="padding:9px 20px;font-size:13px;font-weight:700;color:#15803d;text-align:right;">~1,050 tonnes/year</td>
+      </tr>
+      <tr style="background:#ffffff;border-bottom:1px solid #f1f5f9;">
+        <td style="padding:9px 20px;font-size:12px;color:#475569;">Equivalent Trees Planted</td>
+        <td style="padding:9px 20px;font-size:13px;font-weight:700;color:#1e293b;text-align:right;">~47,000 trees</td>
+      </tr>
+      <tr style="background:#f8fafc;border-bottom:1px solid #f1f5f9;">
+        <td style="padding:9px 20px;font-size:12px;color:#475569;">Module Brand</td>
+        <td style="padding:9px 20px;font-size:13px;font-weight:700;color:#1e293b;text-align:right;">Premier Energies</td>
+      </tr>
+      <tr style="background:#ffffff;border-bottom:1px solid #f1f5f9;">
+        <td style="padding:9px 20px;font-size:12px;color:#475569;">Mounting System</td>
+        <td style="padding:9px 20px;font-size:13px;font-weight:700;color:#1e293b;text-align:right;">Hot-Dip GI Steel + Rail-and-Clamp</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 
 ---
 
 ## What Sets This Project Apart
 
-- ✅ **Megawatt-scale execution** — 1,850+ modules across a large industrial rooftop with multiple roof zones and installation methods
-- ✅ **Dual mounting approach** — elevated GI structures on flat sections and flush-mount on pitched metal roofing, each engineered to suit the roof profile
-- ✅ **Zero-compromise safety culture** — full PPE, harnesses, crane supervision, and team-based rooftop access enforced throughout
-- ✅ **Quality materials** — Premier Energies BIS-certified modules and hot-dip galvanised steel structures for 25-year durability
-- ✅ **Professional crew** — trained installation teams with site supervisors, safety officers, and dedicated crane operators
+<div class="not-prose grid grid-cols-1 md:grid-cols-2 gap-4 my-6">
+  <div style="border-left:4px solid #15803d;background:#f0fdf4;border-radius:12px;padding:16px 20px;">
+    <div style="font-size:13px;font-weight:700;color:#14532d;margin-bottom:4px;">Megawatt-Scale Execution</div>
+    <div style="font-size:13px;color:#166534;">1,850+ modules across a large industrial rooftop with multiple roof zones and installation methods</div>
+  </div>
+  <div style="border-left:4px solid #15803d;background:#f0fdf4;border-radius:12px;padding:16px 20px;">
+    <div style="font-size:13px;font-weight:700;color:#14532d;margin-bottom:4px;">Dual Mounting Approach</div>
+    <div style="font-size:13px;color:#166534;">Elevated GI structures on flat sections and flush-mount on pitched metal roofing, each engineered to suit the roof profile</div>
+  </div>
+  <div style="border-left:4px solid #15803d;background:#f0fdf4;border-radius:12px;padding:16px 20px;">
+    <div style="font-size:13px;font-weight:700;color:#14532d;margin-bottom:4px;">Zero-Compromise Safety Culture</div>
+    <div style="font-size:13px;color:#166534;">Full PPE, harnesses, crane supervision, and team-based rooftop access enforced throughout</div>
+  </div>
+  <div style="border-left:4px solid #15803d;background:#f0fdf4;border-radius:12px;padding:16px 20px;">
+    <div style="font-size:13px;font-weight:700;color:#14532d;margin-bottom:4px;">Quality Materials</div>
+    <div style="font-size:13px;color:#166534;">Premier Energies BIS-certified modules and hot-dip galvanised steel structures for 25-year durability</div>
+  </div>
+  <div style="border-left:4px solid #15803d;background:#f0fdf4;border-radius:12px;padding:16px 20px;">
+    <div style="font-size:13px;font-weight:700;color:#14532d;margin-bottom:4px;">Professional Crew</div>
+    <div style="font-size:13px;color:#166534;">Trained installation teams with site supervisors, safety officers, and dedicated crane operators</div>
+  </div>
+</div>
 
 ---
 
@@ -139,4 +188,8 @@ The 1MT E&C project is a demonstration of what happens when safety and quality a
 
 Ready to build your industrial solar project to the same standard?
 
-**[Get a Free Site Survey →](/contact)**
+<div class="not-prose rounded-2xl my-6" style="background:linear-gradient(135deg,#0f2818,#14532d);padding:24px 28px;text-align:center;">
+  <p style="color:#86efac;font-size:13px;font-weight:600;margin:0 0 12px;text-transform:uppercase;letter-spacing:0.05em;">Ready to Build at Scale?</p>
+  <p style="color:#d1fae5;font-size:15px;margin:0 0 20px;">Let Techedge engineer and deliver your industrial solar project — safely, on time, and without compromise.</p>
+  <a href="/contact" style="display:inline-block;background:white;color:#14532d;font-weight:700;font-size:13px;padding:10px 24px;border-radius:99px;text-decoration:none;">Get a Free Site Survey →</a>
+</div>
