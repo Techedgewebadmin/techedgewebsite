@@ -3,7 +3,7 @@ title: "How Millet FPOs Can Cut Electricity Bills by 80% — and Get a Grant to 
 description: "Millet processing FPOs in India are paying ₹70,000–₹1.2 lakh/month on industrial electricity. Solar cuts that by 80%, SELCO Foundation funds 40–50% of the system cost, and payback comes in under 18 months. Here's exactly how it works."
 date: "2026-05-15"
 category: "Commercial Solar"
-image: ../../assets/blog/solar-tax-benefits-india.jpg
+image: ../../assets/blog/mandprabha-fpc-agrowon.jpg
 author: "Techedge Team"
 tags: ["millet FPO solar", "FPC solar grant India", "SELCO Foundation grant", "millet processing electricity cost", "solar for Farmer Producer Company", "SELCO grant FPC Maharashtra", "solar grant rural enterprise India", "millet processing solar energy", "FPO solar subsidy India"]
 ---
@@ -171,7 +171,7 @@ Navigating these requires knowing which schemes are active, which combinations a
 
 Everything in this article is grounded in a real project Techedge completed in May 2026.
 
-**Mandprabha Farmer Producer Company**, Satara, Maharashtra — founded and led by Mrs. Arati Abhay Nilakhe (32 years). Women-led millet processing enterprise sourcing from smallholder farmers in rural Satara.
+**Mandprabha Farmer Producer Company**, Satara, Maharashtra — founded and led by Mrs. Arati Abhay Nilakhe (32 years). Women-led millet processing enterprise sourcing from smallholder farmers in rural Satara. Mandprabha's story has been featured in [Agrowon](https://agrowon.esakal.com/yashogatha/mandaprabha-gave-the-right-market-article-on-agrowon-rat16) — Maharashtra's leading agricultural publication — as a model of women-led rural enterprise building market linkages for millet farmers.
 
 **The problem:** ₹74,630/month electricity bill at ₹18.60/unit on MSEDCL LT-V B II (ToD). Peak months over ₹1 lakh. Enterprise viability at risk.
 
