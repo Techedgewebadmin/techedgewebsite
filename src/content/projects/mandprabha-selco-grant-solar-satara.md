@@ -112,6 +112,18 @@ solutions:
 
 ---
 
+## Inside the Millet Processing Facility
+
+<div class="not-prose my-6" style="border-radius:20px;overflow:hidden;position:relative;">
+  <img src="/img/mandprabha-fpc-millet-processing.jpeg" alt="Millet processing machinery inside Mandprabha FPC, Shinganapur, Satara" style="width:100%;height:420px;object-fit:cover;display:block;" />
+  <div style="position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,rgba(15,23,42,0.85));padding:20px 24px;">
+    <p style="color:white;font-size:13px;font-weight:600;margin:0;">Millet grading, dehulling and packaging equipment — Mandprabha FPC, Shinganapur, Satara</p>
+    <p style="color:#86efac;font-size:11px;margin:4px 0 0;">These daytime motor loads align perfectly with solar generation — no battery storage needed</p>
+  </div>
+</div>
+
+---
+
 ## The SELCO Foundation Grant
 
 <div class="not-prose rounded-2xl overflow-hidden my-6" style="background:linear-gradient(135deg,#0f2818,#14532d,#166534);">

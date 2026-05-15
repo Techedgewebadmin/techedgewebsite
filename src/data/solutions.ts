@@ -8,6 +8,14 @@ export type Partner = {
   offerings: { title: string; items: string[] }[];
 };
 
+export type CaseStudy = {
+  image: string;
+  title: string;
+  subtitle: string;
+  stats: { label: string; value: string }[];
+  href: string;
+};
+
 export type Solution = {
   slug: string;
   title: string;
@@ -21,6 +29,7 @@ export type Solution = {
   useCases: string[];
   howItWorks: { step: string; desc: string }[];
   partner?: Partner;
+  caseStudy?: CaseStudy;
 };
 
 export const solutions: Solution[] = [
@@ -60,6 +69,18 @@ export const solutions: Solution[] = [
       { step: "Power your premises first", desc: "Solar power is consumed on-site first, reducing your grid import." },
       { step: "Export surplus to grid", desc: "Excess generation is exported to the DISCOM grid and credited via net metering." },
     ],
+    caseStudy: {
+      image: "/img/mandprabha-fpc-millet-processing.jpeg",
+      title: "Mandprabha FPC — 45 kW On-Grid Solar",
+      subtitle: "Women-led millet processing unit, Shinganapur, Satara, Maharashtra. SELCO Foundation grant secured by Techedge.",
+      stats: [
+        { label: "Monthly Saving", value: "₹61,000" },
+        { label: "Payback", value: "16 months" },
+        { label: "Annual ROI", value: "73%" },
+        { label: "CO₂ Avoided", value: "61 t/yr" },
+      ],
+      href: "/projects/mandprabha-selco-grant-solar-satara/",
+    },
   },
   {
     slug: "off-grid-solar",
