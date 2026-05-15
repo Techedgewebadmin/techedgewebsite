@@ -1,6 +1,6 @@
 ---
-title: "One Panel. One Family. The Global Problem Solar Home Lighting Is Solving."
-description: "A Swami in rural Telangana distributes solar panels to families living without electricity. This scene repeats across 775 million lives worldwide. Here's what solar home lighting means — and what it takes to change it."
+title: "775 Million People. No Light After Dark. What Solar Home Lighting Is Doing About It."
+description: "775 million people worldwide have no access to electricity. Billions more live with unreliable grids. Solar home lighting systems are the fastest, most cost-effective answer — and this is what that looks like on the ground."
 date: "2025-10-01"
 category: "Solar Home Lighting"
 image: ../../assets/blog/goshala-solar-distribution.jpeg
@@ -8,30 +8,14 @@ author: "Techedge Team"
 tags: ["solar home lighting", "off-grid solar", "rural solar India", "solar for NGO", "solar CSR", "solar lantern", "energy access", "solar home system"]
 ---
 
-On 29 September 2025, a Swami drove into a village in Telangana with solar panels in the back of a vehicle.
+Across the world, 775 million people have no access to electricity. For most, darkness after sunset means kerosene lamps — and all that comes with them: indoor air pollution, fire risk, and a monthly fuel expense that households earning ₹8,000–₹12,000 cannot afford to stop paying.
 
-No ceremony. No press. Just a panel, a family, and sunlight.
+Another billion live on grids that cut out for 6–12 hours a day. A grid connection on paper is not the same as light when you need it.
 
-<div class="not-prose my-8" style="border-radius:20px;overflow:hidden;position:relative;">
-  <img src="/img/goshala-family-handover.jpeg" alt="Swami handing over a solar panel to a rural family outside their home — Telangana, September 2025" style="width:100%;height:460px;object-fit:cover;object-position:center;display:block;" />
-  <div style="position:absolute;bottom:0;left:0;right:0;padding:20px 28px;background:linear-gradient(transparent,rgba(15,23,42,0.88));">
-    <p style="color:#86efac;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;margin:0 0 4px;">29 September 2025 — Telangana, India</p>
-    <p style="color:white;font-size:14px;font-weight:600;margin:0;">A solar panel handed over to a rural family living without reliable electricity</p>
-  </div>
-</div>
-
-The family received the panel outside their home — a structure of tin sheets and wire mesh, open to wind and rain. The woman in the saree, the child in school uniform, the man who farms this land. They held the panel together and looked at it the way you look at something that will change what the evening means.
-
-This is what **Sri Bhomma Lingeswara Goshala** does — a Swami-led initiative run by K. Ramesh Swami in rural Andhra Pradesh and Telangana, distributing solar home lighting systems to families and institutions that have no reliable access to electricity.
-
-Techedge supplied the solar panels.
-
----
-
-## Why This Scene Exists — and Why It Repeats Everywhere
+Solar home lighting systems are changing this — not slowly, through decades of infrastructure planning, but now, panel by panel, household by household.
 
 <div class="not-prose my-6" style="border-radius:16px;overflow:hidden;border:1px solid #e2e8f0;">
-  <div style="background:#1e293b;padding:12px 20px;"><span style="color:white;font-weight:700;font-size:13px;">Global Energy Access — The Numbers</span></div>
+  <div style="background:#1e293b;padding:12px 20px;"><span style="color:white;font-weight:700;font-size:13px;">Global Energy Access — The Scale of the Problem</span></div>
   <table style="width:100%;border-collapse:collapse;">
     <tbody>
       <tr>
@@ -58,60 +42,115 @@ Techedge supplied the solar panels.
   </table>
 </div>
 
-The countries where this matters most are not abstract: **sub-Saharan Africa** (600M+ without electricity), **South Asia** (India, Bangladesh, Myanmar, Nepal), **Southeast Asia** (Indonesia, Philippines, Papua New Guinea), **Pacific islands**. And within India — parts of Jharkhand, Odisha, Chhattisgarh, Telangana, Andhra Pradesh where grid connectivity exists on paper but power reaches for 4–6 hours a day if at all.
-
-For a child doing homework under a kerosene lamp, the health and education cost is immediate. For a family spending ₹800/month on fuel they can't afford, the economic cost compounds over years. For a goshala running on no electricity, animal welfare suffers in ways that go unseen.
-
 ---
 
-## What Happened at Sri Bhomma Lingeswara Goshala
+## What This Looks Like on the Ground
 
 <div class="not-prose my-8" style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
-  <div style="border-radius:16px;overflow:hidden;position:relative;">
-    <img src="/img/goshala-signboard.jpeg" alt="Sri Bhomma Lingeswara Goshala sign — K. Ramesh Swami, Telangana" style="width:100%;height:260px;object-fit:cover;display:block;" />
+  <div style="border-radius:16px;overflow:hidden;">
+    <img src="/img/goshala-rural-shelter-crop.jpeg" alt="Rural goshala shelter with no electricity — open structure in a field, near AP-Karnataka border" style="width:100%;display:block;" />
     <div style="padding:12px 14px;background:#f8fafc;border:1px solid #e2e8f0;border-top:none;border-radius:0 0 16px 16px;">
-      <p style="font-size:12px;color:#475569;margin:0;">Sri Bhomma Lingeswara Goshala — run by K. Ramesh Swami, rural Telangana</p>
+      <p style="font-size:12px;color:#475569;margin:0;font-style:italic;">The goshala structure — corrugated sheets and wire mesh in an open field. No power line. Night duties for animals happen in complete darkness.</p>
     </div>
   </div>
-  <div style="border-radius:16px;overflow:hidden;position:relative;">
-    <img src="/img/goshala-rural-shelter.jpeg" alt="Rural shelter with no electricity — Telangana, September 2025" style="width:100%;height:260px;object-fit:cover;display:block;" />
+  <div style="border-radius:16px;overflow:hidden;">
+    <img src="/img/goshala-signboard-crop.jpeg" alt="Sri Bhomma Lingeswara Goshala sign — near AP and Karnataka border" style="width:100%;display:block;" />
     <div style="padding:12px 14px;background:#f8fafc;border:1px solid #e2e8f0;border-top:none;border-radius:0 0 16px 16px;">
-      <p style="font-size:12px;color:#475569;margin:0;">A rural structure in the field — no power line, no light after dark</p>
+      <p style="font-size:12px;color:#475569;margin:0;font-style:italic;">Sri Bhomma Lingeswara Goshala — near the AP and Karnataka border. A community institution in a rural area where reliable electricity does not reach.</p>
     </div>
   </div>
 </div>
 
-The goshala is a cow shelter — a place of care for animals, run on faith and community effort. It sits in an open field, a patchwork structure of corrugated sheets and wire. After sundown, there is no light. Night duties for animals — feeding, checking on calves, watching for illness — happen in darkness or by phone torch.
+This is what energy poverty looks like in India — not always an absence of wires, but an absence of reliable power. A goshala, a farming family's home, a temple. All present in the official electrification maps. All dark after six.
 
-The Swami's initiative reached this place on 29 September. A solar panel was handed over. That evening, there was light.
+For families in these conditions, the costs are immediate:
 
-<div class="not-prose my-8" style="border-radius:20px;overflow:hidden;position:relative;">
-  <img src="/img/goshala-team-panel.jpeg" alt="Team holding solar panel at Sri Bhomma Lingeswara Goshala — September 2025" style="width:100%;height:400px;object-fit:cover;object-position:top;display:block;" />
-  <div style="position:absolute;bottom:0;left:0;right:0;padding:20px 28px;background:linear-gradient(transparent,rgba(15,23,42,0.85));">
-    <p style="color:white;font-size:14px;font-weight:600;margin:0;">The team at Sri Bhomma Lingeswara Goshala — panel handover, 29 September 2025</p>
+- Children study under kerosene flames that cause respiratory damage
+- Women cook in kitchens where indoor air pollution from kerosene rivals tobacco smoke
+- Mobile phones — increasingly essential for banking, markets, and emergency services — go uncharged or require paid trips to a charging shop
+- Livestock facilities run night duties by phone torch or not at all
+
+The same reality plays out in sub-Saharan Africa (600M+ without electricity), Bangladesh, Myanmar, Nepal, Indonesia, the Pacific Islands, and parts of Latin America. The geography changes. The problem does not.
+
+---
+
+## What Solar Home Lighting Systems Are
+
+Not every off-grid community needs a rooftop installation or a grid connection. What they need first is light — safe, reliable, affordable — and the technology for that is already proven.
+
+<div class="not-prose grid grid-cols-1 sm:grid-cols-3 gap-4 my-6">
+  <div class="rounded-2xl p-5" style="background:#f8fafc;border:1px solid #e2e8f0;border-top:4px solid #166634;">
+    <p style="font-weight:700;font-size:15px;color:#1e293b;margin:0 0 4px;">🔦 Solar Lantern</p>
+    <p style="font-size:11px;font-weight:700;color:#15803d;text-transform:uppercase;letter-spacing:0.05em;margin:0 0 10px;">Pico Solar — Tier 1</p>
+    <p style="font-size:13px;color:#475569;margin:0 0 10px;">Single LED light + phone charging. Replaces a kerosene lamp. Portable, no installation required, immediate use.</p>
+    <p style="font-size:12px;font-weight:700;color:#1e293b;margin:0;">₹800–₹2,000</p>
+  </div>
+  <div class="rounded-2xl p-5" style="background:#f8fafc;border:1px solid #e2e8f0;border-top:4px solid #166634;">
+    <p style="font-weight:700;font-size:15px;color:#1e293b;margin:0 0 4px;">🏠 Solar Home Kit</p>
+    <p style="font-size:11px;font-weight:700;color:#15803d;text-transform:uppercase;letter-spacing:0.05em;margin:0 0 10px;">Home System — Tier 2–3</p>
+    <p style="font-size:13px;color:#475569;margin:0 0 10px;">2–4 LED lights + fan + phone charging. Panel, battery, controller. Powers 1–3 rooms for 8–10 hours overnight.</p>
+    <p style="font-size:12px;font-weight:700;color:#1e293b;margin:0;">₹5,000–₹18,000</p>
+  </div>
+  <div class="rounded-2xl p-5" style="background:#f8fafc;border:1px solid #e2e8f0;border-top:4px solid #166634;">
+    <p style="font-weight:700;font-size:15px;color:#1e293b;margin:0 0 4px;">⚡ Off-Grid System</p>
+    <p style="font-size:11px;font-weight:700;color:#15803d;text-transform:uppercase;letter-spacing:0.08em;margin:0 0 10px;">Full Home — Tier 4–5</p>
+    <p style="font-size:13px;color:#475569;margin:0 0 10px;">Whole house — lights, fan, TV, fridge, pump. Inverter, battery bank, and a larger panel array.</p>
+    <p style="font-size:12px;font-weight:700;color:#1e293b;margin:0;">₹40,000–₹2,00,000+</p>
   </div>
 </div>
 
-The same day, the Swami carried a panel to a temple — placed before the deity, received as an offering of a different kind. And to another family, a farming household, where a woman, a child, and a man stood together and held something that would replace kerosene in their home.
+The GOGLA/Lighting Global Tier system classifies off-grid solar from Tier 0 (basic lantern) to Tier 5 (full household power). For most families without electricity, **Tier 2–3 home kits** are the right entry point — enough for study lighting, safe cooking visibility, phone charging, and a fan.
 
-<div class="not-prose my-8" style="border-radius:20px;overflow:hidden;position:relative;">
-  <img src="/img/goshala-temple-handover.jpeg" alt="Solar panel handover inside a temple — Telangana, September 2025" style="width:100%;height:400px;object-fit:cover;display:block;" />
-  <div style="position:absolute;bottom:0;left:0;right:0;padding:20px 28px;background:linear-gradient(transparent,rgba(15,23,42,0.85));">
-    <p style="color:white;font-size:14px;font-weight:600;margin:0;">Panel received at a local temple — clean energy for prayer and light</p>
+---
+
+## How Distribution Reaches the Last Mile
+
+The panel is not the hardest part. Getting it to a family in a remote village — with the right sizing, working correctly, with the user knowing how to operate and maintain it — that is where most programs fail or succeed.
+
+<div class="not-prose my-8" style="border-radius:16px;overflow:hidden;">
+  <img src="/img/goshala-team-panel-crop.jpeg" alt="Team with solar panel at Sri Bhomma Lingeswara Goshala — near AP and Karnataka border" style="width:100%;display:block;" />
+  <div style="padding:12px 16px;background:#f8fafc;border:1px solid #e2e8f0;border-top:none;border-radius:0 0 16px 16px;">
+    <p style="font-size:12px;color:#475569;margin:0;font-style:italic;">Sri Bhomma Lingeswara Goshala, near the AP and Karnataka border — solar panel brought to site as part of Sri Rama Rajanna Swamy Ji's rural distribution program. Techedge supplied the panels.</p>
+  </div>
+</div>
+
+Last-mile solar distribution works when it is carried out by people who already have the trust of the community. In India, that often means religious organisations, local trusts, and Swami-led initiatives. Sri Rama Rajanna Swamy Ji's program at Sri Bhomma Lingeswara Goshala is one example — distributing solar home lighting systems directly to families and institutions in villages where the grid is unreliable or absent.
+
+<div class="not-prose my-8" style="border-radius:16px;overflow:hidden;">
+  <img src="/img/goshala-temple-handover-crop.jpeg" alt="Solar panel handover inside a temple — Sri Rama Rajanna Swamy Ji's distribution program" style="width:100%;display:block;" />
+  <div style="padding:12px 16px;background:#f8fafc;border:1px solid #e2e8f0;border-top:none;border-radius:0 0 16px 16px;">
+    <p style="font-size:12px;color:#475569;margin:0;font-style:italic;">Panel handover at a local temple — solar donated to a religious institution as part of the Swami's community distribution program.</p>
+  </div>
+</div>
+
+Globally, this last-mile distribution challenge is solved in different ways:
+
+- **Kenya and Tanzania**: M-KOPA's PAYGO model finances panels through mobile money — 10M+ households reached
+- **Bangladesh**: IDCOL programme has deployed 6M+ solar home systems in rural areas
+- **Ethiopia and Nigeria**: The largest off-grid solar markets in Africa, driven by NGO and government programs
+- **Myanmar, Cambodia, Indonesia**: Island and remote communities where grid extension is decades away
+- **Pacific Islands**: Fiji, Vanuatu, Papua New Guinea — diesel generation costs $0.80–$1.50/kWh; solar is financially transformative
+
+The technology is the same. A panel, a battery controller, an LED fixture. What changes is who carries it to the doorstep.
+
+<div class="not-prose my-8" style="border-radius:16px;overflow:hidden;">
+  <img src="/img/goshala-family-handover-crop.jpeg" alt="Sri Rama Rajanna Swamy Ji handing over a solar panel to a rural family — near AP and Karnataka border" style="width:100%;display:block;" />
+  <div style="padding:12px 16px;background:#f8fafc;border:1px solid #e2e8f0;border-top:none;border-radius:0 0 16px 16px;">
+    <p style="font-size:12px;color:#475569;margin:0;font-style:italic;">Sri Rama Rajanna Swamy Ji with a rural family receiving a solar panel — near the AP and Karnataka border. The panel replaces kerosene and the monthly fuel cost that comes with it.</p>
   </div>
 </div>
 
 ---
 
-## Watching It Happen — Field Video
+## Field Documentation
 
 <div class="not-prose my-8" style="border-radius:20px;overflow:hidden;background:#0f172a;">
   <video controls playsinline style="width:100%;display:block;max-height:480px;object-fit:contain;">
     <source src="/videos/goshala-solar-distribution-1.mp4" type="video/mp4" />
   </video>
   <div style="padding:14px 20px;">
-    <p style="color:#86efac;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;margin:0 0 4px;">Field Documentation — 30 September 2025</p>
-    <p style="color:#94a3b8;font-size:13px;margin:0;">Solar distribution in rural Telangana — Swami-led initiative, Techedge supply</p>
+    <p style="color:#86efac;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;margin:0 0 4px;">Field Documentation — September 2025</p>
+    <p style="color:#94a3b8;font-size:13px;margin:0;">Solar panel distribution — Sri Bhomma Lingeswara Goshala program, near AP and Karnataka border</p>
   </div>
 </div>
 
@@ -120,80 +159,33 @@ The same day, the Swami carried a panel to a temple — placed before the deity,
     <source src="/videos/goshala-solar-distribution-2.mp4" type="video/mp4" />
   </video>
   <div style="padding:14px 20px;">
-    <p style="color:#86efac;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;margin:0 0 4px;">Field Documentation — 30 September 2025</p>
-    <p style="color:#94a3b8;font-size:13px;margin:0;">Handover documentation — rural families receiving solar home lighting</p>
+    <p style="color:#86efac;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;margin:0 0 4px;">Field Documentation — September 2025</p>
+    <p style="color:#94a3b8;font-size:13px;margin:0;">Rural families and institutions receiving solar home lighting — on-ground handover</p>
   </div>
 </div>
 
 ---
 
-## What a Solar Home Lighting System Actually Is
-
-Not every off-grid family needs a rooftop installation. What they need is light — safe, reliable, affordable. Solar home lighting systems deliver exactly that, at a scale and price that works for rural and remote communities.
-
-<div class="not-prose grid grid-cols-1 sm:grid-cols-3 gap-4 my-6">
-  <div class="rounded-2xl p-5" style="background:#f8fafc;border:1px solid #e2e8f0;border-top:4px solid #166634;">
-    <p style="font-weight:700;font-size:15px;color:#1e293b;margin:0 0 4px;">🔦 Solar Lantern</p>
-    <p style="font-size:11px;font-weight:700;color:#15803d;text-transform:uppercase;letter-spacing:0.05em;margin:0 0 10px;">Pico Solar — Tier 1</p>
-    <p style="font-size:13px;color:#475569;margin:0 0 10px;">Single LED light + phone charging. Replaces kerosene lamp. Portable, plug-and-play, no installation.</p>
-    <p style="font-size:12px;font-weight:700;color:#1e293b;margin:0;">₹800–₹2,000</p>
-  </div>
-  <div class="rounded-2xl p-5" style="background:#f8fafc;border:1px solid #e2e8f0;border-top:4px solid #166634;">
-    <p style="font-weight:700;font-size:15px;color:#1e293b;margin:0 0 4px;">🏠 Solar Home Kit</p>
-    <p style="font-size:11px;font-weight:700;color:#15803d;text-transform:uppercase;letter-spacing:0.05em;margin:0 0 10px;">Home System — Tier 2–3</p>
-    <p style="font-size:13px;color:#475569;margin:0 0 10px;">2–4 LED lights + fan + phone charging. Panel + battery + controller. Powers 1–3 rooms for 8–10 hrs/night.</p>
-    <p style="font-size:12px;font-weight:700;color:#1e293b;margin:0;">₹5,000–₹18,000</p>
-  </div>
-  <div class="rounded-2xl p-5" style="background:#f8fafc;border:1px solid #e2e8f0;border-top:4px solid #166634;">
-    <p style="font-weight:700;font-size:15px;color:#1e293b;margin:0 0 4px;">⚡ Off-Grid System</p>
-    <p style="font-size:11px;font-weight:700;color:#15803d;text-transform:uppercase;letter-spacing:0.08em;margin:0 0 10px;">Full Home — Tier 4–5</p>
-    <p style="font-size:13px;color:#475569;margin:0 0 10px;">Whole house — lights, fan, TV, fridge, pump. Inverter + battery bank + larger panel array.</p>
-    <p style="font-size:12px;font-weight:700;color:#1e293b;margin:0;">₹40,000–₹2,00,000+</p>
-  </div>
-</div>
-
-The GOGLA/Lighting Global Tier system classifies off-grid solar products from Tier 0 (basic lantern) to Tier 5 (full household power). For most rural families without electricity, **Tier 2–3 home kits** are the right entry point — enough for study lighting, safe cooking visibility, phone charging, and a fan.
-
----
-
-## The Global Replication: Where This Scene Plays Out
-
-This is not just an Indian story. The same handover — a panel, a family, sunlight — happens in:
-
-- **Kenya and Tanzania** — solar home systems have reached 10M+ households; M-KOPA's PAYGO model finances panels through mobile money
-- **Bangladesh** — IDCOL programme has deployed 6M+ solar home systems in rural areas
-- **Ethiopia and Nigeria** — largest off-grid solar markets in Africa, driven by NGO and government programs
-- **Myanmar, Cambodia, Indonesia** — island and rural communities where grid extension is decades away
-- **Pacific Islands** — Fiji, Vanuatu, Papua New Guinea — where diesel generation costs $0.80–$1.50/kWh and solar is transformative
-
-The technology is the same. The panel, the battery controller, the LED light. What changes is who carries it to the doorstep.
-
----
-
-## Who Runs These Programs — and How Techedge Supports Them
-
-The last-mile delivery of solar home lighting is done by people like K. Ramesh Swami — individuals and organisations who have the community trust that logistics companies never will.
+## Who Runs These Programs
 
 <div class="not-prose grid grid-cols-1 sm:grid-cols-2 gap-4 my-6">
   <div class="rounded-2xl p-5" style="background:#f8fafc;border:1px solid #e2e8f0;border-left:4px solid #166634;">
     <p style="font-weight:700;font-size:14px;color:#1e293b;margin:0 0 8px;">🕍 Religious Trusts & Ashrams</p>
-    <p style="font-size:13px;color:#475569;margin:0;">Deep community roots and grassroots reach. Ideal for village-level distribution with zero marketing overhead.</p>
+    <p style="font-size:13px;color:#475569;margin:0;">Deep community roots and grassroots reach. Ideal for village-level distribution with zero marketing overhead. Swami-led and temple trust programs have distributed thousands of panels across Andhra Pradesh, Telangana, Karnataka, and Tamil Nadu.</p>
   </div>
   <div class="rounded-2xl p-5" style="background:#f8fafc;border:1px solid #e2e8f0;border-left:4px solid #166634;">
     <p style="font-weight:700;font-size:14px;color:#1e293b;margin:0 0 8px;">🤝 NGOs & Development Orgs</p>
-    <p style="font-size:13px;color:#475569;margin:0;">World Bank, USAID, GIZ, SELCO Foundation, Lighting Asia — programmes that need quality-certified supply at scale.</p>
+    <p style="font-size:13px;color:#475569;margin:0;">World Bank, USAID, GIZ, SELCO Foundation, Lighting Asia — programmes that need quality-certified supply at scale. International programs require IEC/BIS-certified products and traceable supply chains.</p>
   </div>
   <div class="rounded-2xl p-5" style="background:#f8fafc;border:1px solid #e2e8f0;border-left:4px solid #166634;">
     <p style="font-weight:700;font-size:14px;color:#1e293b;margin:0 0 8px;">🏢 CSR Programs</p>
-    <p style="font-size:13px;color:#475569;margin:0;">Companies with CSR mandates under Companies Act 2013 — solar home lighting qualifies under Schedule VII (environment, rural development).</p>
+    <p style="font-size:13px;color:#475569;margin:0;">Companies with CSR mandates under the Companies Act 2013 — solar home lighting qualifies under Schedule VII (environment, rural development). Bulk solar supply with CSR documentation is available.</p>
   </div>
   <div class="rounded-2xl p-5" style="background:#f8fafc;border:1px solid #e2e8f0;border-left:4px solid #166634;">
     <p style="font-weight:700;font-size:14px;color:#1e293b;margin:0 0 8px;">🏛️ Government Schemes</p>
-    <p style="font-size:13px;color:#475569;margin:0;">PM-KUSUM, MNRE off-grid solar programme, state rural electrification boards — bulk procurement through GeM or direct tender.</p>
+    <p style="font-size:13px;color:#475569;margin:0;">PM-KUSUM, MNRE off-grid solar programme, state rural electrification boards — bulk procurement through GeM or direct tender. India's off-grid solar targets are among the largest in the world.</p>
   </div>
 </div>
-
-Techedge supplies solar lanterns and home kits for all of these programs — product documentation, bulk pricing, pan-India logistics, and export supply for international programmes.
 
 ---
 
@@ -244,23 +236,18 @@ Techedge supplies solar lanterns and home kits for all of these programs — pro
   </table>
 </div>
 
-After payback, the family saves ₹600–₹1,200 every month for the remaining 4–7 year life of the system. For a family earning ₹8,000–₹12,000/month, that is a 7–15% increase in effective income — from sunlight.
+After payback, the family saves ₹600–₹1,200 every month for the remaining 4–7 year life of the system. For a family earning ₹8,000–₹12,000 a month, that is a 7–15% increase in effective income — from sunlight.
 
 ---
 
-## From One Panel to Village Scale
+## What Techedge Supplies
 
-What K. Ramesh Swami's initiative demonstrates is the distribution model that works: trusted individuals and institutions, carrying proven technology, to people who need it most.
+We supply solar panels, lanterns, and home kits for NGOs, religious trusts, CSR programs, and government bodies — at bulk pricing with proper supply documentation.
 
-Techedge's role is to make sure the technology is right — quality solar panels, properly sized controllers, reliable LED fixtures — and that supply chains for bulk orders work whether the destination is Telangana or Tanzania.
-
-We supply:
 - **Solar lanterns** — pico solar for basic lighting and phone charging
 - **Solar home kits** — 1–3 room systems with fan capability
-- **Bulk supply** for NGOs, trusts, CSR programs, and government bodies
+- **Bulk supply** for programmes distributing 10 to 10,000 units
 - **Export documentation** for international development programmes
-
-If you run a program — a trust, an NGO, a CSR initiative — that puts solar into hands that need it, we want to help supply it.
 
 <div class="not-prose rounded-2xl my-8" style="background:linear-gradient(135deg,#0f2818,#14532d);padding:32px 36px;">
   <p style="color:white;font-size:20px;font-weight:700;margin:0 0 10px;">Supply Solar for Your Program</p>
@@ -274,4 +261,4 @@ If you run a program — a trust, an NGO, a CSR initiative — that puts solar i
 
 ---
 
-*Techedge supplied solar panels for the Sri Bhomma Lingeswara Goshala distribution program, Telangana, September 2025. Photography and video: field documentation by the program team.*
+*Field photographs and video: Sri Bhomma Lingeswara Goshala solar distribution program, near the AP and Karnataka border, September 2025. Techedge supplied solar panels for this program.*
