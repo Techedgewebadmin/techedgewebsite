@@ -3,7 +3,7 @@ title: "Solar Rooftop for Cold Storage: How to Reduce Running Costs with On-Grid
 description: "Cold storage electricity bills are among the highest in agri-business. Here's how an on-grid solar rooftop system cuts costs by ₹15–18 lakhs/year with payback under 3.5 years."
 date: "2026-01-20"
 category: "Cold Storage Solar"
-image: ../../assets/blog/cold-storage-ongrid-solar.jpg
+image: ../../assets/blog/cold-storage-interior.jpeg
 author: "Techedge Team"
 tags: ["cold storage", "on-grid solar", "rooftop solar", "electricity savings", "agri solar"]
 ---
