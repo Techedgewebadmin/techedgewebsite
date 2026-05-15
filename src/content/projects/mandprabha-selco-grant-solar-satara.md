@@ -1,10 +1,10 @@
 ---
-title: "45 kW On-Grid Solar — SELCO Grant | Mandprabha Farmer Producer Company, Satara"
-category: "Food Processing"
+title: "45 kW Solar — SELCO Grant | Mandprabha FPC, Satara"
+category: "Industrial"
 location: "Satara, Maharashtra — 415508"
 capacity: "45 kW On-Grid"
 date: "April 2026"
-image: "../../assets/projects/warehouse.webp"
+image: "../../assets/projects/mandprabha-fpc-satara-aerial.jpeg"
 description: "45 kW on-grid solar for a women-led millet processing unit in rural Maharashtra — designed, installed and maintained by Techedge. Full SELCO Foundation grant documentation prepared by Techedge. ₹61,000/month savings. 73% annual ROI. 16-month payback."
 isFeatured: true
 heroFit: "cover"
