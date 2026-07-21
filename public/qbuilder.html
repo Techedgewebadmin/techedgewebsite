@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Techedge Solar Proposal</title>
+<title>Techedge Quote Builder</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
@@ -110,11 +110,6 @@ th{
   height:90px;
 }
 
-.signature{
-  height:60px;
-  margin-top:10px;
-}
-
 /* SCREEN GRID */
 .grid-2x2{
   display:grid;
@@ -136,6 +131,106 @@ th{
   font-weight:bold;
   margin-bottom:20px;
   text-transform:uppercase;
+}
+
+/* LINE ITEMS */
+.items-table{
+  width:100%;
+  border-collapse:collapse;
+  margin-bottom:8px;
+  font-size:12px;
+}
+
+.items-table th{
+  background:#f2f2f2;
+  padding:5px 6px;
+  text-align:left;
+  font-size:11px;
+  border:1px solid #ccc;
+}
+
+.items-table td{
+  padding:4px;
+  border:1px solid #ccc;
+}
+
+.items-table td input{
+  margin:0;
+  padding:4px 6px;
+  font-size:12px;
+}
+
+.items-table td input[type=number]{
+  text-align:right;
+}
+
+.items-table td input[type=number]::-webkit-outer-spin-button,
+.items-table td input[type=number]::-webkit-inner-spin-button{
+  -webkit-appearance:none;
+  margin:0;
+}
+
+.items-table td input[type=number]{
+  -moz-appearance:textfield;
+}
+
+.btn-add-row{
+  background:#0a5c3b;
+  color:white;
+  border:none;
+  padding:6px 14px;
+  border-radius:4px;
+  cursor:pointer;
+  font-size:12px;
+  font-weight:bold;
+  margin-bottom:10px;
+}
+
+.btn-del-row{
+  background:#fee2e2;
+  color:#dc2626;
+  border:none;
+  width:22px;
+  height:22px;
+  border-radius:4px;
+  cursor:pointer;
+  font-size:14px;
+  font-weight:bold;
+}
+
+.gst-indicator{
+  font-size:11px;
+  margin-bottom:8px;
+  padding:6px 10px;
+  border-radius:4px;
+  background:#eef7f1;
+  border:1px solid #bcdfcb;
+  color:#0a5c3b;
+}
+
+.grand-total-row td{
+  background:#0a5c3b;
+  color:white;
+  font-weight:bold;
+  font-size:13px;
+}
+
+/* VALIDATION */
+input.field-error, textarea.field-error{
+  border-color:#dc2626 !important;
+  background:#fff5f5 !important;
+}
+
+.field-error-msg{
+  font-size:10px;
+  color:#dc2626;
+  margin-top:-6px;
+  margin-bottom:8px;
+  display:none;
+}
+
+.field-error-msg.visible{
+  display:block;
 }
 
 /* Mobile */
@@ -185,11 +280,6 @@ th{
     padding:5px;
   }
 
-  .footer-section{
-    margin-top:12px;
-    page-break-inside:avoid;
-  }
-
 }
   /* Convert grid to stable table for print */
   .grid-2x2{
@@ -216,7 +306,7 @@ th{
 <body>
 
 <header>
-<div><b>Techedge Solar Proposal Builder</b></div>
+<div><b>Techedge Quote Builder</b></div>
 <button onclick="downloadPDF()">Save as PDF</button>
 </header>
 
@@ -229,61 +319,171 @@ th{
 <input id="qtNo">
 <input id="date" type="date">
 
-<input id="clientName" placeholder="Client Company Name">
-<input id="contactPerson" placeholder="Contact Person">
-<input id="contactPhone" placeholder="Phone Number">
-<input id="contactEmail" placeholder="Email ID">
-
-<textarea id="delivery" placeholder="Billing Address"></textarea>
-
-<h3>Project Details</h3>
-
-<select id="type">
-<option>Ongrid</option>
-<option>Offgrid</option>
-<option>Hybrid</option>
-<option>Solar Street Light</option>
+<input id="clientName" placeholder="Client Company Name *">
+<div class="field-error-msg" id="err-clientName">Company name is required</div>
+<input id="contactPerson" placeholder="Contact Person *">
+<div class="field-error-msg" id="err-contactPerson">Contact person is required</div>
+<input id="contactPhone" placeholder="Phone Number *">
+<div class="field-error-msg" id="err-contactPhone">Phone number is required</div>
+<input id="contactEmail" placeholder="Email ID *">
+<div class="field-error-msg" id="err-contactEmail">Email is required</div>
+<input id="clientGST" placeholder="Client GSTIN (optional)" style="text-transform:uppercase">
+<div class="field-error-msg" id="err-clientGST">Invalid GSTIN format (expected 15 characters, e.g. 29AAHCT2953M1ZP)</div>
+<select id="clientState">
+<option value="01">Jammu & Kashmir</option>
+<option value="02">Himachal Pradesh</option>
+<option value="03">Punjab</option>
+<option value="04">Chandigarh</option>
+<option value="05">Uttarakhand</option>
+<option value="06">Haryana</option>
+<option value="07">Delhi</option>
+<option value="08">Rajasthan</option>
+<option value="09">Uttar Pradesh</option>
+<option value="10">Bihar</option>
+<option value="11">Sikkim</option>
+<option value="12">Arunachal Pradesh</option>
+<option value="13">Nagaland</option>
+<option value="14">Manipur</option>
+<option value="15">Mizoram</option>
+<option value="16">Tripura</option>
+<option value="17">Meghalaya</option>
+<option value="18">Assam</option>
+<option value="19">West Bengal</option>
+<option value="20">Jharkhand</option>
+<option value="21">Odisha</option>
+<option value="22">Chhattisgarh</option>
+<option value="23">Madhya Pradesh</option>
+<option value="24">Gujarat</option>
+<option value="26">Dadra & Nagar Haveli and Daman & Diu</option>
+<option value="27">Maharashtra</option>
+<option value="29" selected>Karnataka</option>
+<option value="30">Goa</option>
+<option value="31">Lakshadweep</option>
+<option value="32">Kerala</option>
+<option value="33">Tamil Nadu</option>
+<option value="34">Puducherry</option>
+<option value="35">Andaman & Nicobar Islands</option>
+<option value="36">Telangana</option>
+<option value="37">Andhra Pradesh</option>
+<option value="38">Ladakh</option>
+<option value="97">Other Territory</option>
+<option value="99">Other Country</option>
 </select>
+<select id="clientCity"></select>
+<input id="clientCityOther" placeholder="Enter city name" style="display:none">
+<input id="clientPin" placeholder="PIN Code" maxlength="6">
+<div style="font-size:10px;color:#888;margin:-4px 0 8px;">State/City used always — PIN is auto-filled from City as a starting reference (a city can have multiple PINs) — edit freely.</div>
+<div class="gst-indicator" id="gstTypeIndicator">🏠 <b>Intra-State (Karnataka)</b> — CGST + SGST will apply</div>
 
-<input id="capacity" type="number" placeholder="Capacity (kW)">
-<input id="description" value="Supply & Installation of Solar Power Plant">
-<input id="rate" type="number" placeholder="Total Price (Excl GST)">
+<textarea id="delivery" placeholder="Billing Address *"></textarea>
+<div class="field-error-msg" id="err-delivery">Billing address is required</div>
 
-<h3>GST Structure</h3>
-<select id="gstMode">
-<option value="epc">Solar EPC (70% @5% + 30% @18%)</option>
-<option value="supply">Supply Only (5%)</option>
-<option value="service">BOS & Installation (18%)</option>
+<input id="subject" placeholder="Quotation Subject (optional), e.g. Supply of Electrical Panel & Switchgear">
+
+<h3>Line Items</h3>
+<table class="items-table">
+<thead>
+<tr>
+<th style="width:11%">Type</th>
+<th style="width:24%">Description</th>
+<th style="width:10%">HSN/SAC</th>
+<th style="width:14%">GST</th>
+<th style="width:9%">Qty</th>
+<th style="width:10%">Unit</th>
+<th style="width:16%">Unit Price (₹)</th>
+<th style="width:6%"></th>
+</tr>
+</thead>
+<tbody id="itemsBody">
+<tr>
+<td>
+<select class="item-type">
+<option value="Product">Product</option>
+<option value="Electrical/BOS">Electrical/BOS</option>
+<option value="AMC/Maintenance">AMC/Maintenance</option>
+<option value="Service">Service</option>
+<option value="Installation">Installation</option>
+<option value="Delivery">Delivery</option>
+<option value="Others">Others</option>
+</select>
+</td>
+<td><input type="text" class="item-desc" placeholder="Product / Service"></td>
+<td><input type="text" class="item-hsn" placeholder="HSN/SAC"></td>
+<td>
+<select class="item-gst-mode">
+<option value="0">0%</option>
+<option value="5">5%</option>
+<option value="18">18%</option>
+<option value="split7030">70% @5% + 30% @18%</option>
 <option value="custom">Custom %</option>
 </select>
+<input type="number" class="item-gst-custom" placeholder="Custom %" min="0" max="100" step="0.01" style="display:none;margin-top:4px;margin-bottom:0;">
+</td>
+<td><input type="number" class="item-qty" value="1" min="0" step="0.01"></td>
+<td>
+<select class="item-unit">
+<option value="Nos">Nos</option>
+<option value="Mtr">Mtr</option>
+<option value="Set">Set</option>
+<option value="Kg">Kg</option>
+<option value="Box">Box</option>
+<option value="Roll">Roll</option>
+<option value="Pair">Pair</option>
+<option value="Ltr">Ltr</option>
+<option value="Sqm">Sqm</option>
+<option value="Lot">Lot</option>
+<option value="Others">Others</option>
+</select>
+</td>
+<td><input type="number" class="item-price" value="0" min="0" step="0.01"></td>
+<td style="text-align:center"><button class="btn-del-row" onclick="delRow(this)">×</button></td>
+</tr>
+</tbody>
+</table>
+<div style="font-size:10px;color:#888;margin:-4px 0 8px;">HSN/SAC is auto-suggested from the description/type — please verify before invoicing.</div>
+<button class="btn-add-row" onclick="addRow()">+ Add Item</button>
+<div class="field-error-msg" id="err-items">At least one line item with a description and price is required</div>
 
-<input id="customGST" type="number" placeholder="Custom GST %" style="display:none;">
-
-<h3>Techedge Scope</h3>
+<h3>Scope of Supply</h3>
+<select id="inclusionsTemplate"></select>
 <textarea id="Inclusions">
-1. Solar Panels
+1. Solar Panels,
 2. String Inverters,
 3. Mounting Structure,
 4. Cables & Junction Boxes,
 5. Earthing & Lightning Protection kit,
 6. ONE Year Warranty on Supply & Installation.</textarea>
 
-<h3>Out of Techedge Scope</h3>
+<h3>Exclusions</h3>
+<select id="exclusionsTemplate"></select>
 <textarea id="exclusions">
 1. All civil works except earthing,
 2. Structural strengthening (if required),
-3. Any additional works beyond agreed scope</textarea>
+3. Any additional works beyond agreed scope.</textarea>
 
 <h3>Delivery & Installation</h3>
+<select id="deliveryTemplate"></select>
 <textarea id="deliveryDetails">
-  1. Delivery and installation within 6-8 weeks from order confirmation.</textarea>
+1. Delivery and installation within 6-8 weeks from order confirmation.</textarea>
 
 <h3>Payment Terms</h3>
+<select id="paymentTemplate"></select>
 <textarea id="paymentTerms">
 1. 50% Advance on Order Confirmation,
 2. 30% Before Dispatch,
 3. 15% Before Installation & Sync,
 4. 5% After Commissioning.</textarea>
+
+<h3>General Terms & Conditions</h3>
+<textarea id="generalTerms">
+1. Prices are subject to change without notice if the order is not confirmed within the validity period of this quotation,
+2. Force Majeure – Techedge SPE India Pvt. Ltd shall not be liable for delays due to circumstances beyond reasonable control, including acts of God, natural disasters, government restrictions or supply chain disruptions,
+3. Confidentiality – Both parties agree to keep the terms of this quotation confidential and not disclose to any third party without prior written consent,
+4. Intellectual Property – All intellectual property rights in equipment supplied remain with the respective OEM/manufacturer. Techedge SPE India Pvt. Ltd makes no claim over OEM IP,
+5. Limitation of Liability – Techedge SPE India Pvt. Ltd's liability shall in no event exceed the value of goods/services supplied under this quotation,
+6. Governing Law – This quotation and any contract arising therefrom shall be governed by the laws of India,
+7. Jurisdiction – All disputes are subject to the exclusive jurisdiction of courts in Bengaluru, Karnataka,
+8. Entire Agreement – This quotation supersedes all prior verbal or written communications, representations or understandings on this subject matter.</textarea>
 
 </div>
 
@@ -321,10 +521,12 @@ function formatINR(num){
   });
 }
 
-
-function formatCapacity(val){
-  if(val>=1000) return (val/1000).toFixed(2)+" MW";
-  return val+" kW";
+function fmtLines(text){
+  return (text||"").split("\n").filter(l=>l.trim()).map(line=>{
+    let match=line.match(/^(\d+\.?\s*)(.+)/);
+    if(match) return '<div style="display:flex;gap:6px;margin-bottom:4px"><span style="font-weight:bold;color:#0a5c3b;min-width:18px;flex-shrink:0">'+match[1].trim()+'</span><span>'+match[2]+'</span></div>';
+    return '<div style="margin-bottom:4px">'+line+'</div>';
+  }).join('');
 }
 
 function numberToWords(num){
@@ -351,23 +553,31 @@ if(num) result+=convert(num);
 return result.trim()+" Rupees Only";
 }
 
-function calculateGST(base){
-let mode=gstMode.value;
+function gstSplitRows(rate,amount){
+let isIntraState = getClientStateCode()==="29";
+if(isIntraState){
+let half=amount/2;
+return `<tr><td>CGST @${rate/2}%</td><td class="amount">${formatINR(half)}</td></tr>
+<tr><td>SGST @${rate/2}%</td><td class="amount">${formatINR(half)}</td></tr>`;
+}
+return `<tr><td>IGST @${rate}%</td><td class="amount">${formatINR(amount)}</td></tr>`;
+}
+
+function calcGST(items){
+let byRate={};
+items.forEach(it=>{
+  let r=it.gstRate;
+  byRate[r]=(byRate[r]||0)+it.lineTotal;
+});
 let gstTotal=0;
 let details="";
-if(mode=="epc"){
-let solar=base*0.7;
-let service=base*0.3;
-let gstSolar=solar*0.05;
-let gstService=service*0.18;
-gstTotal=gstSolar+gstService;
-details=`
-<tr><td>70% Supply @5%</td><td class="amount">${formatINR(gstSolar)}</td></tr>
-<tr><td>30% BOS & Installation @18%</td><td class="amount">${formatINR(gstService)}</td></tr>`;
-}
-if(mode=="supply"){ gstTotal=base*0.05; details=`<tr><td>GST @5%</td><td class="amount">${formatINR(gstTotal)}</td></tr>`;}
-if(mode=="service"){ gstTotal=base*0.18; details=`<tr><td>GST @18%</td><td class="amount">${formatINR(gstTotal)}</td></tr>`;}
-if(mode=="custom"){ let c=Number(customGST.value||0); gstTotal=base*c/100; details=`<tr><td>GST @${c}%</td><td class="amount">${formatINR(gstTotal)}</td></tr>`;}
+Object.keys(byRate).map(Number).sort((a,b)=>a-b).forEach(rate=>{
+  let base=byRate[rate];
+  if(rate<=0) return;
+  let amt=base*rate/100;
+  gstTotal+=amt;
+  details+=gstSplitRows(rate,amt);
+});
 return{gstTotal,details};
 }
 
@@ -403,33 +613,335 @@ function addDaysToDate(dateString, days){
   return dd + " " + months[d.getMonth()] + " " + yyyy;
 }
 
+/* STATE CODE MAP (for GSTIN-based CGST/SGST vs IGST) */
+const STATE_CODES={
+  '01':'Jammu & Kashmir','02':'Himachal Pradesh','03':'Punjab','04':'Chandigarh',
+  '05':'Uttarakhand','06':'Haryana','07':'Delhi','08':'Rajasthan','09':'Uttar Pradesh',
+  '10':'Bihar','11':'Sikkim','12':'Arunachal Pradesh','13':'Nagaland','14':'Manipur',
+  '15':'Mizoram','16':'Tripura','17':'Meghalaya','18':'Assam','19':'West Bengal',
+  '20':'Jharkhand','21':'Odisha','22':'Chhattisgarh','23':'Madhya Pradesh','24':'Gujarat',
+  '26':'Dadra & Nagar Haveli and Daman & Diu','27':'Maharashtra','29':'Karnataka',
+  '30':'Goa','31':'Lakshadweep','32':'Kerala','33':'Tamil Nadu','34':'Puducherry',
+  '35':'Andaman & Nicobar Islands','36':'Telangana','37':'Andhra Pradesh','38':'Ladakh',
+  '97':'Other Territory','99':'Other Country'
+};
+
+/* MAJOR CITIES PER STATE (for cascading Client State -> City selection) */
+const CITY_MAP={
+  '01':['Srinagar','Jammu','Anantnag','Baramulla'],
+  '02':['Shimla','Manali','Dharamshala','Solan'],
+  '03':['Ludhiana','Amritsar','Jalandhar','Patiala'],
+  '04':['Chandigarh'],
+  '05':['Dehradun','Haridwar','Rishikesh','Nainital'],
+  '06':['Gurugram','Faridabad','Panipat','Ambala'],
+  '07':['New Delhi','Dwarka','Rohini','Saket'],
+  '08':['Jaipur','Jodhpur','Udaipur','Kota'],
+  '09':['Lucknow','Noida','Kanpur','Varanasi','Agra'],
+  '10':['Patna','Gaya','Muzaffarpur','Bhagalpur'],
+  '11':['Gangtok','Namchi'],
+  '12':['Itanagar','Naharlagun'],
+  '13':['Kohima','Dimapur'],
+  '14':['Imphal'],
+  '15':['Aizawl'],
+  '16':['Agartala'],
+  '17':['Shillong'],
+  '18':['Guwahati','Dibrugarh','Silchar'],
+  '19':['Kolkata','Howrah','Durgapur','Siliguri'],
+  '20':['Ranchi','Jamshedpur','Dhanbad','Bokaro'],
+  '21':['Bhubaneswar','Cuttack','Rourkela'],
+  '22':['Raipur','Bhilai','Bilaspur'],
+  '23':['Bhopal','Indore','Gwalior','Jabalpur'],
+  '24':['Ahmedabad','Surat','Vadodara','Rajkot'],
+  '26':['Daman','Silvassa'],
+  '27':['Mumbai','Pune','Nagpur','Nashik','Thane','Aurangabad'],
+  '29':['Bengaluru','Mysuru','Mangaluru','Hubballi','Belagavi','Davanagere'],
+  '30':['Panaji','Margao','Vasco da Gama'],
+  '31':['Kavaratti'],
+  '32':['Kochi','Thiruvananthapuram','Kozhikode','Thrissur'],
+  '33':['Chennai','Coimbatore','Madurai','Tiruchirappalli'],
+  '34':['Puducherry'],
+  '35':['Port Blair'],
+  '36':['Hyderabad','Warangal','Nizamabad'],
+  '37':['Vijayawada','Visakhapatnam','Guntur','Tirupati'],
+  '38':['Leh','Kargil'],
+  '97':[],
+  '99':[]
+};
+
+/* REPRESENTATIVE PIN CODE PER CITY (starting suggestion only — a city has many PINs, always editable) */
+const CITY_PIN_MAP={
+  'Srinagar':'190001','Jammu':'180001','Shimla':'171001','Ludhiana':'141001','Amritsar':'143001',
+  'Chandigarh':'160001','Dehradun':'248001','Gurugram':'122001','Faridabad':'121001',
+  'New Delhi':'110001','Jaipur':'302001','Lucknow':'226001','Kanpur':'208001','Varanasi':'221001',
+  'Agra':'282001','Patna':'800001','Gangtok':'737101','Itanagar':'791111','Kohima':'797001',
+  'Imphal':'795001','Aizawl':'796001','Agartala':'799001','Shillong':'793001','Guwahati':'781001',
+  'Kolkata':'700001','Howrah':'711101','Ranchi':'834001','Jamshedpur':'831001','Bhubaneswar':'751001',
+  'Raipur':'492001','Bhopal':'462001','Indore':'452001','Ahmedabad':'380001','Surat':'395001',
+  'Vadodara':'390001','Mumbai':'400001','Pune':'411001','Nagpur':'440001','Nashik':'422001',
+  'Bengaluru':'560001','Mysuru':'570001','Mangaluru':'575001','Hubballi':'580020',
+  'Panaji':'403001','Kochi':'682001','Thiruvananthapuram':'695001','Chennai':'600001',
+  'Coimbatore':'641001','Madurai':'625001','Puducherry':'605001','Port Blair':'744101',
+  'Hyderabad':'500001','Vijayawada':'520001','Visakhapatnam':'530001','Leh':'194101'
+};
+
+function populateCityOptions(){
+  const stateCode=clientState.value;
+  const cities=CITY_MAP[stateCode]||[];
+  clientCity.innerHTML=cities.map(c=>'<option value="'+c+'">'+c+'</option>').join('')+'<option value="Others">Others</option>';
+}
+
+function autoFillPin(){
+  if(clientPin.dataset.userSet==="true") return;
+  const pin=CITY_PIN_MAP[clientCity.value];
+  clientPin.value = pin || '';
+}
+
+function getClientCityName(){
+  if(clientCity.value==="Others") return clientCityOther.value.trim();
+  return clientCity.value;
+}
+
+function toggleClientCityOther(){
+  clientCityOther.style.display = clientCity.value==="Others" ? "block" : "none";
+}
+
+function getClientStateCode(){
+  let gstinVal=(clientGST.value||'').trim();
+  if(gstinVal.length>=2) return gstinVal.substring(0,2);
+  return clientState.value || '29';
+}
+
+function syncStateFromGSTIN(){
+  const gstin=(clientGST.value||'').trim().toUpperCase();
+  const code=gstin.substring(0,2);
+  if(gstin.length>=2 && STATE_CODES[code] && clientState.value!==code){
+    clientState.value=code;
+    populateCityOptions();
+    toggleClientCityOther();
+    autoFillPin();
+  }
+}
+
+function updateGSTIndicator(){
+  const indicator=document.getElementById('gstTypeIndicator');
+  if(!indicator) return;
+  const gstin=(clientGST.value||'').trim();
+  const code=getClientStateCode();
+  const isIntra = code==='29';
+  const stateName=STATE_CODES[code]||('Unknown State ('+code+')');
+  const source = gstin.length>=2 ? 'from GSTIN' : 'selected';
+  if(isIntra){
+    indicator.innerHTML='🏠 <b>Intra-State — '+stateName+' ('+source+')</b> — CGST + SGST will apply';
+  }else{
+    indicator.innerHTML='🚚 <b>Inter-State — '+stateName+' ('+code+', '+source+')</b> — IGST will apply';
+  }
+}
+
+/* GSTIN FORMAT VALIDATION (soft, non-blocking) */
+const GSTIN_REGEX=/^[0-9]{2}[A-Z]{5}[0-9]{4}[A-Z]{1}[1-9A-Z]{1}Z[0-9A-Z]{1}$/;
+
+function validateGSTINFormat(){
+  const gstin=(clientGST.value||'').trim().toUpperCase();
+  const msg=document.getElementById('err-clientGST');
+  if(gstin!=='' && !GSTIN_REGEX.test(gstin)){
+    clientGST.classList.add('field-error');
+    msg.classList.add('visible');
+  }else{
+    clientGST.classList.remove('field-error');
+    msg.classList.remove('visible');
+  }
+}
+
+/* PHONE FORMAT VALIDATION (blocking, checked inside validateFields via REQUIRED_FIELDS pattern) */
+const PHONE_REGEX=/^(\+91[\-\s]?|0)?[6-9]\d{9}$/;
+
+/* EMAIL FORMAT VALIDATION (soft, non-blocking) */
+const EMAIL_REGEX=/^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+function validateEmailFormat(){
+  const email=(contactEmail.value||'').trim();
+  const msg=document.getElementById('err-contactEmail');
+  if(email!=='' && !EMAIL_REGEX.test(email)){
+    msg.textContent='Enter a valid email address';
+    contactEmail.classList.add('field-error');
+    msg.classList.add('visible');
+  }else if(email!==''){
+    msg.classList.remove('visible');
+    contactEmail.classList.remove('field-error');
+  }
+}
+
+/* HSN/SAC AUTO-SUGGESTION */
+const HSN_MAP=[
+  {kw:/solar\s*panel|module|photovoltaic|\bpv\b/i, code:"8541"},
+  {kw:/inverter/i, code:"8504"},
+  {kw:/batter/i, code:"8507"},
+  {kw:/mounting|structure|\brail\b|clamp/i, code:"7308"},
+  {kw:/cable|wire/i, code:"8544"},
+  {kw:/junction\s*box/i, code:"8538"},
+  {kw:/earth|lightning/i, code:"8536"},
+  {kw:/switchgear|panel|\bmcb\b|distribution\s*board|switchboard/i, code:"8537"},
+  {kw:/transformer/i, code:"8504"},
+  {kw:/\bmeter\b/i, code:"9028"},
+  {kw:/deliver|transport|freight|logistic/i, code:"9965"},
+  {kw:/install|commission|testing|amc|maintenance|repair|service/i, code:"9983"}
+];
+
+function suggestHSN(desc, itemType){
+  if(itemType==="AMC/Maintenance" || itemType==="Service" || itemType==="Installation") return "9983";
+  if(itemType==="Delivery") return "9965";
+  for(let i=0;i<HSN_MAP.length;i++){
+    if(HSN_MAP[i].kw.test(desc)) return HSN_MAP[i].code;
+  }
+  return "";
+}
+
+function autoFillHSN(row){
+  const hsnInput=row.querySelector('.item-hsn');
+  if(!hsnInput || hsnInput.value.trim()) return;
+  const desc=row.querySelector('.item-desc')?.value||"";
+  const itemType=row.querySelector('.item-type')?.value||"Product";
+  const suggestion=suggestHSN(desc, itemType);
+  if(suggestion) hsnInput.value=suggestion;
+}
+
+/* PER-ROW GST SUGGESTION */
+function suggestGSTMode(itemType){
+  if(itemType==="Product" || itemType==="Electrical/BOS") return "5";
+  return "18";
+}
+
+function autoFillGST(row){
+  const modeSelect=row.querySelector('.item-gst-mode');
+  if(!modeSelect || modeSelect.dataset.userSet==="true") return;
+  const itemType=row.querySelector('.item-type')?.value||"Product";
+  modeSelect.value=suggestGSTMode(itemType);
+}
+
+function toggleCustomGST(row){
+  const modeSelect=row.querySelector('.item-gst-mode');
+  const customInput=row.querySelector('.item-gst-custom');
+  if(!modeSelect || !customInput) return;
+  customInput.style.display=modeSelect.value==="custom" ? "block" : "none";
+}
+
+/* PER-ROW UNIT SUGGESTION */
+function suggestUnit(itemType){
+  if(itemType==="Product" || itemType==="Electrical/BOS") return "Nos";
+  return "Lot";
+}
+
+function autoFillUnit(row){
+  const unitSelect=row.querySelector('.item-unit');
+  if(!unitSelect || unitSelect.dataset.userSet==="true") return;
+  const itemType=row.querySelector('.item-type')?.value||"Product";
+  unitSelect.value=suggestUnit(itemType);
+}
+
+/* LINE ITEM ROWS */
+function addRow(){
+  const tbody=document.getElementById('itemsBody');
+  const tr=document.createElement('tr');
+  tr.innerHTML=
+    '<td><select class="item-type"><option value="Product">Product</option><option value="Electrical/BOS">Electrical/BOS</option><option value="AMC/Maintenance">AMC/Maintenance</option><option value="Service">Service</option><option value="Installation">Installation</option><option value="Delivery">Delivery</option><option value="Others">Others</option></select></td>'+
+    '<td><input type="text" class="item-desc" placeholder="Product / Service"></td>'+
+    '<td><input type="text" class="item-hsn" placeholder="HSN/SAC"></td>'+
+    '<td><select class="item-gst-mode"><option value="0">0%</option><option value="5">5%</option><option value="18">18%</option><option value="split7030">70% @5% + 30% @18%</option><option value="custom">Custom %</option></select><input type="number" class="item-gst-custom" placeholder="Custom %" min="0" max="100" step="0.01" style="display:none;margin-top:4px;margin-bottom:0;"></td>'+
+    '<td><input type="number" class="item-qty" value="1" min="0" step="0.01"></td>'+
+    '<td><select class="item-unit"><option value="Nos">Nos</option><option value="Mtr">Mtr</option><option value="Set">Set</option><option value="Kg">Kg</option><option value="Box">Box</option><option value="Roll">Roll</option><option value="Pair">Pair</option><option value="Ltr">Ltr</option><option value="Sqm">Sqm</option><option value="Lot">Lot</option><option value="Others">Others</option></select></td>'+
+    '<td><input type="number" class="item-price" value="0" min="0" step="0.01"></td>'+
+    '<td style="text-align:center"><button class="btn-del-row" onclick="delRow(this)">×</button></td>';
+  tbody.appendChild(tr);
+  tr.querySelectorAll('input, select').forEach(el=>{
+    el.addEventListener('input',updatePreview);
+    el.addEventListener('change',updatePreview);
+  });
+  tr.querySelector('.item-desc').addEventListener('input',()=>autoFillHSN(tr));
+  tr.querySelector('.item-type').addEventListener('change',()=>{autoFillHSN(tr);autoFillGST(tr);autoFillUnit(tr);});
+  tr.querySelector('.item-gst-mode').addEventListener('change',()=>{tr.querySelector('.item-gst-mode').dataset.userSet="true";toggleCustomGST(tr);});
+  tr.querySelector('.item-unit').addEventListener('change',()=>{tr.querySelector('.item-unit').dataset.userSet="true";});
+  autoFillGST(tr);
+  autoFillUnit(tr);
+  updatePreview();
+}
+
+function delRow(btn){
+  const rows=document.querySelectorAll('#itemsBody tr');
+  if(rows.length<=1) return;
+  btn.closest('tr').remove();
+  updatePreview();
+}
+
 function updatePreview(){
 
-let base=Number(rate.value||0);
-let capacityValue=Number(capacity.value||0);
-let gstData=calculateGST(base);
-let total=base+gstData.gstTotal;
+let rows=document.querySelectorAll('#itemsBody tr');
+let subtotal=0;
+let itemRows='';
+let sNo=1;
 
-/* Heading */
-let capacityText="";
-if(capacityValue>0){
-  capacityText=formatCapacity(capacityValue);
-}
+let typeOrder=['Product','Electrical/BOS','AMC/Maintenance','Service','Installation','Delivery','Others'];
+let typeColors={'Product':'#0a5c3b','Electrical/BOS':'#b45309','AMC/Maintenance':'#7c3aed','Service':'#0074BB','Installation':'#0a5c3b','Delivery':'#065f46','Others':'#6b7280'};
+let typeBg={'Product':'#eef7f1','Electrical/BOS':'#fef3c7','AMC/Maintenance':'#ede9fe','Service':'#e0f2ff','Installation':'#eef7f1','Delivery':'#d1fae5','Others':'#f3f4f6'};
+let grouped={'Product':[],'Electrical/BOS':[],'AMC/Maintenance':[],'Service':[],'Installation':[],'Delivery':[],'Others':[]};
 
-let headingText="PROPOSAL";
+let gstItems=[];
+let hasSplit7030=false;
 
-if(capacityText && type.value){
-  headingText="PROPOSAL FOR "+capacityText+" "+type.value.toUpperCase()+" SOLAR POWER PLANT";
-}
+rows.forEach(row=>{
+  let itemType=row.querySelector('.item-type')?.value||'Product';
+  let desc=(row.querySelector('.item-desc')?.value.trim()||'');
+  let hsn=(row.querySelector('.item-hsn')?.value.trim()||'');
+  let gstMode=row.querySelector('.item-gst-mode')?.value||'18';
+  let qty=Number(row.querySelector('.item-qty')?.value||0);
+  let unit=row.querySelector('.item-unit')?.value||'Nos';
+  let price=Number(row.querySelector('.item-price')?.value||0);
+  if(!desc && price===0) return;
+  let lineTotal=qty*price;
+  subtotal+=lineTotal;
 
+  if(gstMode==="split7030"){
+    hasSplit7030=true;
+    gstItems.push({lineTotal:lineTotal*0.7,gstRate:5});
+    gstItems.push({lineTotal:lineTotal*0.3,gstRate:18});
+    grouped[itemType].push({
+      desc:(desc||'Supply of Goods')+' — Supply of Goods (Deemed 70% of Project Value)',
+      hsn:'8541', gstDisplay:'5%', qty, unit, price:price*0.7, lineTotal:lineTotal*0.7
+    });
+    grouped[itemType].push({
+      desc:(desc||'Installation Services')+' — Installation & Commissioning Services (Deemed 30% of Project Value)',
+      hsn:'9983', gstDisplay:'18%', qty, unit, price:price*0.3, lineTotal:lineTotal*0.3
+    });
+  }else{
+    let rate = gstMode==="custom" ? Number(row.querySelector('.item-gst-custom')?.value||0) : Number(gstMode);
+    let gstDisplay=rate+"%";
+    gstItems.push({lineTotal,gstRate:rate});
+    grouped[itemType].push({desc,hsn,gstDisplay,qty,unit,price,lineTotal});
+  }
+});
+
+typeOrder.forEach(itemType=>{
+  if(grouped[itemType].length===0) return;
+  itemRows+='<tr><td colspan="8" style="background:'+typeBg[itemType]+';padding:5px 8px;font-size:10px;font-weight:bold;text-transform:uppercase;letter-spacing:0.06em;color:'+typeColors[itemType]+';border-bottom:1px solid #ccc">'+itemType+'</td></tr>';
+  grouped[itemType].forEach(item=>{
+    itemRows+='<tr>'+
+      '<td style="text-align:center;color:#666">'+(sNo++)+'</td>'+
+      '<td>'+(item.desc||'—')+'</td>'+
+      '<td style="text-align:center">'+(item.hsn||'—')+'</td>'+
+      '<td style="text-align:center">'+item.gstDisplay+'</td>'+
+      '<td style="text-align:center">'+item.qty+'</td>'+
+      '<td style="text-align:center">'+(item.unit||'—')+'</td>'+
+      '<td class="amount">'+formatINR(item.price)+'</td>'+
+      '<td class="amount">'+formatINR(item.lineTotal)+'</td>'+
+    '</tr>';
+  });
+});
+
+let gst=calcGST(gstItems);
+let total=subtotal+gst.gstTotal;
+
+let headingText=subject.value ? subject.value.toUpperCase() : "QUOTATION";
 if(clientName.value){
   headingText+=" FOR "+clientName.value.toUpperCase();
-}
-
-/* Description */
-let finalDescription=description.value;
-if(capacityValue>0){
-  finalDescription+=" ("+formatCapacity(capacityValue)+" "+type.value.toUpperCase()+")";
 }
 
 preview.innerHTML=`
@@ -439,7 +951,7 @@ preview.innerHTML=`
 <img src="/Logo.png" class="logo"><br><br>
 
 <b>Techedge SPE India Pvt. Ltd.</b><br>
-No. 10/11, Maragondanahalli Tavarekere, Bangalore – 562130<br>
+No. 10/11, Maragondanahalli Tavarekere, Bengaluru – 562130<br>
 GSTIN: 29AAHCT2953M1ZP<br><br>
 
 <table>
@@ -450,10 +962,12 @@ ${clientName.value}<br>
 <b>Contact:</b> ${contactPerson.value}<br>
 <b>Phone:</b> ${contactPhone.value}<br>
 <b>Email:</b> ${contactEmail.value}
+${clientGST.value ? '<br><b>GSTIN:</b> '+clientGST.value.toUpperCase() : ''}
 </td>
 <td>
 <b>Address:</b><br>
 ${delivery.value.replace(/\n/g,"<br>")}
+${(getClientCityName() || clientPin.value) ? '<br>'+[getClientCityName(), STATE_CODES[clientState.value]].filter(Boolean).join(', ')+(clientPin.value?' - '+clientPin.value:'') : ''}
 </td>
 <td>
 <b>Quotation No:</b> ${qtNo.value}<br>
@@ -463,35 +977,52 @@ ${delivery.value.replace(/\n/g,"<br>")}
 </table>
 
 <table>
-<tr><th>Description</th><th class="amount">Amount</th></tr>
-<tr><td>${finalDescription}</td><td class="amount">${formatINR(base)}</td></tr>
+<tr><th>#</th><th>Description</th><th>HSN/SAC</th><th>GST</th><th>Qty</th><th>Unit</th><th class="amount">Unit Price</th><th class="amount">Total</th></tr>
+${itemRows || '<tr><td colspan="8" style="text-align:center;color:#999;padding:14px">No items added yet</td></tr>'}
 </table>
 
 <table>
-<tr><td>Subtotal</td><td class="amount">${formatINR(base)}</td></tr>
-${gstData.details}
-<tr><td><b>Total</b></td><td class="amount"><b>${formatINR(total)}</b></td></tr>
+<tr><td colspan="7" class="amount">Subtotal</td><td class="amount">${formatINR(subtotal)}</td></tr>
+${gst.details}
+<tr class="grand-total-row"><td colspan="7" class="amount"><b>TOTAL</b></td><td class="amount"><b>${formatINR(total)}</b></td></tr>
 </table>
+
+${hasSplit7030 ? `
+<div style="margin-top:16px; border:1.5px solid #0a5c3b; border-radius:6px; overflow:hidden; page-break-inside:avoid;">
+  <div style="background:#0a5c3b; padding:7px 14px;">
+    <span style="color:white; font-size:12px; font-weight:bold; text-transform:uppercase; letter-spacing:0.05em;">Taxation Compliance Note</span>
+  </div>
+  <div style="padding:10px 14px; font-size:11px; line-height:1.7; color:#333; background:#f9fafb;">
+    GST on this Engineering, Procurement, and Construction (EPC) solar contract has been calculated as a Composite Supply. As mandated by the Ministry of Finance via Notification No. 01/2017-Central Tax (Rate) (Schedule I, Entry 234) and Notification No. 11/2017-Central Tax (Rate), the project valuation is split using the statutory 70:30 legal fiction. 70% of the total gross value is treated as the supply of renewable goods (taxed at 5% GST under HSN 8541) and 30% is treated as the supply of allied installation services (taxed at 18% GST under SAC 9983).
+  </div>
+</div>
+` : ''}
 
 <br><b>Amount in Words:</b> ${numberToWords(Math.round(total))}<br><br>
 
 <div class="grid-2x2">
-<div class="section-box"><b>Techedge Scope:</b><br>${Inclusions.value.replace(/\n/g,"<br>")}</div>
-<div class="section-box"><b>Out of Scope:</b><br>${exclusions.value.replace(/\n/g,"<br>")}</div>
+<div class="section-box"><b>Scope of Supply:</b><br>${Inclusions.value.replace(/\n/g,"<br>")}</div>
+<div class="section-box"><b>Exclusions:</b><br>${exclusions.value.replace(/\n/g,"<br>")}</div>
 <div class="section-box"><b>Delivery & Installation:</b><br>${deliveryDetails.value.replace(/\n/g,"<br>")}</div>
 <div class="section-box"><b>Payment Terms:</b><br>${paymentTerms.value.replace(/\n/g,"<br>")}</div>
 </div>
 
-<br><br>
+<div style="margin-top:16px; border:1.5px solid #0a5c3b; border-radius:6px; overflow:hidden; page-break-inside:avoid;">
+  <div style="background:#0a5c3b; padding:7px 14px;">
+    <span style="color:white; font-size:12px; font-weight:bold; text-transform:uppercase; letter-spacing:0.05em;">General Terms &amp; Conditions</span>
+  </div>
+  <div style="padding:10px 14px; font-size:11px; line-height:1.7; color:#333; background:#f9fafb;">
+    ${fmtLines(generalTerms.value)}
+  </div>
+</div>
 
+<br><br>
 
 <div style="margin-top:25px; display:flex; justify-content:space-between; align-items:flex-start; gap:40px; page-break-inside:avoid;">
 
-  <!-- Signature Section -->
   <div style="flex:1; text-align:left; position:relative;">
 
-    <!-- Watermark Behind Signature -->
-    <img src="/Logo.png" 
+    <img src="/Logo.png"
          style="position:absolute; left:0; top:-20px; height:110px; opacity:0.05; z-index:0;">
 
     <div style="position:relative; z-index:1;">
@@ -505,7 +1036,6 @@ ${gstData.details}
 
   </div>
 
-  <!-- Bank Details Square Box -->
   <div style="flex:1; border:2px solid #0a5c3b; padding:14px; background:#f3f9f6; font-size:13px;">
     <b>Please transfer the payment to the following bank account</b><br><br>
     State Bank of India<br>
@@ -521,21 +1051,230 @@ ${gstData.details}
 `;
 }
 
+/* VALIDATION */
+const REQUIRED_FIELDS=[
+  {id:"clientName", err:"err-clientName", requiredMsg:"Company name is required"},
+  {id:"contactPerson", err:"err-contactPerson", requiredMsg:"Contact person is required"},
+  {id:"contactPhone", err:"err-contactPhone", requiredMsg:"Phone number is required", pattern:PHONE_REGEX, patternMsg:"Enter a valid 10-digit mobile number"},
+  {id:"contactEmail", err:"err-contactEmail", requiredMsg:"Email is required"},
+  {id:"delivery", err:"err-delivery", requiredMsg:"Billing address is required"}
+];
+
+function hasValidLineItems(){
+  return Array.from(document.querySelectorAll('#itemsBody tr')).some(row=>{
+    let desc=row.querySelector('.item-desc')?.value.trim();
+    let price=Number(row.querySelector('.item-price')?.value||0);
+    return desc || price>0;
+  });
+}
+
+function checkRequiredField(f){
+  let el=document.getElementById(f.id);
+  let msg=document.getElementById(f.err);
+  let val=el.value.trim();
+  if(!val){
+    msg.textContent=f.requiredMsg;
+    el.classList.add("field-error");
+    msg.classList.add("visible");
+    return false;
+  }else if(f.pattern && !f.pattern.test(val)){
+    msg.textContent=f.patternMsg;
+    el.classList.add("field-error");
+    msg.classList.add("visible");
+    return false;
+  }else{
+    el.classList.remove("field-error");
+    msg.classList.remove("visible");
+    return true;
+  }
+}
+
+function validateFields(){
+  let valid=true;
+  let firstInvalidEl=null;
+  REQUIRED_FIELDS.forEach(f=>{
+    if(!checkRequiredField(f)){
+      valid=false;
+      if(!firstInvalidEl) firstInvalidEl=document.getElementById(f.id);
+    }
+  });
+  validateEmailFormat();
+
+  const itemsMsg=document.getElementById('err-items');
+  if(!hasValidLineItems()){
+    itemsMsg.classList.add("visible");
+    valid=false;
+    if(!firstInvalidEl) firstInvalidEl=itemsMsg;
+  }else{
+    itemsMsg.classList.remove("visible");
+  }
+
+  if(!valid && firstInvalidEl){
+    firstInvalidEl.scrollIntoView({behavior:"smooth",block:"center"});
+  }
+  return valid;
+}
+
+REQUIRED_FIELDS.forEach(f=>{
+  let el=document.getElementById(f.id);
+  el.addEventListener("input",()=>checkRequiredField(f));
+});
+contactEmail.addEventListener("input",validateEmailFormat);
+
 function downloadPDF(){
+if(!validateFields()) return;
 let today=getTodayFormats();
 let cleanClient=(clientName.value||"Client").replace(/\s+/g,"-");
-let fileName="Proposal_"+cleanClient+"_"+qtNo.value+"_"+today.display;
+let fileName="Quotation_"+cleanClient+"_"+qtNo.value+"_"+today.display;
 document.title=fileName;
 window.print();
 }
 
-gstMode.addEventListener("change",()=>{customGST.style.display=gstMode.value=="custom"?"block":"none";updatePreview();});
+/* SCOPE/TERMS TEMPLATES (only applied to untouched fields) */
+const SCOPE_TEMPLATES={
+  solarEPC:{
+    inclusions:`1. Solar Panels,
+2. String Inverters,
+3. Mounting Structure,
+4. Cables & Junction Boxes,
+5. Earthing & Lightning Protection kit,
+6. ONE Year Warranty on Supply & Installation.`,
+    exclusions:`1. All civil works except earthing,
+2. Structural strengthening (if required),
+3. Any additional works beyond agreed scope.`,
+    delivery:`1. Delivery and installation within 6-8 weeks from order confirmation.`,
+    payment:`1. 50% Advance on Order Confirmation,
+2. 30% Before Dispatch,
+3. 15% Before Installation & Sync,
+4. 5% After Commissioning.`
+  },
+  supplyOnly:{
+    inclusions:`1. Supply of goods/products as specified in the line items above,
+2. Standard OEM/manufacturer warranty applies as per product datasheet,
+3. Delivery subject to stock availability at time of order confirmation.`,
+    exclusions:`1. Installation, wiring, testing and commissioning (not included),
+2. Any civil, electrical or on-site works,
+3. Any works or services beyond supply of the listed goods.`,
+    delivery:`1. Delivery within 1-2 weeks from order confirmation and payment realization,
+2. Subject to stock and courier/transport availability,
+3. Risk in goods transfers to client upon delivery at the specified address.`,
+    payment:`1. 100% Advance Payment on Order Confirmation,
+2. Goods dispatched only after payment realization.`
+  },
+  installOnly:{
+    inclusions:`1. Installation, testing and commissioning services as specified in the line items above,
+2. Skilled labor and standard tools/equipment for installation,
+3. Workmanship warranty for 6 months from date of completion.`,
+    exclusions:`1. Supply of any goods/materials (to be provided by client),
+2. Civil works and structural modifications,
+3. Any additional works beyond agreed scope.`,
+    delivery:`1. Installation/service completion within agreed timeline from site readiness and mobilization,
+2. Subject to site access, power availability and client-side coordination,
+3. Delays due to client-side dependencies not attributed to Techedge.`,
+    payment:`1. 50% Advance on Confirmation,
+2. 50% After Completion of Installation/Service.`
+  },
+  amc:{
+    inclusions:`1. Periodic preventive maintenance visits as specified in the line items above,
+2. Breakdown support during the contract period as per agreed response time,
+3. Routine cleaning, testing and performance checks of the covered system.`,
+    exclusions:`1. Cost of spare parts and consumables (unless separately listed),
+2. Damage due to misuse, negligence, or force majeure events,
+3. Any modification, upgrade or expansion of the existing system.`,
+    delivery:`1. AMC period commences from the date of contract confirmation,
+2. Site visits scheduled as per agreed frequency (monthly/quarterly),
+3. Emergency call-outs attended within agreed response time, subject to site access.`,
+    payment:`1. 100% Advance for the AMC period on contract confirmation,
+2. Invoices for additional spares/consumables raised separately as used.`
+  },
+  electricalTurnkey:{
+    inclusions:`1. Supply of electrical panels, switchgear, cables and BOS components as specified in the line items above,
+2. Installation, wiring, testing and commissioning at site,
+3. ONE Year Warranty on supply & installation workmanship.`,
+    exclusions:`1. All civil works except earthing,
+2. Structural strengthening (if required),
+3. Any additional works beyond agreed scope.`,
+    delivery:`1. Delivery and installation within agreed timeline from order confirmation,
+2. Subject to stock, site readiness and statutory approvals (if applicable),
+3. Delays due to client-side dependencies not attributed to Techedge.`,
+    payment:`1. 50% Advance on Order Confirmation,
+2. 30% Before Dispatch,
+3. 20% After Installation & Commissioning.`
+  },
+  deliveryOnly:{
+    inclusions:`1. Transportation and delivery of goods as specified in the line items above,
+2. Delivery to the address/site specified by the client,
+3. Standard packing suitable for transport.`,
+    exclusions:`1. Unloading, installation, or on-site handling beyond delivery,
+2. Insurance of goods in transit (unless separately agreed),
+3. Any works beyond delivery to the specified location.`,
+    delivery:`1. Delivery within agreed timeline from dispatch confirmation,
+2. Subject to accessibility of the delivery location and transport availability,
+3. Risk in goods transfers to client upon delivery at the specified address.`,
+    payment:`1. 100% Advance Payment before dispatch,
+2. Delivery charges as quoted, subject to change for route/distance revisions.`
+  },
+  custom:{ inclusions:'', exclusions:'', delivery:'', payment:'' }
+};
+
+/* Single source of truth for the 4 template dropdowns' options (avoids 4x duplicated <option> lists going out of sync) */
+const SCOPE_TEMPLATE_OPTIONS=[
+  {value:'solarEPC', label:'Solar EPC (Supply & Installation)'},
+  {value:'supplyOnly', label:'Supply Only (Product Sale)'},
+  {value:'installOnly', label:'Installation / Service Only'},
+  {value:'amc', label:'AMC / Annual Maintenance Contract'},
+  {value:'electricalTurnkey', label:'Electrical/BOS Turnkey (Non-Solar Supply & Installation)'},
+  {value:'deliveryOnly', label:'Delivery / Logistics Only'},
+  {value:'custom', label:'Custom (Blank)'}
+];
+
+function populateTemplateSelect(sel){
+  sel.innerHTML=SCOPE_TEMPLATE_OPTIONS.map(o=>'<option value="'+o.value+'">'+o.label+'</option>').join('');
+}
+[inclusionsTemplate, exclusionsTemplate, deliveryTemplate, paymentTemplate].forEach(populateTemplateSelect);
+
+inclusionsTemplate.addEventListener("change",()=>{
+  Inclusions.value=(SCOPE_TEMPLATES[inclusionsTemplate.value]||SCOPE_TEMPLATES.custom).inclusions;
+  updatePreview();
+});
+exclusionsTemplate.addEventListener("change",()=>{
+  exclusions.value=(SCOPE_TEMPLATES[exclusionsTemplate.value]||SCOPE_TEMPLATES.custom).exclusions;
+  updatePreview();
+});
+deliveryTemplate.addEventListener("change",()=>{
+  deliveryDetails.value=(SCOPE_TEMPLATES[deliveryTemplate.value]||SCOPE_TEMPLATES.custom).delivery;
+  updatePreview();
+});
+paymentTemplate.addEventListener("change",()=>{
+  paymentTerms.value=(SCOPE_TEMPLATES[paymentTemplate.value]||SCOPE_TEMPLATES.custom).payment;
+  updatePreview();
+});
+
+clientGST.addEventListener("input",syncStateFromGSTIN);
+clientGST.addEventListener("input",updateGSTIndicator);
+clientGST.addEventListener("input",validateGSTINFormat);
+clientState.addEventListener("change",()=>{populateCityOptions();toggleClientCityOther();autoFillPin();updateGSTIndicator();updatePreview();});
+clientCity.addEventListener("change",()=>{toggleClientCityOther();autoFillPin();updatePreview();});
+clientPin.addEventListener("input",()=>{clientPin.dataset.userSet="true";});
+populateCityOptions();
+toggleClientCityOther();
+autoFillPin();
 document.querySelectorAll("input,textarea,select").forEach(el=>el.addEventListener("input",updatePreview));
+
+document.querySelectorAll("#itemsBody tr").forEach(tr=>{
+  tr.querySelector(".item-desc")?.addEventListener("input",()=>autoFillHSN(tr));
+  tr.querySelector(".item-type")?.addEventListener("change",()=>{autoFillHSN(tr);autoFillGST(tr);autoFillUnit(tr);});
+  tr.querySelector(".item-gst-mode")?.addEventListener("change",()=>{tr.querySelector(".item-gst-mode").dataset.userSet="true";toggleCustomGST(tr);});
+  tr.querySelector(".item-unit")?.addEventListener("change",()=>{tr.querySelector(".item-unit").dataset.userSet="true";});
+  autoFillGST(tr);
+  autoFillUnit(tr);
+});
 
 let today=getTodayFormats();
 qtNo.value="TEQ"+today.numeric+"-1";
 date.valueAsDate=new Date();
 
+updateGSTIndicator();
 updatePreview();
 
 </script>
