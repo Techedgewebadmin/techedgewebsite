@@ -209,10 +209,17 @@ th{
 }
 
 .grand-total-row td{
-  background:#0a5c3b;
-  color:white;
+  background:#eef7f1;
+  color:#0a5c3b;
   font-weight:bold;
   font-size:13px;
+  border-top:2px solid #0a5c3b;
+  -webkit-print-color-adjust:exact;
+  print-color-adjust:exact;
+}
+
+.gst-row td{
+  color:#0a5c3b;
 }
 
 /* VALIDATION */
@@ -557,10 +564,10 @@ function gstSplitRows(rate,amount){
 let isIntraState = getClientStateCode()==="29";
 if(isIntraState){
 let half=amount/2;
-return `<tr><td>CGST @${rate/2}%</td><td class="amount">${formatINR(half)}</td></tr>
-<tr><td>SGST @${rate/2}%</td><td class="amount">${formatINR(half)}</td></tr>`;
+return `<tr class="gst-row"><td colspan="7">CGST @${rate/2}%</td><td class="amount">${formatINR(half)}</td></tr>
+<tr class="gst-row"><td colspan="7">SGST @${rate/2}%</td><td class="amount">${formatINR(half)}</td></tr>`;
 }
-return `<tr><td>IGST @${rate}%</td><td class="amount">${formatINR(amount)}</td></tr>`;
+return `<tr class="gst-row"><td colspan="7">IGST @${rate}%</td><td class="amount">${formatINR(amount)}</td></tr>`;
 }
 
 function calcGST(items){
