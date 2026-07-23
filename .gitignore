@@ -26,3 +26,6 @@ pnpm-debug.log*
 # Local Netlify folder
 .netlify
 .claude/
+
+# Separate ERP project (unrelated to this website, contains sensitive seed data)
+erp-schema/
