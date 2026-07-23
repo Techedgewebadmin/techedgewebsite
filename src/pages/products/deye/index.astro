@@ -16,7 +16,7 @@ const formatPrice = (n: number) =>
 
 <Layout
   title="Deye Solar Inverters & Batteries — India Price List | Techedge"
-  description="Buy Deye solar inverters and batteries in India. 86 products: on-grid (1.5–136 kW), hybrid (3–125 kW), micro inverters, LiFePO4 batteries and ESS. Authorised dealer — Techedge India, Bengaluru."
+  description={`Buy Deye solar inverters and batteries in India. ${deyeProducts.length} products: on-grid (1.5–136 kW), hybrid (3–125 kW), micro inverters, LiFePO4 batteries and ESS. Authorised dealer — Techedge India, Bengaluru.`}
   keywords="Deye inverter price India, Deye solar inverter, Deye hybrid inverter, Deye battery, solar inverter Bengaluru, buy Deye inverter online"
 >
 
@@ -43,13 +43,13 @@ const formatPrice = (n: number) =>
         Deye Solar Products
       </h1>
       <p class="text-muted text-lg max-w-2xl mb-8">
-        86 products — on-grid, hybrid, micro inverters, LiFePO4 batteries and container ESS solutions.
+        {deyeProducts.length} products — on-grid, hybrid, micro inverters, LiFePO4 batteries and container ESS solutions.
         GST extra (5% inverters / 18% batteries).
       </p>
       <!-- Stats bar -->
       <div class="flex flex-wrap gap-4 mb-6">
         {[
-          { label: 'Products', value: '86' },
+          { label: 'Products', value: String(deyeProducts.length) },
           { label: 'Categories', value: '5' },
           { label: 'Power Range', value: '1.5–136 kW' },
           { label: 'Battery Range', value: '5–4340 kWh' },
@@ -61,11 +61,18 @@ const formatPrice = (n: number) =>
         ))}
       </div>
       <!-- Warranty note -->
-      <div class="bg-secondary/10 border border-secondary/30 rounded-xl px-5 py-4 max-w-2xl text-sm text-foreground">
+      <div class="bg-secondary/10 border border-secondary/30 rounded-xl px-5 py-4 max-w-2xl text-sm text-foreground mb-6">
         <strong>Warranty:</strong> On-grid ≤10 kW — 10 yrs &nbsp;|&nbsp; On-grid &gt;10 kW — 8 yrs &nbsp;|&nbsp;
         Hybrid inverters — 5 yrs &nbsp;|&nbsp; LiFePO4 batteries — 10 yrs &nbsp;|&nbsp;
         Hybrid + Deye battery combo — 10 yrs comprehensive
       </div>
+      <a
+        href="/downloads/techedge-deye-price-list.pdf"
+        download
+        class="inline-flex items-center gap-2 bg-secondary text-black font-anton text-sm uppercase px-5 py-3 rounded-xl hover:bg-secondary/90 transition-colors"
+      >
+        ⬇ Download Full Price List (PDF)
+      </a>
     </div>
   </section>
 

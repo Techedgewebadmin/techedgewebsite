@@ -73,8 +73,8 @@ export interface DeyeProduct {
 // Helper: round to 2 decimal places
 const r = (n: number) => Math.round(n * 100) / 100;
 
-// Selling price = EPC × 1.15
-const sp = (epc: number) => r(epc * 1.15);
+// Selling price = EPC × 1.15, +5% price revision (July 2026) → EPC × 1.2075
+const sp = (epc: number) => r(epc * 1.2075);
 
 // ─── SHARED SPEC TEMPLATES ────────────────────────────────────────────────────
 
@@ -1168,6 +1168,40 @@ export const deyeProducts: DeyeProduct[] = [
     ],
     seoTitle: 'Deye BOS-B 214.5 kWh C&I ESS Battery Solution India | Techedge',
     seoDescription: 'Deye BOS-B 214.5 kWh commercial LiFePO4 energy storage system — 193 kWh usable, ≥6000 cycles, 10-yr warranty, IP20. For C&I peak shaving & solar integration. Buy from Techedge India.',
+  },
+  {
+    id: 87, slug: 'deye-bos-b-pro-241kwh-ci-ess-solution',
+    name: 'Deye BOS-B Pro — 241 kWh C&I ESS Solution',
+    model: 'BOS-B Pro (15 × 16.08 kWh)',
+    category: 'Battery', subcategory: 'C&I Solution',
+    capacityKwh: 241.2, epcPrice: 3397425, sellingPrice: sp(3397425), gstRate: 18,
+    warranty: '10 years',
+    specs: {
+      chemistry: 'LiFePO4',
+      nominalCapacity: '241.2 kWh',
+      moduleEnergy: '16.08 kWh per module',
+      modulesInSystem: '15 modules',
+      cycleLife: '≥6000 cycles',
+      communication: 'TCP / RS485 / CAN',
+      certification: 'IEC 61727, IEC 62116, EN 50549, CEI 0-21, IEC 62619, UN38.3',
+    },
+    features: [
+      '241.2 kWh LiFePO4 system energy — higher capacity Pro variant of the BOS-B series',
+      '15 × 16.08 kWh modules, compatible with Deye 100 kW PCS + MPPT architecture',
+      '≥6000 cycle life, 10-year warranty',
+      'Scalable: one PCS supports up to 16 battery racks in parallel, system scalable to 2.5 MW',
+      'TCP / RS485 / CAN communication — integrates with Deye PCS, MPPT and STS modules',
+      'Matches the 100 kW + 241 kWh C&I ESS unit configuration used in Techedge DRE deployments',
+    ],
+    useCases: [
+      'C&I peak demand shaving & demand charge reduction',
+      'Larger processing/commercial loads needing EPS backup',
+      'Time-of-use energy arbitrage for industrial facilities',
+      'Rural mini-grid and microgrid battery bank',
+      'Grid-scale commercial energy storage projects',
+    ],
+    seoTitle: 'Deye BOS-B Pro 241 kWh C&I ESS Battery Solution India | Techedge',
+    seoDescription: 'Deye BOS-B Pro 241 kWh commercial LiFePO4 energy storage — 15 × 16.08 kWh modules, ≥6000 cycles, 10-yr warranty. Pairs with 100 kW PCS for C&I and mini-grid ESS. Buy from Techedge India.',
   },
   {
     id: 57, slug: 'deye-pcs-100kw-power-conversion-system',
