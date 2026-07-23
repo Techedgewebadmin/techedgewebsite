@@ -1155,6 +1155,35 @@ const SCOPE_TEMPLATES={
 3. 15% Before Installation & Sync,
 4. 5% After Commissioning.`
   },
+  largeScaleEPC:{
+    inclusions:`1. Design, Engineering, Supply, Installation, Testing, Commissioning and Handing Over of the Grid-Connected Solar Photovoltaic Power Plant, complete in all respects.
+2. Supply and installation of high-efficiency Mono/Mono-PERC Crystalline Silicon Solar PV Modules (minimum 540 Wp, DCR, ALMM approved).
+3. Supply and installation of suitable String/Central On-Grid Inverters.
+4. Supply and installation of Hot-Dip Galvanized MS/Aluminium Module Mounting Structures.
+5. Supply and laying of AC & DC Power Cables, including DC Combiner Boxes (DCDBs), AC Distribution Boards (ACDBs), Isolators, Surge Protection Devices (SPD), MCCBs/ACBs, Metering Panel, Net/Gross Metering Arrangement, Protection Relay, Grid Synchronization, Cable Trays, Junction Boxes, Danger Boards, Signage, and all other accessories required for complete installation.
+6. Supply and installation of the Earthing and Lightning Protection System.
+7. Preparation of system design, engineering, shadow analysis, layout drawings, Single Line Diagram (SLD), and General Arrangement (GA) drawings.
+8. Coordination for obtaining DISCOM approvals related to net/gross metering as specified in the tender.
+9. Testing, commissioning, performance verification, trial run, and successful synchronisation of the plant with the utility grid.
+10. Submission of documentation, Operation & Maintenance Manuals, As-Built Drawings, and training of the owner's personnel.
+11. Handing over of the fully operational Grid-Connected Solar Photovoltaic Power Plant in accordance with the tender specifications.`,
+    exclusions:`1. Civil foundations, RCC works, ballast foundations, trenching, road cutting, and structural modifications.
+2. Rooftop waterproofing, roof strengthening, and any civil restoration works.
+3. HT infrastructure including transformer, RMU, HT panels, VCB, HT cabling, and associated switchyard works, unless specifically mentioned in the BOQ.
+4. Any DISCOM statutory fees, security deposits, meter charges, testing fees, application fees, and other government levies payable to the concerned authorities.
+5. Internet/broadband connectivity, SIM card, and recurring communication charges for remote monitoring.
+6. Any additional work arising due to site conditions or changes in project scope after award.
+7. Battery Energy Storage System (BESS), DG synchronisation, Zero Export Controller, SCADA, Weather Monitoring Station, and Fire Detection/Fire Fighting System, unless specifically included in the BOQ.
+8. Operation & Maintenance (O&M) after commissioning, unless separately specified in the contract.
+9. Any approvals from authorities other than those specifically mentioned in the tender.`,
+    delivery:`1. Delivery of all materials and equipment to the project site.
+2. Installation shall be carried out as per the approved drawings, relevant IS/IEC standards, and tender specifications.
+3. Testing, commissioning, grid synchronization, and successful handover of the complete solar PV power plant shall be carried out after completion of installation.
+4. The delivery and installation schedule shall be as per the tender conditions and mutually agreed project execution plan from the date of issuance of the Work Order and availability of the site.`,
+    payment:`1. 50% Advance against issuance of Purchase Order/Work Order and acceptance of the order.
+2. 40% Before dispatch of materials from our warehouse/factory, against intimation of material readiness for dispatch.
+3. 10% Upon completion of installation, successful testing, and before grid synchronisation.`
+  },
   supplyOnly:{
     inclusions:`1. Supply of goods/products as specified in the line items above,
 2. Standard OEM/manufacturer warranty applies as per product datasheet,
@@ -1180,6 +1209,19 @@ const SCOPE_TEMPLATES={
 3. Delays due to client-side dependencies not attributed to Techedge.`,
     payment:`1. 50% Advance on Confirmation,
 2. 50% After Completion of Installation/Service.`
+  },
+  panelShifting:{
+    inclusions:`1. Removal and safe shifting of existing solar panels within the plant/site,
+2. Re-installation of panels at the new location with mounting structure,
+3. Supply of replacement string inverter and BOS (DC wire, AC wire, ACDB, DCDB, control panel with MCB and protections) where required,
+4. Testing and commissioning after re-installation.`,
+    exclusions:`1. All civil works except earthing,
+2. Structural strengthening (if required),
+3. Any additional works beyond agreed scope.`,
+    delivery:`1. Delivery and installation within 6 weeks from order confirmation.`,
+    payment:`1. 50% Advance on Order Confirmation,
+2. 40% Before Dispatch,
+3. 10% After Job Completion and Handover.`
   },
   amc:{
     inclusions:`1. Periodic preventive maintenance visits as specified in the line items above,
@@ -1227,8 +1269,10 @@ const SCOPE_TEMPLATES={
 /* Single source of truth for the 4 template dropdowns' options (avoids 4x duplicated <option> lists going out of sync) */
 const SCOPE_TEMPLATE_OPTIONS=[
   {value:'solarEPC', label:'Solar EPC (Supply & Installation)'},
+  {value:'largeScaleEPC', label:'Large-Scale/Tender Solar EPC (Detailed Scope)'},
   {value:'supplyOnly', label:'Supply Only (Product Sale)'},
   {value:'installOnly', label:'Installation / Service Only'},
+  {value:'panelShifting', label:'Solar Panel Shifting / Relocation'},
   {value:'amc', label:'AMC / Annual Maintenance Contract'},
   {value:'electricalTurnkey', label:'Electrical/BOS Turnkey (Non-Solar Supply & Installation)'},
   {value:'deliveryOnly', label:'Delivery / Logistics Only'},

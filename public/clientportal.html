@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Techedge Installation Labour Quote Calculator</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow">
+
+<style>
+
+body{
+  margin:0;
+  font-family:Arial, sans-serif;
+  background:#e9edf2;
+}
+
+header{
+  background:#0a5c3b;
+  color:white;
+  padding:12px 20px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+header h1{
+  font-size:16px;
+  margin:0;
+}
+
+header p{
+  font-size:11px;
+  margin:2px 0 0;
+  color:#cfe8da;
+}
+
+button{
+  padding:8px 14px;
+  cursor:pointer;
+  border:none;
+  background:white;
+  color:#0a5c3b;
+  font-weight:bold;
+  border-radius:4px;
+}
+
+.container{
+  display:flex;
+  min-height:calc(100vh - 64px);
+}
+
+.left{
+  width:36%;
+  background:#f9fafb;
+  padding:20px;
+  overflow:auto;
+}
+
+.right{
+  width:64%;
+  background:#e9edf2;
+  padding:30px 0;
+  display:flex;
+  justify-content:center;
+  overflow:auto;
+}
+
+.document{
+  width:210mm;
+  min-height:297mm;
+  background:white;
+  padding:12mm;
+  box-shadow:0 0 8px rgba(0,0,0,0.1);
+  position:relative;
+}
+
+.watermark{
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%) rotate(-25deg);
+  opacity:0.05;
+  width:70%;
+  pointer-events:none;
+  z-index:0;
+}
+
+#preview{
+  position:relative;
+  z-index:1;
+}
+
+label{
+  display:block;
+  font-size:12px;
+  font-weight:bold;
+  color:#333;
+  margin-top:12px;
+  margin-bottom:4px;
+}
+
+input, select{
+  width:100%;
+  padding:8px;
+  border:1px solid #ccc;
+  border-radius:4px;
+  font-size:14px;
+  box-sizing:border-box;
+}
+
+.hint{
+  font-size:11px;
+  color:#777;
+  margin-top:3px;
+}
+
+.warn{
+  font-size:12px;
+  color:#a3231a;
+  background:#fde8e6;
+  border:1px solid #f3b3ae;
+  border-radius:4px;
+  padding:8px 10px;
+  margin-top:12px;
+}
+
+table{
+  width:100%;
+  border-collapse:collapse;
+  margin-top:10px;
+}
+
+th, td{
+  border:1px solid #ccc;
+  padding:6px 8px;
+  font-size:12.5px;
+}
+
+th{
+  background:#f2f2f2;
+  text-align:left;
+}
+
+.amount{
+  text-align:right;
+  white-space:nowrap;
+}
+
+.total-row td{
+  font-weight:bold;
+  background:#f2f2f2;
+}
+
+.logo{
+  height:70px;
+}
+
+.doc-head{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+  border-bottom:2px solid #0a5c3b;
+  padding-bottom:10px;
+}
+
+.doc-title{
+  text-align:right;
+}
+
+.doc-title h2{
+  margin:0;
+  color:#0a5c3b;
+  font-size:18px;
+}
+
+.doc-title p{
+  margin:2px 0;
+  font-size:11.5px;
+  color:#555;
+}
+
+.section-title{
+  font-size:12.5px;
+  font-weight:bold;
+  color:#0a5c3b;
+  text-transform:uppercase;
+  margin-top:20px;
+  margin-bottom:6px;
+  letter-spacing:0.03em;
+}
+
+.terms ol{
+  margin:0;
+  padding-left:18px;
+  font-size:11.5px;
+  color:#333;
+  line-height:1.6;
+}
+
+.footnote{
+  font-size:10.5px;
+  color:#777;
+  margin-top:6px;
+}
+
+@page{
+  size:A4;
+  margin:3mm;
+}
+
+@media print{
+  header,.left{ display:none; }
+  body{ background:white; }
+  .right{ padding:0; }
+  .document{ box-shadow:none; width:100%; min-height:auto; padding:3mm; }
+}
+
+</style>
+</head>
+<body>
+
+<header>
+  <div>
+    <h1>TECHEDGE — Installation Labour Quote Calculator</h1>
+    <p>Channel partner self-service tool · labour-only pricing · Karnataka</p>
+  </div>
+  <button onclick="window.print()">Print / Save as PDF</button>
+</header>
+
+<div class="container">
+
+<div class="left">
+
+  <label>Site / Project Reference (optional)</label>
+  <input id="siteRef" type="text" placeholder="e.g. ORB — Devanahalli Site 1">
+
+  <label>City / Site Location</label>
+  <select id="city"></select>
+  <p class="hint">Drives the site-survey distance surcharge. Sites beyond 300 km — contact Techedge directly.</p>
+
+  <label>System Type</label>
+  <select id="systemType">
+    <option value="onGrid">On-Grid (grid-tie, no battery)</option>
+    <option value="hybrid">Hybrid (with battery integration)</option>
+  </select>
+
+  <label>System Size (kW)</label>
+  <input id="sizeKw" type="number" min="1" value="10">
+  <p class="hint">On-Grid: 10–300 kW · Hybrid: 5–100 kW. Outside this range — contact Techedge for a custom quote.</p>
+
+  <label>No. of Site Survey Visits</label>
+  <input id="visits" type="number" min="1" value="1">
+
+  <label>Earthing Pit Sets — 3 nos (1m), qty</label>
+  <input id="pit3" type="number" min="0" value="0">
+
+  <label>Earthing Pit Sets — 5 nos (2m), qty</label>
+  <input id="pit5" type="number" min="0" value="0">
+
+  <div id="warnBox"></div>
+
+</div>
+
+<div class="right">
+<div class="document">
+<img src="/Logo.png" class="watermark">
+<div id="preview"></div>
+</div>
+</div>
+
+</div>
+
+<script>
+
+const CITIES = [
+  ["Bengaluru (within 30 km)",0,0],["Hoskote",30,0],["Anekal",35,1000],["Devanahalli",40,1000],
+  ["Doddaballapura",40,1000],["Magadi",50,1000],["Ramanagara",50,1000],["Kanakapura",55,1000],
+  ["Channapatna",60,1000],["Chikkaballapura",60,1000],["Kolar",70,1000],["Tumakuru",70,1000],
+  ["Gauribidanur",80,1000],["Maddur",80,1000],["Bangarapete",90,1000],["Kolar Gold Fields (KGF)",100,1000],
+  ["Mandya",100,1000],["Madhugiri",105,2000],["Sira",125,2000],["Srirangapatna",125,2000],
+  ["Mysuru",145,2000],["Hiriyur",160,2000],["Arsikere",165,2000],["Nanjangud",170,2000],
+  ["Pavagada",180,2000],["Chamarajanagara",185,2000],["Hassan",185,2000],["Chitradurga",200,2000],
+  ["Challakere",215,3000],["Sakleshpura",220,3000],["Chikkamagaluru",245,3000],["Madikeri",250,3000],
+  ["Bhadravathi",255,3000],["Davanagere",265,3000],["Shivamogga",275,3000]
+];
+
+const RATE_CARD = {
+  onGrid: [
+    {min:10, max:20,  survey:1000, perKw:3000, fixed:0},
+    {min:21, max:60,  survey:2000, perKw:2500, fixed:0},
+    {min:61, max:300, survey:4000, perKw:2000, fixed:0},
+  ],
+  hybrid: [
+    {min:5,  max:9,   survey:1000, perKw:0,    fixed:25000},
+    {min:10, max:50,  survey:3000, perKw:3500, fixed:0},
+    {min:51, max:100, survey:5000, perKw:3000, fixed:0},
+  ],
+};
+
+const EARTHING = {
+  pit3: { rate:2500, label:"Earthing Pit — 3 nos (1m)", detail:"Chemical earthing pit civil work" },
+  pit5: { rate:6000, label:"Earthing Pit — 5 nos (2m)", detail:"Chemical earthing pit civil work" },
+};
+
+const TERMS = [
+  "GST 18% extra on all charges.",
+  "Scope covers installation labour only.",
+  "Lifting of panels and BOS included up to G+2 floors only.",
+  "Civil work not included.",
+  "Unloading of material not included.",
+  "Scaffolding, if required, is not in our scope.",
+  "Crane, if required, is not in our scope.",
+  "Accessories, if required, must be arranged by CP / ORB Energy (e.g., hose pipe, locks, bend collars).",
+  "Client to provide drinking water and restroom access at site.",
+  "Work delay due to material shortage will be charged extra per day.",
+  "Any other terms to be confirmed before work commencement.",
+];
+
+const citySel = document.getElementById("city");
+CITIES.forEach(([name]) => {
+  let o = document.createElement("option");
+  o.value = name; o.textContent = name;
+  citySel.appendChild(o);
+});
+
+const fmt = n => "₹" + Math.round(n).toLocaleString("en-IN");
+
+function findBand(type, kw){
+  return RATE_CARD[type].find(b => kw >= b.min && kw <= b.max) || null;
+}
+
+function todayStr(){
+  return new Date().toLocaleDateString("en-IN", { day:"numeric", month:"short", year:"numeric" });
+}
+
+function render(){
+  const siteRef = document.getElementById("siteRef").value.trim();
+  const cityName = citySel.value;
+  const city = CITIES.find(c => c[0] === cityName);
+  const type = document.getElementById("systemType").value;
+  const kw = parseFloat(document.getElementById("sizeKw").value) || 0;
+  const visits = parseInt(document.getElementById("visits").value) || 0;
+  const pit3Qty = parseInt(document.getElementById("pit3").value) || 0;
+  const pit5Qty = parseInt(document.getElementById("pit5").value) || 0;
+
+  const band = findBand(type, kw);
+  const warnBox = document.getElementById("warnBox");
+
+  if (!band){
+    warnBox.innerHTML = '<div class="warn">System size is outside the supported rate-card range for this system type. Contact Techedge directly for a custom quote.</div>';
+  } else {
+    warnBox.innerHTML = "";
+  }
+
+  const surveyBase = band ? band.survey : 0;
+  const surveySurcharge = city[2];
+  const labourAmount = band ? (band.fixed > 0 ? band.fixed : band.perKw * kw) : 0;
+  const siteSurveyAmount = (surveyBase + surveySurcharge) * visits;
+  const pit3Amount = pit3Qty * EARTHING.pit3.rate;
+  const pit5Amount = pit5Qty * EARTHING.pit5.rate;
+  // Only the first survey visit's base fee is credited back against the final bill,
+  // regardless of how many survey visits were needed — extra visits are not refunded.
+  const creditAmount = band ? -surveyBase : 0;
+
+  const subtotal = siteSurveyAmount + labourAmount + pit3Amount + pit5Amount + creditAmount;
+  const gst = subtotal * 0.18;
+  const total = subtotal + gst;
+
+  const labourDetail = band
+    ? (band.fixed > 0 ? `Fixed labour charge (${band.min}–${band.max} kW band)` : `₹${band.perKw.toLocaleString("en-IN")} per kW`)
+    : "—";
+
+  document.getElementById("preview").innerHTML = `
+    <div class="doc-head">
+      <img src="/Logo.png" class="logo">
+      <div class="doc-title">
+        <h2>Installation Labour Quotation</h2>
+        <p>Techedge SPE India Pvt. Ltd. · Channel Partner Rate Card</p>
+        <p>Date: ${todayStr()}</p>
+        ${siteRef ? `<p>Ref: ${siteRef}</p>` : ""}
+      </div>
+    </div>
+
+    <div class="section-title">Site &amp; System Details</div>
+    <table>
+      <tr><th style="width:40%">City / Site Location</th><td>${cityName} (${city[1]} km from Bengaluru)</td></tr>
+      <tr><th>System Type</th><td>${type === "onGrid" ? "On-Grid" : "Hybrid"}</td></tr>
+      <tr><th>System Size</th><td>${kw} kW</td></tr>
+      <tr><th>Site Survey Visits</th><td>${visits}</td></tr>
+    </table>
+
+    <div class="section-title">Quotation</div>
+    <table>
+      <tr><th>Item</th><th>Details</th><th class="amount">Qty / kW</th><th class="amount">Amount</th></tr>
+      <tr>
+        <td>Site Survey &amp; BOM</td>
+        <td>Base ${fmt(surveyBase)} + distance surcharge ${fmt(surveySurcharge)} (${city[1]} km)</td>
+        <td class="amount">${visits}</td>
+        <td class="amount">${fmt(siteSurveyAmount)}</td>
+      </tr>
+      <tr>
+        <td>Installation Labour</td>
+        <td>${labourDetail}</td>
+        <td class="amount">${band ? kw : "—"}</td>
+        <td class="amount">${fmt(labourAmount)}</td>
+      </tr>
+      ${pit3Qty > 0 ? `<tr><td>${EARTHING.pit3.label}</td><td>${EARTHING.pit3.detail}</td><td class="amount">${pit3Qty}</td><td class="amount">${fmt(pit3Amount)}</td></tr>` : ""}
+      ${pit5Qty > 0 ? `<tr><td>${EARTHING.pit5.label}</td><td>${EARTHING.pit5.detail}</td><td class="amount">${pit5Qty}</td><td class="amount">${fmt(pit5Amount)}</td></tr>` : ""}
+      <tr>
+        <td>Less: Base Site Survey Adjusted in Final Bill</td>
+        <td>Base ${fmt(surveyBase)} (first visit only, credited)</td>
+        <td class="amount">—</td>
+        <td class="amount">${fmt(creditAmount)}</td>
+      </tr>
+      <tr class="total-row"><td colspan="3">Subtotal (Excl. GST)</td><td class="amount">${fmt(subtotal)}</td></tr>
+      <tr><td colspan="3">GST @ 18%</td><td class="amount">${fmt(gst)}</td></tr>
+      <tr class="total-row"><td colspan="3">GRAND TOTAL (Incl. GST)</td><td class="amount">${fmt(total)}</td></tr>
+    </table>
+    <p class="footnote">Base site survey charge is collected at survey time; only the first visit's base fee is credited (deducted) in the final bill. Distance surcharge and any additional visits are not credited.</p>
+
+    <div class="section-title">Scope of Work &amp; Terms</div>
+    <div class="terms">
+      <ol>${TERMS.map(t => `<li>${t}</li>`).join("")}</ol>
+    </div>
+    <p class="footnote">Labour-only quotation. Material, civil work, unloading, scaffolding and crane excluded — see main EPC quotation for full project pricing.</p>
+  `;
+}
+
+["siteRef","city","systemType","sizeKw","visits","pit3","pit5"].forEach(id => {
+  document.getElementById(id).addEventListener("input", render);
+  document.getElementById(id).addEventListener("change", render);
+});
+
+render();
+
+</script>
+</body>
+</html>

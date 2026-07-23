@@ -93,7 +93,7 @@ function drawTableHead(y) {
   text(doc, "GST", COLS.gst + 1, y + 4.2);
   text(doc, "Price (excl. GST)", COLS.excl + 1, y + 4.2);
   text(doc, "Price (incl. GST)", COLS.incl + 1, y + 4.2);
-  return y + 8;
+  return y + 10; // extra clearance so the first row's shading never overlaps the header text
 }
 
 function drawFooter() {
@@ -129,7 +129,7 @@ for (const cat of categories) {
   y += 6;
   y = drawTableHead(y);
 
-  let rowIdx = 0;
+  let shadeNext = false; // never shade the row immediately under a header — avoids painting over its text
   for (const p of products) {
     doc.setFont("helvetica", "bold");
     doc.setFontSize(7.3);
@@ -142,11 +142,13 @@ for (const cat of categories) {
     if (y + rowH > H - 18) {
       y = newPage();
       y = drawTableHead(y);
+      shadeNext = false;
     }
-    if (rowIdx % 2 === 0) {
+    if (shadeNext) {
       doc.setFillColor(250, 250, 250);
       doc.rect(M, y - 4.4, W - 2 * M, rowH, "F");
     }
+    shadeNext = !shadeNext;
     doc.setFont("helvetica", "bold");
     doc.setFontSize(7.3);
     doc.setTextColor(...DARK);
@@ -165,7 +167,6 @@ for (const cat of categories) {
     text(doc, inr(p.sellingPrice * (1 + p.gstRate / 100)), COLS.incl + 1, y);
 
     y += rowH;
-    rowIdx++;
   }
   y += 6;
 }
