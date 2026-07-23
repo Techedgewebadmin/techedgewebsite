@@ -1,0 +1,121 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import { renewSysProducts } from "@/data/renewsys-products";
+
+const color = '#f59e0b';
+const colorLight = 'rgba(245,158,11,0.10)';
+const colorBorder = 'rgba(245,158,11,0.22)';
+---
+
+<Layout
+  title="RenewSys DESERV EXTREME TOPCon Solar Panels India | ALMM Listed | Techedge"
+  description="RenewSys DESERV EXTREME N-type TOPCon bifacial solar panels — 600–625 Wp, 23.54% efficiency, BIS certified, ALMM listed. Made in India, DCR compliant. Supply by Techedge Bengaluru."
+  keywords="RenewSys solar panel India, RenewSys DESERV EXTREME, TOPCon panel India, ALMM solar panel, DCR panel India, Bengaluru solar"
+>
+
+  <!-- Hero -->
+  <section class="pt-32 pb-16 px-4 border-b border-muted/10" style={`background:linear-gradient(135deg,#0a0a12 60%,${colorLight})`}>
+    <div class="max-w-7xl mx-auto">
+      <div class="flex items-center gap-3 mb-6">
+        <a href="/products/" class="text-muted text-sm hover:text-white">Products</a>
+        <span class="text-muted/40">›</span>
+        <span style={`color:${color}`} class="text-sm font-semibold">RenewSys</span>
+      </div>
+      <div class="flex flex-wrap items-start gap-4 mb-4">
+        <span class="text-xs font-bold uppercase tracking-widest px-2 py-1 rounded-full border" style={`color:${color};border-color:${colorBorder};background:${colorLight}`}>Made in India</span>
+        <span class="text-xs font-bold uppercase tracking-widest px-2 py-1 rounded-full border" style={`color:${color};border-color:${colorBorder};background:${colorLight}`}>ALMM Listed</span>
+        <span class="text-xs font-bold uppercase tracking-widest px-2 py-1 rounded-full border" style={`color:${color};border-color:${colorBorder};background:${colorLight}`}>BIS IS 14286</span>
+        <span class="text-xs font-bold uppercase tracking-widest px-2 py-1 rounded-full border" style={`color:${color};border-color:${colorBorder};background:${colorLight}`}>DCR Compliant</span>
+      </div>
+      <h1 class="font-anton text-5xl md:text-7xl uppercase text-white leading-none mb-4">RenewSys</h1>
+      <p class="text-muted text-lg max-w-2xl mb-8">
+        DESERV EXTREME — India's premium N-type TOPCon bifacial module. 600–625 Wp, up to 23.54% module efficiency.
+        ALMM listed and DCR compliant for PM Surya Ghar subsidy projects. 30-year performance warranty.
+      </p>
+      <div class="flex flex-wrap gap-3">
+        {[
+          ['600–625 Wp', 'Power Range'],
+          ['23.54%', 'Peak Efficiency'],
+          ['30 Years', 'Performance Warranty'],
+          ['N-type TOPCon', 'Cell Technology'],
+          ['ALMM Listed', 'Subsidy Eligible'],
+        ].map(([v, l]) => (
+          <div class="bg-muted-foreground/5 border border-muted/20 rounded-xl px-5 py-3">
+            <p class="text-xl font-grotesk font-bold text-white">{v}</p>
+            <p class="text-xs text-muted uppercase font-semibold">{l}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Spec Table -->
+  <section class="py-16 px-4 border-b border-muted/10">
+    <div class="max-w-7xl mx-auto">
+      <h2 class="font-anton text-3xl uppercase text-foreground mb-2">DESERV EXTREME — Model Range</h2>
+      <p class="text-muted text-sm mb-8">G12R · 132 half-cut cells · N-type TOPCon bifacial · Glass-to-Glass</p>
+      <div class="overflow-x-auto rounded-2xl border border-muted/10">
+        <table class="w-full text-sm">
+          <thead>
+            <tr style={`background:${colorLight}`}>
+              {['Model','Power','Efficiency','Isc','Voc','Imp','Vmp','Temp Coeff','Product W','Performance W'].map(h => (
+                <th class="text-left px-4 py-3 text-xs font-bold uppercase tracking-wider text-foreground">{h}</th>
+              ))}
+            </tr>
+          </thead>
+          <tbody>
+            {renewSysProducts.map((p, i) => (
+              <tr class={i % 2 === 0 ? 'bg-muted-foreground/5' : 'bg-transparent'}>
+                <td class="px-4 py-3 font-semibold text-foreground">{p.model}</td>
+                <td class="px-4 py-3 font-bold" style={`color:${color}`}>{p.powerWp} Wp</td>
+                <td class="px-4 py-3 text-muted">{p.moduleEfficiency}%</td>
+                <td class="px-4 py-3 text-muted">{p.isc} A</td>
+                <td class="px-4 py-3 text-muted">{p.voc} V</td>
+                <td class="px-4 py-3 text-muted">{p.imp} A</td>
+                <td class="px-4 py-3 text-muted">{p.vmp} V</td>
+                <td class="px-4 py-3 text-muted">{p.tempCoeffPmax}</td>
+                <td class="px-4 py-3 text-muted">{p.productWarranty}</td>
+                <td class="px-4 py-3 text-muted">{p.performanceWarranty}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <p class="text-muted text-xs mt-3">All specs at STC (1000 W/m², 25°C, AM 1.5). Bifaciality factor 80±5%. Glass-to-Glass construction.</p>
+    </div>
+  </section>
+
+  <!-- Why RenewSys -->
+  <section class="py-16 px-4 border-b border-muted/10">
+    <div class="max-w-7xl mx-auto">
+      <h2 class="font-anton text-3xl uppercase text-foreground mb-10">Why RenewSys</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
+        {[
+          ['Made in India', 'Manufactured in India — eligible for PM Surya Ghar and MNRE subsidy schemes requiring DCR compliance.'],
+          ['ALMM Listed', 'On the Ministry of New & Renewable Energy Approved List — mandatory for government and subsidy-linked projects.'],
+          ['N-type TOPCon', 'Lower degradation, better low-light performance, and higher bifacial gain vs PERC technology.'],
+          ['30-Year Warranty', 'Linear performance guarantee — 98% in year 1, declining to 84.8% by year 30.'],
+          ['Glass-to-Glass', 'Dual glass construction — superior durability against hail, humidity, and UV degradation.'],
+          ['BIS IS 14286', 'Indian standards certification — required for DISCOM net metering approval.'],
+        ].map(([title, desc]) => (
+          <div class="rounded-2xl p-6 border" style={`background:${colorLight};border-color:${colorBorder}`}>
+            <p class="font-bold text-foreground mb-2">{title}</p>
+            <p class="text-muted text-sm">{desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-16 px-4">
+    <div class="max-w-3xl mx-auto text-center">
+      <h2 class="font-anton text-3xl uppercase text-foreground mb-4">Enquire About RenewSys Panels</h2>
+      <p class="text-muted mb-8">EPC supply and installation across Bengaluru and Karnataka. Ideal for PM Surya Ghar and commercial rooftop projects.</p>
+      <a href="/contact" class="inline-block font-anton text-lg uppercase px-8 py-4 rounded-xl transition-colors" style={`background:${color};color:black`}>
+        Get a Quote →
+      </a>
+    </div>
+  </section>
+
+</Layout>

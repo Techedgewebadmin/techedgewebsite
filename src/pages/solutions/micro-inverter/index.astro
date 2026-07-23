@@ -1,0 +1,519 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import { hoymilesProducts } from "@/data/hoymiles-products";
+import { tsunProducts } from "@/data/tsun-products";
+
+const featuredProducts = hoymilesProducts.filter(p =>
+  ['hoymiles-hm-600-micro-inverter', 'hoymiles-hm-800-micro-inverter', 'hoymiles-hms-800w-t2-micro-inverter', 'hoymiles-hms-1000w-t2-micro-inverter'].includes(p.slug)
+);
+
+const schemaJson = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Micro Inverter Solar Solution — Hoymiles HM & HMS Series",
+  "description": "Per-panel MPPT micro inverter solar systems for homes with shading, mixed orientations, or phased expansion. Hoymiles HM and HMS series, supplied and installed by Techedge in Bengaluru.",
+  "provider": {
+    "@type": "Organization",
+    "name": "Techedge India",
+    "url": "https://techedgeindia.co.in"
+  },
+  "areaServed": "Bengaluru, Karnataka, India",
+  "serviceType": "Micro Inverter Solar System Design & Installation",
+});
+
+const faqs = [
+  {
+    q: "What is a micro inverter?",
+    a: "A micro inverter is a small inverter that mounts directly behind each solar panel and converts that panel's DC output to AC independently. Unlike a string inverter — where all panels connect to one central unit — micro inverters give every panel its own Maximum Power Point Tracking (MPPT). This means shading or soiling on one panel has no effect on the others."
+  },
+  {
+    q: "How much does a micro inverter system cost compared to a string inverter?",
+    a: "Micro inverter systems typically cost 15–25% more than equivalent string inverter systems in upfront hardware cost. However, in shaded or multi-orientation rooftops, micro inverters can deliver 10–20% more annual yield — making the payback period comparable or better. For unshaded single-orientation rooftops, a string inverter is usually the more cost-efficient choice."
+  },
+  {
+    q: "Which Hoymiles model should I choose?",
+    a: "For most 2-panel groupings in residential use, the HM-600 or HM-800 covers 300–400 Wp panels. For premium systems with 15-year warranty, choose the HMS series. Techedge engineers will recommend the right model based on your panel wattage, roof layout, and budget."
+  },
+  {
+    q: "Do micro inverters work with any solar panel?",
+    a: "Hoymiles micro inverters are compatible with standard crystalline silicon solar panels (mono and poly). For best results, each PV input channel should be matched to a panel within the inverter's rated input range (typically 250–600 V Voc). Techedge sizes the pairing as part of system design."
+  },
+  {
+    q: "What monitoring does Hoymiles provide?",
+    a: "Hoymiles uses a DTU (Data Transfer Unit) gateway that collects data from all micro inverters via power-line communication. The DTU connects to your Wi-Fi router and uploads to the S-Miles Cloud platform, accessible as a web app and mobile app. You can see real-time watts, daily generation, and lifetime output per panel — plus receive fault alerts per unit."
+  },
+  {
+    q: "Is a micro inverter system expandable?",
+    a: "Yes — this is one of its biggest advantages. Adding capacity is straightforward: add a solar panel, add a Hoymiles micro inverter, connect to the AC bus. No string recalculation, no inverter replacement, no impact on existing units. You can grow from 2 kW to 6 kW over three years without redesigning anything."
+  },
+  {
+    q: "Are Hoymiles micro inverters approved for Indian grid connection?",
+    a: "Hoymiles micro inverters meet IEC 62109-1/2 standards and comply with Indian grid interconnection requirements at 230 V / 50 Hz. Techedge handles all net metering documentation, DISCOM approvals, and commissioning as part of a full EPC installation."
+  },
+];
+---
+
+<Layout
+  title="Micro Inverter Solar Solution — Hoymiles HM & HMS | Techedge Bengaluru"
+  description="Per-panel MPPT micro inverter systems for homes with shading, mixed orientations, or phased expansion plans. Hoymiles HM and HMS series. Supplied and installed by Techedge in Bengaluru."
+  keywords="micro inverter solar India, Hoymiles micro inverter Bengaluru, per panel MPPT solar, micro inverter vs string inverter, Hoymiles HM HMS series India, rooftop solar shading solution, Techedge solar Bengaluru"
+>
+
+  <script type="application/ld+json" set:html={schemaJson} />
+
+  <!-- ── HERO ──────────────────────────────────────────────────────────────── -->
+  <section class="relative overflow-hidden pt-32 pb-20 px-4" style="background:#0a1628;">
+    <!-- Ambient glow -->
+    <div class="absolute inset-0 pointer-events-none" style="background: radial-gradient(ellipse at 60% 30%, rgba(6,182,212,0.12) 0%, transparent 65%);" />
+    <!-- Grid overlay -->
+    <div class="absolute inset-0 opacity-[0.04]" style="background-image: linear-gradient(rgba(255,255,255,0.6) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.6) 1px, transparent 1px); background-size: 40px 40px;" />
+
+    <div class="relative max-w-7xl mx-auto">
+      <div class="max-w-4xl">
+        <span class="inline-block text-xs font-bold uppercase tracking-widest mb-5 px-3 py-1 rounded-full" style="color:#06b6d4; background:rgba(6,182,212,0.1); border:1px solid rgba(6,182,212,0.25);">
+          ⚡ Micro Inverter Solution
+        </span>
+        <h1 class="font-anton text-5xl md:text-7xl xl:text-8xl uppercase text-white leading-none mb-6">
+          Every Panel<br />
+          <span style="color:#06b6d4;">Works Harder.</span>
+        </h1>
+        <p class="text-white/70 text-lg md:text-xl max-w-2xl leading-relaxed mb-10">
+          One inverter per panel. Independent MPPT. No shading losses. No single point of failure.
+          Hoymiles micro inverters give every solar panel on your rooftop its best possible output — every hour of the day.
+        </p>
+        <div class="flex flex-wrap gap-4">
+          <a href="/contact" class="font-anton text-base uppercase px-8 py-4 rounded-xl transition-colors" style="background:#06b6d4; color:#fff;">
+            Get a Free Site Survey
+          </a>
+          <a href="/products/hoymiles/" class="font-anton text-base uppercase px-8 py-4 rounded-xl transition-colors border text-white hover:bg-white/10" style="border-color:rgba(255,255,255,0.2);">
+            Browse Hoymiles Products
+          </a>
+        </div>
+      </div>
+
+      <!-- Quick stats -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-16">
+        {[
+          ['97.0%', 'Max Efficiency', 'HMS Series'],
+          ['IP67', 'Weatherproof', 'Monsoon-tested'],
+          ['15 Yr', 'Warranty', 'HMS Series'],
+          ['Per Panel', 'MPPT', 'Individual tracking'],
+        ].map(([val, label, sub]) => (
+          <div class="rounded-2xl p-5 text-center" style="background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08);">
+            <p class="text-2xl md:text-3xl font-bold mb-1" style="color:#06b6d4;">{val}</p>
+            <p class="text-white/80 text-sm font-semibold uppercase tracking-wide">{label}</p>
+            <p class="text-white/30 text-xs mt-1">{sub}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ── HOW IT WORKS ──────────────────────────────────────────────────────── -->
+  <section class="py-20 px-4 bg-background-foreground border-b border-muted/10">
+    <div class="max-w-7xl mx-auto">
+      <span class="text-secondary text-xs font-bold uppercase tracking-widest mb-4 block">How It Works</span>
+      <h2 class="font-anton text-4xl md:text-5xl uppercase text-foreground leading-none mb-12">
+        One Inverter.<br />One Panel.
+      </h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {[
+          {
+            n: '01',
+            title: 'Panel-Level Conversion',
+            body: 'Each Hoymiles micro inverter mounts directly behind one solar panel (or two panels for dual-input models). DC electricity from that panel converts to 230 V AC right at the source — no high-voltage DC runs across your roof.',
+          },
+          {
+            n: '02',
+            title: 'Independent MPPT Per Panel',
+            body: 'Every micro inverter runs its own Maximum Power Point Tracking algorithm. If a water tank casts a shadow on two panels at 11 AM, those two panels underperform — but all other panels continue at 100%. String inverters can\'t do this.',
+          },
+          {
+            n: '03',
+            title: 'AC Bus to Grid',
+            body: 'All micro inverters connect to a shared AC bus — the same wiring as your home\'s distribution board. The total AC output feeds your loads and excess exports through net metering. One DTU gateway monitors every unit in real time.',
+          },
+        ].map(step => (
+          <div class="bg-muted-foreground/5 border border-muted/20 rounded-2xl p-8">
+            <p class="text-4xl font-bold mb-4" style="color:#06b6d4; opacity:0.5;">{step.n}</p>
+            <h3 class="font-anton text-xl uppercase text-foreground mb-3">{step.title}</h3>
+            <p class="text-muted text-sm leading-relaxed">{step.body}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ── VIDEO ────────────────────────────────────────────────────────────── -->
+  <section class="py-20 px-4">
+    <div class="max-w-5xl mx-auto">
+      <span class="text-secondary text-xs font-bold uppercase tracking-widest mb-4 block">Watch & Learn</span>
+      <h2 class="font-anton text-3xl md:text-4xl uppercase text-foreground mb-8">
+        Hoymiles Micro Inverters — Explained in Kannada
+      </h2>
+      <div class="rounded-2xl overflow-hidden border border-muted/20" style="background:#000;">
+        <video controls class="w-full" style="max-height:520px;">
+          <source src="/videos/hoymiles-micro-inverter-kannada.mp4" type="video/mp4" />
+          Your browser does not support video playback.
+        </video>
+      </div>
+      <p class="text-muted text-sm mt-4 text-center">
+        ಕನ್ನಡದಲ್ಲಿ ವಿವರಣೆ — Hoymiles ಮೈಕ್ರೋ ಇನ್ವರ್ಟರ್ ಹೇಗೆ ಕೆಲಸ ಮಾಡುತ್ತದೆ, ಅದರ ಪ್ರಯೋಜನಗಳು, ಮತ್ತು ಭಾರತೀಯ ಮನೆಗಳಿಗೆ ಏಕೆ ಸೂಕ್ತ.
+      </p>
+    </div>
+  </section>
+
+  <!-- ── BENEFITS ──────────────────────────────────────────────────────────── -->
+  <section class="py-20 px-4 bg-background-foreground border-t border-muted/10">
+    <div class="max-w-7xl mx-auto">
+      <span class="text-secondary text-xs font-bold uppercase tracking-widest mb-4 block">Key Benefits</span>
+      <h2 class="font-anton text-4xl md:text-5xl uppercase text-foreground leading-none mb-12">
+        Why Micro Inverters<br />Win on Shaded Rooftops.
+      </h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+        {[
+          {
+            icon: '🛡️',
+            title: 'No Shading Losses',
+            body: 'Shade on one panel does not drag down the rest of your system. Each panel runs at its own maximum regardless of what its neighbours are doing.',
+          },
+          {
+            icon: '📊',
+            title: 'Per-Panel Monitoring',
+            body: 'See real-time output from every single panel via the S-Miles Cloud app. Know exactly which panel is underperforming, when, and by how much.',
+          },
+          {
+            icon: '🔌',
+            title: 'No Single Point of Failure',
+            body: 'If one micro inverter fails, the other 10 keep running. With a string inverter, one failure stops your entire system.',
+          },
+          {
+            icon: '↗️',
+            title: 'Mixed Orientations',
+            body: 'East and west-facing panels, flat and sloped sections — each runs at its own MPPT. A string inverter would force them to compromise.',
+          },
+          {
+            icon: '➕',
+            title: 'Easy Expansion',
+            body: 'Adding capacity is as simple as adding a panel and a micro inverter. No string recalculation, no inverter replacement, no disruption to what\'s already installed.',
+          },
+          {
+            icon: '⚡',
+            title: 'Safe Low-Voltage DC',
+            body: 'DC wiring stays short — from panel to the micro inverter directly behind it. No high-voltage DC cable runs across your roof, reducing fire risk and installation complexity.',
+          },
+        ].map(b => (
+          <div class="bg-muted-foreground/5 border border-muted/20 rounded-2xl p-7">
+            <div class="text-3xl mb-4">{b.icon}</div>
+            <h3 class="font-anton text-lg uppercase text-foreground mb-3">{b.title}</h3>
+            <p class="text-muted text-sm leading-relaxed">{b.body}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ── COMPARISON TABLE ──────────────────────────────────────────────────── -->
+  <section class="py-20 px-4">
+    <div class="max-w-5xl mx-auto">
+      <span class="text-secondary text-xs font-bold uppercase tracking-widest mb-4 block">Compare</span>
+      <h2 class="font-anton text-4xl md:text-5xl uppercase text-foreground mb-10">
+        Micro vs String — The Facts.
+      </h2>
+      <div class="rounded-2xl overflow-hidden border border-muted/20">
+        <table class="w-full text-sm">
+          <thead>
+            <tr class="bg-muted-foreground/10">
+              <th class="text-left p-4 text-xs font-bold uppercase tracking-wider text-muted">Feature</th>
+              <th class="text-left p-4 text-xs font-bold uppercase tracking-wider text-muted">String Inverter</th>
+              <th class="text-left p-4 text-xs font-bold uppercase tracking-wider" style="color:#06b6d4;">Micro Inverter (Hoymiles)</th>
+            </tr>
+          </thead>
+          <tbody>
+            {[
+              ['Per-panel MPPT', '✗ String-level only', '✓ Every panel'],
+              ['Shading resilience', 'Whole string drops', 'Only affected panel drops'],
+              ['Mixed orientations', 'Compromised yield', 'Full yield on each face'],
+              ['Monitoring granularity', 'System total only', 'Per-panel, real-time'],
+              ['Single point of failure', 'Yes — system stops', 'No — others keep running'],
+              ['Phase expansion', 'String redesign needed', 'Add panel + unit anytime'],
+              ['DC wiring length', 'Long DC runs on roof', 'Short run, panel to unit'],
+              ['Warranty', '5–10 years typical', '12–15 years (Hoymiles)'],
+              ['Best for', 'Unshaded, single orientation', 'Shading, mixed roof, expansion'],
+            ].map(([feature, string, micro], i) => (
+              <tr class={i % 2 === 0 ? 'bg-background' : 'bg-muted-foreground/5'}>
+                <td class="p-4 font-semibold text-foreground">{feature}</td>
+                <td class="p-4 text-muted">{string}</td>
+                <td class="p-4 font-semibold" style="color:#06b6d4;">{micro}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── TRUNK CABLE WIRING SYSTEM ───────────────────────────────────────── -->
+  <section class="py-20 px-4 bg-background-foreground border-t border-muted/10">
+    <div class="max-w-7xl mx-auto">
+      <span class="text-secondary text-xs font-bold uppercase tracking-widest mb-4 block">Installation</span>
+      <h2 class="font-anton text-4xl md:text-5xl uppercase text-foreground leading-none mb-4">
+        How Micro Inverters Wire Up:<br />
+        <span style="color:#ef4444;">Trunk Cable System</span>
+      </h2>
+      <p class="text-muted mb-12 max-w-2xl">
+        TSUN GEN3 micro inverters use a trunk cable T-connector AC bus — a daisy-chain wiring method that eliminates long individual cable runs across your rooftop and makes expansion plug-and-play simple.
+      </p>
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start mb-16">
+        <!-- Spec sheet image -->
+        <div class="rounded-2xl overflow-hidden border border-muted/20">
+          <img src="/img/tsun-gen3-specs.jpg" alt="TSUN GEN3 trunk cable wiring diagram and spec sheet" class="w-full h-auto" loading="lazy" />
+        </div>
+
+        <!-- Component explanation -->
+        <div class="space-y-6">
+          <h3 class="font-anton text-2xl uppercase text-foreground">System Components</h3>
+          <div class="space-y-4">
+            {[
+              {
+                label: 'Protective Cap',
+                desc: 'Seals the open end of the trunk cable at the last unit in a branch. Keeps the AC bus weatherproof at IP67 standard when no further units are connected.',
+              },
+              {
+                label: 'T Connectors',
+                desc: 'Each micro inverter ships with a 0.5 m AC cable ending in a T-connector that plugs directly into the trunk cable. No junction boxes, no exposed terminals — just click in and the unit joins the AC bus.',
+              },
+              {
+                label: 'Trunk Cable',
+                desc: 'A continuous AC bus cable (10–12 AWG) that runs along the panel row. All micro inverters tap into it via their T connectors. One cable carries the combined output of all units on that branch to the distribution board.',
+              },
+              {
+                label: 'Male / Female Connectors',
+                desc: 'Trunk cable segments use keyed male/female MC4-style AC connectors. Extending the system means adding a new cable segment — no rewiring of existing units.',
+              },
+            ].map(c => (
+              <div class="bg-muted-foreground/5 border border-muted/20 rounded-xl p-5">
+                <p class="font-bold text-foreground text-sm uppercase tracking-wide mb-1" style="color:#ef4444;">{c.label}</p>
+                <p class="text-muted text-sm leading-relaxed">{c.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <!-- Layout examples -->
+      <h3 class="font-anton text-2xl uppercase text-foreground mb-6">Typical Layout Configurations</h3>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+        {[
+          {
+            title: '8-Panel Split Branch',
+            config: '1 × 3 kW + 1 × 1 kW',
+            panels: 8,
+            desc: 'Two branches on the same rooftop — a 6-panel branch running a 3 kW trunk cable, and a separate 2-panel branch on a 1 kW trunk. Ideal when panels face different orientations or are physically separated.',
+          },
+          {
+            title: '12-Panel Three-Branch',
+            config: '3 × 2 kW',
+            panels: 12,
+            desc: 'Three parallel branches of 4 panels each, all feeding the same distribution board. Keeps each branch within comfortable cable current limits and allows independent expansion of any row.',
+          },
+          {
+            title: 'Expandable Configuration',
+            config: 'Start small, grow anytime',
+            panels: null,
+            desc: 'Begin with 4 panels and 2 micro inverters. Cap the trunk end. When ready, remove the cap, clip in a new cable segment, and add more units — no disruption to what\'s already running.',
+          },
+        ].map(ex => (
+          <div class="bg-muted-foreground/5 border border-muted/20 rounded-2xl p-6">
+            <p class="text-xs font-bold uppercase tracking-wider mb-1" style="color:#ef4444;">{ex.config}</p>
+            <h4 class="font-anton text-xl uppercase text-foreground mb-2">{ex.title}</h4>
+            {ex.panels && <p class="text-muted text-xs mb-3">{ex.panels} panels · {ex.panels / 2} micro inverters</p>}
+            <p class="text-muted text-sm leading-relaxed">{ex.desc}</p>
+          </div>
+        ))}
+      </div>
+
+      <!-- Cable capacity note -->
+      <div class="rounded-2xl p-6 flex items-start gap-4" style="background:rgba(239,68,68,0.06); border:1px solid rgba(239,68,68,0.2);">
+        <span class="text-2xl shrink-0">⚠️</span>
+        <div>
+          <p class="font-bold text-foreground mb-1">Maximum Units Per Branch</p>
+          <p class="text-muted text-sm leading-relaxed">
+            A single trunk cable branch supports <strong class="text-foreground">9–12 micro inverter units</strong> depending on cable gauge: up to 12 units on 10 AWG, up to 9 units on 12 AWG. Beyond this, start a new branch. Techedge engineers design branch layouts to stay within safe current ratings before installation.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── PRODUCTS ──────────────────────────────────────────────────────────── -->
+  <section class="py-20 px-4 bg-background-foreground border-t border-muted/10">
+    <div class="max-w-7xl mx-auto">
+      <span class="text-secondary text-xs font-bold uppercase tracking-widest mb-4 block">Products</span>
+      <h2 class="font-anton text-4xl md:text-5xl uppercase text-foreground mb-3">Popular Models</h2>
+      <p class="text-muted mb-10 max-w-2xl">Most-specified Hoymiles micro inverters for residential rooftops in Bengaluru.</p>
+      <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6 mb-10">
+        {featuredProducts.map(p => (
+          <a href={`/products/${p.slug}/`} class="group bg-muted-foreground/5 hover:bg-muted-foreground/10 border border-muted/20 rounded-2xl p-6 flex flex-col transition-all duration-200">
+            <div class="flex items-center justify-between mb-4">
+              <span class="text-xs font-bold uppercase tracking-wider px-2 py-1 rounded-full" style={`color:#06b6d4; background:rgba(6,182,212,0.1); border:1px solid rgba(6,182,212,0.2);`}>{p.series} Series</span>
+              <span class="text-xs text-muted">{p.pvInputs} input{p.pvInputs > 1 ? 's' : ''}</span>
+            </div>
+            <h3 class="font-anton text-xl uppercase text-foreground mb-1">{p.model}</h3>
+            <p class="text-muted text-xs mb-4">{p.powerW} W output · {p.maxEfficiency}% eff.</p>
+            <div class="flex-1" />
+            <div class="flex items-end justify-between pt-4 border-t border-muted/10 mt-4">
+              <div>
+                <p class="text-foreground font-bold">₹{p.sellingPrice.toLocaleString('en-IN')}</p>
+                <p class="text-muted text-xs">+ 12% GST</p>
+              </div>
+              <span class="text-sm font-bold transition-transform group-hover:translate-x-1" style="color:#06b6d4;">View →</span>
+            </div>
+          </a>
+        ))}
+      </div>
+      <a href="/products/hoymiles/" class="inline-flex items-center gap-2 font-anton text-base uppercase px-6 py-3 rounded-xl border transition-colors hover:bg-muted-foreground/10" style="border-color:rgba(6,182,212,0.3); color:#06b6d4;">
+        Browse All 14 Hoymiles Products →
+      </a>
+
+      <!-- TSUN GEN3 subsection -->
+      <div class="mt-16 pt-12 border-t border-muted/10">
+        <div class="flex items-center gap-3 mb-3">
+          <span class="text-xs font-bold uppercase tracking-widest px-3 py-1 rounded-full" style="color:#ef4444; background:rgba(239,68,68,0.1); border:1px solid rgba(239,68,68,0.25);">
+            Also Available
+          </span>
+        </div>
+        <h3 class="font-anton text-3xl md:text-4xl uppercase text-foreground mb-3">TSUN GEN3 Micro Inverters</h3>
+        <p class="text-muted mb-8 max-w-2xl">BIS India certified, built-in WiFi + Bluetooth + RS485, no separate gateway needed. 15-year warranty. Trunk cable T-connector system for clean rooftop wiring.</p>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+          {tsunProducts.map(p => (
+            <a href={`/products/${p.slug}/`} class="group bg-muted-foreground/5 hover:bg-muted-foreground/10 border border-muted/20 rounded-2xl p-6 flex flex-col transition-all duration-200">
+              <div class="flex items-center justify-between mb-4">
+                <span class="text-xs font-bold uppercase tracking-wider px-2 py-1 rounded-full" style="color:#ef4444; background:rgba(239,68,68,0.1); border:1px solid rgba(239,68,68,0.2);">{p.series} Series</span>
+                <span class="text-xs text-muted">{p.pvInputs} inputs</span>
+              </div>
+              <h4 class="font-anton text-xl uppercase text-foreground mb-1">{p.model}</h4>
+              <p class="text-muted text-xs mb-4">{p.powerW} W output · {p.peakEfficiency}% eff.</p>
+              <div class="flex-1" />
+              <div class="flex items-end justify-between pt-4 border-t border-muted/10 mt-4">
+                <div>
+                  <p class="text-foreground font-bold">₹{p.sellingPrice.toLocaleString('en-IN')}</p>
+                  <p class="text-muted text-xs">+ 12% GST</p>
+                </div>
+                <span class="text-sm font-bold transition-transform group-hover:translate-x-1" style="color:#ef4444;">View →</span>
+              </div>
+            </a>
+          ))}
+        </div>
+        <a href="/products/tsun/" class="inline-flex items-center gap-2 font-anton text-base uppercase px-6 py-3 rounded-xl border transition-colors hover:bg-muted-foreground/10" style="border-color:rgba(239,68,68,0.3); color:#ef4444;">
+          View All TSUN Products →
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── WHO IS IT FOR ─────────────────────────────────────────────────────── -->
+  <section class="py-20 px-4">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+      <div>
+        <span class="text-secondary text-xs font-bold uppercase tracking-widest mb-4 block">Right Choice</span>
+        <h2 class="font-anton text-4xl md:text-5xl uppercase text-foreground leading-none mb-8">
+          Is a Micro Inverter<br />Right for You?
+        </h2>
+        <div class="space-y-4">
+          <div>
+            <p class="font-bold text-foreground mb-3 uppercase tracking-wide text-sm">Good fit ✓</p>
+            <ul class="space-y-2">
+              {[
+                'Rooftop with shading from trees, tanks, or structures',
+                'Panels across east + west faces, or flat + sloped sections',
+                'You want to expand the system in future phases',
+                'You want per-panel monitoring and fault isolation',
+                'Premium installation with longer warranty (12–15 years)',
+              ].map(item => (
+                <li class="flex items-start gap-3 text-sm text-muted">
+                  <span class="mt-1 shrink-0 w-5 h-5 rounded-full flex items-center justify-center text-xs font-bold" style="background:rgba(6,182,212,0.15); color:#06b6d4;">✓</span>
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div class="pt-4">
+            <p class="font-bold text-foreground mb-3 uppercase tracking-wide text-sm">String inverter may be better ↗</p>
+            <ul class="space-y-2">
+              {[
+                'Completely unshaded, single-orientation rooftop',
+                'Large system above 15–20 kW (commercial string inverters more cost-effective)',
+                'Upfront cost is the primary constraint',
+              ].map(item => (
+                <li class="flex items-start gap-3 text-sm text-muted">
+                  <span class="mt-1 shrink-0 w-5 h-5 rounded-full flex items-center justify-center text-xs" style="background:rgba(255,255,255,0.05); color:#94a3b8;">→</span>
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="space-y-4">
+        <div class="bg-muted-foreground/5 border border-muted/20 rounded-2xl p-7">
+          <h3 class="font-anton text-xl uppercase text-foreground mb-4">Typical Micro Inverter System</h3>
+          <dl class="space-y-3">
+            {[
+              ['System size', '3–10 kW residential'],
+              ['Micro inverter', 'Hoymiles HM-600 to HMS-1600W-T4'],
+              ['Panels', 'Goldi Solar TOPCon or equivalent'],
+              ['Gateway', 'Hoymiles DTU (included)'],
+              ['Monitoring', 'S-Miles Cloud app (free)'],
+              ['Net metering', 'Handled by Techedge'],
+              ['Warranty', '12–15 years on inverters, 25–30 years on panels'],
+            ].map(([label, val]) => (
+              <div class="flex items-start justify-between gap-4 py-2 border-b border-muted/10 last:border-0">
+                <dt class="text-xs uppercase text-muted font-semibold tracking-wide shrink-0">{label}</dt>
+                <dd class="text-sm text-foreground font-semibold text-right">{val}</dd>
+              </div>
+            ))}
+          </dl>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FAQ ──────────────────────────────────────────────────────────────── -->
+  <section class="py-20 px-4 bg-background-foreground border-t border-muted/10">
+    <div class="max-w-3xl mx-auto">
+      <span class="text-secondary text-xs font-bold uppercase tracking-widest mb-4 block">FAQ</span>
+      <h2 class="font-anton text-4xl uppercase text-foreground mb-10">Common Questions</h2>
+      <div class="space-y-6">
+        {faqs.map(faq => (
+          <div class="border-b border-muted/10 pb-6 last:border-0">
+            <h3 class="font-semibold text-foreground mb-2">{faq.q}</h3>
+            <p class="text-muted text-sm leading-relaxed">{faq.a}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CTA ──────────────────────────────────────────────────────────────── -->
+  <section class="py-20 px-4 border-t border-muted/10">
+    <div class="max-w-3xl mx-auto text-center">
+      <h2 class="font-anton text-4xl md:text-5xl uppercase text-foreground mb-4">
+        Free Site Survey.<br />No Obligation.
+      </h2>
+      <p class="text-muted text-lg mb-10 max-w-xl mx-auto">
+        Our engineers assess your rooftop, shade pattern, and load — then recommend the right system: micro inverter, string, or hybrid. Fixed quote. No surprises.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="/contact" class="font-anton text-lg uppercase px-10 py-5 rounded-xl transition-colors" style="background:#06b6d4; color:#fff;">
+          Book a Free Survey
+        </a>
+        <a href="/products/hoymiles/" class="font-anton text-lg uppercase px-10 py-5 rounded-xl border border-muted/30 text-foreground hover:bg-muted-foreground/10 transition-colors">
+          Browse Hoymiles Products
+        </a>
+      </div>
+    </div>
+  </section>
+
+</Layout>

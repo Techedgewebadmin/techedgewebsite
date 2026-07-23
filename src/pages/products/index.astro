@@ -3,12 +3,199 @@ import Layout from "@/layouts/Layout.astro";
 import { deyeProducts } from "@/data/deye-products";
 import { allTechedgeProducts } from "@/data/techedge-products";
 import { goldiProducts } from "@/data/goldi-products";
+import { hoymilesProducts } from "@/data/hoymiles-products";
+import { tsunProducts } from "@/data/tsun-products";
+import { solintegProducts } from "@/data/solinteg-products";
+import { vsoleProducts } from "@/data/vsole-products";
+import { lithiumValleyProducts } from "@/data/lithium-valley-products";
+import { renewSysProducts } from "@/data/renewsys-products";
+import { rayzonProducts } from "@/data/rayzon-products";
+import { bplPowerzenProducts } from "@/data/bpl-powerzen-products";
+import { coldStorageProducts } from "@/data/cold-storage-products";
+import { adaniProducts } from "@/data/adani-products";
+
+const categories = [
+  { id: 'micro',   label: 'Micro Inverters' },
+  { id: 'hybrid',  label: 'Hybrid Inverters' },
+  { id: 'ongrid',  label: 'On-Grid Inverters' },
+  { id: 'panels',  label: 'Solar Panels' },
+  { id: 'battery', label: 'Battery Storage' },
+];
+
+type BrandCard = {
+  href: string;
+  name: string;
+  badge: string;
+  desc: string;
+  color: string;
+  stats: [string, string][];
+  foot: string;
+};
+
+const microBrands: BrandCard[] = [
+  {
+    href: '/products/hoymiles/',
+    name: 'Hoymiles',
+    badge: 'Authorised Dealer',
+    desc: 'Per-panel MPPT micro inverters for shaded, multi-orientation, or phased rooftops. HM and HMS series — 300 W to 2000 W, IP67.',
+    color: '#06b6d4',
+    stats: [['HM Series', '300–2000 W'], ['HMS Series', '800–2000 W'], ['Peak Efficiency', '97.0%'], ['Warranty', '12–15 yrs']],
+    foot: `${hoymilesProducts.length} products · HM + HMS`,
+  },
+  {
+    href: '/products/tsun/',
+    name: 'TSUN',
+    badge: 'BIS Certified',
+    desc: 'GEN3 2-in-1 micro inverters with built-in WiFi, Bluetooth and RS485. BIS India certified. 800 W–1000 W, IP67, 15-year warranty.',
+    color: '#ef4444',
+    stats: [['BIS Certified', 'DISCOM ready'], ['WiFi + BT', 'No gateway'], ['Efficiency', '96.7%'], ['Warranty', '15 yrs']],
+    foot: `${tsunProducts.length} models · MX800/900/1000`,
+  },
+];
+
+const hybridBrands: BrandCard[] = [
+  {
+    href: '/products/bpl-powerzen/',
+    name: 'BPL PowerZen',
+    badge: 'BIS Certified',
+    desc: 'AIO Premium — all-in-one hybrid inverter with integrated 5 kWh LFP battery in a single tower. 6.5 KVA, 6000 cycle life, up to 10-year warranty.',
+    color: '#2563eb',
+    stats: [['Rated Output', '5 kW'], ['Battery', '5 kWh LFP'], ['Cycle Life', '6,000'], ['Warranty', 'Up to 10 yrs']],
+    foot: `${bplPowerzenProducts.length} model · AIO Premium`,
+  },
+  {
+    href: '/products/solinteg/',
+    name: 'Solinteg',
+    badge: 'BIS Certified',
+    desc: 'BIS India certified hybrid inverters — single phase 3–8 kW and three phase 4–50 kW. 10 ms UPS switching, HV battery support.',
+    color: '#6366f1',
+    stats: [['MHS 1-Phase', '3–8 kW'], ['MHT 3-Phase', '4–50 kW'], ['Peak Efficiency', '98.4%'], ['UPS Switch', '10 ms']],
+    foot: `${solintegProducts.filter(p => p.type.startsWith('hybrid')).length} hybrid models`,
+  },
+  {
+    href: '/products/vsole/',
+    name: 'Vsole',
+    badge: 'Supply Partner',
+    desc: 'Wide-range hybrid inverters — LV 48V single and three phase 3–20 kW, HV three phase 15–80 kW. Full commercial coverage.',
+    color: '#a855f7',
+    stats: [['LV 1-Phase', '3–20 kW'], ['LV 3-Phase', '5–20 kW'], ['HV 3-Phase', '15–80 kW'], ['Efficiency', '98.0%']],
+    foot: `${vsoleProducts.filter(p => p.type === 'hybrid').length} hybrid models`,
+  },
+  {
+    href: '/products/deye/',
+    name: 'Deye',
+    badge: 'Authorised Dealer',
+    desc: 'Commercial-grade hybrid inverters and LiFePO₄ batteries. On-grid, hybrid, micro and C&I ESS — 1.5 kW to 2.5 MW.',
+    color: '#f97316',
+    stats: [['Hybrid', '3–125 kW'], ['On-Grid', '1.5–136 kW'], ['ESS', '5 kWh–2.5 MWh'], ['Micro', '300–2200 W']],
+    foot: `${deyeProducts.length} products`,
+  },
+];
+
+const ongridBrands: BrandCard[] = [
+  {
+    href: '/products/deye/',
+    name: 'Deye',
+    badge: 'Authorised Dealer',
+    desc: 'On-grid string inverters from 1.5 kW to 136 kW — single and three phase. Full DISCOM net metering compatibility.',
+    color: '#f97316',
+    stats: [['Single Phase', '1.5–8 kW'], ['Three Phase', '5–136 kW'], ['MPPT', 'Up to 4'], ['Warranty', '5–10 yrs']],
+    foot: `${deyeProducts.length} products`,
+  },
+  {
+    href: '/products/solinteg/',
+    name: 'Solinteg',
+    badge: 'BIS Certified',
+    desc: 'OGS single phase 1.5–6 kW and OGT three phase 5–25 kW on-grid inverters. BIS certified, transformerless, WiFi monitoring.',
+    color: '#6366f1',
+    stats: [['OGS 1-Phase', '1.5–6 kW'], ['OGT 3-Phase', '5–25 kW'], ['Efficiency', '98.2%'], ['IP Rating', 'IP65']],
+    foot: `${solintegProducts.filter(p => p.type.startsWith('ongrid')).length} on-grid models`,
+  },
+  {
+    href: '/products/vsole/',
+    name: 'Vsole',
+    badge: 'Supply Partner',
+    desc: 'On-grid inverters from 1 kW to 350 kW — the broadest range available. Single and three phase for residential to utility scale.',
+    color: '#a855f7',
+    stats: [['Single Phase', '1–6 kW'], ['Three Phase', '4–350 kW'], ['Peak Efficiency', '98.8%'], ['MPPT', 'Up to 6']],
+    foot: `${vsoleProducts.filter(p => p.type === 'ongrid').length} on-grid models`,
+  },
+];
+
+const panelBrands: BrandCard[] = [
+  {
+    href: '/products/goldi/',
+    name: 'Goldi Solar',
+    badge: 'Authorised Dealer',
+    desc: 'N-type TOPCon bifacial monocrystalline panels — 600–620 Wp, up to 22.95% efficiency, 30-year warranty. Made in India.',
+    color: '#eab308',
+    stats: [['HELOC PLUS', 'TOPCon N-type'], ['Bifacial', '80±5%'], ['Efficiency', '22.95%'], ['Warranty', '30 yrs']],
+    foot: `${goldiProducts.length} variants · EPC supply`,
+  },
+  {
+    href: '/products/renewsys/',
+    name: 'RenewSys',
+    badge: 'ALMM · DCR',
+    desc: 'DESERV EXTREME N-type TOPCon bifacial panels — 600–625 Wp, up to 23.54% efficiency. ALMM listed, DCR compliant, BIS IS 14286.',
+    color: '#f59e0b',
+    stats: [['Power', '600–625 Wp'], ['Efficiency', '23.54%'], ['ALMM Listed', 'Subsidy eligible'], ['Warranty', '12 yr product · 30 yr performance']],
+    foot: `${renewSysProducts.length} variants · Made in India`,
+  },
+  {
+    href: '/products/rayzon/',
+    name: 'Rayzon',
+    badge: 'ALMM · BIS · UL',
+    desc: '210R TOPCon bifacial panels — 615–625 Wp, glass-to-glass, 16BB cells. ALMM listed, BIS and UL certified. 30-year warranty.',
+    color: '#94a3b8',
+    stats: [['Power', '615–625 Wp'], ['Efficiency', '22.97%'], ['Bifaciality', '80±5%'], ['Warranty', '15 yr product · 30 yr performance']],
+    foot: `${rayzonProducts.length} variants · Made in India`,
+  },
+  {
+    href: '/products/adani/',
+    name: 'Adani Solar',
+    badge: 'DCR · MNRE Approved',
+    desc: 'DCR 545Wp modules — ready stock. DCR compliant and MNRE approved for government and subsidy-linked projects.',
+    color: '#7c3aed',
+    stats: [['Power', '545 Wp'], ['DCR', 'Compliant'], ['MNRE', 'Approved'], ['Stock', 'Ready']],
+    foot: `${adaniProducts.length} variant · Ready stock`,
+  },
+];
+
+const batteryBrands: BrandCard[] = [
+  {
+    href: '/products/lithium-valley/',
+    name: 'Lithium Valley',
+    badge: 'BIS Certified',
+    desc: 'Stackable LiFePO4 battery modules — 2.56 kWh to 215 kWh. BIS India certified (R-41147222), 6000 cycles, 10-year warranty.',
+    color: '#14b8a6',
+    stats: [['Residential', '2.56–30.72 kWh'], ['C&I BESS', '60–215 kWh'], ['Cycle Life', '6000 @ 80% DoD'], ['Warranty', '10 yrs']],
+    foot: `${lithiumValleyProducts.length} systems`,
+  },
+  {
+    href: '/products/deye/',
+    name: 'Deye',
+    badge: 'Authorised Dealer',
+    desc: 'LiFePO₄ ESS batteries — 5 kWh residential to 2.5 MWh utility-scale C&I energy storage. Paired with Deye hybrid inverters.',
+    color: '#f97316',
+    stats: [['Residential', '5–30 kWh'], ['C&I ESS', '100 kWh–2.5 MWh'], ['Chemistry', 'LiFePO4'], ['BMS', 'Integrated']],
+    foot: 'ESS · paired with Deye inverters',
+  },
+  {
+    href: '/products/nunam/',
+    name: 'Nunam',
+    badge: 'Supply Partner',
+    desc: 'Upcycled LiFePO₄ battery modules from EV batteries — up to 30% cheaper than new lithium. NESS Series 5, 48V.',
+    color: '#f97316',
+    stats: [['NESS Series 5', '5 kWh / 48V'], ['Cycle Life', '2,000+'], ['Scalable', 'Up to 50 kWh'], ['Warranty', '5 yrs']],
+    foot: 'Enquire for India pricing',
+  },
+];
 ---
 
 <Layout
-  title="Solar Products — Deye, Goldi Solar, Techedge & Nunam | Techedge India"
-  description="Solar products from Techedge India — Deye inverters & batteries, Goldi Solar TOPCon modules, Techedge solar kits for NGOs, and Nunam upcycled batteries. Authorised dealer, Bengaluru."
-  keywords="Deye solar inverter India, Goldi Solar panel India, Techedge solar kit, Nunam battery India, solar products Bengaluru"
+  title="Solar Products — Inverters, Panels, Batteries | Techedge India"
+  description="Solar products from Techedge India — Solinteg, Vsole, Deye, Hoymiles, TSUN micro inverters, BPL PowerZen AIO, Goldi, RenewSys, Rayzon panels, Lithium Valley and Nunam batteries. Authorised dealer, Bengaluru."
+  keywords="solar inverter India, hybrid inverter India, micro inverter India, solar panel India ALMM, LiFePO4 battery India, Solinteg, Vsole, Deye, Hoymiles, TSUN, BPL PowerZen, RenewSys, Rayzon, Lithium Valley, Bengaluru"
 >
 
   <!-- Hero -->
@@ -19,154 +206,322 @@ import { goldiProducts } from "@/data/goldi-products";
         Solar Products
       </h1>
       <p class="text-muted text-lg max-w-2xl mb-8">
-        Four trusted brands. One source. Deye inverters and batteries, Goldi Solar TOPCon panels,
-        Techedge solar kits for NGOs and CSR, and Nunam upcycled LiFePO₄ batteries.
+        Eleven brands. Every product type. Micro inverters, hybrid inverters, on-grid inverters,
+        solar panels, and battery storage — all from one source in Bengaluru.
       </p>
-      <div class="flex flex-wrap gap-4">
+      <div class="flex flex-wrap gap-3">
         {[
-          { v: String(deyeProducts.length), l: 'Deye Products' },
-          { v: String(goldiProducts.length), l: 'Goldi Modules' },
-          { v: String(allTechedgeProducts.length), l: 'Techedge Kits' },
-          { v: 'Nunam', l: 'Upcycled Batteries' },
+          { v: 'Micro Inverters',   l: 'Hoymiles · TSUN' },
+          { v: 'Hybrid Inverters',  l: 'Solinteg · Vsole · Deye · BPL PowerZen' },
+          { v: 'On-Grid',           l: 'Deye · Solinteg · Vsole' },
+          { v: 'Solar Panels',      l: 'Goldi · RenewSys · Rayzon' },
+          { v: 'Battery Storage',   l: 'Lithium Valley · Deye · Nunam' },
         ].map(s => (
           <div class="bg-muted-foreground/5 border border-muted/20 rounded-xl px-5 py-3">
-            <p class="text-2xl font-grotesk font-bold text-foreground">{s.v}</p>
-            <p class="text-xs text-muted uppercase font-semibold">{s.l}</p>
+            <p class="text-sm font-grotesk font-bold text-foreground">{s.v}</p>
+            <p class="text-xs text-muted">{s.l}</p>
           </div>
         ))}
       </div>
     </div>
   </section>
 
-  <!-- Brand cards -->
-  <section class="py-20 px-4">
-    <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
-
-      <!-- Deye -->
-      <a href="/products/deye/" class="group bg-muted-foreground/5 hover:bg-muted-foreground/10 border-2 border-muted/20 hover:border-secondary/50 rounded-2xl p-8 flex flex-col transition-all duration-200">
-        <div class="w-14 h-14 rounded-2xl bg-secondary/10 border border-secondary/20 flex items-center justify-center text-3xl mb-5">⚡</div>
-        <div class="mb-2 flex flex-wrap items-center gap-2">
-          <h2 class="font-anton text-2xl uppercase text-foreground group-hover:text-secondary transition-colors">Deye</h2>
-          <span class="text-[10px] font-bold uppercase tracking-widest text-secondary bg-secondary/10 px-2 py-0.5 rounded-full">Authorised Dealer</span>
+  <!-- Featured: BPL PowerZen -->
+  <section class="py-16 px-4 border-b border-muted/10" style="background:linear-gradient(135deg,rgba(37,99,235,0.10),transparent 60%)">
+    <div class="max-w-7xl mx-auto">
+      <a href="/products/bpl-powerzen/" class="group block rounded-3xl border-2 p-8 md:p-12 transition-all duration-200" style="background:rgba(37,99,235,0.08);border-color:rgba(37,99,235,0.3)">
+        <div class="flex flex-wrap items-center gap-3 mb-5">
+          <span class="text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full border" style="color:#2563eb;border-color:rgba(37,99,235,0.5);background:rgba(37,99,235,0.15)">Featured Product</span>
+          <span class="text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full border" style="color:#2563eb;border-color:rgba(37,99,235,0.5);background:rgba(37,99,235,0.15)">BIS Certified</span>
         </div>
-        <p class="text-muted text-sm leading-relaxed mb-5">
-          Commercial-grade solar inverters and LiFePO₄ batteries. On-grid, hybrid, micro and C&I ESS — 1.5 kW to 2.5 MW.
-        </p>
-        <div class="grid grid-cols-2 gap-2 mb-5 text-xs">
-          {[
-            ['⚡', 'On-Grid', '1.5–136 kW'],
-            ['🔋', 'Hybrid', '3–125 kW'],
-            ['🔲', 'Micro', '300–2200 W'],
-            ['🏭', 'ESS', '5 kWh–2.5 MWh'],
-          ].map(([icon, label, val]) => (
-            <div class="bg-muted-foreground/10 rounded-xl px-3 py-2">
-              <p class="font-bold text-foreground">{icon} {label}</p>
-              <p class="text-muted">{val}</p>
-            </div>
-          ))}
+        <div class="flex flex-wrap items-start justify-between gap-8">
+          <div class="max-w-2xl">
+            <h2 class="font-anton text-4xl md:text-6xl uppercase text-foreground leading-none mb-4">BPL PowerZen<br/>AIO Premium</h2>
+            <p class="text-muted text-lg leading-relaxed">
+              All-in-one hybrid inverter with an integrated 5 kWh LiFePO4 battery in a single tower —
+              inverter, controller and battery, no separate rack, no extra cabling.
+            </p>
+          </div>
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 flex-1 min-w-[280px]">
+            {[
+              ['6.5 KVA', 'Rated Capacity'],
+              ['5 kWh', 'LFP Battery'],
+              ['6,000', 'Cycle Life'],
+              ['10 yrs', 'Warranty'],
+            ].map(([v, l]) => (
+              <div class="bg-background/60 border border-muted/20 rounded-xl px-4 py-3">
+                <p class="text-xl font-grotesk font-bold text-foreground">{v}</p>
+                <p class="text-xs text-muted uppercase font-semibold">{l}</p>
+              </div>
+            ))}
+          </div>
         </div>
-        <div class="flex-1" />
-        <div class="flex items-center justify-between mt-4 pt-4 border-t border-muted/10">
-          <span class="text-muted text-xs">{deyeProducts.length} products</span>
-          <span class="text-secondary font-bold text-sm group-hover:translate-x-1 transition-transform">View all →</span>
-        </div>
-      </a>
-
-      <!-- Goldi Solar -->
-      <a href="/products/goldi/" class="group bg-muted-foreground/5 hover:bg-muted-foreground/10 border-2 border-muted/20 hover:border-yellow-500/50 rounded-2xl p-8 flex flex-col transition-all duration-200">
-        <div class="w-14 h-14 rounded-2xl bg-yellow-500/10 border border-yellow-500/20 flex items-center justify-center text-3xl mb-5">☀️</div>
-        <div class="mb-2 flex flex-wrap items-center gap-2">
-          <h2 class="font-anton text-2xl uppercase text-foreground group-hover:text-yellow-400 transition-colors">Goldi Solar</h2>
-          <span class="text-[10px] font-bold uppercase tracking-widest text-yellow-400 bg-yellow-500/10 px-2 py-0.5 rounded-full border border-yellow-500/20">Authorised Dealer</span>
-        </div>
-        <p class="text-muted text-sm leading-relaxed mb-5">
-          N-type TOPCon bifacial monocrystalline modules — 600–620 Wp, up to 22.95% efficiency, 30-year warranty. Made in India.
-        </p>
-        <div class="grid grid-cols-2 gap-2 mb-5 text-xs">
-          {[
-            ['☀️', 'HELOC PLUS', 'TOPCon N-type'],
-            ['🔄', 'Bifacial', '80±5%'],
-            ['📈', 'Efficiency', 'Up to 22.95%'],
-            ['🛡️', 'Warranty', '30 years'],
-          ].map(([icon, label, val]) => (
-            <div class="bg-muted-foreground/10 rounded-xl px-3 py-2">
-              <p class="font-bold text-foreground">{icon} {label}</p>
-              <p class="text-muted">{val}</p>
-            </div>
-          ))}
-        </div>
-        <div class="flex-1" />
-        <div class="flex items-center justify-between mt-4 pt-4 border-t border-muted/10">
-          <span class="text-muted text-xs">{goldiProducts.length} variants · EPC supply</span>
-          <span class="text-yellow-400 font-bold text-sm group-hover:translate-x-1 transition-transform">View all →</span>
+        <div class="flex items-center gap-2 mt-8 font-anton text-lg uppercase" style="color:#2563eb">
+          View BPL PowerZen Specs
+          <span class="transition-transform group-hover:translate-x-1">→</span>
         </div>
       </a>
+    </div>
+  </section>
 
-      <!-- Techedge -->
-      <a href="/products/techedge/" class="group bg-muted-foreground/5 hover:bg-muted-foreground/10 border-2 border-muted/20 hover:border-green-500/50 rounded-2xl p-8 flex flex-col transition-all duration-200">
+  <!-- Featured: Smart Solar Cold Storage -->
+  <section class="py-16 px-4 border-b border-muted/10" style="background:linear-gradient(135deg,rgba(8,145,178,0.10),transparent 60%)">
+    <div class="max-w-7xl mx-auto">
+      <div class="flex flex-wrap items-center gap-3 mb-5">
+        <span class="text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full border" style="color:#0891b2;border-color:rgba(8,145,178,0.5);background:rgba(8,145,178,0.15)">Techedge Systems</span>
+        <span class="text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full border" style="color:#0891b2;border-color:rgba(8,145,178,0.5);background:rgba(8,145,178,0.15)">Portable · Outdoor</span>
+      </div>
+      <h2 class="font-anton text-4xl md:text-6xl uppercase text-foreground leading-none mb-4">Smart Solar<br/>Cold Storage</h2>
+      <p class="text-muted text-lg max-w-2xl mb-8">
+        Fully portable, outdoor-ready solar hybrid cold rooms — no permanent building required. Solar by day,
+        LiFePO₄ battery by night, with automatic grid backup. Built for FPOs, SHGs and farm cold chain aggregation.
+      </p>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {coldStorageProducts.map(cs => (
+          <a href={`/products/${cs.slug}/`} class="group block rounded-2xl border-2 p-6 transition-all duration-200" style="background:rgba(8,145,178,0.08);border-color:rgba(8,145,178,0.3)">
+            <p class="font-anton text-2xl uppercase text-foreground mb-3">{cs.capacityMT}MT System</p>
+            <div class="grid grid-cols-3 gap-3 mb-4">
+              {[[`${cs.solarKWp} kWp`, 'Solar'], [`${cs.batteryKWh} kWh`, 'Battery'], [cs.inverterPhase === 'Three Phase' ? '3-Ph' : '1-Ph', 'Inverter']].map(([v, l]) => (
+                <div class="bg-background/60 border border-muted/20 rounded-xl px-3 py-2">
+                  <p class="text-sm font-grotesk font-bold text-foreground">{v}</p>
+                  <p class="text-[10px] text-muted uppercase">{l}</p>
+                </div>
+              ))}
+            </div>
+            <div class="flex items-center gap-2 font-anton text-sm uppercase" style="color:#0891b2">
+              View Specs &amp; Pricing
+              <span class="transition-transform group-hover:translate-x-1">→</span>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Sticky Category Nav -->
+  <nav class="sticky top-0 z-30 bg-background/95 backdrop-blur border-b border-muted/10 px-4">
+    <div class="max-w-7xl mx-auto flex gap-1 overflow-x-auto py-2 scrollbar-hide">
+      {categories.map(c => (
+        <a
+          href={`#${c.id}`}
+          class="shrink-0 px-4 py-2 rounded-lg text-sm font-semibold text-muted hover:text-foreground hover:bg-muted-foreground/10 transition-colors"
+        >
+          {c.label}
+        </a>
+      ))}
+    </div>
+  </nav>
+
+  <!-- MICRO INVERTERS -->
+  <section id="micro" class="py-20 px-4 border-b border-muted/10 scroll-mt-16">
+    <div class="max-w-7xl mx-auto">
+      <div class="mb-10">
+        <span class="text-cyan-400 text-xs font-bold uppercase tracking-widest block mb-2">Per-Panel MPPT</span>
+        <h2 class="font-anton text-4xl uppercase text-foreground">Micro Inverters</h2>
+        <p class="text-muted mt-2 max-w-xl">One inverter per panel — eliminates shading loss, enables panel-level monitoring, and scales without string sizing constraints.</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {microBrands.map(b => (
+          <a href={b.href} class="group bg-muted-foreground/5 hover:bg-muted-foreground/10 border-2 border-muted/20 rounded-2xl p-8 flex flex-col transition-all duration-200" style={`--brand:${b.color}`}>
+            <div class="w-14 h-14 rounded-2xl flex items-center justify-center text-3xl mb-5" style={`background:${b.color}20;border:1px solid ${b.color}40`}>⚡</div>
+            <div class="mb-2 flex flex-wrap items-center gap-2">
+              <h2 class="font-anton text-2xl uppercase text-foreground">{b.name}</h2>
+              <span class="text-[10px] font-bold uppercase tracking-widest px-2 py-0.5 rounded-full border" style={`color:${b.color};border-color:${b.color}50;background:${b.color}15`}>{b.badge}</span>
+            </div>
+            <p class="text-muted text-sm leading-relaxed mb-5">{b.desc}</p>
+            <div class="grid grid-cols-2 gap-2 mb-5 text-xs">
+              {b.stats.map(([label, val]) => (
+                <div class="bg-muted-foreground/10 rounded-xl px-3 py-2">
+                  <p class="font-bold text-foreground">{label}</p>
+                  <p class="text-muted">{val}</p>
+                </div>
+              ))}
+            </div>
+            <div class="flex-1" />
+            <div class="flex items-center justify-between mt-4 pt-4 border-t border-muted/10">
+              <span class="text-muted text-xs">{b.foot}</span>
+              <span class="font-bold text-sm" style={`color:${b.color}`}>View all →</span>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- HYBRID INVERTERS -->
+  <section id="hybrid" class="py-20 px-4 border-b border-muted/10 scroll-mt-16">
+    <div class="max-w-7xl mx-auto">
+      <div class="mb-10">
+        <span class="text-indigo-400 text-xs font-bold uppercase tracking-widest block mb-2">Solar + Battery + Grid</span>
+        <h2 class="font-anton text-4xl uppercase text-foreground">Hybrid Inverters</h2>
+        <p class="text-muted mt-2 max-w-xl">Combines solar, battery storage, and grid in one unit. Self-consumption, peak shaving, backup power, and UPS-grade continuity.</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+        {hybridBrands.map(b => (
+          <a href={b.href} class="group bg-muted-foreground/5 hover:bg-muted-foreground/10 border-2 border-muted/20 rounded-2xl p-8 flex flex-col transition-all duration-200">
+            <div class="w-14 h-14 rounded-2xl flex items-center justify-center text-3xl mb-5" style={`background:${b.color}20;border:1px solid ${b.color}40`}>⚡</div>
+            <div class="mb-2 flex flex-wrap items-center gap-2">
+              <h2 class="font-anton text-2xl uppercase text-foreground">{b.name}</h2>
+              <span class="text-[10px] font-bold uppercase tracking-widest px-2 py-0.5 rounded-full border" style={`color:${b.color};border-color:${b.color}50;background:${b.color}15`}>{b.badge}</span>
+            </div>
+            <p class="text-muted text-sm leading-relaxed mb-5">{b.desc}</p>
+            <div class="grid grid-cols-2 gap-2 mb-5 text-xs">
+              {b.stats.map(([label, val]) => (
+                <div class="bg-muted-foreground/10 rounded-xl px-3 py-2">
+                  <p class="font-bold text-foreground">{label}</p>
+                  <p class="text-muted">{val}</p>
+                </div>
+              ))}
+            </div>
+            <div class="flex-1" />
+            <div class="flex items-center justify-between mt-4 pt-4 border-t border-muted/10">
+              <span class="text-muted text-xs">{b.foot}</span>
+              <span class="font-bold text-sm" style={`color:${b.color}`}>View all →</span>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ON-GRID INVERTERS -->
+  <section id="ongrid" class="py-20 px-4 border-b border-muted/10 scroll-mt-16">
+    <div class="max-w-7xl mx-auto">
+      <div class="mb-10">
+        <span class="text-orange-400 text-xs font-bold uppercase tracking-widest block mb-2">Grid-Connected</span>
+        <h2 class="font-anton text-4xl uppercase text-foreground">On-Grid Inverters</h2>
+        <p class="text-muted mt-2 max-w-xl">String inverters for net metering installations. From residential 1.5 kW to utility-scale 350 kW — single and three phase.</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+        {ongridBrands.map(b => (
+          <a href={b.href} class="group bg-muted-foreground/5 hover:bg-muted-foreground/10 border-2 border-muted/20 rounded-2xl p-8 flex flex-col transition-all duration-200">
+            <div class="w-14 h-14 rounded-2xl flex items-center justify-center text-3xl mb-5" style={`background:${b.color}20;border:1px solid ${b.color}40`}>☀️</div>
+            <div class="mb-2 flex flex-wrap items-center gap-2">
+              <h2 class="font-anton text-2xl uppercase text-foreground">{b.name}</h2>
+              <span class="text-[10px] font-bold uppercase tracking-widest px-2 py-0.5 rounded-full border" style={`color:${b.color};border-color:${b.color}50;background:${b.color}15`}>{b.badge}</span>
+            </div>
+            <p class="text-muted text-sm leading-relaxed mb-5">{b.desc}</p>
+            <div class="grid grid-cols-2 gap-2 mb-5 text-xs">
+              {b.stats.map(([label, val]) => (
+                <div class="bg-muted-foreground/10 rounded-xl px-3 py-2">
+                  <p class="font-bold text-foreground">{label}</p>
+                  <p class="text-muted">{val}</p>
+                </div>
+              ))}
+            </div>
+            <div class="flex-1" />
+            <div class="flex items-center justify-between mt-4 pt-4 border-t border-muted/10">
+              <span class="text-muted text-xs">{b.foot}</span>
+              <span class="font-bold text-sm" style={`color:${b.color}`}>View all →</span>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- SOLAR PANELS -->
+  <section id="panels" class="py-20 px-4 border-b border-muted/10 scroll-mt-16">
+    <div class="max-w-7xl mx-auto">
+      <div class="mb-10">
+        <span class="text-yellow-400 text-xs font-bold uppercase tracking-widest block mb-2">N-type TOPCon · Made in India</span>
+        <h2 class="font-anton text-4xl uppercase text-foreground">Solar Panels</h2>
+        <p class="text-muted mt-2 max-w-xl">600–625 Wp N-type TOPCon bifacial modules. ALMM listed for subsidy-eligible projects. BIS certified for DISCOM net metering.</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+        {panelBrands.map(b => (
+          <a href={b.href} class="group bg-muted-foreground/5 hover:bg-muted-foreground/10 border-2 border-muted/20 rounded-2xl p-8 flex flex-col transition-all duration-200">
+            <div class="w-14 h-14 rounded-2xl flex items-center justify-center text-3xl mb-5" style={`background:${b.color}20;border:1px solid ${b.color}40`}>🔆</div>
+            <div class="mb-2 flex flex-wrap items-center gap-2">
+              <h2 class="font-anton text-2xl uppercase text-foreground">{b.name}</h2>
+              <span class="text-[10px] font-bold uppercase tracking-widest px-2 py-0.5 rounded-full border" style={`color:${b.color};border-color:${b.color}50;background:${b.color}15`}>{b.badge}</span>
+            </div>
+            <p class="text-muted text-sm leading-relaxed mb-5">{b.desc}</p>
+            <div class="grid grid-cols-2 gap-2 mb-5 text-xs">
+              {b.stats.map(([label, val]) => (
+                <div class="bg-muted-foreground/10 rounded-xl px-3 py-2">
+                  <p class="font-bold text-foreground">{label}</p>
+                  <p class="text-muted">{val}</p>
+                </div>
+              ))}
+            </div>
+            <div class="flex-1" />
+            <div class="flex items-center justify-between mt-4 pt-4 border-t border-muted/10">
+              <span class="text-muted text-xs">{b.foot}</span>
+              <span class="font-bold text-sm" style={`color:${b.color}`}>View all →</span>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- BATTERY STORAGE -->
+  <section id="battery" class="py-20 px-4 border-b border-muted/10 scroll-mt-16">
+    <div class="max-w-7xl mx-auto">
+      <div class="mb-10">
+        <span class="text-teal-400 text-xs font-bold uppercase tracking-widest block mb-2">LiFePO4 · BIS Certified</span>
+        <h2 class="font-anton text-4xl uppercase text-foreground">Battery Storage</h2>
+        <p class="text-muted mt-2 max-w-xl">LiFePO4 battery systems from 2.56 kWh residential modules to 215 kWh C&I BESS. 6000+ cycle life, no maintenance, indoor-safe.</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+        {batteryBrands.map(b => (
+          <a href={b.href} class="group bg-muted-foreground/5 hover:bg-muted-foreground/10 border-2 border-muted/20 rounded-2xl p-8 flex flex-col transition-all duration-200">
+            <div class="w-14 h-14 rounded-2xl flex items-center justify-center text-3xl mb-5" style={`background:${b.color}20;border:1px solid ${b.color}40`}>🔋</div>
+            <div class="mb-2 flex flex-wrap items-center gap-2">
+              <h2 class="font-anton text-2xl uppercase text-foreground">{b.name}</h2>
+              <span class="text-[10px] font-bold uppercase tracking-widest px-2 py-0.5 rounded-full border" style={`color:${b.color};border-color:${b.color}50;background:${b.color}15`}>{b.badge}</span>
+            </div>
+            <p class="text-muted text-sm leading-relaxed mb-5">{b.desc}</p>
+            <div class="grid grid-cols-2 gap-2 mb-5 text-xs">
+              {b.stats.map(([label, val]) => (
+                <div class="bg-muted-foreground/10 rounded-xl px-3 py-2">
+                  <p class="font-bold text-foreground">{label}</p>
+                  <p class="text-muted">{val}</p>
+                </div>
+              ))}
+            </div>
+            <div class="flex-1" />
+            <div class="flex items-center justify-between mt-4 pt-4 border-t border-muted/10">
+              <span class="text-muted text-xs">{b.foot}</span>
+              <span class="font-bold text-sm" style={`color:${b.color}`}>View all →</span>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Also available: Techedge kits -->
+  <section class="py-16 px-4 border-b border-muted/10">
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row gap-6 items-start">
+      <a href="/products/techedge/" class="group bg-muted-foreground/5 hover:bg-muted-foreground/10 border-2 border-muted/20 hover:border-green-500/50 rounded-2xl p-8 flex flex-col flex-1 transition-all duration-200">
         <div class="w-14 h-14 rounded-2xl bg-green-500/10 border border-green-500/20 flex items-center justify-center text-3xl mb-5">🌿</div>
         <div class="mb-2 flex flex-wrap items-center gap-2">
-          <h2 class="font-anton text-2xl uppercase text-foreground group-hover:text-green-400 transition-colors">Techedge</h2>
+          <h2 class="font-anton text-2xl uppercase text-foreground group-hover:text-green-400 transition-colors">Techedge Solar Kits</h2>
           <span class="text-[10px] font-bold uppercase tracking-widest text-green-400 bg-green-500/10 px-2 py-0.5 rounded-full border border-green-500/20">Our Brand</span>
         </div>
         <p class="text-muted text-sm leading-relaxed mb-5">
           Solar lanterns and home light kits for rural electrification, NGO distribution and CSR programs. MOQ 25 units.
         </p>
-        <div class="grid grid-cols-2 gap-2 mb-5 text-xs">
-          {[
-            ['🔦', 'Lanterns', '2–6 hr backup'],
-            ['🏠', 'Home Kits', '3–13 hr backup'],
-            ['💡', 'Max Load', '4 × 5W LED'],
-            ['📦', 'MOQ', '25 units'],
-          ].map(([icon, label, val]) => (
+        <div class="grid grid-cols-2 gap-2 text-xs mb-5">
+          {[['🔦','Lanterns','2–6 hr backup'],['🏠','Home Kits','3–13 hr backup'],['💡','Max Load','4 × 5W LED'],['📦','MOQ','25 units']].map(([icon,label,val]) => (
             <div class="bg-muted-foreground/10 rounded-xl px-3 py-2">
               <p class="font-bold text-foreground">{icon} {label}</p>
               <p class="text-muted">{val}</p>
             </div>
           ))}
         </div>
-        <div class="flex-1" />
-        <div class="flex items-center justify-between mt-4 pt-4 border-t border-muted/10">
+        <div class="flex items-center justify-between mt-auto pt-4 border-t border-muted/10">
           <span class="text-muted text-xs">{allTechedgeProducts.length} products</span>
           <span class="text-green-400 font-bold text-sm group-hover:translate-x-1 transition-transform">View all →</span>
         </div>
       </a>
-
-      <!-- Nunam -->
-      <a href="/products/nunam/" class="group bg-muted-foreground/5 hover:bg-muted-foreground/10 border-2 border-muted/20 hover:border-orange-500/50 rounded-2xl p-8 flex flex-col transition-all duration-200">
-        <div class="w-14 h-14 rounded-2xl bg-orange-500/10 border border-orange-500/20 flex items-center justify-center text-3xl mb-5">♻️</div>
-        <div class="mb-2 flex flex-wrap items-center gap-2">
-          <h2 class="font-anton text-2xl uppercase text-foreground group-hover:text-orange-400 transition-colors">Nunam</h2>
-          <span class="text-[10px] font-bold uppercase tracking-widest text-orange-400 bg-orange-500/10 px-2 py-0.5 rounded-full border border-orange-500/20">Supply Partner</span>
-        </div>
-        <p class="text-muted text-sm leading-relaxed mb-5">
-          Upcycled LiFePO₄ battery modules from EV batteries — up to 30% cheaper than new lithium. Available in India through Techedge.
-        </p>
-        <div class="grid grid-cols-2 gap-2 mb-5 text-xs">
-          {[
-            ['🔋', 'NESS Series 5', '5 kWh / 48V'],
-            ['🔄', 'Cycle Life', '2,000+'],
-            ['📈', 'Scalable', 'Up to 50 kWh'],
-            ['🛡️', 'Warranty', '5 years'],
-          ].map(([icon, label, val]) => (
-            <div class="bg-muted-foreground/10 rounded-xl px-3 py-2">
-              <p class="font-bold text-foreground">{icon} {label}</p>
-              <p class="text-muted">{val}</p>
-            </div>
-          ))}
-        </div>
-        <div class="flex-1" />
-        <div class="flex items-center justify-between mt-4 pt-4 border-t border-muted/10">
-          <span class="text-muted text-xs">Enquire for India pricing</span>
-          <span class="text-orange-400 font-bold text-sm group-hover:translate-x-1 transition-transform">Learn more →</span>
-        </div>
-      </a>
-
     </div>
   </section>
 
   <!-- CTA -->
-  <section class="py-16 px-4 bg-secondary/5 border-t border-muted/10">
+  <section class="py-16 px-4">
     <div class="max-w-3xl mx-auto text-center">
       <h2 class="font-anton text-3xl md:text-4xl uppercase text-foreground mb-4">Not Sure Which Product?</h2>
       <p class="text-muted mb-8">Our team recommends the right product for your requirement — residential, commercial, NGO or CSR project.</p>
@@ -182,3 +537,24 @@ import { goldiProducts } from "@/data/goldi-products";
   </section>
 
 </Layout>
+
+<script>
+  // Highlight active nav tab on scroll
+  const sections = document.querySelectorAll<HTMLElement>('section[id]');
+  const navLinks = document.querySelectorAll<HTMLAnchorElement>('nav a[href^="#"]');
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        navLinks.forEach(a => {
+          const active = a.getAttribute('href') === `#${entry.target.id}`;
+          a.classList.toggle('text-foreground', active);
+          a.classList.toggle('bg-muted-foreground/10', active);
+          a.classList.toggle('text-muted', !active);
+        });
+      }
+    });
+  }, { rootMargin: '-30% 0px -60% 0px' });
+
+  sections.forEach(s => observer.observe(s));
+</script>

@@ -3,6 +3,16 @@ import { getCollection } from 'astro:content';
 import { deyeProducts } from '@/data/deye-products';
 import { allTechedgeProducts } from '@/data/techedge-products';
 import { goldiProducts } from '@/data/goldi-products';
+import { hoymilesProducts } from '@/data/hoymiles-products';
+import { tsunProducts } from '@/data/tsun-products';
+import { coldStorageProducts } from '@/data/cold-storage-products';
+import { solintegProducts } from '@/data/solinteg-products';
+import { vsoleProducts } from '@/data/vsole-products';
+import { renewSysProducts } from '@/data/renewsys-products';
+import { rayzonProducts } from '@/data/rayzon-products';
+import { lithiumValleyProducts } from '@/data/lithium-valley-products';
+import { bplPowerzenProducts } from '@/data/bpl-powerzen-products';
+import { solutions } from '@/data/solutions';
 
 export const prerender = true;
 
@@ -36,15 +46,24 @@ export const GET: APIRoute = async () => {
     url('/privacy/',    '0.3', 'yearly'),
     url('/terms/',      '0.3', 'yearly'),
 
-    // Solution pages
-    ...['on-grid-solar', 'off-grid-solar', 'hybrid-solar', 'hybrid-solar-cold-storage', 'mini-grid', 'microgrid-solar']
-      .map(s => url(`/solutions/${s}/`, '0.8', 'monthly')),
+    // Solution pages (auto from data — includes any newly added solutions)
+    ...solutions.map(s => url(`/solutions/${s.slug}/`, '0.8', 'monthly')),
+    url('/solutions/micro-inverter/', '0.7', 'monthly'),
 
-    // Brand sub-pages
-    url('/products/deye/',     '0.8', 'weekly'),
-    url('/products/goldi/',    '0.8', 'monthly'),
-    url('/products/techedge/', '0.8', 'monthly'),
-    url('/products/nunam/',    '0.7', 'monthly'),
+    // Brand sub-pages — brands with a single listing page (no per-product route)
+    url('/products/deye/',          '0.8', 'weekly'),
+    url('/products/goldi/',         '0.8', 'monthly'),
+    url('/products/techedge/',      '0.8', 'monthly'),
+    url('/products/nunam/',         '0.7', 'monthly'),
+    url('/products/hoymiles/',      '0.8', 'monthly'),
+    url('/products/tsun/',          '0.8', 'monthly'),
+    url('/products/solinteg/',      '0.8', 'monthly'),
+    url('/products/vsole/',         '0.8', 'monthly'),
+    url('/products/renewsys/',      '0.8', 'monthly'),
+    url('/products/rayzon/',        '0.8', 'monthly'),
+    url('/products/lithium-valley/','0.8', 'monthly'),
+    url('/products/bpl-powerzen/',  '0.8', 'monthly'),
+    url('/products/adani/',         '0.8', 'monthly'),
 
     // Projects (auto from content collection)
     ...projects.map(p => url(`/projects/${p.id}/`, '0.8', 'monthly')),
@@ -57,14 +76,41 @@ export const GET: APIRoute = async () => {
       p.data.date ? new Date(p.data.date).toISOString().split('T')[0] : today
     )),
 
-    // Product pages — Deye (86 products)
+    // Product pages — Deye
     ...deyeProducts.map(p => url(`/products/${p.slug}/`, '0.7', 'monthly')),
 
-    // Product pages — Techedge (12 products)
+    // Product pages — Techedge
     ...allTechedgeProducts.map(p => url(`/products/${p.slug}/`, '0.7', 'monthly')),
 
-    // Product pages — Goldi Solar (5 variants)
+    // Product pages — Goldi Solar
     ...goldiProducts.map(p => url(`/products/${p.slug}/`, '0.7', 'monthly')),
+
+    // Product pages — Hoymiles
+    ...hoymilesProducts.map(p => url(`/products/${p.slug}/`, '0.7', 'monthly')),
+
+    // Product pages — TSUN
+    ...tsunProducts.map(p => url(`/products/${p.slug}/`, '0.7', 'monthly')),
+
+    // Product pages — Techedge Smart Cold Storage
+    ...coldStorageProducts.map(p => url(`/products/${p.slug}/`, '0.7', 'monthly')),
+
+    // Product pages — Solinteg
+    ...solintegProducts.map(p => url(`/products/${p.slug}/`, '0.7', 'monthly')),
+
+    // Product pages — Vsole
+    ...vsoleProducts.map(p => url(`/products/${p.slug}/`, '0.7', 'monthly')),
+
+    // Product pages — RenewSys
+    ...renewSysProducts.map(p => url(`/products/${p.slug}/`, '0.7', 'monthly')),
+
+    // Product pages — Rayzon
+    ...rayzonProducts.map(p => url(`/products/${p.slug}/`, '0.7', 'monthly')),
+
+    // Product pages — Lithium Valley
+    ...lithiumValleyProducts.map(p => url(`/products/${p.slug}/`, '0.7', 'monthly')),
+
+    // Product pages — BPL PowerZen (also has its own listing page above; kept for consistency)
+    ...bplPowerzenProducts.map(p => url(`/products/${p.slug}/`, '0.6', 'monthly')),
   ];
 
   const xml = `<?xml version="1.0" encoding="UTF-8"?>

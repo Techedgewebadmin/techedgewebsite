@@ -1,0 +1,329 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import { tsunProducts } from "@/data/tsun-products";
+
+const BRAND_COLOR = '#ef4444';
+
+const schemaJson = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": "TSUN GEN3 Micro Inverters — Techedge India",
+  "description": "TSUN GEN3 2-in-1 micro inverters — BIS India certified, built-in WiFi+Bluetooth+RS485, 96.7% efficiency, IP67, 15-year warranty. 800W, 900W and 1000W models. Supply and installation by Techedge Bengaluru.",
+  "itemListElement": tsunProducts.map((p, i) => ({
+    "@type": "ListItem",
+    "position": i + 1,
+    "item": {
+      "@type": "Product",
+      "name": p.name,
+      "description": p.seoDescription,
+      "brand": { "@type": "Brand", "name": "TSUN" },
+      "offers": {
+        "@type": "Offer", "priceCurrency": "INR",
+        "price": p.sellingPrice.toFixed(2),
+        "availability": "https://schema.org/InStock",
+        "seller": { "@type": "Organization", "name": "Techedge India" }
+      }
+    }
+  }))
+});
+
+const formatPrice = (n: number) =>
+  new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', maximumFractionDigits: 0 }).format(n);
+---
+
+<Layout
+  title="TSUN GEN3 Micro Inverters — BIS Certified, Built-in WiFi | Techedge Bengaluru"
+  description="TSUN GEN3 2-in-1 micro inverters: MX800, MX900, MX1000. BIS India certified, built-in WiFi+Bluetooth+RS485, 96.7% efficiency, IP67, 15-year warranty. Supply and EPC installation by Techedge Bengaluru."
+  keywords="TSUN micro inverter India, TSUN GEN3 MX800 MX900 MX1000, BIS certified micro inverter, WiFi micro inverter India, TSUN micro inverter Bengaluru, per panel MPPT solar, micro inverter BIS India"
+>
+
+  <script type="application/ld+json" set:html={schemaJson} />
+
+  <!-- Breadcrumb -->
+  <div class="pt-28 pb-0 px-4 bg-background-foreground">
+    <div class="max-w-7xl mx-auto">
+      <nav class="flex items-center gap-2 text-xs text-muted font-semibold">
+        <a href="/" class="hover:text-secondary transition-colors">Home</a>
+        <span>/</span>
+        <a href="/products/" class="hover:text-secondary transition-colors">Products</a>
+        <span>/</span>
+        <span class="text-foreground">TSUN</span>
+      </nav>
+    </div>
+  </div>
+
+  <!-- ── HERO ──────────────────────────────────────────────────────────────── -->
+  <section class="relative overflow-hidden pt-16 pb-20 px-4" style="background:#0a1628;">
+    <div class="absolute inset-0 pointer-events-none" style="background: radial-gradient(ellipse at 65% 35%, rgba(239,68,68,0.1) 0%, transparent 65%);" />
+    <div class="absolute inset-0 opacity-[0.03]" style="background-image: linear-gradient(rgba(255,255,255,0.6) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.6) 1px, transparent 1px); background-size: 40px 40px;" />
+
+    <div class="relative max-w-7xl mx-auto">
+      <div class="max-w-4xl">
+        <div class="flex items-center gap-3 mb-6">
+          <span class="text-xs font-bold uppercase tracking-widest px-3 py-1 rounded-full" style="color:#ef4444; background:rgba(239,68,68,0.1); border:1px solid rgba(239,68,68,0.25);">
+            TSUN Micro Inverters
+          </span>
+          <span class="text-xs font-bold uppercase tracking-widest px-3 py-1 rounded-full text-white/50 bg-white/5 border border-white/10">
+            BIS India Certified
+          </span>
+        </div>
+        <h1 class="font-anton text-5xl md:text-7xl xl:text-8xl uppercase text-white leading-none mb-4">
+          GEN3<br />
+          <span style="color:#ef4444;">Microinverter</span>
+        </h1>
+        <p class="text-white/60 text-sm font-mono mb-2">2-in-1 Series · MX800 / MX900 / MX1000</p>
+        <p class="text-white/70 text-lg md:text-xl max-w-2xl leading-relaxed mb-10">
+          Built-in WiFi, Bluetooth, and RS485 — no separate gateway. BIS India certified for DISCOM net metering.
+          96.7% efficiency, IP67, 15-year warranty. Trunk cable installation system.
+        </p>
+        <div class="flex flex-wrap gap-4">
+          <a href="/contact" class="font-anton text-base uppercase px-8 py-4 rounded-xl transition-colors" style="background:#ef4444; color:#fff;">
+            Get a Quote
+          </a>
+          <a href="/solutions/micro-inverter/" class="font-anton text-base uppercase px-8 py-4 rounded-xl border text-white hover:bg-white/10 transition-colors" style="border-color:rgba(255,255,255,0.2);">
+            Micro Inverter Guide
+          </a>
+        </div>
+      </div>
+
+      <!-- Key differentiators -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-16">
+        {[
+          ['96.7%', 'Peak Efficiency', 'EU: 96.5%'],
+          ['BIS ✓', 'India Certified', 'DISCOM ready'],
+          ['WiFi+BT', 'Built-in Monitor', 'No gateway needed'],
+          ['15 Yr', 'Warranty', 'IP67 · RS485'],
+        ].map(([val, label, sub]) => (
+          <div class="rounded-2xl p-5 text-center" style="background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08);">
+            <p class="text-2xl md:text-3xl font-bold mb-1" style="color:#ef4444;">{val}</p>
+            <p class="text-white/80 text-sm font-semibold uppercase tracking-wide">{label}</p>
+            <p class="text-white/30 text-xs mt-1">{sub}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ── PRODUCTS ──────────────────────────────────────────────────────────── -->
+  <section class="py-20 px-4 bg-background-foreground border-b border-muted/10">
+    <div class="max-w-7xl mx-auto">
+      <span class="text-secondary text-xs font-bold uppercase tracking-widest mb-4 block">GEN3 2-in-1 Series</span>
+      <h2 class="font-anton text-4xl md:text-5xl uppercase text-foreground mb-3">Three Models.</h2>
+      <p class="text-muted mb-12 max-w-xl">Same platform, same dimensions, same certifications — scaled for different panel and load configurations.</p>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+        {tsunProducts.map(p => (
+          <a href={`/products/${p.slug}/`}
+            class="group bg-muted-foreground/5 hover:bg-muted-foreground/10 border-2 border-muted/20 rounded-2xl p-8 flex flex-col transition-all duration-200"
+            style="--hover-border: rgba(239,68,68,0.4);"
+            onmouseover="this.style.borderColor='rgba(239,68,68,0.4)'"
+            onmouseout="this.style.borderColor=''"
+          >
+            <!-- Model badge -->
+            <div class="flex items-center justify-between mb-6">
+              <span class="text-xs font-bold uppercase tracking-widest px-3 py-1 rounded-full" style="color:#ef4444; background:rgba(239,68,68,0.1); border:1px solid rgba(239,68,68,0.2);">
+                {p.model}
+              </span>
+              <span class="text-xs text-muted font-mono">GEN3 2-in-1</span>
+            </div>
+
+            <p class="text-5xl font-bold text-foreground mb-1">{p.powerW}<span class="text-xl text-muted font-normal"> W</span></p>
+            <p class="text-muted text-sm mb-6">AC output · {p.pvInputs} PV inputs · {p.mpptsCount} MPPTs</p>
+
+            <!-- Spec chips -->
+            <div class="grid grid-cols-2 gap-2 mb-6 text-xs">
+              {[
+                ['Efficiency', `${p.peakEfficiency}%`],
+                ['IP Rating', p.ipRating],
+                ['Comms', 'WiFi+BT+RS485'],
+                ['Warranty', p.warranty],
+              ].map(([label, val]) => (
+                <div class="bg-muted-foreground/10 rounded-xl px-3 py-2">
+                  <p class="text-muted text-[10px] uppercase font-semibold">{label}</p>
+                  <p class="text-foreground font-bold mt-0.5">{val}</p>
+                </div>
+              ))}
+            </div>
+
+            <div class="flex-1" />
+            <div class="flex items-end justify-between pt-5 border-t border-muted/10 mt-4">
+              <div>
+                <p class="text-2xl font-bold text-foreground">{formatPrice(p.sellingPrice)}</p>
+                <p class="text-xs text-muted">+ 12% GST = {formatPrice(Math.round(p.sellingPrice * 1.12))}</p>
+              </div>
+              <span class="font-bold text-sm group-hover:translate-x-1 transition-transform" style="color:#ef4444;">View →</span>
+            </div>
+          </a>
+        ))}
+      </div>
+
+      <!-- Spec comparison table -->
+      <div class="rounded-2xl overflow-hidden border border-muted/20">
+        <div class="bg-muted-foreground/10 px-6 py-4">
+          <h3 class="font-anton text-lg uppercase text-foreground">Full Specification Comparison</h3>
+        </div>
+        <div class="overflow-x-auto">
+          <table class="w-full text-sm">
+            <thead>
+              <tr class="bg-muted-foreground/5">
+                <th class="text-left p-4 text-xs font-bold uppercase tracking-wider text-muted">Parameter</th>
+                <th class="text-center p-4 text-xs font-bold uppercase tracking-wider" style="color:#ef4444;">MX800</th>
+                <th class="text-center p-4 text-xs font-bold uppercase tracking-wider" style="color:#ef4444;">MX900</th>
+                <th class="text-center p-4 text-xs font-bold uppercase tracking-wider" style="color:#ef4444;">MX1000</th>
+              </tr>
+            </thead>
+            <tbody>
+              {[
+                ['AC Output Power', '800 W', '900 W', '1000 W'],
+                ['Max Output Current', '4 A', '4.5 A', '5 A'],
+                ['DC Inputs / MPPTs', '2 / 2', '2 / 2', '2 / 2'],
+                ['MPPT Voltage Range', '16–60 V', '16–60 V', '16–60 V'],
+                ['Max Input Voltage', '60 V', '60 V', '60 V'],
+                ['Startup Voltage', '22 V', '22 V', '22 V'],
+                ['Max Input Current / ch', '18 A', '18 A', '18 A'],
+                ['Rec. Module Power', '300–600+ W', '300–600+ W', '300–600+ W'],
+                ['Max units / 12AWG', '9', '8', '7'],
+                ['Max units / 10AWG', '12', '10', '9'],
+                ['Peak Efficiency', '96.7%', '96.7%', '96.7%'],
+                ['EU Efficiency', '96.5%', '96.5%', '96.5%'],
+                ['MPPT Efficiency', '99.9%', '99.9%', '99.9%'],
+                ['AC Voltage', '220/230/240 V', '220/230/240 V', '220/230/240 V'],
+                ['Frequency', '50/60 Hz', '50/60 Hz', '50/60 Hz'],
+                ['Power Factor', '>0.99', '>0.99', '>0.99'],
+                ['THD', '<3%', '<3%', '<3%'],
+                ['Communication', 'WiFi+BT+RS485×2', '—', '—'],
+                ['IP Rating', 'IP67', 'IP67', 'IP67'],
+                ['Dimensions', '261×228×32 mm', '—', '—'],
+                ['Weight', '2.8 kg', '—', '—'],
+                ['Operating Temp', '-40 to +65°C', '—', '—'],
+                ['Warranty', '15 years', '15 years', '15 years'],
+              ].map(([param, mx800, mx900, mx1000], i) => (
+                <tr class={i % 2 === 0 ? 'bg-background' : 'bg-muted-foreground/5'}>
+                  <td class="p-4 font-semibold text-muted text-xs uppercase tracking-wide">{param}</td>
+                  <td class="p-4 text-center text-foreground font-semibold">{mx800}</td>
+                  <td class="p-4 text-center text-foreground font-semibold">{mx900}</td>
+                  <td class="p-4 text-center text-foreground font-semibold">{mx1000}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── WHY TSUN GEN3 ─────────────────────────────────────────────────────── -->
+  <section class="py-20 px-4">
+    <div class="max-w-7xl mx-auto">
+      <span class="text-secondary text-xs font-bold uppercase tracking-widest mb-4 block">What Makes GEN3 Different</span>
+      <h2 class="font-anton text-4xl md:text-5xl uppercase text-foreground mb-12">Built for India.</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+        {[
+          {
+            icon: '🇮🇳',
+            title: 'BIS India Certified',
+            body: 'TSUN GEN3 carries BIS certification — the Bureau of Indian Standards mark required by many DISCOMs for net metering approval. This matters for grid-connected residential and commercial installations across Karnataka, Maharashtra, and other states.',
+          },
+          {
+            icon: '📡',
+            title: 'Built-in WiFi + Bluetooth',
+            body: 'No separate gateway or DTU box to buy or install. The GEN3 connects directly to your home WiFi router and the TSUN app. Bluetooth enables direct local monitoring even without internet. Works out of the box.',
+          },
+          {
+            icon: '🔌',
+            title: 'RS485 × 2 — Industry First',
+            body: 'TSUN GEN3 is the first micro inverter with dual RS485 ports — enabling integration with professional energy management systems, building management software, and SCADA. Future-proof for commercial installations.',
+          },
+          {
+            icon: '🔗',
+            title: 'Trunk Cable T-Connector System',
+            body: 'AC wiring uses a daisy-chain trunk cable with T connectors — no individual AC drops from every panel back to the distribution board. Up to 12 units (10AWG) or 9 units (12AWG) per branch. Clean, fast, low-cost installation.',
+          },
+          {
+            icon: '🌧️',
+            title: 'IP67 Monsoon Proof',
+            body: 'Fully sealed — no fans, no vents. Tested to IP67 for complete dust and water immersion protection. Natural convection cooling handles Indian summer temperatures with derating above 50°C ambient.',
+          },
+          {
+            icon: '⚡',
+            title: '99.9% MPPT Efficiency',
+            body: 'The highest MPPT efficiency in its class — 99.9% means the tracking algorithm leaves virtually nothing on the table. Combined with 96.7% peak conversion efficiency, GEN3 extracts maximum yield from every panel at every hour.',
+          },
+        ].map(f => (
+          <div class="bg-muted-foreground/5 border border-muted/20 rounded-2xl p-7">
+            <div class="text-3xl mb-4">{f.icon}</div>
+            <h3 class="font-anton text-lg uppercase text-foreground mb-3">{f.title}</h3>
+            <p class="text-muted text-sm leading-relaxed">{f.body}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ── WIRING SYSTEM ──────────────────────────────────────────────────────── -->
+  <section class="py-20 px-4 bg-background-foreground border-t border-muted/10">
+    <div class="max-w-5xl mx-auto">
+      <span class="text-secondary text-xs font-bold uppercase tracking-widest mb-4 block">Installation System</span>
+      <h2 class="font-anton text-4xl uppercase text-foreground mb-4">Trunk Cable Wiring</h2>
+      <p class="text-muted mb-8 max-w-2xl">
+        TSUN GEN3 uses a trunk cable with T connectors — a daisy-chain AC bus that runs along the rooftop.
+        Each micro inverter taps in via a T connector. No individual cable runs back to the distribution board.
+        Faster installation, less cable, cleaner roof.
+      </p>
+      <div class="rounded-2xl overflow-hidden border border-muted/20 bg-white mb-6">
+        <img src="/img/tsun-gen3-specs.jpg" alt="TSUN GEN3 micro inverter specifications — MX800, MX900, MX1000" class="w-full" />
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
+        {[
+          ['8-panel system', '1×3kW + 1×1kW micro inverters connected via trunk cable to single distribution box'],
+          ['12-panel system', '3×2kW micro inverters daisy-chained on trunk cable — one AC branch to board'],
+          ['Expandable', 'Add panels and micro inverters to the trunk cable at any time — no system redesign'],
+        ].map(([title, body]) => (
+          <div class="bg-muted-foreground/5 border border-muted/20 rounded-xl p-5">
+            <h3 class="font-semibold text-foreground mb-2">{title}</h3>
+            <p class="text-muted text-sm leading-relaxed">{body}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CERTIFICATIONS ────────────────────────────────────────────────────── -->
+  <section class="py-16 px-4 border-t border-muted/10">
+    <div class="max-w-7xl mx-auto">
+      <h2 class="font-anton text-2xl uppercase text-foreground mb-8">Certifications</h2>
+      <div class="flex flex-wrap gap-3">
+        {['CE', 'BIS (India)', 'VDE', 'ETL / Intertek', 'NEC 2020', 'ISO 9001', 'ISO 14001'].map(c => (
+          <span class="text-sm font-bold px-4 py-2 rounded-xl border" style="color:#ef4444; background:rgba(239,68,68,0.05); border-color:rgba(239,68,68,0.2);">{c}</span>
+        ))}
+      </div>
+      <p class="text-muted text-sm mt-6 max-w-2xl">
+        BIS (Bureau of Indian Standards) certification is critical for DISCOM net metering approvals in India.
+        TSUN GEN3 is one of the few micro inverters carrying this certification, making it the right choice
+        for grid-tied residential and commercial installations requiring formal DISCOM approval.
+      </p>
+    </div>
+  </section>
+
+  <!-- ── CTA ──────────────────────────────────────────────────────────────── -->
+  <section class="py-20 px-4 border-t border-muted/10">
+    <div class="max-w-3xl mx-auto text-center">
+      <h2 class="font-anton text-4xl md:text-5xl uppercase text-foreground mb-4">
+        Ready to Install?
+      </h2>
+      <p class="text-muted text-lg mb-10 max-w-xl mx-auto">
+        Techedge supplies and installs TSUN GEN3 micro inverters in Bengaluru and Karnataka.
+        Free site survey, DISCOM documentation, and end-to-end EPC.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="/contact" class="font-anton text-lg uppercase px-10 py-5 rounded-xl transition-colors" style="background:#ef4444; color:#fff;">
+          Get a Free Survey
+        </a>
+        <a href="/solutions/micro-inverter/" class="font-anton text-lg uppercase px-10 py-5 rounded-xl border border-muted/30 text-foreground hover:bg-muted-foreground/10 transition-colors">
+          Micro Inverter Solutions
+        </a>
+      </div>
+    </div>
+  </section>
+
+</Layout>

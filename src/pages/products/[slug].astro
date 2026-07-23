@@ -4,37 +4,95 @@ import Layout from "@/layouts/Layout.astro";
 import { deyeProducts, type DeyeProduct } from "@/data/deye-products";
 import { allTechedgeProducts, type TechedgeProduct } from "@/data/techedge-products";
 import { goldiProducts, type GoldiProduct } from "@/data/goldi-products";
+import { hoymilesProducts, type HoymilesProduct } from "@/data/hoymiles-products";
+import { tsunProducts, type TsunProduct } from "@/data/tsun-products";
+import { solintegProducts, type SolintegProduct } from "@/data/solinteg-products";
+import { vsoleProducts, type VsoleProduct } from "@/data/vsole-products";
+import { renewSysProducts, type RenewSysProduct } from "@/data/renewsys-products";
+import { rayzonProducts, type RayzonProduct } from "@/data/rayzon-products";
+import { lithiumValleyProducts, type LithiumValleyProduct } from "@/data/lithium-valley-products";
+import { bplPowerzenProducts, type BplPowerzenProduct } from "@/data/bpl-powerzen-products";
 
 export const prerender = true;
 
-export const getStaticPaths = (() => {
-  const deyePaths = deyeProducts.map(p => ({
-    params: { slug: p.slug },
-    props: { productType: 'deye' as const, product: p, teProduct: null, goldiProduct: null },
-  }));
-  const tePaths = allTechedgeProducts.map(p => ({
-    params: { slug: p.slug },
-    props: { productType: 'techedge' as const, product: null, teProduct: p, goldiProduct: null },
-  }));
-  const goldiPaths = goldiProducts.map(p => ({
-    params: { slug: p.slug },
-    props: { productType: 'goldi' as const, product: null, teProduct: null, goldiProduct: p },
-  }));
-  return [...deyePaths, ...tePaths, ...goldiPaths];
-}) satisfies GetStaticPaths;
+type ProductType = 'deye' | 'techedge' | 'goldi' | 'hoymiles' | 'tsun' | 'solinteg' | 'vsole' | 'renewsys' | 'rayzon' | 'lithiumValley' | 'bpl';
 
-const { productType, product: dp, teProduct: tp, goldiProduct: gp } = Astro.props as {
-  productType: 'deye' | 'techedge' | 'goldi';
+type ProductProps = {
+  productType: ProductType;
   product: DeyeProduct | null;
   teProduct: TechedgeProduct | null;
   goldiProduct: GoldiProduct | null;
+  hoymilesProduct: HoymilesProduct | null;
+  tsunProduct: TsunProduct | null;
+  solintegProduct: SolintegProduct | null;
+  vsoleProduct: VsoleProduct | null;
+  renewsysProduct: RenewSysProduct | null;
+  rayzonProduct: RayzonProduct | null;
+  lithiumValleyProduct: LithiumValleyProduct | null;
+  bplProduct: BplPowerzenProduct | null;
 };
+
+export const getStaticPaths = (() => {
+  const emptyProps: Omit<ProductProps, 'productType'> = {
+    product: null, teProduct: null, goldiProduct: null, hoymilesProduct: null, tsunProduct: null,
+    solintegProduct: null, vsoleProduct: null, renewsysProduct: null, rayzonProduct: null,
+    lithiumValleyProduct: null, bplProduct: null,
+  };
+  const deyePaths = deyeProducts.map(p => ({ params: { slug: p.slug }, props: { ...emptyProps, productType: 'deye' as const, product: p } }));
+  const tePaths = allTechedgeProducts.map(p => ({ params: { slug: p.slug }, props: { ...emptyProps, productType: 'techedge' as const, teProduct: p } }));
+  const goldiPaths = goldiProducts.map(p => ({ params: { slug: p.slug }, props: { ...emptyProps, productType: 'goldi' as const, goldiProduct: p } }));
+  const hoymilesPathsList = hoymilesProducts.map(p => ({ params: { slug: p.slug }, props: { ...emptyProps, productType: 'hoymiles' as const, hoymilesProduct: p } }));
+  const tsunPathsList = tsunProducts.map(p => ({ params: { slug: p.slug }, props: { ...emptyProps, productType: 'tsun' as const, tsunProduct: p } }));
+  const solintegPaths = solintegProducts.map(p => ({ params: { slug: p.slug }, props: { ...emptyProps, productType: 'solinteg' as const, solintegProduct: p } }));
+  const vsolePaths = vsoleProducts.map(p => ({ params: { slug: p.slug }, props: { ...emptyProps, productType: 'vsole' as const, vsoleProduct: p } }));
+  const renewsysPaths = renewSysProducts.map(p => ({ params: { slug: p.slug }, props: { ...emptyProps, productType: 'renewsys' as const, renewsysProduct: p } }));
+  const rayzonPaths = rayzonProducts.map(p => ({ params: { slug: p.slug }, props: { ...emptyProps, productType: 'rayzon' as const, rayzonProduct: p } }));
+  const lithiumValleyPaths = lithiumValleyProducts.map(p => ({ params: { slug: p.slug }, props: { ...emptyProps, productType: 'lithiumValley' as const, lithiumValleyProduct: p } }));
+  const bplPaths = bplPowerzenProducts.map(p => ({ params: { slug: p.slug }, props: { ...emptyProps, productType: 'bpl' as const, bplProduct: p } }));
+  return [...deyePaths, ...tePaths, ...goldiPaths, ...hoymilesPathsList, ...tsunPathsList, ...solintegPaths, ...vsolePaths, ...renewsysPaths, ...rayzonPaths, ...lithiumValleyPaths, ...bplPaths];
+}) satisfies GetStaticPaths;
+
+const {
+  productType, product: dp, teProduct: tp, goldiProduct: gp, hoymilesProduct: hp, tsunProduct: sp,
+  solintegProduct: sop, vsoleProduct: vop, renewsysProduct: rnp, rayzonProduct: ryp,
+  lithiumValleyProduct: lvp, bplProduct: bpp,
+} = Astro.props as ProductProps;
 
 const isDeye = productType === 'deye';
 const isGoldi = productType === 'goldi';
+const isHoymiles = productType === 'hoymiles';
+const isTsun = productType === 'tsun';
+const isSolinteg = productType === 'solinteg';
+const isVsole = productType === 'vsole';
+const isRenewSys = productType === 'renewsys';
+const isRayzon = productType === 'rayzon';
+const isLithiumValley = productType === 'lithiumValley';
+const isBpl = productType === 'bpl';
+const isNewBrand = isSolinteg || isVsole || isRenewSys || isRayzon || isLithiumValley || isBpl;
 const p = dp!;
 const t = tp!;
 const g = gp!;
+
+// ── New-brand derived copy (these data models don't carry features/useCases/SEO fields) ──
+const newBrandMeta: Record<string, { label: string; color: string; useCases: string[] }> = {
+  solinteg: { label: 'Solinteg', color: '#6366f1', useCases: ['Residential rooftop solar backup', 'Commercial & industrial hybrid installations', 'Grid-tied net metering with battery backup', 'C&I peak-shaving and demand management'] },
+  vsole: { label: 'Vsole', color: '#a855f7', useCases: ['Residential rooftop solar', 'Commercial & industrial installations', 'Grid-tied and hybrid backup systems', 'Utility-scale on-grid projects'] },
+  renewsys: { label: 'RenewSys', color: '#f59e0b', useCases: ['Residential rooftop', 'Commercial & industrial rooftop', 'Ground-mount utility projects', 'DCR/subsidy-linked government projects'] },
+  rayzon: { label: 'Rayzon', color: '#94a3b8', useCases: ['Residential rooftop', 'Commercial & industrial rooftop', 'Ground-mount utility projects', 'ALMM-listed government/subsidy projects'] },
+  lithiumValley: { label: 'Lithium Valley', color: '#14b8a6', useCases: ['Residential battery backup', 'Commercial & industrial energy storage', 'Hybrid solar systems', 'Peak shaving & demand management'] },
+  bpl: { label: 'BPL PowerZen', color: '#2563eb', useCases: ['Edge & small data centres', 'Commercial & industrial critical infrastructure', 'UPS replacement with solar offset', 'Backup power for offices & retail'] },
+};
+
+const vsoleFeatures = (v: VsoleProduct) => [
+  `${v.maxEfficiency}% max efficiency across ${v.mpptCount} MPPT tracker${v.mpptCount > 1 ? 's' : ''}`,
+  v.type === 'hybrid' ? `Battery-ready — ${v.batteryVoltage} battery voltage, up to ${v.maxChargeCurrentA}A charge current` : 'Grid-tied on-grid inverter, no battery required',
+  `${v.ipRating}-rated enclosure, ${v.warranty} warranty`,
+];
+const panelFeatures = (m: RenewSysProduct | RayzonProduct) => [
+  `${m.moduleEfficiency}% module efficiency, ${m.bifacial ? 'bifacial' : 'monofacial'} ${m.cellType}`,
+  `${m.productWarranty} product warranty, ${m.performanceWarranty} performance warranty`,
+  `Made in India${m.almm ? ', ALMM listed' : ''}`,
+];
 
 const formatPrice = (n: number) =>
   new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', maximumFractionDigits: 0 }).format(n);
@@ -73,14 +131,36 @@ const related = isDeye
   ? deyeProducts.filter(r => r.category === p.category && r.id !== p.id).slice(0, 4)
   : isGoldi
     ? goldiProducts.filter(r => r.id !== g.id).slice(0, 4)
-    : allTechedgeProducts.filter(r => r.category === t.category && r.id !== t.id).slice(0, 4);
+    : isHoymiles
+      ? hoymilesProducts.filter(r => r.series === hp!.series && r.id !== hp!.id).slice(0, 4)
+      : isTsun
+        ? tsunProducts.filter(r => r.id !== sp!.id).slice(0, 4)
+        : isSolinteg
+          ? solintegProducts.filter(r => r.type === sop!.type && r.id !== sop!.id).slice(0, 4)
+          : isVsole
+            ? vsoleProducts.filter(r => r.type === vop!.type && r.id !== vop!.id).slice(0, 4)
+            : isRenewSys
+              ? renewSysProducts.filter(r => r.id !== rnp!.id).slice(0, 4)
+              : isRayzon
+                ? rayzonProducts.filter(r => r.id !== ryp!.id).slice(0, 4)
+                : isLithiumValley
+                  ? lithiumValleyProducts.filter(r => r.series === lvp!.series && r.id !== lvp!.id).slice(0, 4)
+                  : isBpl
+                    ? []
+                    : allTechedgeProducts.filter(r => r.category === t.category && r.id !== t.id).slice(0, 4);
 const priceWithGst = isDeye ? Math.round(p.sellingPrice * (1 + p.gstRate / 100)) : 0;
 
-// ── HERO SLIDE DATA (unified across all three brands) ─────────────────────────
-const heroName  = isDeye ? dp!.name  : isGoldi ? gp!.name  : tp!.name;
-const heroModel = isDeye ? dp!.model : isGoldi ? gp!.model : tp!.model;
-const heroBrand = isDeye ? 'Deye'    : isGoldi ? 'Goldi Solar' : 'Techedge';
-const heroBrandColor = isDeye ? '#f97316' : isGoldi ? '#eab308' : '#86efac';
+// ── HERO SLIDE DATA (unified across all brands) ─────────────────────────
+const heroName  = isDeye ? dp!.name  : isGoldi ? gp!.name  : isHoymiles ? hp!.name  : isTsun ? sp!.name
+  : isSolinteg ? sop!.name : isVsole ? vop!.name : isRenewSys ? rnp!.name : isRayzon ? ryp!.name
+  : isLithiumValley ? lvp!.name : isBpl ? bpp!.name : tp!.name;
+const heroModel = isDeye ? dp!.model : isGoldi ? gp!.model : isHoymiles ? hp!.model : isTsun ? sp!.model
+  : isSolinteg ? sop!.name : isVsole ? vop!.name : isRenewSys ? rnp!.model : isRayzon ? ryp!.model
+  : isLithiumValley ? lvp!.model : isBpl ? bpp!.model : tp!.model;
+const heroBrand = isDeye ? 'Deye' : isGoldi ? 'Goldi Solar' : isHoymiles ? 'Hoymiles' : isTsun ? 'TSUN'
+  : isNewBrand ? newBrandMeta[productType].label : 'Techedge';
+const heroBrandColor = isDeye ? '#f97316' : isGoldi ? '#eab308' : isHoymiles ? '#06b6d4' : isTsun ? '#ef4444'
+  : isNewBrand ? newBrandMeta[productType].color : '#86efac';
 
 const heroStats: { value: string; label: string }[] = isDeye ? [
   ...(dp!.specs.efficiency ? [{ value: dp!.specs.efficiency, label: 'Max Efficiency' }] : []),
@@ -92,6 +172,46 @@ const heroStats: { value: string; label: string }[] = isDeye ? [
   { value: `${gp!.powerWp} Wp`,          label: 'Power (STC)' },
   { value: gp!.performanceWarranty,       label: 'Performance' },
   { value: gp!.productWarranty,           label: 'Product Warranty' },
+] : isHoymiles ? [
+  { value: `${hp!.maxEfficiency}%`, label: 'Max Efficiency' },
+  { value: hp!.ipRating,             label: 'IP Rating' },
+  { value: `${hp!.pvInputs} input${hp!.pvInputs > 1 ? 's' : ''}`, label: 'PV Inputs' },
+  { value: hp!.warranty,             label: 'Warranty' },
+] : isTsun ? [
+  { value: `${sp!.peakEfficiency}%`, label: 'Peak Efficiency' },
+  { value: sp!.ipRating,             label: 'IP Rating' },
+  { value: 'BIS ✓',                  label: 'India Certified' },
+  { value: sp!.warranty,             label: 'Warranty' },
+] : isSolinteg ? [
+  { value: `${sop!.powerKW} kW`,        label: 'Rated Power' },
+  { value: `${sop!.maxEfficiency}%`,    label: 'Max Efficiency' },
+  { value: `${sop!.mpptCount} MPPT`,    label: 'MPPT Trackers' },
+  { value: sop!.warranty,               label: 'Warranty' },
+] : isVsole ? [
+  { value: `${vop!.powerKW} kW`,        label: 'Rated Power' },
+  { value: `${vop!.maxEfficiency}%`,    label: 'Max Efficiency' },
+  { value: `${vop!.phases}-Phase`,      label: 'Phase' },
+  { value: vop!.warranty,               label: 'Warranty' },
+] : isRenewSys ? [
+  { value: `${rnp!.powerWp} Wp`,           label: 'Power (STC)' },
+  { value: `${rnp!.moduleEfficiency}%`,    label: 'Efficiency' },
+  { value: rnp!.performanceWarranty,       label: 'Performance' },
+  { value: rnp!.productWarranty,           label: 'Product Warranty' },
+] : isRayzon ? [
+  { value: `${ryp!.powerWp} Wp`,           label: 'Power (STC)' },
+  { value: `${ryp!.moduleEfficiency}%`,    label: 'Efficiency' },
+  { value: ryp!.performanceWarranty,       label: 'Performance' },
+  { value: ryp!.productWarranty,           label: 'Product Warranty' },
+] : isLithiumValley ? [
+  { value: `${lvp!.capacityKWh} kWh`,      label: 'Module Capacity' },
+  { value: `${lvp!.maxCapacityKWh} kWh`,   label: 'Max Stacked' },
+  { value: `${lvp!.cycleLife.toLocaleString()}`, label: 'Cycle Life' },
+  { value: lvp!.warranty,                  label: 'Warranty' },
+] : isBpl ? [
+  { value: `${bpp!.powerKW} kW`,           label: 'Rated Power' },
+  { value: `${bpp!.batteryKWh} kWh`,       label: 'Battery' },
+  { value: `${bpp!.cycleLife.toLocaleString()}`, label: 'Cycle Life' },
+  { value: bpp!.warranty,                  label: 'Warranty' },
 ] : [
   { value: `${tp!.backupHours} hrs`,      label: 'Backup Time' },
   { value: tp!.batterySpec,               label: 'Battery' },
@@ -99,9 +219,111 @@ const heroStats: { value: string; label: string }[] = isDeye ? [
   ...(tp!.loadSpec ? [{ value: tp!.loadSpec, label: 'Load' }] : []),
 ].slice(0, 4);
 
-const heroFeatures = (isDeye ? dp!.features : isGoldi ? gp!.features : tp!.features).slice(0, 3);
-const heroUseCases = isDeye ? dp!.useCases  : isGoldi ? gp!.useCases  : tp!.useCases;
-const heroDesc     = isDeye ? dp!.seoDescription : isGoldi ? gp!.seoDescription : tp!.seoDescription;
+const heroFeatures = (
+  isDeye ? dp!.features : isGoldi ? gp!.features : isHoymiles ? hp!.features : isTsun ? sp!.features
+  : isSolinteg ? sop!.features : isVsole ? vsoleFeatures(vop!) : isRenewSys ? panelFeatures(rnp!)
+  : isRayzon ? panelFeatures(ryp!) : isLithiumValley ? lvp!.features : isBpl ? bpp!.features : tp!.features
+).slice(0, 3);
+const heroUseCases = isDeye ? dp!.useCases : isGoldi ? gp!.useCases : isHoymiles ? hp!.useCases : isTsun ? sp!.useCases
+  : isNewBrand ? newBrandMeta[productType].useCases : tp!.useCases;
+const heroDesc = isDeye ? dp!.seoDescription : isGoldi ? gp!.seoDescription : isHoymiles ? hp!.seoDescription : isTsun ? sp!.seoDescription
+  : isSolinteg ? `Solinteg ${sop!.name} — ${sop!.powerKW}kW ${sop!.type.includes('hybrid') ? 'hybrid' : 'on-grid'} inverter, ${sop!.maxEfficiency}% max efficiency, ${sop!.ipRating} rated. BIS India certified. Supply and installation by Techedge.`
+  : isVsole ? `Vsole ${vop!.name} — ${vop!.powerKW}kW ${vop!.type} inverter, ${vop!.maxEfficiency}% max efficiency, ${vop!.ipRating} rated, ${vop!.warranty} warranty. Supply by Techedge India.`
+  : isRenewSys ? `RenewSys ${rnp!.name} — ${rnp!.moduleEfficiency}% efficiency N-type TOPCon module, ALMM listed${rnp!.dcr ? ', DCR compliant' : ''}, made in India. ${rnp!.productWarranty} product / ${rnp!.performanceWarranty} performance warranty.`
+  : isRayzon ? `Rayzon ${ryp!.name} — ${ryp!.moduleEfficiency}% efficiency N-type TOPCon bifacial module, ALMM listed, made in India. ${ryp!.productWarranty} product / ${ryp!.performanceWarranty} performance warranty.`
+  : isLithiumValley ? `Lithium Valley ${lvp!.name} — ${lvp!.capacityKWh}kWh LiFePO4 module (stackable to ${lvp!.maxCapacityKWh}kWh), ${lvp!.cycleLife.toLocaleString()} cycle life, ${lvp!.warranty} warranty. BIS certified. Supply by Techedge India.`
+  : isBpl ? `BPL PowerZen ${bpp!.name} — all-in-one hybrid inverter with integrated ${bpp!.batteryKWh}kWh LiFePO4 battery, ${bpp!.cycleLife.toLocaleString()} cycle life, ${bpp!.warranty} warranty. BIS certified. Supply by Techedge India.`
+  : tp!.seoDescription;
+const heroTitle = isNewBrand ? `${heroName} — ${heroModel} | Techedge India` : '';
+
+const newBrandSpecRows: [string, string][] = isSolinteg ? [
+  ['Series', sop!.series],
+  ['Rated Power', `${sop!.powerKW} kW`],
+  ['Phases', String(sop!.phases)],
+  ['Max Efficiency', `${sop!.maxEfficiency}%`],
+  ['MPPT Trackers', String(sop!.mpptCount)],
+  ['Max PV Voltage', `${sop!.maxPvVoltage} V`],
+  ...(sop!.batteryVoltageRange ? [['Battery Voltage Range', sop!.batteryVoltageRange] as [string, string]] : []),
+  ...(sop!.maxChargeCurrentA ? [['Max Charge Current', `${sop!.maxChargeCurrentA} A`] as [string, string]] : []),
+  ['AC Voltage', sop!.acVoltage],
+  ['IP Rating', sop!.ipRating],
+  ['Warranty', sop!.warranty],
+] : isVsole ? [
+  ['Series', vop!.series],
+  ['Rated Power', `${vop!.powerKW} kW`],
+  ['Phases', String(vop!.phases)],
+  ...(vop!.batteryVoltage ? [['Battery Voltage', vop!.batteryVoltage] as [string, string]] : []),
+  ['Max Efficiency', `${vop!.maxEfficiency}%`],
+  ['MPPT Trackers', String(vop!.mpptCount)],
+  ['Max PV Voltage', `${vop!.maxPvVoltage} V`],
+  ...(vop!.maxChargeCurrentA ? [['Max Charge Current', `${vop!.maxChargeCurrentA} A`] as [string, string]] : []),
+  ['AC Voltage', vop!.acVoltage],
+  ['IP Rating', vop!.ipRating],
+  ['Warranty', vop!.warranty],
+] : isRenewSys ? [
+  ['Model', rnp!.model],
+  ['Power (STC)', `${rnp!.powerWp} Wp`],
+  ['Cell Type', rnp!.cellType],
+  ['Cell Configuration', rnp!.cellConfig],
+  ['Module Efficiency', `${rnp!.moduleEfficiency}%`],
+  ['Voc / Isc', `${rnp!.voc} V / ${rnp!.isc} A`],
+  ['Vmp / Imp', `${rnp!.vmp} V / ${rnp!.imp} A`],
+  ['Temp Coeff (Pmax)', rnp!.tempCoeffPmax],
+  ['Bifacial', rnp!.bifacial ? `Yes (${rnp!.bifacialityFactor ?? '—'})` : 'No'],
+  ['Glass Type', rnp!.glassType],
+  ['Dimensions', rnp!.dimensions],
+  ['Weight', `${rnp!.weight} kg`],
+  ['Product Warranty', rnp!.productWarranty],
+  ['Performance Warranty', rnp!.performanceWarranty],
+] : isRayzon ? [
+  ['Model', ryp!.model],
+  ['Series', ryp!.series],
+  ['Power (STC)', `${ryp!.powerWp} Wp`],
+  ['Cell Type', ryp!.cellType],
+  ['Cell Configuration', ryp!.cellConfig],
+  ['Module Efficiency', `${ryp!.moduleEfficiency}%`],
+  ['Voc / Isc', `${ryp!.voc} V / ${ryp!.isc} A`],
+  ['Vmp / Imp', `${ryp!.vmp} V / ${ryp!.imp} A`],
+  ['Temp Coeff (Pmax)', ryp!.tempCoeffPmax],
+  ['Bifaciality', ryp!.bifacialityFactor],
+  ['Glass Type', ryp!.glassType],
+  ['Frame Thickness', ryp!.frameThickness],
+  ['Product Warranty', ryp!.productWarranty],
+  ['Performance Warranty', ryp!.performanceWarranty],
+] : isLithiumValley ? [
+  ['Series', lvp!.series],
+  ['Module Capacity', `${lvp!.capacityKWh} kWh`],
+  ['Max Stacked Capacity', `${lvp!.maxCapacityKWh} kWh`],
+  ['Nominal Voltage', `${lvp!.nominalVoltage} V`],
+  ['Capacity', `${lvp!.capacityAh} Ah`],
+  ['Max Stack Layers', String(lvp!.maxStackLayers)],
+  ['Max Charge / Discharge', `${lvp!.maxChargeCurrent} A / ${lvp!.maxDischargeCurrent} A`],
+  ['Cycle Life', `${lvp!.cycleLife.toLocaleString()} @ ${lvp!.dod}% DoD`],
+  ['IP Rating', lvp!.ipRating],
+  ['Form Factor', lvp!.formFactor],
+  ['Warranty', lvp!.warranty],
+] : isBpl ? [
+  ['Series', bpp!.series],
+  ['Rated Power', `${bpp!.powerKW} kW`],
+  ['Surge Power', `${bpp!.surgeKW} kW`],
+  ['Battery Capacity', `${bpp!.batteryKWh} kWh`],
+  ['Battery Voltage', `${bpp!.batteryVoltage} V`],
+  ['Battery Capacity (Ah)', `${bpp!.batteryAh} Ah`],
+  ['Cycle Life', `${bpp!.cycleLife.toLocaleString()} @ ${bpp!.dod}% DoD`],
+  ['Max Efficiency', `${bpp!.maxEfficiency}%`],
+  ['MPPT Voltage Range', bpp!.mpptVoltageRange],
+  ['Max PV Input', `${bpp!.maxPvInputW} W`],
+  ['AC Voltage', bpp!.acVoltage],
+  ['IP Rating', bpp!.ipRating],
+  ['Warranty', bpp!.warranty],
+] : [];
+
+const newBrandCerts: string[] = isSolinteg ? sop!.certifications
+  : isRenewSys ? rnp!.certifications
+  : isRayzon ? ryp!.certifications
+  : isLithiumValley ? lvp!.certifications
+  : isBpl ? bpp!.certifications
+  : [];
 
 // Schema.org
 const schema = isDeye ? {
@@ -125,6 +347,38 @@ const schema = isDeye ? {
     "seller": { "@type": "Organization", "name": "Techedge India" }
   },
   "model": g.model,
+} : isHoymiles ? {
+  "@context": "https://schema.org", "@type": "Product",
+  "name": hp!.name, "description": hp!.seoDescription,
+  "brand": { "@type": "Brand", "name": "Hoymiles" },
+  "offers": {
+    "@type": "Offer", "priceCurrency": "INR",
+    "price": hp!.sellingPrice.toFixed(2),
+    "availability": "https://schema.org/InStock",
+    "seller": { "@type": "Organization", "name": "Techedge India" }
+  },
+  "model": hp!.model,
+} : isTsun ? {
+  "@context": "https://schema.org", "@type": "Product",
+  "name": sp!.name, "description": sp!.seoDescription,
+  "brand": { "@type": "Brand", "name": "TSUN" },
+  "offers": {
+    "@type": "Offer", "priceCurrency": "INR",
+    "price": sp!.sellingPrice.toFixed(2),
+    "availability": "https://schema.org/InStock",
+    "seller": { "@type": "Organization", "name": "Techedge India" }
+  },
+  "model": sp!.model,
+} : isNewBrand ? {
+  "@context": "https://schema.org", "@type": "Product",
+  "name": heroName, "description": heroDesc,
+  "brand": { "@type": "Brand", "name": heroBrand },
+  "offers": {
+    "@type": "Offer",
+    "availability": "https://schema.org/InStock",
+    "seller": { "@type": "Organization", "name": "Techedge India" }
+  },
+  "model": heroModel,
 } : {
   "@context": "https://schema.org", "@type": "Product",
   "name": t.name, "description": t.seoDescription,
@@ -141,8 +395,8 @@ const schema = isDeye ? {
 ---
 
 <Layout
-  title={isDeye ? p.seoTitle : isGoldi ? g.seoTitle : t.seoTitle}
-  description={isDeye ? p.seoDescription : isGoldi ? g.seoDescription : t.seoDescription}
+  title={isDeye ? p.seoTitle : isGoldi ? g.seoTitle : isHoymiles ? hp!.seoTitle : isTsun ? sp!.seoTitle : isNewBrand ? heroTitle : t.seoTitle}
+  description={isDeye ? p.seoDescription : isGoldi ? g.seoDescription : isHoymiles ? hp!.seoDescription : isTsun ? sp!.seoDescription : isNewBrand ? heroDesc : t.seoDescription}
 >
   <script type="application/ld+json" set:html={JSON.stringify(schema)} />
 
@@ -156,8 +410,16 @@ const schema = isDeye ? {
         <span>/</span>
         {isDeye && <><a href="/products/deye/" class="hover:text-secondary transition-colors">Deye</a><span>/</span></>}
         {isGoldi && <><a href="/products/goldi/" class="hover:text-secondary transition-colors">Goldi Solar</a><span>/</span></>}
-        {!isDeye && !isGoldi && <><a href="/products/techedge/" class="hover:text-secondary transition-colors">Techedge</a><span>/</span></>}
-        <span class="text-foreground">{isDeye ? p.name : isGoldi ? g.name : t.name}</span>
+        {isHoymiles && <><a href="/products/hoymiles/" class="hover:text-secondary transition-colors">Hoymiles</a><span>/</span></>}
+        {isTsun && <><a href="/products/tsun/" class="hover:text-secondary transition-colors">TSUN</a><span>/</span></>}
+        {isSolinteg && <><a href="/products/solinteg/" class="hover:text-secondary transition-colors">Solinteg</a><span>/</span></>}
+        {isVsole && <><a href="/products/vsole/" class="hover:text-secondary transition-colors">Vsole</a><span>/</span></>}
+        {isRenewSys && <><a href="/products/renewsys/" class="hover:text-secondary transition-colors">RenewSys</a><span>/</span></>}
+        {isRayzon && <><a href="/products/rayzon/" class="hover:text-secondary transition-colors">Rayzon</a><span>/</span></>}
+        {isLithiumValley && <><a href="/products/lithium-valley/" class="hover:text-secondary transition-colors">Lithium Valley</a><span>/</span></>}
+        {isBpl && <><a href="/products/bpl-powerzen/" class="hover:text-secondary transition-colors">BPL PowerZen</a><span>/</span></>}
+        {!isDeye && !isGoldi && !isHoymiles && !isTsun && !isNewBrand && <><a href="/products/techedge/" class="hover:text-secondary transition-colors">Techedge</a><span>/</span></>}
+        <span class="text-foreground">{isNewBrand ? heroName : isDeye ? p.name : isGoldi ? g.name : isHoymiles ? hp!.name : isTsun ? sp!.name : t.name}</span>
       </nav>
     </div>
   </div>
@@ -177,7 +439,10 @@ const schema = isDeye ? {
           </span>
           {isDeye && <span class="text-xs font-semibold uppercase text-white/50 bg-white/5 px-3 py-1 rounded-full border border-white/10">{dp!.category}</span>}
           {isGoldi && <span class="text-xs font-semibold uppercase text-white/50 bg-white/5 px-3 py-1 rounded-full border border-white/10">{gp!.series}</span>}
-          {!isDeye && !isGoldi && <span class="text-xs font-semibold uppercase text-white/50 bg-white/5 px-3 py-1 rounded-full border border-white/10">{tp!.category}</span>}
+          {isHoymiles && <span class="text-xs font-semibold uppercase text-white/50 bg-white/5 px-3 py-1 rounded-full border border-white/10">{hp!.series} Series</span>}
+          {isTsun && <span class="text-xs font-semibold uppercase text-white/50 bg-white/5 px-3 py-1 rounded-full border border-white/10">{sp!.series} · BIS Certified</span>}
+          {isNewBrand && <span class="text-xs font-semibold uppercase text-white/50 bg-white/5 px-3 py-1 rounded-full border border-white/10">Supply Partner</span>}
+          {!isDeye && !isGoldi && !isHoymiles && !isTsun && !isNewBrand && <span class="text-xs font-semibold uppercase text-white/50 bg-white/5 px-3 py-1 rounded-full border border-white/10">{tp!.category}</span>}
         </div>
         <h1 class="font-anton text-4xl md:text-6xl lg:text-7xl uppercase text-white leading-none mb-2">
           {heroName}
@@ -413,7 +678,7 @@ const schema = isDeye ? {
                   <p>✓ Authorised dealer pricing</p>
                   <p>✓ Transport charges extra (at actuals)</p>
                   <p>✓ Installation charges extra</p>
-                  <p>✓ Prices valid April 2026</p>
+                  <p>✓ Prices valid July 2026</p>
                 </div>
                 <a href="/contact" class="block w-full bg-secondary text-black font-anton text-lg uppercase text-center py-4 rounded-xl hover:bg-secondary/90 transition-colors mb-3">
                   Get a Quote
@@ -459,7 +724,7 @@ const schema = isDeye ? {
   )}
 
   <!-- ── TECHEDGE PRODUCT LAYOUT ─────────────────────────────────────────── -->
-  {!isDeye && !isGoldi && (
+  {!isDeye && !isGoldi && !isHoymiles && !isTsun && !isNewBrand && (
     <>
       <section class="py-10 px-4 bg-background-foreground">
         <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16">
@@ -765,12 +1030,292 @@ const schema = isDeye ? {
     </>
   )}
 
+  <!-- ── HOYMILES PRODUCT LAYOUT ─────────────────────────────────────────── -->
+  {isHoymiles && (
+    <>
+      <section class="py-10 px-4 bg-background-foreground">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16">
+          <div class="lg:col-span-7">
+            <div class="flex flex-wrap items-center gap-2 mb-4">
+              <span class="text-sm font-bold uppercase tracking-widest" style="color:#06b6d4">⚡ {hp!.series} Series Micro Inverter</span>
+            </div>
+            <h1 class="font-anton text-3xl md:text-5xl uppercase text-foreground leading-none mb-3">{hp!.name}</h1>
+            <p class="font-mono text-sm text-muted mb-6">Model: <span class="text-foreground font-semibold">{hp!.model}</span></p>
+            <div class="flex flex-wrap gap-3 mb-8">
+              <div class="rounded-xl px-4 py-2 text-center" style="background:rgba(6,182,212,0.1); border:1px solid rgba(6,182,212,0.3)">
+                <p class="text-xl font-bold" style="color:#06b6d4">{hp!.maxEfficiency}%</p>
+                <p class="text-[10px] uppercase text-muted font-semibold">Max Efficiency</p>
+              </div>
+              <div class="bg-muted-foreground/10 rounded-xl px-4 py-2 text-center">
+                <p class="text-xl font-bold text-foreground">{hp!.ipRating}</p>
+                <p class="text-[10px] uppercase text-muted font-semibold">Protection</p>
+              </div>
+              <div class="bg-muted-foreground/10 rounded-xl px-4 py-2 text-center">
+                <p class="text-xl font-bold text-foreground">{hp!.pvInputs}</p>
+                <p class="text-[10px] uppercase text-muted font-semibold">PV Inputs</p>
+              </div>
+              <div class="bg-muted-foreground/10 rounded-xl px-4 py-2 text-center">
+                <p class="text-xl font-bold text-foreground">{hp!.warranty}</p>
+                <p class="text-[10px] uppercase text-muted font-semibold">Warranty</p>
+              </div>
+            </div>
+            <h2 class="font-anton text-xl uppercase text-foreground mb-4">Key Features</h2>
+            <ul class="space-y-3 mb-8">
+              {hp!.features.map(f => (
+                <li class="flex items-start gap-3">
+                  <span class="mt-1 shrink-0 w-5 h-5 rounded-full flex items-center justify-center text-xs font-bold" style="background:rgba(6,182,212,0.15); color:#06b6d4">✓</span>
+                  <span class="text-muted text-sm leading-relaxed">{f}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div class="lg:col-span-5">
+            <div class="bg-muted-foreground/5 border border-muted/20 rounded-2xl p-6 mb-6">
+              <h3 class="font-anton text-lg uppercase text-foreground mb-4">Specifications</h3>
+              <dl class="space-y-3">
+                {[
+                  ['Output Power', `${hp!.powerW} W`],
+                  ['PV Inputs', `${hp!.pvInputs} channel${hp!.pvInputs > 1 ? 's' : ''} (MPPT each)`],
+                  ['Max Efficiency', `${hp!.maxEfficiency}%`],
+                  ['EU Efficiency', `${hp!.euEfficiency}%`],
+                  ['AC Voltage', `${hp!.acVoltage} V`],
+                  ['AC Frequency', `${hp!.acFrequency} Hz`],
+                  ['IP Rating', hp!.ipRating],
+                  ['Operating Temp', hp!.operatingTemp],
+                  ['Warranty', hp!.warranty],
+                ].map(([label, val]) => (
+                  <div class="flex items-start justify-between gap-4 py-2 border-b border-muted/10 last:border-0">
+                    <dt class="text-xs uppercase text-muted font-semibold tracking-wide shrink-0">{label}</dt>
+                    <dd class="text-sm text-foreground font-semibold text-right">{val}</dd>
+                  </div>
+                ))}
+              </dl>
+            </div>
+            <div class="bg-muted-foreground/5 border border-muted/20 rounded-2xl p-6 mb-6">
+              <h3 class="font-anton text-lg uppercase text-foreground mb-3">Price</h3>
+              <p class="text-3xl font-bold text-foreground">{formatPrice(hp!.sellingPrice)}</p>
+              <p class="text-xs text-muted mt-1">+ 12% GST = {formatPrice(Math.round(hp!.sellingPrice * 1.12))}</p>
+              <a href="/contact" class="mt-5 block w-full text-center font-anton text-base uppercase py-3 rounded-xl transition-colors" style="background:#06b6d4; color:#fff">
+                Get a Quote
+              </a>
+            </div>
+            <div class="bg-muted-foreground/5 border border-muted/20 rounded-2xl p-6">
+              <h3 class="font-anton text-lg uppercase text-foreground mb-3">Certifications</h3>
+              <div class="flex flex-wrap gap-2">
+                {hp!.certifications.map(c => (
+                  <span class="text-xs font-semibold px-3 py-1.5 rounded-lg bg-muted-foreground/10 text-muted">{c}</span>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Use Cases -->
+      <section class="py-10 px-4">
+        <div class="max-w-7xl mx-auto">
+          <h2 class="font-anton text-2xl md:text-3xl uppercase text-foreground mb-6">Ideal For</h2>
+          <div class="flex flex-wrap gap-3">
+            {hp!.useCases.map(uc => (
+              <span class="text-sm font-semibold px-4 py-2 rounded-full text-muted bg-muted-foreground/5 border border-muted/20">{uc}</span>
+            ))}
+          </div>
+        </div>
+      </section>
+    </>
+  )}
+
+  <!-- ── TSUN PRODUCT LAYOUT ──────────────────────────────────────────────── -->
+  {isTsun && (
+    <>
+      <section class="py-10 px-4 bg-background-foreground">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16">
+          <div class="lg:col-span-7">
+            <div class="flex flex-wrap items-center gap-2 mb-4">
+              <span class="text-sm font-bold uppercase tracking-widest px-3 py-1 rounded-full" style="color:#ef4444; background:rgba(239,68,68,0.1);">
+                ⚡ {sp!.series} 2-in-1 Series
+              </span>
+              <span class="text-xs font-bold uppercase tracking-widest text-white/70 bg-white/5 px-2 py-0.5 rounded-full border border-white/10">BIS India Certified</span>
+            </div>
+            <h1 class="font-anton text-3xl md:text-5xl uppercase text-foreground leading-none mb-3">{sp!.name}</h1>
+            <p class="font-mono text-sm text-muted mb-6">Model: <span class="text-foreground font-semibold">{sp!.model}</span></p>
+            <div class="flex flex-wrap gap-3 mb-8">
+              <div class="rounded-xl px-4 py-2 text-center" style="background:rgba(239,68,68,0.1); border:1px solid rgba(239,68,68,0.3);">
+                <p class="text-xl font-bold" style="color:#ef4444;">{sp!.peakEfficiency}%</p>
+                <p class="text-[10px] uppercase text-muted font-semibold">Peak Efficiency</p>
+              </div>
+              <div class="bg-muted-foreground/10 rounded-xl px-4 py-2 text-center">
+                <p class="text-xl font-bold text-foreground">{sp!.ipRating}</p>
+                <p class="text-[10px] uppercase text-muted font-semibold">Protection</p>
+              </div>
+              <div class="bg-muted-foreground/10 rounded-xl px-4 py-2 text-center">
+                <p class="text-xl font-bold text-foreground">{sp!.pvInputs}</p>
+                <p class="text-[10px] uppercase text-muted font-semibold">PV Inputs / MPPTs</p>
+              </div>
+              <div class="bg-muted-foreground/10 rounded-xl px-4 py-2 text-center">
+                <p class="text-xl font-bold text-foreground">{sp!.mpptEfficiency}%</p>
+                <p class="text-[10px] uppercase text-muted font-semibold">MPPT Efficiency</p>
+              </div>
+            </div>
+            <h2 class="font-anton text-xl uppercase text-foreground mb-4">Key Features</h2>
+            <ul class="space-y-3 mb-8">
+              {sp!.features.map(f => (
+                <li class="flex items-start gap-3">
+                  <span class="mt-1 shrink-0 w-5 h-5 rounded-full flex items-center justify-center text-xs font-bold" style="background:rgba(239,68,68,0.15); color:#ef4444;">✓</span>
+                  <span class="text-muted text-sm leading-relaxed">{f}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div class="lg:col-span-5">
+            <div class="bg-muted-foreground/5 border border-muted/20 rounded-2xl p-6 mb-6">
+              <h3 class="font-anton text-lg uppercase text-foreground mb-4">Specifications</h3>
+              <dl class="space-y-3">
+                {[
+                  ['Output Power', `${sp!.powerW} W`],
+                  ['DC Inputs / MPPTs', `${sp!.pvInputs} / ${sp!.mpptsCount} (independent)`],
+                  ['MPPT Voltage Range', sp!.mpptVoltageRange],
+                  ['Max Input Voltage', `${sp!.maxInputVoltage} V`],
+                  ['Max Input Current', `${sp!.maxInputCurrentPerInput} A per channel`],
+                  ['Peak Efficiency', `${sp!.peakEfficiency}%`],
+                  ['EU Efficiency', `${sp!.euEfficiency}%`],
+                  ['MPPT Efficiency', `${sp!.mpptEfficiency}%`],
+                  ['AC Voltage', sp!.acVoltage],
+                  ['Frequency', sp!.acFrequency],
+                  ['Power Factor', sp!.powerFactor],
+                  ['Communication', sp!.communication],
+                  ['IP Rating', sp!.ipRating],
+                  ['Dimensions', sp!.dimensions],
+                  ['Weight', `${sp!.weight} kg`],
+                  ['Operating Temp', sp!.operatingTemp],
+                  ['Warranty', sp!.warranty],
+                ].map(([label, val]) => (
+                  <div class="flex items-start justify-between gap-4 py-2 border-b border-muted/10 last:border-0">
+                    <dt class="text-xs uppercase text-muted font-semibold tracking-wide shrink-0">{label}</dt>
+                    <dd class="text-sm text-foreground font-semibold text-right">{val}</dd>
+                  </div>
+                ))}
+              </dl>
+            </div>
+            <div class="bg-muted-foreground/5 border border-muted/20 rounded-2xl p-6 mb-6">
+              <h3 class="font-anton text-lg uppercase text-foreground mb-3">Price</h3>
+              <p class="text-3xl font-bold text-foreground">{formatPrice(sp!.sellingPrice)}</p>
+              <p class="text-xs text-muted mt-1">+ 12% GST = {formatPrice(Math.round(sp!.sellingPrice * 1.12))}</p>
+              <a href="/contact" class="mt-5 block w-full text-center font-anton text-base uppercase py-3 rounded-xl transition-colors" style="background:#ef4444; color:#fff;">
+                Get a Quote
+              </a>
+            </div>
+            <div class="bg-muted-foreground/5 border border-muted/20 rounded-2xl p-6">
+              <h3 class="font-anton text-lg uppercase text-foreground mb-3">Certifications</h3>
+              <div class="flex flex-wrap gap-2">
+                {sp!.certifications.map(c => (
+                  <span class="text-xs font-semibold px-3 py-1.5 rounded-lg" style={c.includes('BIS') ? 'background:rgba(239,68,68,0.1); color:#ef4444; border:1px solid rgba(239,68,68,0.2);' : 'background:rgba(255,255,255,0.05); color:#94a3b8;'}>{c}</span>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="py-10 px-4">
+        <div class="max-w-7xl mx-auto">
+          <h2 class="font-anton text-2xl md:text-3xl uppercase text-foreground mb-6">Ideal For</h2>
+          <div class="flex flex-wrap gap-3">
+            {sp!.useCases.map(uc => (
+              <span class="text-sm font-semibold px-4 py-2 rounded-full text-muted bg-muted-foreground/5 border border-muted/20">{uc}</span>
+            ))}
+          </div>
+        </div>
+      </section>
+    </>
+  )}
+
+  <!-- ── NEW BRAND PRODUCT LAYOUT (Solinteg / Vsole / RenewSys / Rayzon / Lithium Valley / BPL PowerZen) ──────── -->
+  {isNewBrand && (
+    <>
+      <section class="py-10 px-4 bg-background-foreground">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16">
+          <div class="lg:col-span-7">
+            <div class="flex flex-wrap items-center gap-2 mb-4">
+              <span class="text-sm font-bold uppercase tracking-widest px-3 py-1 rounded-full" style={`color:${heroBrandColor}; background:${heroBrandColor}18;`}>
+                {heroBrand}
+              </span>
+              <span class="text-xs font-semibold uppercase text-muted bg-muted-foreground/10 px-3 py-1 rounded-full">Supply Partner</span>
+            </div>
+            <h1 class="font-anton text-3xl md:text-5xl uppercase text-foreground leading-none mb-3">{heroName}</h1>
+            <p class="font-mono text-sm text-muted mb-6">Model: <span class="text-foreground font-semibold">{heroModel}</span></p>
+            <div class="flex flex-wrap gap-3 mb-8">
+              {heroStats.map(s => (
+                <div class="rounded-xl px-4 py-2 text-center" style={`background:${heroBrandColor}18; border:1px solid ${heroBrandColor}40;`}>
+                  <p class="text-xl font-bold" style={`color:${heroBrandColor}`}>{s.value}</p>
+                  <p class="text-[10px] uppercase text-muted font-semibold">{s.label}</p>
+                </div>
+              ))}
+            </div>
+            <p class="text-muted leading-relaxed mb-8">{heroDesc}</p>
+            <div class="mb-8">
+              <h2 class="font-anton text-xl uppercase text-foreground mb-4">Key Features</h2>
+              <ul class="space-y-3">
+                {heroFeatures.map(f => (
+                  <li class="flex items-start gap-3">
+                    <span class="mt-1 shrink-0 w-5 h-5 rounded-full flex items-center justify-center text-xs font-bold" style={`background:${heroBrandColor}25; color:${heroBrandColor}`}>✓</span>
+                    <span class="text-muted text-sm leading-relaxed">{f}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div>
+              <h2 class="font-anton text-xl uppercase text-foreground mb-4">Ideal For</h2>
+              <div class="flex flex-wrap gap-2">
+                {heroUseCases.map(uc => (
+                  <span class="text-xs bg-muted-foreground/10 border border-muted/20 px-3 py-1.5 rounded-full text-muted">{uc}</span>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          <div class="lg:col-span-5">
+            <div class="bg-muted-foreground/5 border border-muted/20 rounded-2xl p-6 mb-6">
+              <h3 class="font-anton text-lg uppercase text-foreground mb-4">Specifications</h3>
+              <dl class="space-y-3">
+                {newBrandSpecRows.map(([label, val]) => (
+                  <div class="flex items-start justify-between gap-4 py-2 border-b border-muted/10 last:border-0">
+                    <dt class="text-xs uppercase text-muted font-semibold tracking-wide shrink-0">{label}</dt>
+                    <dd class="text-sm text-foreground font-semibold text-right">{val}</dd>
+                  </div>
+                ))}
+              </dl>
+            </div>
+
+            <div class="bg-muted-foreground/5 border-2 rounded-2xl p-6 mb-6" style={`border-color:${heroBrandColor}40`}>
+              <h3 class="font-anton text-lg uppercase text-foreground mb-2">Pricing</h3>
+              <p class="text-2xl font-grotesk font-bold text-foreground mb-1">Contact for Quote</p>
+              <p class="text-xs text-muted mb-5">Per-unit pricing on enquiry · GST extra · EPC supply available</p>
+              <a href="/contact" class="block w-full text-center font-anton text-base uppercase py-3 rounded-xl transition-colors" style={`background:${heroBrandColor}; color:#fff`}>
+                Get a Quote
+              </a>
+            </div>
+
+            {newBrandCerts.length > 0 && (
+              <div class="bg-muted-foreground/5 border border-muted/20 rounded-2xl p-6">
+                <h3 class="font-anton text-lg uppercase text-foreground mb-3">Certifications</h3>
+                <div class="flex flex-wrap gap-2">
+                  {newBrandCerts.map(c => (
+                    <span class="text-xs font-semibold px-3 py-1.5 rounded-lg bg-muted-foreground/10 text-muted">{c}</span>
+                  ))}
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      </section>
+    </>
+  )}
+
   <!-- Related products (shared) -->
   {related.length > 0 && (
     <section class="py-16 px-4">
       <div class="max-w-7xl mx-auto">
         <h2 class="font-anton text-2xl md:text-3xl uppercase text-foreground mb-8">
-          More {isDeye ? p.category : isGoldi ? 'Goldi Solar' : t.category} Products
+          More {isDeye ? p.category : isGoldi ? 'Goldi Solar' : isHoymiles ? 'Hoymiles' : isTsun ? 'TSUN GEN3' : isNewBrand ? heroBrand : t.category} Products
         </h2>
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
           {isDeye
@@ -793,6 +1338,37 @@ const schema = isDeye ? {
                   <p class="text-[10px] text-muted mt-1">Contact for price · 5% GST</p>
                 </a>
               ))
+            : isHoymiles
+            ? (related as import('@/data/hoymiles-products').HoymilesProduct[]).map(r => (
+                <a href={`/products/${r.slug}/`} class="group bg-muted-foreground/5 hover:bg-muted-foreground/10 border border-muted/20 rounded-2xl p-5 transition-all" style="border-color: rgba(6,182,212,0.2);">
+                  <span class="text-[10px] font-bold uppercase tracking-widest px-2 py-0.5 rounded-full" style="color:#06b6d4; background:rgba(6,182,212,0.1);">{r.series} Series</span>
+                  <h3 class="font-grotesk font-bold text-foreground text-sm leading-snug mt-3 mb-1">{r.name}</h3>
+                  <p class="text-muted text-xs font-mono mb-2">{r.model}</p>
+                  <p class="text-sm text-muted">{r.powerW} W · {r.maxEfficiency}% eff.</p>
+                  <p class="text-lg font-bold mt-2" style="color:#06b6d4;">₹{r.sellingPrice.toLocaleString('en-IN')}</p>
+                  <p class="text-[10px] text-muted">+ 12% GST</p>
+                </a>
+              ))
+            : isTsun
+            ? (related as TsunProduct[]).map(r => (
+                <a href={`/products/${r.slug}/`} class="group bg-muted-foreground/5 hover:bg-muted-foreground/10 border border-muted/20 rounded-2xl p-5 transition-all" style="border-color: rgba(239,68,68,0.2);">
+                  <span class="text-[10px] font-bold uppercase tracking-widest px-2 py-0.5 rounded-full" style="color:#ef4444; background:rgba(239,68,68,0.1);">{r.series} · BIS</span>
+                  <h3 class="font-grotesk font-bold text-foreground text-sm leading-snug mt-3 mb-1">{r.name}</h3>
+                  <p class="text-muted text-xs font-mono mb-2">{r.model}</p>
+                  <p class="text-sm text-muted">{r.powerW} W · {r.peakEfficiency}% eff.</p>
+                  <p class="text-lg font-bold mt-2" style="color:#ef4444;">₹{r.sellingPrice.toLocaleString('en-IN')}</p>
+                  <p class="text-[10px] text-muted">+ 12% GST</p>
+                </a>
+              ))
+            : isNewBrand
+            ? (related as any[]).map(r => (
+                <a href={`/products/${(r as any).slug ?? ''}/`} class="group bg-muted-foreground/5 hover:bg-muted-foreground/10 border border-muted/20 rounded-2xl p-5 transition-all" style={`border-color:${heroBrandColor}33`}>
+                  <span class="text-[10px] font-bold uppercase tracking-widest px-2 py-0.5 rounded-full" style={`color:${heroBrandColor}; background:${heroBrandColor}18;`}>{heroBrand}</span>
+                  <h3 class="font-grotesk font-bold text-foreground text-sm leading-snug mt-3 mb-1 group-hover:text-secondary transition-colors">{r.name}</h3>
+                  {(r as any).model && <p class="text-muted text-xs font-mono mb-2">{(r as any).model}</p>}
+                  <p class="text-[10px] text-muted mt-1">Contact for price</p>
+                </a>
+              ))
             : (related as TechedgeProduct[]).map(r => (
                 <a href={`/products/${r.slug}/`} class="group bg-muted-foreground/5 hover:bg-muted-foreground/10 border border-muted/20 hover:border-secondary/40 rounded-2xl p-5 transition-all">
                   <span class="text-[10px] font-bold uppercase tracking-widest text-secondary bg-secondary/10 px-2 py-0.5 rounded-full">{r.subcategory}</span>
@@ -812,19 +1388,19 @@ const schema = isDeye ? {
   <section class="py-20 px-4 bg-secondary/5 border-t border-muted/10">
     <div class="max-w-2xl mx-auto text-center">
       <h2 class="font-anton text-3xl md:text-4xl uppercase text-foreground mb-4">
-        {isDeye ? 'Ready to Go Solar?' : 'Need Bulk Pricing or Custom Branding?'}
+        {isDeye || isGoldi || isHoymiles || isTsun || isNewBrand ? 'Ready to Go Solar?' : 'Need Bulk Pricing or Custom Branding?'}
       </h2>
       <p class="text-muted mb-8">
-        {isDeye
+        {isDeye || isGoldi || isHoymiles || isTsun || isNewBrand
           ? 'Get a free site survey and customised system design from Techedge — Bengaluru\'s trusted solar EPC partner with 200+ installations.'
           : 'Contact Techedge for MOQ pricing, custom packaging, NGO/CSR program documentation and pan-India delivery.'}
       </p>
       <div class="flex flex-col sm:flex-row gap-4 justify-center">
         <a href="/contact" class="bg-secondary text-black font-anton text-lg uppercase px-8 py-4 rounded-xl hover:bg-secondary/90 transition-colors">
-          {isDeye ? 'Get a Free Site Survey' : 'Get Bulk Quote'}
+          {isDeye || isGoldi || isHoymiles || isTsun || isNewBrand ? 'Get a Free Site Survey' : 'Get Bulk Quote'}
         </a>
-        <a href={isDeye ? '/projects' : '/solutions/microgrid-solar/'} class="bg-muted-foreground/10 text-foreground font-anton text-lg uppercase px-8 py-4 rounded-xl hover:bg-muted-foreground/20 transition-colors border border-muted/30">
-          {isDeye ? 'See Our Projects' : 'Microgrid Solution'}
+        <a href={isDeye || isGoldi || isHoymiles || isTsun || isNewBrand ? '/projects' : '/solutions/microgrid-solar/'} class="bg-muted-foreground/10 text-foreground font-anton text-lg uppercase px-8 py-4 rounded-xl hover:bg-muted-foreground/20 transition-colors border border-muted/30">
+          {isDeye || isGoldi || isHoymiles || isTsun || isNewBrand ? 'See Our Projects' : 'Microgrid Solution'}
         </a>
       </div>
     </div>

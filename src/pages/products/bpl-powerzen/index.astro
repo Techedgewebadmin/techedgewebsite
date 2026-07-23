@@ -1,0 +1,224 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import { bplPowerzenProducts } from "@/data/bpl-powerzen-products";
+
+const color = '#2563eb';
+const colorLight = 'rgba(37,99,235,0.12)';
+const colorBorder = 'rgba(37,99,235,0.25)';
+
+const p = bplPowerzenProducts[0];
+---
+
+<Layout
+  title="BPL PowerZen AIO Premium India | 6.5 KVA / 5kWh All-in-One Hybrid Inverter | Techedge"
+  description="BPL PowerZen AIO Premium — 6.5 KVA hybrid inverter with integrated 5kWh LFP battery in one tower. BIS certified, 10-year warranty, 6000 cycle life. Pan-India supply by Techedge."
+  keywords="BPL PowerZen, BPL PowerZen AIO Premium, all in one solar inverter battery India, 5kWh LFP battery inverter, BPL solar hybrid inverter India"
+>
+
+  <!-- Hero -->
+  <section class="pt-32 pb-16 px-4 border-b border-muted/10" style={`background:linear-gradient(135deg,#0a0a12 60%,${colorLight})`}>
+    <div class="max-w-7xl mx-auto">
+      <div class="flex items-center gap-3 mb-6">
+        <a href="/products/" class="text-muted text-sm hover:text-foreground transition-colors">Products</a>
+        <span class="text-muted/40">›</span>
+        <span style={`color:${color}`} class="text-sm font-semibold">BPL PowerZen</span>
+      </div>
+      <div class="flex flex-wrap items-start justify-between gap-6 mb-8">
+        <div>
+          <span class="text-xs font-bold uppercase tracking-widest mb-3 block" style={`color:${color}`}>Supply Partner</span>
+          <h1 class="font-anton text-5xl md:text-7xl uppercase text-white leading-none mb-4">BPL PowerZen</h1>
+          <p class="text-muted text-lg max-w-2xl">
+            All-in-one hybrid power system — inverter, controller and LiFePO4 battery integrated in a single tower.
+            Purpose-built for edge data centres, critical infrastructure, and commercial/industrial backup.
+          </p>
+        </div>
+        <span class="text-xs font-bold uppercase tracking-widest px-3 py-1.5 rounded-full border" style={`color:${color};background:${colorLight};border-color:${colorBorder}`}>BIS Certified</span>
+      </div>
+      <!-- Stat chips -->
+      <div class="flex flex-wrap gap-3">
+        {[
+          ['6.5 KVA', 'Rated Capacity'],
+          ['5 kWh', 'LFP Battery'],
+          ['6,000', 'Cycle Life'],
+          ['< 20 ms', 'Backup Switch'],
+          ['10 yrs', 'Warranty'],
+        ].map(([v, l]) => (
+          <div class="bg-muted-foreground/5 border border-muted/20 rounded-xl px-5 py-3">
+            <p class="text-xl font-grotesk font-bold text-white">{v}</p>
+            <p class="text-xs text-muted uppercase font-semibold">{l}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- General -->
+  <section class="py-16 px-4 border-b border-muted/10">
+    <div class="max-w-7xl mx-auto">
+      <h2 class="font-anton text-3xl uppercase text-foreground mb-2">General Data</h2>
+      <p class="text-muted text-sm mb-8">Single phase, all-in-one — inverter, controller and battery in one enclosure.</p>
+      <div class="overflow-x-auto rounded-2xl border border-muted/10">
+        <table class="w-full text-sm">
+          <tbody>
+            {[
+              ['Topology', 'Single phase, all-in-one'],
+              ['Battery type', 'Li-Ion (Lithium Ferrous Phosphate)'],
+              ['Operating ambient temperature', '10–45°C'],
+              ['Relative humidity', '5–95% (non-condensing)'],
+              ['Ingress protection', p.ipRating],
+              ['Cooling concept', 'Forced air cooled (inverter/MPPT), passive air cooled (battery)'],
+              ['Max. operation altitude', '2000 m'],
+              ['Grid connection standards', 'TT/TN'],
+              ['Warranty', p.warranty],
+            ].map(([label, val]) => (
+              <tr class="odd:bg-muted-foreground/5">
+                <td class="px-4 py-3 font-semibold text-foreground w-1/3">{label}</td>
+                <td class="px-4 py-3 text-muted">{val}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- Solar + Battery -->
+  <section class="py-16 px-4 border-b border-muted/10">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10">
+      <div>
+        <h2 class="font-anton text-3xl uppercase text-foreground mb-6">Solar Input</h2>
+        <div class="overflow-x-auto rounded-2xl border border-muted/10">
+          <table class="w-full text-sm">
+            <tbody>
+              {[
+                ['Recommended max. PV array size', '5000 W'],
+                ['Max. usable PV input power', `${p.maxPvInputW} W`],
+                ['Max. input voltage', '500 V'],
+                ['MPPT voltage range', p.mpptVoltageRange],
+                ['Start-up voltage', '60 V'],
+                ['Max. input current', '10 A per string'],
+                ['Max. short circuit current', 'Up to 15 A per string'],
+              ].map(([label, val]) => (
+                <tr class="odd:bg-muted-foreground/5">
+                  <td class="px-4 py-3 font-semibold text-foreground w-1/2">{label}</td>
+                  <td class="px-4 py-3 text-muted">{val}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div>
+        <h2 class="font-anton text-3xl uppercase text-foreground mb-6">Battery</h2>
+        <div class="overflow-x-auto rounded-2xl border border-muted/10">
+          <table class="w-full text-sm">
+            <tbody>
+              {[
+                ['Battery voltage', `${p.batteryVoltage} V`],
+                ['Battery capacity', `${p.batteryAh} Ah / ${p.batteryKWh} kWh`],
+                ['Continuous charge current', '27 A'],
+                ['Continuous discharge current', '90 A'],
+                ['Peak discharge current', '100 A (10 seconds)'],
+                ['Depth of discharge', `${p.dod}%`],
+                ['Cycle life', `${p.cycleLife.toLocaleString()}`],
+                ['Communication', 'RS-485, Modbus, CAN'],
+              ].map(([label, val]) => (
+                <tr class="odd:bg-muted-foreground/5">
+                  <td class="px-4 py-3 font-semibold text-foreground w-1/2">{label}</td>
+                  <td class="px-4 py-3 text-muted">{val}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- AC Output / Input -->
+  <section class="py-16 px-4 border-b border-muted/10">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10">
+      <div>
+        <h2 class="font-anton text-3xl uppercase text-foreground mb-6">AC Output</h2>
+        <div class="overflow-x-auto rounded-2xl border border-muted/10">
+          <table class="w-full text-sm">
+            <tbody>
+              {[
+                ['Rated output power', `${p.powerKW} kW`],
+                ['Max. AC output power', `${p.surgeKW} kW (5 seconds)`],
+                ['Rated voltage', p.acVoltage],
+                ['Rated grid frequency', '50 Hz'],
+                ['Rated output current', '32 A'],
+                ['Power factor', '0.8 inductive to 0.8 capacitive'],
+                ['THDi', '< 3%'],
+                ['Backup switch time', '< 20 ms'],
+                ['Efficiency', `${p.maxEfficiency}%`],
+              ].map(([label, val]) => (
+                <tr class="odd:bg-muted-foreground/5">
+                  <td class="px-4 py-3 font-semibold text-foreground w-1/2">{label}</td>
+                  <td class="px-4 py-3 text-muted">{val}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div>
+        <h2 class="font-anton text-3xl uppercase text-foreground mb-6">Protections</h2>
+        <div class="overflow-x-auto rounded-2xl border border-muted/10">
+          <table class="w-full text-sm">
+            <tbody>
+              {[
+                ['Anti-islanding protection', 'Yes'],
+                ['Output over current protection', 'Yes'],
+                ['Short circuit protection (MPPT)', 'Max. 20 A'],
+                ['Integrated DC switch', 'Yes'],
+                ['Surge protection', 'Yes (20 A)'],
+                ['Cell level monitoring', 'Yes — over/under voltage, over current, short circuit, high/low temperature'],
+              ].map(([label, val]) => (
+                <tr class="odd:bg-muted-foreground/5">
+                  <td class="px-4 py-3 font-semibold text-foreground w-1/2">{label}</td>
+                  <td class="px-4 py-3 text-muted">{val}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Key Features -->
+  <section class="py-16 px-4 border-b border-muted/10">
+    <div class="max-w-7xl mx-auto">
+      <h2 class="font-anton text-3xl uppercase text-foreground mb-10">Why BPL PowerZen AIO Premium</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
+        {[
+          ['All-in-One Tower', 'Inverter, controller and battery ship pre-integrated — no separate battery rack or cabling.'],
+          ['10-Year Warranty', 'Long-term coverage backed by BPL, a trusted Indian electronics brand.'],
+          ['6,000 Cycle Life', 'LiFePO4 chemistry rated for 90% depth of discharge across the battery lifetime.'],
+          ['Sub-20ms Backup', 'Near-instant transfer to battery on grid failure — critical loads stay up.'],
+          ['Cell-Level BMS', 'Per-cell monitoring with over/under voltage, current and temperature protection.'],
+          ['Multi-Protocol Comms', 'RS-485, Modbus and CAN for BMS integration and remote monitoring.'],
+        ].map(([title, desc]) => (
+          <div class="rounded-2xl p-6 border" style={`background:${colorLight};border-color:${colorBorder}`}>
+            <p class="font-bold text-foreground mb-2">{title}</p>
+            <p class="text-muted text-sm">{desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-16 px-4">
+    <div class="max-w-3xl mx-auto text-center">
+      <h2 class="font-anton text-3xl uppercase text-foreground mb-4">Enquire About BPL PowerZen</h2>
+      <p class="text-muted mb-8">Pan-India supply, installation and commissioning. Contact Techedge for pricing and availability.</p>
+      <a href="/contact" class="inline-block font-anton text-lg uppercase px-8 py-4 rounded-xl transition-colors" style={`background:${color};color:white`}>
+        Get a Quote →
+      </a>
+    </div>
+  </section>
+
+</Layout>

@@ -1,0 +1,174 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import { lvResidential, lvCommercial } from "@/data/lithium-valley-products";
+
+const color = '#14b8a6';
+const colorLight = 'rgba(20,184,166,0.10)';
+const colorBorder = 'rgba(20,184,166,0.22)';
+---
+
+<Layout
+  title="Lithium Valley LiFePO4 Batteries India | BIS Certified | Techedge"
+  description="Lithium Valley stackable LiFePO4 battery modules — 2.56 kWh to 215 kWh. BIS India certified, 6000 cycles, 10-year warranty. Residential and C&I BESS. Supply by Techedge Bengaluru."
+  keywords="Lithium Valley battery India, LiFePO4 battery India, BIS battery India, solar battery Bengaluru, BESS India"
+>
+
+  <!-- Hero -->
+  <section class="pt-32 pb-16 px-4 border-b border-muted/10" style={`background:linear-gradient(135deg,#0a0a12 60%,${colorLight})`}>
+    <div class="max-w-7xl mx-auto">
+      <div class="flex items-center gap-3 mb-6">
+        <a href="/products/" class="text-muted text-sm hover:text-white">Products</a>
+        <span class="text-muted/40">›</span>
+        <span style={`color:${color}`} class="text-sm font-semibold">Lithium Valley</span>
+      </div>
+      <span class="text-xs font-bold uppercase tracking-widest mb-3 block" style={`color:${color}`}>Supply Partner</span>
+      <h1 class="font-anton text-5xl md:text-7xl uppercase text-white leading-none mb-4">Lithium Valley</h1>
+      <p class="text-muted text-lg max-w-2xl mb-8">
+        BIS India certified LiFePO4 battery modules — stackable residential units from 2.56 kWh, scaling to 215 kWh commercial BESS systems.
+        6000 cycles at 80% DoD. Safe, maintenance-free, 10-year warranty.
+      </p>
+      <div class="flex flex-wrap gap-3">
+        {[
+          ['BIS Certified', 'R-41147222'],
+          ['6000 Cycles', '@ 80% DoD'],
+          ['2.56–215 kWh', 'Capacity Range'],
+          ['10 Years', 'Warranty'],
+          ['LiFePO4', 'Chemistry'],
+        ].map(([v, l]) => (
+          <div class="bg-muted-foreground/5 border border-muted/20 rounded-xl px-5 py-3">
+            <p class="text-xl font-grotesk font-bold text-white">{v}</p>
+            <p class="text-xs text-muted uppercase font-semibold">{l}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Residential Stackable -->
+  <section class="py-16 px-4 border-b border-muted/10">
+    <div class="max-w-7xl mx-auto">
+      <h2 class="font-anton text-3xl uppercase text-foreground mb-2">Residential Stackable Modules</h2>
+      <p class="text-muted text-sm mb-8">Wall or floor mount · Stack multiple units · Compatible with most hybrid inverters</p>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {lvResidential.map(p => (
+          <div class="rounded-2xl border p-8" style={`background:${colorLight};border-color:${colorBorder}`}>
+            <div class="flex items-start justify-between mb-5">
+              <div>
+                <p class="font-anton text-2xl text-foreground">{p.capacityKWh} kWh</p>
+                <p class="text-muted text-sm">{p.model}</p>
+              </div>
+              <span class="text-xs font-bold uppercase tracking-widest px-2 py-1 rounded-full border" style={`color:${color};border-color:${colorBorder};background:rgba(20,184,166,0.08)`}>
+                BIS Certified
+              </span>
+            </div>
+            <div class="grid grid-cols-2 gap-3 mb-5 text-xs">
+              {[
+                ['Capacity', `${p.capacityKWh} kWh / module`],
+                ['Max stacked', `${p.maxCapacityKWh} kWh (${p.maxStackLayers} layers)`],
+                ['Voltage', `${p.nominalVoltage} V nominal`],
+                ['Ah', `${p.capacityAh} Ah`],
+                ['Max charge', `${p.maxChargeCurrent} A`],
+                ['Cycle life', `${p.cycleLife.toLocaleString()} @ ${p.dod}% DoD`],
+                ['IP Rating', p.ipRating],
+                ['Warranty', p.warranty],
+              ].map(([k, v]) => (
+                <div class="bg-muted-foreground/10 rounded-xl px-3 py-2">
+                  <p class="text-muted uppercase tracking-wide" style="font-size:10px">{k}</p>
+                  <p class="font-semibold text-foreground text-xs mt-0.5">{v}</p>
+                </div>
+              ))}
+            </div>
+            <ul class="space-y-1.5">
+              {p.features.map(f => (
+                <li class="flex items-start gap-2 text-sm text-muted">
+                  <span style={`color:${color}`} class="mt-0.5 shrink-0">✓</span>
+                  {f}
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Commercial BESS -->
+  <section class="py-16 px-4 border-b border-muted/10">
+    <div class="max-w-7xl mx-auto">
+      <h2 class="font-anton text-3xl uppercase text-foreground mb-2">Commercial & Industrial BESS</h2>
+      <p class="text-muted text-sm mb-8">60 kWh to 215 kWh · Cabinet/rack format · High voltage systems</p>
+      <div class="overflow-x-auto rounded-2xl border border-muted/10">
+        <table class="w-full text-sm">
+          <thead>
+            <tr style={`background:${colorLight}`}>
+              {['System','Model','Capacity','Nominal V','Max Charge','Cycles','Form Factor','IP'].map(h => (
+                <th class="text-left px-4 py-3 text-xs font-bold uppercase tracking-wider text-foreground">{h}</th>
+              ))}
+            </tr>
+          </thead>
+          <tbody>
+            {lvCommercial.map((p, i) => (
+              <tr class={i % 2 === 0 ? 'bg-muted-foreground/5' : 'bg-transparent'}>
+                <td class="px-4 py-3 font-semibold text-foreground">{p.name.replace('Lithium Valley ','')}</td>
+                <td class="px-4 py-3 text-muted text-xs">{p.model}</td>
+                <td class="px-4 py-3 text-muted">{p.capacityKWh} kWh</td>
+                <td class="px-4 py-3 text-muted">{p.nominalVoltage} V</td>
+                <td class="px-4 py-3 text-muted">{p.maxChargeCurrent} A</td>
+                <td class="px-4 py-3 text-muted">{p.cycleLife.toLocaleString()}</td>
+                <td class="px-4 py-3 text-muted">{p.formFactor}</td>
+                <td class="px-4 py-3 text-muted">{p.ipRating}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- LiFePO4 vs Lead-acid -->
+  <section class="py-16 px-4 border-b border-muted/10">
+    <div class="max-w-7xl mx-auto">
+      <h2 class="font-anton text-3xl uppercase text-foreground mb-8">LiFePO4 vs Lead-Acid</h2>
+      <div class="overflow-x-auto rounded-2xl border border-muted/10">
+        <table class="w-full text-sm">
+          <thead>
+            <tr style={`background:${colorLight}`}>
+              {['Parameter','Lithium Valley LiFePO4','Lead-Acid / Tubular'].map(h => (
+                <th class="text-left px-4 py-3 text-xs font-bold uppercase tracking-wider text-foreground">{h}</th>
+              ))}
+            </tr>
+          </thead>
+          <tbody>
+            {[
+              ['Usable DoD', '80%', '50%'],
+              ['Cycle life', '6,000 cycles', '500–1,200 cycles'],
+              ['Calendar life', '15+ years', '3–5 years'],
+              ['Maintenance', 'None', 'Monthly watering'],
+              ['Indoor safety', 'Yes — no off-gassing', 'No — requires ventilation'],
+              ['Weight', '~50% lighter', 'Heavy'],
+              ['Total cost / kWh life', 'Lower', 'Higher'],
+            ].map(([param, lv, la], i) => (
+              <tr class={i % 2 === 0 ? 'bg-muted-foreground/5' : 'bg-transparent'}>
+                <td class="px-4 py-3 font-semibold text-foreground">{param}</td>
+                <td class="px-4 py-3 font-semibold" style={`color:${color}`}>{lv}</td>
+                <td class="px-4 py-3 text-muted">{la}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-16 px-4">
+    <div class="max-w-3xl mx-auto text-center">
+      <h2 class="font-anton text-3xl uppercase text-foreground mb-4">Enquire About Lithium Valley</h2>
+      <p class="text-muted mb-8">Residential and commercial battery storage systems. Supply by Techedge across Bengaluru and Karnataka.</p>
+      <a href="/contact" class="inline-block font-anton text-lg uppercase px-8 py-4 rounded-xl transition-colors" style={`background:${color};color:white`}>
+        Get a Quote →
+      </a>
+    </div>
+  </section>
+
+</Layout>
