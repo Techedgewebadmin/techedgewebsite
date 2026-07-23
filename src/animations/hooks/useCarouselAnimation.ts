@@ -1,45 +1,21 @@
-import { useEffect } from "react";
-import gsap from "gsap";
-
-interface CarouselAnimationOptions {
-  active?: gsap.TweenVars;
-  prev?: gsap.TweenVars;
-  next?: gsap.TweenVars;
-  hidden?: gsap.TweenVars;
-  duration?: number;
-}
+import { gsap } from 'gsap';
+import { useEffect } from 'react';
 
 export function useCarouselAnimation(
-  items: (HTMLDivElement | null)[],
-  currentIndex: number,
-  options: CarouselAnimationOptions = {}
+  cards: (HTMLDivElement | null)[],
+  currentIndex: number
 ) {
-  const {
-    active = { x: 0, scale: 1, opacity: 1, zIndex: 30 },
-    prev = { x: "-20%", scale: 0.9, opacity: 0.5, zIndex: 10 },
-    next = { x: "20%", scale: 0.9, opacity: 0.5, zIndex: 10 },
-    hidden = { opacity: 0, scale: 0.7, zIndex: 0 },
-    duration = 0.6,
-  } = options;
-
   useEffect(() => {
-    items.forEach((card, index) => {
+    cards.forEach((card, i) => {
       if (!card) return;
-
-      const offset = index - currentIndex;
-
-      let animation: gsap.TweenVars;
-
-      if (offset === 0) animation = active;
-      else if (offset === -1) animation = prev;
-      else if (offset === 1) animation = next;
-      else animation = hidden;
-
+      const offset = i - currentIndex;
       gsap.to(card, {
-        ...animation,
-        duration,
-        ease: "power3.out",
+        x: `${offset * 100}%`,
+        opacity: offset === 0 ? 1 : 0.4,
+        scale: offset === 0 ? 1 : 0.92,
+        duration: 0.45,
+        ease: 'power2.out',
       });
     });
-  }, [items, currentIndex]);
+  }, [cards, currentIndex]);
 }
