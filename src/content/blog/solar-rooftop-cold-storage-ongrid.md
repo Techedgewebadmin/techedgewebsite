@@ -3,7 +3,7 @@ title: "Solar Rooftop for Cold Storage: How to Reduce Running Costs with On-Grid
 description: "Cold storage electricity bills are among the highest in agri-business. Here's how an on-grid solar rooftop system cuts costs by ₹15–18 lakhs/year with payback under 3.5 years."
 date: "2026-01-20"
 category: "Cold Storage Solar"
-image: ../../assets/blog/cold-storage-interior.jpeg
+image: ../../assets/blog/cold-storage-ongrid-solar.jpg
 author: "Techedge Team"
 tags: ["cold storage", "on-grid solar", "rooftop solar", "electricity savings", "agri solar"]
 ---
@@ -13,7 +13,7 @@ Cold storage facilities are among the most energy-intensive assets in the agri a
 On-grid solar rooftop systems provide a practical, proven, and high-return solution to cut these costs without affecting operations.
 
 <div class="not-prose my-6" style="border-radius:20px;overflow:hidden;position:relative;">
-  <img src="/img/cold-storage-interior.jpeg" alt="Cold storage interior — evaporator fan units, perforated floor, and orange safety railings" style="width:100%;height:420px;object-fit:cover;display:block;" />
+  <img src="/img/cold-storage-interior.png" alt="Cold storage interior — evaporator fan units, perforated floor, and orange safety railings" style="width:100%;height:420px;object-fit:cover;display:block;" />
   <div style="position:absolute;bottom:0;left:0;right:0;padding:20px 28px;background:linear-gradient(transparent,rgba(15,23,42,0.88));">
     <p style="color:#86efac;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;margin:0 0 4px;">Facility Interior</p>
     <p style="color:white;font-size:14px;font-weight:600;margin:0;">Evaporator fan units, perforated floor panels, and insulated walls — the energy-intensive heart of a commercial cold storage</p>

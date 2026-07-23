@@ -16,11 +16,10 @@ client: "K.C. Thimmashetty"
 clientImage: "../../assets/projects/kc-thimmashetty-client.jpeg"
 additionalImages:
   - "../../assets/projects/kc-thimmashetty-client.jpeg"
-  - "../../assets/projects/kc-thimmashetty-aerial.jpeg"
+  - "../../assets/projects/kc-thimmashetty-panels.jpeg"
 heroFit: "cover"
 galleryImages:
   - "../../assets/projects/kc-thimmashetty-panels.jpeg"
-  - "../../assets/projects/kc-thimmashetty-aerial.jpeg"
   - "../../assets/projects/kc-thimmashetty-client.jpeg"
 mapUrl: "https://maps.google.com/maps?q=Bengaluru+Karnataka+Residential+Solar&output=embed&z=13"
 testimonials:
