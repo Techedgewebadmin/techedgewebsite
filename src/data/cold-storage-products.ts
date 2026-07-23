@@ -32,7 +32,7 @@ export interface ColdStorageProduct {
 export const coldStorageProducts: ColdStorageProduct[] = [
   {
     id: 'cs-5mt',
-    slug: 'smart-solar-cold-storage-5mt',
+    slug: 'smart-cold-storage-5mt',
     name: 'Techedge Smart Solar Cold Storage — 5MT',
     capacityMT: 5,
     totalPriceInclGst: 1306800,
@@ -91,7 +91,7 @@ export const coldStorageProducts: ColdStorageProduct[] = [
   },
   {
     id: 'cs-10mt',
-    slug: 'smart-solar-cold-storage-10mt',
+    slug: 'smart-cold-storage-10mt',
     name: 'Techedge Smart Solar Cold Storage — 10MT',
     capacityMT: 10,
     totalPriceInclGst: 2395800,

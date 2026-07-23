@@ -53,7 +53,7 @@ Instead of batteries, these systems store daytime solar energy as "cold" — in 
 | Temperature range | +2°C to +15°C adjustable | +2°C to +15°C adjustable |
 | Monitoring | IoT / mobile app | IoT / mobile app |
 
-Techedge builds exactly this configuration — see the [5MT Smart Solar Cold Storage](/products/smart-solar-cold-storage-5mt) and [10MT Smart Solar Cold Storage](/products/smart-solar-cold-storage-10mt) product pages for full specs and indicative EPC pricing.
+Techedge builds exactly this configuration — see the [5MT Smart Solar Cold Storage](/products/smart-cold-storage-5mt) and [10MT Smart Solar Cold Storage](/products/smart-cold-storage-10mt) product pages for full specs and indicative EPC pricing.
 
 ---
 

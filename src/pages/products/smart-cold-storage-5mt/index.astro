@@ -6,8 +6,8 @@ const color = '#0891b2';
 const colorLight = 'rgba(8,145,178,0.12)';
 const colorBorder = 'rgba(8,145,178,0.25)';
 
-const p = coldStorageProducts.find(c => c.slug === 'smart-solar-cold-storage-5mt')!;
-const other = coldStorageProducts.find(c => c.slug === 'smart-solar-cold-storage-10mt')!;
+const p = coldStorageProducts.find(c => c.slug === 'smart-cold-storage-5mt')!;
+const other = coldStorageProducts.find(c => c.slug === 'smart-cold-storage-10mt')!;
 
 const formatPrice = (n: number) =>
   new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', maximumFractionDigits: 0 }).format(n);
