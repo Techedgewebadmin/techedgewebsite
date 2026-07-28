@@ -72,6 +72,17 @@ button{
   z-index:0;
 }
 
+/* PAGE NUMBER FOOTER (stamped per printed page, see stampPageNumbers()) */
+.page-number-stamp{
+  position:absolute;
+  left:0;
+  width:100%;
+  text-align:center;
+  font-size:9px;
+  color:#888;
+  z-index:2;
+}
+
 #preview{
   position:relative;
   z-index:1;
@@ -275,8 +286,19 @@ input.field-error, textarea.field-error{
     padding:3mm;
   }
 
+  /* Convert grid to stable table for print */
   .grid-2x2{
+    display:table;
+    width:100%;
+    border-spacing:10px;
     gap:8px;
+  }
+
+  .section-box{
+    display:table-cell;
+    width:50%;
+    vertical-align:top;
+    page-break-inside:avoid;
   }
 
   table{
@@ -287,24 +309,15 @@ input.field-error, textarea.field-error{
     padding:5px;
   }
 
-}
-  /* Convert grid to stable table for print */
-  .grid-2x2{
-    display:table;
-    width:100%;
-    border-spacing:10px;
-  }
-
-  .section-box{
-    display:table-cell;
-    width:50%;
-    vertical-align:top;
-    page-break-inside:avoid;
-  }
-
+  /* position:fixed repeats the watermark on every printed page instead of
+     once at the midpoint of the whole (multi-page-tall) .document flow */
   .watermark{
+    position:fixed;
+    top:50%;
+    left:50%;
     opacity:0.04;
   }
+
 }
 
 </style>
@@ -1136,6 +1149,41 @@ let fileName="Quotation_"+cleanClient+"_"+qtNo.value+"_"+today.display;
 document.title=fileName;
 window.print();
 }
+
+/* PAGE NUMBERS: browsers paginate print output purely by content overflow,
+   with no CSS access to the resulting page count, so we estimate it by
+   comparing the rendered document height against one A4 page's printable
+   height (@page size:A4 margin:3mm) and stamp a footer at each page slice. */
+function mmToPx(mm){
+  let ref=document.createElement("div");
+  ref.style.cssText="position:absolute;visibility:hidden;height:"+mm+"mm;width:0;";
+  document.body.appendChild(ref);
+  let px=ref.offsetHeight;
+  document.body.removeChild(ref);
+  return px;
+}
+
+function clearPageNumbers(){
+  document.querySelectorAll(".page-number-stamp").forEach(el=>el.remove());
+}
+
+function stampPageNumbers(){
+  clearPageNumbers();
+  let docEl=document.querySelector(".document");
+  let pageHeight=mmToPx(297-6); /* A4 height minus top+bottom @page margin */
+  let totalPages=Math.max(1,Math.ceil(docEl.scrollHeight/pageHeight));
+
+  for(let i=0;i<totalPages;i++){
+    let stamp=document.createElement("div");
+    stamp.className="page-number-stamp";
+    stamp.textContent="Page "+(i+1)+" of "+totalPages;
+    stamp.style.top=((i+1)*pageHeight-14)+"px";
+    docEl.appendChild(stamp);
+  }
+}
+
+window.addEventListener("beforeprint",stampPageNumbers);
+window.addEventListener("afterprint",clearPageNumbers);
 
 /* SCOPE/TERMS TEMPLATES (only applied to untouched fields) */
 const SCOPE_TEMPLATES={
