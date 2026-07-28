@@ -208,8 +208,57 @@ th{
   margin:3mm;
 }
 
+.why-us{
+  padding:20px 20px 4px;
+  max-width:1200px;
+  margin:0 auto;
+}
+
+.why-us h2{
+  font-size:12.5px;
+  font-weight:bold;
+  color:#0a5c3b;
+  text-transform:uppercase;
+  letter-spacing:0.03em;
+  margin:0 0 12px;
+}
+
+.why-us-grid{
+  display:grid;
+  grid-template-columns:repeat(4, 1fr);
+  gap:14px;
+}
+
+.why-us-card{
+  background:white;
+  border:1px solid #dbe2e8;
+  border-radius:6px;
+  padding:14px 16px;
+}
+
+.why-us-card h3{
+  font-size:13px;
+  color:#0a5c3b;
+  margin:0 0 6px;
+}
+
+.why-us-card p{
+  font-size:12px;
+  color:#555;
+  margin:0;
+  line-height:1.5;
+}
+
+@media (max-width:900px){
+  .why-us-grid{ grid-template-columns:repeat(2, 1fr); }
+}
+
+@media (max-width:560px){
+  .why-us-grid{ grid-template-columns:1fr; }
+}
+
 @media print{
-  header,.left{ display:none; }
+  header,.left,.why-us{ display:none; }
   body{ background:white; }
   .right{ padding:0; }
   .document{ box-shadow:none; width:100%; min-height:auto; padding:3mm; }
@@ -226,6 +275,28 @@ th{
   </div>
   <button onclick="window.print()">Print / Save as PDF</button>
 </header>
+
+<section class="why-us">
+  <h2>Why Partner With Techedge</h2>
+  <div class="why-us-grid">
+    <div class="why-us-card">
+      <h3>200+ Installations Delivered</h3>
+      <p>From 5 kWp rooftops to 1 MW industrial plants, on time and within budget.</p>
+    </div>
+    <div class="why-us-card">
+      <h3>Tier-1, Certified Equipment</h3>
+      <p>IEC, TÜV, and CE-certified panels, inverters, and BOS, backed by 25-year performance warranties.</p>
+    </div>
+    <div class="why-us-card">
+      <h3>In-House Expert Team</h3>
+      <p>Our own electrical engineers and certified technicians handle design through commissioning — not subcontracted labour.</p>
+    </div>
+    <div class="why-us-card">
+      <h3>Fast, Transparent Rate Cards</h3>
+      <p>Tools like this one give you instant, predictable labour pricing so you can quote clients in minutes.</p>
+    </div>
+  </div>
+</section>
 
 <div class="container">
 
