@@ -31,6 +31,7 @@ function url(path: string, priority: string, changefreq: string, lastmod = today
 export const GET: APIRoute = async () => {
   const projects = await getCollection('projects');
   const posts    = await getCollection('blog');
+  const jobs     = await getCollection('jobs');
 
   const entries = [
     // Core pages
@@ -40,6 +41,7 @@ export const GET: APIRoute = async () => {
     url('/projects/',   '0.9', 'monthly'),
     url('/services/',   '0.8', 'monthly'),
     url('/blog/',       '0.8', 'weekly'),
+    url('/careers/',    '0.8', 'weekly'),
     url('/about/',      '0.7', 'monthly'),
     url('/contact/',    '0.8', 'monthly'),
     url('/calculator/', '0.7', 'monthly'),
@@ -74,6 +76,14 @@ export const GET: APIRoute = async () => {
       '0.7',
       'monthly',
       p.data.date ? new Date(p.data.date).toISOString().split('T')[0] : today
+    )),
+
+    // Job postings (auto from content collection)
+    ...jobs.filter(j => j.data.isActive).map(j => url(
+      `/careers/${j.id}/`,
+      '0.7',
+      'weekly',
+      j.data.datePosted ? new Date(j.data.datePosted).toISOString().split('T')[0] : today
     )),
 
     // Product pages — Deye

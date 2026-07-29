@@ -12,6 +12,7 @@ export const navItems: NavItem[] = [
   { title: "Projects", href: "/projects", sectionId: "projects", icon: "mdi:folder-multiple" },
   { title: "Services", href: "/services", icon: "mdi:tools" },
   { title: "Blog", href: "/blog", icon: "mdi:post" },
+  { title: "Careers", href: "/careers", icon: "mdi:briefcase-outline" },
   { title: "About Us", href: "/about", sectionId: "about", icon: "mdi:information" },
   { title: "Contact Us", href: "/contact", sectionId: "contact", icon: "mdi:email" },
 ];

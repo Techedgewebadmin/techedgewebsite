@@ -1,0 +1,122 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import { getCollection } from "astro:content";
+
+const jobs = (await getCollection("jobs")).filter((j) => j.data.isActive);
+const sortedJobs = jobs.sort(
+  (a, b) => new Date(b.data.datePosted).getTime() - new Date(a.data.datePosted).getTime()
+);
+---
+
+<Layout
+  title="Solar Jobs in Karnataka & Maharashtra | Techedge Careers"
+  description="We're hiring: Field Sales Executive & Solar Installation Engineer in Karnataka, plus FPO Relationship & Gap Finance Managers in Karnataka and Maharashtra. Apply to Techedge Solar today."
+  keywords="solar jobs Karnataka, solar jobs Maharashtra, renewable energy sales jobs Karnataka, solar installation engineer jobs Karnataka, FPO relationship manager jobs, gap finance solar jobs, solar company jobs India, Techedge careers, solar EPC jobs Karnataka Maharashtra"
+>
+  <!-- Hero -->
+  <section class="fixed top-0 left-0 w-full h-dvh overflow-hidden z-0">
+    <video
+      class="absolute inset-0 w-full h-full object-cover pointer-events-none"
+      muted autoplay loop playsinline transition:persist
+    >
+      <source src="/videos/video5.mp4" type="video/mp4" />
+    </video>
+    <div class="absolute inset-0 bg-black opacity-50 pointer-events-none"></div>
+    <div class="relative z-10 h-full flex items-baseline-last justify-between p-4 lg:p-12">
+      <div class="max-w-3xl space-y-4 text-accent-foreground">
+        <span data-hero-el class="font-anton text-base md:text-lg lg:text-xl uppercase tracking-wide text-secondary">
+          Careers at Techedge
+        </span>
+        <h1 data-hero-el class="text-4xl lg:text-6xl xl:text-8xl font-anton uppercase leading-none">
+          Build India's Solar Future
+        </h1>
+        <p data-hero-el class="text-base lg:text-lg xl:text-xl mt-4 max-w-xl font-sans">
+          We're hiring across Karnataka and Maharashtra — field sales, FPO partnerships & gap finance, and solar installation engineering.
+        </p>
+      </div>
+    </div>
+  </section>
+  <div class="h-dvh"></div>
+
+  <!-- Job Listings -->
+  <div class="relative z-10 bg-background-foreground">
+    <section class="py-16 md:py-24">
+      <div class="container mx-auto px-4 max-w-7xl">
+
+        <div class="mb-12">
+          <span class="font-mono text-sm font-bold uppercase tracking-wider text-secondary">Open Roles</span>
+          <h2 class="text-4xl md:text-5xl font-anton uppercase mt-2 text-foreground leading-tight">
+            Current Openings
+          </h2>
+        </div>
+
+        {sortedJobs.length > 0 ? (
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {sortedJobs.map((job) => (
+              <a
+                href={`/careers/${job.id}`}
+                class="group bg-white rounded-2xl border border-muted/30 overflow-hidden flex flex-col p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:border-secondary"
+              >
+                <div class="flex items-center gap-2 mb-4">
+                  <span class="bg-secondary text-foreground text-xs font-bold uppercase tracking-widest px-3 py-1 rounded-full">
+                    {job.data.department}
+                  </span>
+                  <span class="text-xs font-mono uppercase tracking-wider text-muted-foreground border border-muted/40 px-3 py-1 rounded-full">
+                    {job.data.type}
+                  </span>
+                </div>
+                <h3 class="font-anton text-xl md:text-2xl uppercase text-foreground leading-tight mb-3 group-hover:text-secondary transition-colors">
+                  {job.data.title}
+                </h3>
+                <p class="text-muted-foreground text-sm leading-relaxed font-grotesk line-clamp-3 flex-1">
+                  {job.data.summary}
+                </p>
+                <p class="text-xs font-mono uppercase tracking-wider text-muted-foreground mt-4">
+                  📍 {job.data.location} &nbsp;·&nbsp; {job.data.experience}
+                </p>
+                <div class="mt-5 flex items-center gap-2 font-semibold text-sm text-secondary-foreground group-hover:gap-3 group-hover:text-secondary transition-all duration-300">
+                  View Role <span>→</span>
+                </div>
+              </a>
+            ))}
+          </div>
+        ) : (
+          <div class="bg-white rounded-2xl border border-muted/30 p-12 text-center">
+            <p class="text-lg font-grotesk text-muted-foreground mb-4">
+              No open roles right now — but we're always happy to hear from great people.
+            </p>
+            <a
+              href="mailto:sales@techedgeindia.co.in?subject=Resume for Future Openings"
+              class="inline-flex items-center gap-2 font-semibold text-secondary-foreground hover:text-secondary transition-colors"
+            >
+              Send us your resume <span>→</span>
+            </a>
+          </div>
+        )}
+
+        <!-- Why Techedge -->
+        <div class="mt-20 grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div>
+            <h3 class="font-anton text-lg uppercase text-foreground mb-2">Real Impact</h3>
+            <p class="text-muted-foreground text-sm font-grotesk leading-relaxed">
+              Work on solar projects that power homes, farms, and businesses across India — on-grid, off-grid, and hybrid.
+            </p>
+          </div>
+          <div>
+            <h3 class="font-anton text-lg uppercase text-foreground mb-2">Grow Fast</h3>
+            <p class="text-muted-foreground text-sm font-grotesk leading-relaxed">
+              A young, fast-growing EPC company — hands-on ownership from day one, with room to move into bigger roles.
+            </p>
+          </div>
+          <div>
+            <h3 class="font-anton text-lg uppercase text-foreground mb-2">Field-First Culture</h3>
+            <p class="text-muted-foreground text-sm font-grotesk leading-relaxed">
+              We're on the ground with customers and FPOs across Karnataka and Maharashtra, not stuck behind a desk.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </div>
+</Layout>

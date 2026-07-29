@@ -49,4 +49,24 @@ const projects = defineCollection({
   }),
 });
 
-export const collections = { projects, blog };
+const jobs = defineCollection({
+  loader: glob({ base: "./src/content/jobs", pattern: "**/*.{md,mdx}" }),
+  schema: z.object({
+    title: z.string(),
+    department: z.string(),
+    location: z.string(),
+    type: z.enum(['Full-time', 'Part-time', 'Contract']).default('Full-time'),
+    experience: z.string().optional(),
+    datePosted: z.string(),
+    summary: z.string(),
+    seoTitle: z.string().optional(),
+    keywords: z.string().optional(),
+    responsibilities: z.array(z.string()),
+    requirements: z.array(z.string()),
+    niceToHave: z.array(z.string()).optional(),
+    applyEmail: z.string().default('sales@techedgeindia.co.in'),
+    isActive: z.boolean().default(true),
+  }),
+});
+
+export const collections = { projects, blog, jobs };

@@ -1,0 +1,179 @@
+---
+import { getCollection } from "astro:content";
+import type { GetStaticPaths } from "astro";
+import Layout from "@/layouts/Layout.astro";
+import JobApplicationForm from "@/components/sections/careers/JobApplicationForm.astro";
+
+export const prerender = true;
+
+export const getStaticPaths = (async () => {
+  const jobs = await getCollection("jobs");
+  return jobs.map((job) => ({
+    params: { slug: job.id },
+    props: { job },
+  }));
+}) satisfies GetStaticPaths;
+
+const { job } = Astro.props;
+const {
+  title,
+  department,
+  location,
+  type,
+  experience,
+  datePosted,
+  summary,
+  seoTitle,
+  keywords,
+  responsibilities,
+  requirements,
+  niceToHave,
+  applyEmail,
+} = job.data;
+
+const formattedDate = new Date(datePosted).toLocaleDateString("en-IN", {
+  day: "numeric",
+  month: "long",
+  year: "numeric",
+});
+
+const employmentTypeMap: Record<string, string> = {
+  "Full-time": "FULL_TIME",
+  "Part-time": "PART_TIME",
+  "Contract": "CONTRACTOR",
+};
+
+const addressRegion = location.split(",")[0].trim();
+---
+
+<Layout
+  title={seoTitle ?? `${title} – ${addressRegion} | Techedge Careers`}
+  description={summary}
+  keywords={keywords ?? `${title}, ${department} jobs, solar jobs ${addressRegion}, Techedge careers`}
+>
+
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "JobPosting",
+    "title": title,
+    "description": summary,
+    "datePosted": datePosted,
+    "employmentType": employmentTypeMap[type] ?? "FULL_TIME",
+    "hiringOrganization": {
+      "@type": "Organization",
+      "name": "Techedge Solar",
+      "sameAs": "https://techedgeindia.co.in",
+    },
+    "jobLocation": {
+      "@type": "Place",
+      "address": {
+        "@type": "PostalAddress",
+        "addressRegion": addressRegion,
+        "addressCountry": "IN",
+      },
+    },
+    "directApply": true,
+    "url": Astro.url.href,
+  })} />
+
+  <!-- Hero -->
+  <section class="fixed top-0 left-0 w-full h-dvh overflow-hidden z-0">
+    <video
+      class="absolute inset-0 w-full h-full object-cover pointer-events-none"
+      muted autoplay loop playsinline transition:persist
+    >
+      <source src="/videos/video5.mp4" type="video/mp4" />
+    </video>
+    <div class="absolute inset-0 bg-black opacity-60 pointer-events-none"></div>
+    <div class="relative z-10 h-full flex items-baseline-last p-4 lg:p-12">
+      <div class="max-w-3xl space-y-4 text-accent-foreground">
+        <span data-hero-el class="font-anton text-base md:text-lg uppercase tracking-wide text-secondary">
+          {department}
+        </span>
+        <h1 data-hero-el class="text-3xl lg:text-5xl xl:text-7xl font-anton uppercase leading-none">
+          {title}
+        </h1>
+        <p data-hero-el class="text-sm lg:text-base font-mono text-muted-foreground uppercase tracking-widest">
+          📍 {location} &nbsp;·&nbsp; {type} &nbsp;·&nbsp; {experience} &nbsp;·&nbsp; Posted {formattedDate}
+        </p>
+      </div>
+    </div>
+  </section>
+  <div class="h-dvh"></div>
+
+  <!-- Content -->
+  <div class="relative z-10 bg-background-foreground">
+    <div class="max-w-4xl mx-auto px-4 py-16 md:py-24">
+
+      <!-- Back link -->
+      <a href="/careers" class="inline-flex items-center gap-2 text-sm font-mono uppercase tracking-wider text-secondary hover:opacity-80 transition-opacity mb-12">
+        ← Back to Careers
+      </a>
+
+      <p class="text-lg font-grotesk text-muted-foreground leading-relaxed mb-10">
+        {summary}
+      </p>
+
+      <!-- Apply CTA -->
+      <a
+        href="#apply"
+        class="inline-flex items-center gap-2 bg-secondary text-foreground font-bold uppercase tracking-wide px-8 py-4 rounded-xl hover:opacity-90 transition-opacity mb-12"
+      >
+        Apply Now <span>↓</span>
+      </a>
+
+      <!-- Responsibilities -->
+      <div class="mb-10">
+        <h2 class="font-anton text-2xl uppercase text-foreground mb-4">Responsibilities</h2>
+        <ul class="space-y-3">
+          {responsibilities.map((item: string) => (
+            <li class="flex gap-3 text-muted-foreground font-grotesk leading-relaxed">
+              <span class="text-secondary shrink-0">●</span>
+              <span>{item}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- Requirements -->
+      <div class="mb-10">
+        <h2 class="font-anton text-2xl uppercase text-foreground mb-4">Requirements</h2>
+        <ul class="space-y-3">
+          {requirements.map((item: string) => (
+            <li class="flex gap-3 text-muted-foreground font-grotesk leading-relaxed">
+              <span class="text-secondary shrink-0">●</span>
+              <span>{item}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- Nice to have -->
+      {niceToHave && niceToHave.length > 0 && (
+        <div class="mb-12">
+          <h2 class="font-anton text-2xl uppercase text-foreground mb-4">Nice to Have</h2>
+          <ul class="space-y-3">
+            {niceToHave.map((item: string) => (
+              <li class="flex gap-3 text-muted-foreground font-grotesk leading-relaxed">
+                <span class="text-secondary shrink-0">●</span>
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+
+      <!-- Application Form -->
+      <div id="apply" class="bg-white rounded-2xl border border-muted/30 p-6 md:p-10 scroll-mt-24">
+        <h3 class="font-anton text-2xl uppercase text-foreground mb-2">Apply Now</h3>
+        <p class="text-muted-foreground font-grotesk mb-8">
+          Fill out the form below and attach your resume — or email us directly at
+          <a href={`mailto:${applyEmail}`} class="text-secondary-foreground hover:text-secondary transition-colors font-semibold">{applyEmail}</a>.
+        </p>
+        <JobApplicationForm jobTitle={title} location={location} />
+      </div>
+
+    </div>
+  </div>
+
+</Layout>

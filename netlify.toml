@@ -13,3 +13,11 @@
   type = "email"
   to = "sales@techedgeindia.co.in"
   subject = "New Solar ROI Lead — {{name}} ({{system-kwp}} kWp, {{city}})"
+
+[[forms]]
+  name = "job-application"
+
+[forms.notifications.job-application]
+  type = "email"
+  to = "sales@techedgeindia.co.in"
+  subject = "New Job Application — {{job-title}} ({{name}})"
