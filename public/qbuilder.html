@@ -494,6 +494,13 @@ input.field-error, textarea.field-error{
 <div class="field-error-msg" id="err-shipAddress">Ship To address is required</div>
 </div>
 
+<div style="font-size:10px;margin-bottom:8px;padding:6px 10px;border-radius:5px;background:#fff7ed;border:1px solid #fed7aa;color:#9a3412">
+📦 E-way bill required for shipments above ₹50,000 (Karnataka: intra- and inter-state) — generate separately on the GST e-way bill portal; fields below are for reference on the printed invoice only.
+</div>
+<input id="transporterName" placeholder="Transporter Name (optional)">
+<input id="vehicleNo" placeholder="Vehicle No. (optional)" style="text-transform:uppercase">
+<input id="ewayBillNo" placeholder="E-Way Bill No. (optional — fill in after generating on the GST portal)">
+
 <input id="subject" placeholder="Quotation Subject (optional), e.g. Supply of Electrical Panel & Switchgear">
 
 <h3>Line Items</h3>
@@ -1251,6 +1258,15 @@ let shipCityLine=(getShipCityName() || shipPin.value)
   ? [getShipCityName(), STATE_CODES[shipState.value]].filter(Boolean).join(', ')+(shipPin.value?' - '+shipPin.value:'')
   : '';
 
+let transporterNameVal=document.getElementById('transporterName').value;
+let vehicleNoVal=document.getElementById('vehicleNo').value.toUpperCase();
+let ewayBillNoVal=document.getElementById('ewayBillNo').value;
+let transportLine=[
+  transporterNameVal ? 'Transporter: '+transporterNameVal : '',
+  vehicleNoVal ? 'Vehicle No: '+vehicleNoVal : '',
+  ewayBillNoVal ? 'E-Way Bill No: '+ewayBillNoVal : ''
+].filter(Boolean).join(' &middot; ');
+
 preview.innerHTML=`
 
 <div class="proposal-heading">${headingText}</div>
@@ -1295,6 +1311,11 @@ ${docType==='invoice' ? '<br><b>Place of Supply:</b> '+placeOfSupply+'<br><b>Rev
         (shipCityLine ? '<br>' + shipCityLine : '')
       )}
 </div>
+
+${transportLine ? `
+<div style="margin:0 0 10px;padding:6px 10px;background:#f9fafb;border:1px solid #ccc;border-radius:4px;font-size:10.5px;color:#333">
+  <b style="color:#0a5c3b">Transport Details:</b> ${transportLine}
+</div>` : ''}
 
 ${docType==='proforma' ? `
 <div style="margin:14px 0; padding:8px 12px; background:#fffbeb; border:1px solid #fde68a; border-radius:4px; font-size:11px; color:#92400e; line-height:1.6;">
