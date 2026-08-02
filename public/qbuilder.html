@@ -466,6 +466,7 @@ input.field-error, textarea.field-error{
 <input id="clientCityOther" placeholder="Enter city name" style="display:none">
 <input id="clientPin" placeholder="PIN Code" maxlength="6">
 <div style="font-size:10px;color:#888;margin:-4px 0 8px;">State/City used always — PIN is auto-filled from City as a starting reference (a city can have multiple PINs) — edit freely.</div>
+<div id="stateLockHint" style="font-size:10px;color:#888;margin:-4px 0 8px;display:none;">State is locked to the GSTIN entered above — clear the GSTIN to pick a different state manually.</div>
 <div class="gst-indicator" id="gstTypeIndicator">🏠 <b>Intra-State (Karnataka)</b> — CGST + SGST will apply</div>
 <div class="checkbox-field" id="reverseChargeField" style="display:none">
 <input type="checkbox" id="reverseCharge">
@@ -950,6 +951,17 @@ function syncStateFromGSTIN(){
     toggleClientCityOther();
     autoFillPin();
   }
+  updateStateLock();
+}
+
+// getClientStateCode() always prefers the GSTIN's own state prefix once one is
+// entered — lock the dropdown in step with that so it can never visibly disagree
+// with the GSTIN printed right above it. Re-enabled the moment the GSTIN is cleared.
+function updateStateLock(){
+  const gstinVal=(clientGST.value||'').trim();
+  const locked=gstinVal.length>=2;
+  clientState.disabled=locked;
+  document.getElementById('stateLockHint').style.display=locked ? 'block' : 'none';
 }
 
 function updateGSTIndicator(){
@@ -1661,6 +1673,7 @@ clientPin.addEventListener("input",()=>{clientPin.dataset.userSet="true";});
 populateCityOptions();
 toggleClientCityOther();
 autoFillPin();
+updateStateLock();
 
 shipSameAsBill.addEventListener("change",()=>{toggleShipToFields();updatePreview();});
 shipGST.addEventListener("input",validateShipGSTFormat);
