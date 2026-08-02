@@ -386,9 +386,30 @@ input.field-error, textarea.field-error{
 <button type="button" data-type="invoice">Tax Invoice</button>
 </div>
 
+<details style="margin:0 0 16px;border:1px solid #ccc;border-radius:6px;padding:8px 12px;background:#f9fafb">
+<summary style="cursor:pointer;font-size:12px;font-weight:bold;color:#0a5c3b">⚙ Invoice Sequence Admin</summary>
+<div style="margin-top:10px;font-size:12px">
+<select id="seqAdminPrefix">
+<option value="TEQ">Quotation (TEQ)</option>
+<option value="TEP">Proforma (TEP)</option>
+<option value="TEI">Tax Invoice (TEI)</option>
+</select>
+<input id="seqAdminFY" placeholder="FY e.g. 2026-27">
+<button type="button" class="btn-add-row" onclick="checkSeqAdmin()">Check Current</button>
+<div id="seqAdminCurrent" style="font-size:11px;color:#555;margin:2px 0 8px;"></div>
+<input id="seqAdminSetValue" type="number" min="0" placeholder="Set next number to...">
+<button type="button" class="btn-add-row" onclick="setSeqAdmin()">Save</button>
+<div id="seqAdminStatus" style="font-size:11px;color:#888;margin-top:6px"></div>
+</div>
+</details>
+
 <h3>Client Details</h3>
 
-<input id="qtNo">
+<div style="display:flex;gap:8px;align-items:flex-start">
+<input id="qtNo" style="flex:1">
+<button type="button" class="btn-add-row" style="margin-bottom:10px;white-space:nowrap" onclick="getNextInvoiceNumber()">Get Next No.</button>
+</div>
+<div id="seqStatus" style="font-size:10px;color:#888;margin:-6px 0 8px;"></div>
 <input id="date" type="date">
 
 <input id="clientName" placeholder="Client Company Name *">
@@ -453,6 +474,24 @@ input.field-error, textarea.field-error{
 
 <textarea id="delivery" placeholder="Billing Address *"></textarea>
 <div class="field-error-msg" id="err-delivery">Billing address is required</div>
+
+<h3>Shipping Details</h3>
+<div class="checkbox-field">
+<input type="checkbox" id="shipSameAsBill" checked>
+<label style="text-transform:none;font-size:12px;font-weight:normal;color:#333">Ship To same as Bill To</label>
+</div>
+<div id="shipToFields" style="display:none">
+<input id="shipName" placeholder="Ship To Name / Site / Branch *">
+<div class="field-error-msg" id="err-shipName">Ship To name is required</div>
+<input id="shipGST" placeholder="Ship To GSTIN (optional — e-way bill reference only)" style="text-transform:uppercase">
+<div class="field-error-msg" id="err-shipGST">Invalid GSTIN format (expected 15 characters)</div>
+<select id="shipState"></select>
+<select id="shipCity"></select>
+<input id="shipCityOther" placeholder="Enter city name" style="display:none">
+<input id="shipPin" placeholder="PIN Code" maxlength="6">
+<textarea id="shipAddress" placeholder="Ship To Address *"></textarea>
+<div class="field-error-msg" id="err-shipAddress">Ship To address is required</div>
+</div>
 
 <input id="subject" placeholder="Quotation Subject (optional), e.g. Supply of Electrical Panel & Switchgear">
 
@@ -653,6 +692,85 @@ document.querySelectorAll('#doctypeToggle button').forEach(b=>{
   b.addEventListener('click',()=>setDocType(b.dataset.type));
 });
 
+/* INVOICE SEQUENCE (persistent, cross-device, backed by Netlify Blobs via /api/invoice-seq) */
+function getFYLabel(d){
+  const y=d.getFullYear();
+  const m=d.getMonth(); /* 0 = Jan */
+  const startYear = m>=3 ? y : y-1; /* Indian FY: 1 Apr - 31 Mar */
+  const endYY=String((startYear+1)%100).padStart(2,'0');
+  return startYear+'-'+endYY;
+}
+
+async function getNextInvoiceNumber(){
+  const statusEl=document.getElementById('seqStatus');
+  const prefix=DOC_TYPES[getDocType()].prefix;
+  const fy=getFYLabel(date.value ? new Date(date.value) : new Date());
+  statusEl.style.color='#888';
+  statusEl.textContent='Fetching next number…';
+  try{
+    const res=await fetch('/api/invoice-seq',{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({prefix,fy})
+    });
+    if(!res.ok) throw new Error('HTTP '+res.status);
+    const data=await res.json();
+    qtNo.value=prefix+'-'+fy+'-'+String(data.number).padStart(4,'0');
+    statusEl.style.color='#0a5c3b';
+    statusEl.textContent='Assigned '+qtNo.value+' — reserved, will not repeat.';
+    updatePreview();
+  }catch(err){
+    statusEl.style.color='#dc2626';
+    statusEl.textContent='Could not reach the sequence service — enter the number manually, or try again.';
+  }
+}
+
+async function checkSeqAdmin(){
+  const prefix=document.getElementById('seqAdminPrefix').value;
+  const fyField=document.getElementById('seqAdminFY');
+  const fy=fyField.value.trim() || getFYLabel(new Date());
+  fyField.value=fy;
+  const out=document.getElementById('seqAdminCurrent');
+  out.textContent='Checking…';
+  try{
+    const res=await fetch('/api/invoice-seq?prefix='+encodeURIComponent(prefix)+'&fy='+encodeURIComponent(fy));
+    if(!res.ok) throw new Error('HTTP '+res.status);
+    const data=await res.json();
+    out.textContent='Last number issued for '+prefix+' '+fy+': '+data.number+' (next auto-assign will be '+(data.number+1)+')';
+  }catch(err){
+    out.textContent='Could not check the sequence service — see console for details.';
+  }
+}
+
+async function setSeqAdmin(){
+  const prefix=document.getElementById('seqAdminPrefix').value;
+  const fyField=document.getElementById('seqAdminFY');
+  const fy=fyField.value.trim() || getFYLabel(new Date());
+  fyField.value=fy;
+  const value=Number(document.getElementById('seqAdminSetValue').value);
+  const status=document.getElementById('seqAdminStatus');
+  if(!Number.isFinite(value) || value<0){
+    status.style.color='#dc2626';
+    status.textContent='Enter a valid non-negative number first.';
+    return;
+  }
+  status.style.color='#888';
+  status.textContent='Saving…';
+  try{
+    const res=await fetch('/api/invoice-seq',{
+      method:'PUT',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({prefix,fy,value})
+    });
+    if(!res.ok) throw new Error('HTTP '+res.status);
+    status.style.color='#0a5c3b';
+    status.textContent='Saved. Next auto-assigned number for '+prefix+' '+fy+' will be '+(value+1)+'.';
+  }catch(err){
+    status.style.color='#dc2626';
+    status.textContent='Could not save — see console for details.';
+  }
+}
+
 function gstSplitRows(rate,amount){
 let isIntraState = getClientStateCode()==="29";
 if(isIntraState){
@@ -784,25 +902,37 @@ const CITY_PIN_MAP={
   'Hyderabad':'500001','Vijayawada':'520001','Visakhapatnam':'530001','Leh':'194101'
 };
 
-function populateCityOptions(){
-  const stateCode=clientState.value;
-  const cities=CITY_MAP[stateCode]||[];
-  clientCity.innerHTML=cities.map(c=>'<option value="'+c+'">'+c+'</option>').join('')+'<option value="Others">Others</option>';
+function populateCityOptionsFor(stateEl, cityEl){
+  const cities=CITY_MAP[stateEl.value]||[];
+  cityEl.innerHTML=cities.map(c=>'<option value="'+c+'">'+c+'</option>').join('')+'<option value="Others">Others</option>';
 }
+function populateCityOptions(){ populateCityOptionsFor(clientState, clientCity); }
+function populateShipCityOptions(){ populateCityOptionsFor(shipState, shipCity); }
 
-function autoFillPin(){
-  if(clientPin.dataset.userSet==="true") return;
-  const pin=CITY_PIN_MAP[clientCity.value];
-  clientPin.value = pin || '';
+function autoFillPinFor(cityEl, pinEl){
+  if(pinEl.dataset.userSet==="true") return;
+  pinEl.value = CITY_PIN_MAP[cityEl.value] || '';
 }
+function autoFillPin(){ autoFillPinFor(clientCity, clientPin); }
+function autoFillShipPin(){ autoFillPinFor(shipCity, shipPin); }
 
-function getClientCityName(){
-  if(clientCity.value==="Others") return clientCityOther.value.trim();
-  return clientCity.value;
+function getCityNameFor(cityEl, cityOtherEl){
+  if(cityEl.value==="Others") return cityOtherEl.value.trim();
+  return cityEl.value;
 }
+function getClientCityName(){ return getCityNameFor(clientCity, clientCityOther); }
+function getShipCityName(){ return getCityNameFor(shipCity, shipCityOther); }
 
-function toggleClientCityOther(){
-  clientCityOther.style.display = clientCity.value==="Others" ? "block" : "none";
+function toggleCityOtherFor(cityEl, cityOtherEl){
+  cityOtherEl.style.display = cityEl.value==="Others" ? "block" : "none";
+}
+function toggleClientCityOther(){ toggleCityOtherFor(clientCity, clientCityOther); }
+function toggleShipCityOther(){ toggleCityOtherFor(shipCity, shipCityOther); }
+
+function populateStateSelect(sel, defaultCode){
+  sel.innerHTML = Object.keys(STATE_CODES).map(code=>
+    '<option value="'+code+'"'+(code===defaultCode?' selected':'')+'>'+STATE_CODES[code]+'</option>'
+  ).join('');
 }
 
 function getClientStateCode(){
@@ -850,6 +980,39 @@ function validateGSTINFormat(){
     clientGST.classList.remove('field-error');
     msg.classList.remove('visible');
   }
+}
+
+/* SHIP TO (display/logistics only — must never feed getClientStateCode/gstSplitRows/calcGST/updateGSTIndicator above) */
+function toggleShipToFields(){
+  const applicable = !shipSameAsBill.checked;
+  shipToFields.style.display = applicable ? "block" : "none";
+  if(!applicable){
+    ['shipName','shipAddress'].forEach(id=>{
+      document.getElementById(id).classList.remove('field-error');
+      document.getElementById('err-'+id).classList.remove('visible');
+    });
+  }
+}
+
+function validateShipGSTFormat(){
+  const gstin=(shipGST.value||'').trim().toUpperCase();
+  const msg=document.getElementById('err-shipGST');
+  if(gstin!=='' && !GSTIN_REGEX.test(gstin)){
+    shipGST.classList.add('field-error');
+    msg.classList.add('visible');
+  }else{
+    shipGST.classList.remove('field-error');
+    msg.classList.remove('visible');
+  }
+}
+
+const SHIP_TO_REQUIRED_FIELDS=[
+  {id:"shipName", err:"err-shipName", requiredMsg:"Ship To name is required"},
+  {id:"shipAddress", err:"err-shipAddress", requiredMsg:"Ship To address is required"}
+];
+
+function shipToApplicable(){
+  return !shipSameAsBill.checked;
 }
 
 /* PHONE FORMAT VALIDATION (blocking, checked inside validateFields via REQUIRED_FIELDS pattern) */
@@ -1051,6 +1214,14 @@ let gstinCode=getClientStateCode();
 let placeOfSupply=(STATE_CODES[gstinCode]||'Unknown State')+' ('+gstinCode+')';
 let reverseCharge=document.getElementById('reverseCharge')?.checked||false;
 
+let shipSame=shipSameAsBill.checked;
+let shipNameVal=shipName.value;
+let shipGSTVal=shipGST.value.toUpperCase();
+let shipAddressVal=shipAddress.value.replace(/\n/g,"<br>");
+let shipCityLine=(getShipCityName() || shipPin.value)
+  ? [getShipCityName(), STATE_CODES[shipState.value]].filter(Boolean).join(', ')+(shipPin.value?' - '+shipPin.value:'')
+  : '';
+
 preview.innerHTML=`
 
 <div class="proposal-heading">${headingText}</div>
@@ -1083,6 +1254,18 @@ ${docType==='invoice' ? '<br><b>Place of Supply:</b> '+placeOfSupply+'<br><b>Rev
 </td>
 </tr>
 </table>
+
+<div class="section-box" style="margin:10px 0">
+  <b style="text-transform:uppercase;letter-spacing:0.05em;font-size:11px">Ship To</b><br>
+  ${shipSame
+    ? '<span style="font-style:italic;color:#666">Same as Bill To Address</span>'
+    : (
+        '<b>' + (shipNameVal || '—') + '</b><br>' +
+        (shipGSTVal ? 'GSTIN: ' + shipGSTVal + '<br>' : '') +
+        (shipAddressVal || '—') +
+        (shipCityLine ? '<br>' + shipCityLine : '')
+      )}
+</div>
 
 ${docType==='proforma' ? `
 <div style="margin:14px 0; padding:8px 12px; background:#fffbeb; border:1px solid #fde68a; border-radius:4px; font-size:11px; color:#92400e; line-height:1.6;">
@@ -1213,6 +1396,21 @@ function validateFields(){
       if(!firstInvalidEl) firstInvalidEl=document.getElementById(f.id);
     }
   });
+
+  if(shipToApplicable()){
+    SHIP_TO_REQUIRED_FIELDS.forEach(f=>{
+      if(!checkRequiredField(f)){
+        valid=false;
+        if(!firstInvalidEl) firstInvalidEl=document.getElementById(f.id);
+      }
+    });
+  }else{
+    SHIP_TO_REQUIRED_FIELDS.forEach(f=>{
+      document.getElementById(f.id).classList.remove("field-error");
+      document.getElementById(f.err).classList.remove("visible");
+    });
+  }
+
   validateEmailFormat();
 
   const itemsMsg=document.getElementById('err-items');
@@ -1453,6 +1651,19 @@ clientPin.addEventListener("input",()=>{clientPin.dataset.userSet="true";});
 populateCityOptions();
 toggleClientCityOther();
 autoFillPin();
+
+shipSameAsBill.addEventListener("change",()=>{toggleShipToFields();updatePreview();});
+shipGST.addEventListener("input",validateShipGSTFormat);
+shipState.addEventListener("change",()=>{populateShipCityOptions();toggleShipCityOther();autoFillShipPin();updatePreview();});
+shipCity.addEventListener("change",()=>{toggleShipCityOther();autoFillShipPin();updatePreview();});
+shipPin.addEventListener("input",()=>{shipPin.dataset.userSet="true";});
+SHIP_TO_REQUIRED_FIELDS.forEach(f=>{
+  document.getElementById(f.id).addEventListener("input",()=>{ if(shipToApplicable()) checkRequiredField(f); });
+});
+populateStateSelect(shipState,"29");
+populateShipCityOptions();
+toggleShipCityOther();
+autoFillShipPin();
 document.querySelectorAll("input,textarea,select").forEach(el=>el.addEventListener("input",updatePreview));
 
 document.querySelectorAll("#itemsBody tr").forEach(tr=>{
@@ -1467,6 +1678,7 @@ document.querySelectorAll("#itemsBody tr").forEach(tr=>{
 let today=getTodayFormats();
 qtNo.value="TEQ"+today.numeric+"-1";
 date.valueAsDate=new Date();
+document.getElementById('seqAdminFY').value=getFYLabel(new Date());
 
 updateGSTIndicator();
 updatePreview();

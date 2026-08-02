@@ -29,4 +29,4 @@ export default async (request, context) => {
   });
 };
 
-export const config = { path: "/qbuilder.html" };
+export const config = { path: ["/qbuilder.html", "/api/invoice-seq"] };
