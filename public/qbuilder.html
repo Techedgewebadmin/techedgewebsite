@@ -773,11 +773,14 @@ async function setSeqAdmin(){
 }
 
 function gstSplitRows(rate,amount){
+// amount is already rounded to a whole rupee by calcGST — split it as whole rupees
+// too (any odd rupee goes to CGST) so CGST + SGST always sums back to `amount` exactly.
 let isIntraState = getClientStateCode()==="29";
 if(isIntraState){
-let half=amount/2;
-return `<tr class="gst-row"><td colspan="7">CGST @${rate/2}%</td><td class="amount">${formatINR(half)}</td></tr>
-<tr class="gst-row"><td colspan="7">SGST @${rate/2}%</td><td class="amount">${formatINR(half)}</td></tr>`;
+let cgst=Math.ceil(amount/2);
+let sgst=amount-cgst;
+return `<tr class="gst-row"><td colspan="7">CGST @${rate/2}%</td><td class="amount">${formatINR(cgst)}</td></tr>
+<tr class="gst-row"><td colspan="7">SGST @${rate/2}%</td><td class="amount">${formatINR(sgst)}</td></tr>`;
 }
 return `<tr class="gst-row"><td colspan="7">IGST @${rate}%</td><td class="amount">${formatINR(amount)}</td></tr>`;
 }
@@ -793,7 +796,9 @@ let details="";
 Object.keys(byRate).map(Number).sort((a,b)=>a-b).forEach(rate=>{
   let base=byRate[rate];
   if(rate<=0) return;
-  let amt=base*rate/100;
+  // Round once per rate group (not at display time) so the printed rows and the
+  // printed grand total always reconcile to the rupee — see gstSplitRows above.
+  let amt=Math.round(base*rate/100);
   gstTotal+=amt;
   details+=gstSplitRows(rate,amt);
 });
@@ -1225,7 +1230,9 @@ typeOrder.forEach(itemType=>{
 });
 
 let gst=calcGST(gstItems);
-let total=subtotal+gst.gstTotal;
+// Sum already-rounded whole-rupee figures (not raw floats) so the printed Subtotal +
+// tax rows always add up to exactly the printed Total.
+let total=Math.round(subtotal)+gst.gstTotal;
 
 let headingText=subject.value ? subject.value.toUpperCase() : dt.label;
 if(clientName.value){
