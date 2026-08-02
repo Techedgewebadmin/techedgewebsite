@@ -403,7 +403,22 @@ input.field-error, textarea.field-error{
 </div>
 </details>
 
-<h3>Client Details</h3>
+<div class="checkbox-field" id="splitFundedWrapper" style="display:none">
+<input type="checkbox" id="splitFunded">
+<label style="text-transform:none;font-size:12px;font-weight:normal;color:#333">This is a split-funded project (grant + end user)</label>
+</div>
+<div id="funderFields" style="display:none">
+<h3>Part A — Funder Details</h3>
+<input id="funderName" placeholder="Funder / Grant Body Name *">
+<div class="field-error-msg" id="err-funderName">Funder name is required</div>
+<input id="funderGST" placeholder="Funder GSTIN (optional)" style="text-transform:uppercase">
+<div class="field-error-msg" id="err-funderGST">Invalid GSTIN format (expected 15 characters)</div>
+<textarea id="funderAddress" placeholder="Funder Address *"></textarea>
+<div class="field-error-msg" id="err-funderAddress">Funder address is required</div>
+<div style="font-size:10px;color:#888;margin:-4px 0 8px;">Part A's CGST/SGST vs IGST is calculated from the Funder's GSTIN above, not the client's — each party's tax follows their own registration.</div>
+</div>
+
+<h3>Client Details <span id="partBLabel" style="font-weight:normal;font-size:11px;color:#888;display:none">(Part B — End User)</span></h3>
 
 <div style="display:flex;gap:8px;align-items:flex-start">
 <input id="qtNo" style="flex:1">
@@ -512,6 +527,7 @@ input.field-error, textarea.field-error{
 <th style="width:10%">HSN/SAC</th>
 <th style="width:14%">GST</th>
 <th style="width:9%">Qty</th>
+<th class="partA-col" style="width:9%;display:none">Part A Qty</th>
 <th style="width:10%">Unit</th>
 <th style="width:16%">Unit Price (₹)</th>
 <th style="width:6%"></th>
@@ -543,6 +559,7 @@ input.field-error, textarea.field-error{
 <input type="number" class="item-gst-custom" placeholder="Custom %" min="0" max="100" step="0.01" style="display:none;margin-top:4px;margin-bottom:0;">
 </td>
 <td><input type="number" class="item-qty" value="1" min="0" step="0.01"></td>
+<td class="partA-col" style="display:none"><input type="number" class="item-partA-qty" placeholder="0" min="0" step="0.01"></td>
 <td>
 <select class="item-unit">
 <option value="Nos">Nos</option>
@@ -693,6 +710,11 @@ function setDocType(type){
   let prefix=DOC_TYPES[type].prefix;
   qtNo.value=/^[A-Z]+/.test(qtNo.value) ? qtNo.value.replace(/^[A-Z]+/, prefix) : qtNo.value;
   document.getElementById('reverseChargeField').style.display = type==='invoice' ? 'flex' : 'none';
+  splitFundedWrapper.style.display = type==='quotation' ? 'flex' : 'none';
+  if(type!=='quotation' && splitFunded.checked){
+    splitFunded.checked=false;
+    toggleSplitFunding();
+  }
   updatePreview();
 }
 
@@ -779,10 +801,12 @@ async function setSeqAdmin(){
   }
 }
 
-function gstSplitRows(rate,amount){
+function gstSplitRows(rate,amount,stateCode){
 // amount is already rounded to a whole rupee by calcGST — split it as whole rupees
 // too (any odd rupee goes to CGST) so CGST + SGST always sums back to `amount` exactly.
-let isIntraState = getClientStateCode()==="29";
+// stateCode defaults to the client's (existing behavior everywhere except split-funded
+// Part A, which passes the Funder's state — see calcGST).
+let isIntraState = (stateCode||getClientStateCode())==="29";
 if(isIntraState){
 let cgst=Math.ceil(amount/2);
 let sgst=amount-cgst;
@@ -792,7 +816,7 @@ return `<tr class="gst-row"><td colspan="7">CGST @${rate/2}%</td><td class="amou
 return `<tr class="gst-row"><td colspan="7">IGST @${rate}%</td><td class="amount">${formatINR(amount)}</td></tr>`;
 }
 
-function calcGST(items){
+function calcGST(items,stateCode){
 let byRate={};
 items.forEach(it=>{
   let r=it.gstRate;
@@ -807,7 +831,7 @@ Object.keys(byRate).map(Number).sort((a,b)=>a-b).forEach(rate=>{
   // printed grand total always reconcile to the rupee — see gstSplitRows above.
   let amt=Math.round(base*rate/100);
   gstTotal+=amt;
-  details+=gstSplitRows(rate,amt);
+  details+=gstSplitRows(rate,amt,stateCode);
 });
 return{gstTotal,details};
 }
@@ -948,10 +972,19 @@ function populateStateSelect(sel, defaultCode){
   ).join('');
 }
 
-function getClientStateCode(){
-  let gstinVal=(clientGST.value||'').trim();
+function getStateCodeFor(gstinValue,fallbackStateCode){
+  let gstinVal=(gstinValue||'').trim();
   if(gstinVal.length>=2) return gstinVal.substring(0,2);
-  return clientState.value || '29';
+  return fallbackStateCode || '29';
+}
+
+function getClientStateCode(){
+  return getStateCodeFor(clientGST.value, clientState.value);
+}
+
+// Part A (Funder) has no state dropdown of its own — GSTIN-or-Karnataka-default only.
+function getFunderStateCode(){
+  return getStateCodeFor(funderGST.value, '29');
 }
 
 function syncStateFromGSTIN(){
@@ -1047,6 +1080,36 @@ const SHIP_TO_REQUIRED_FIELDS=[
 
 function shipToApplicable(){
   return !shipSameAsBill.checked;
+}
+
+/* SPLIT-FUNDED QUOTATION (Quotation doc type only — see setDocType). Part A (Funder) GST
+   must be computed from funderGST, never from clientGST — kept separate from the Ship To
+   guardrail above for the same reason: each party's tax follows their own registration. */
+function toggleSplitFunding(){
+  const on=splitFunded.checked;
+  funderFields.style.display = on ? "block" : "none";
+  partBLabel.style.display = on ? "inline" : "none";
+  document.querySelectorAll('.partA-col').forEach(el=>{ el.style.display = on ? "table-cell" : "none"; });
+  if(!on){
+    ['funderName','funderAddress'].forEach(id=>{
+      document.getElementById(id).classList.remove('field-error');
+      document.getElementById('err-'+id).classList.remove('visible');
+    });
+  }
+  updatePreview();
+}
+
+function validateFunderGSTFormat(){
+  validateGSTFieldFormat(funderGST, document.getElementById('err-funderGST'));
+}
+
+const FUNDER_REQUIRED_FIELDS=[
+  {id:"funderName", err:"err-funderName", requiredMsg:"Funder name is required"},
+  {id:"funderAddress", err:"err-funderAddress", requiredMsg:"Funder address is required"}
+];
+
+function splitFundedApplicable(){
+  return splitFunded.checked;
 }
 
 /* PHONE FORMAT VALIDATION (blocking, checked inside validateFields via REQUIRED_FIELDS pattern) */
@@ -1145,6 +1208,7 @@ function addRow(){
     '<td><input type="text" class="item-hsn" placeholder="HSN/SAC"></td>'+
     '<td><select class="item-gst-mode"><option value="0">0%</option><option value="5">5%</option><option value="18">18%</option><option value="split7030">70% @5% + 30% @18%</option><option value="custom">Custom %</option></select><input type="number" class="item-gst-custom" placeholder="Custom %" min="0" max="100" step="0.01" style="display:none;margin-top:4px;margin-bottom:0;"></td>'+
     '<td><input type="number" class="item-qty" value="1" min="0" step="0.01"></td>'+
+    '<td class="partA-col" style="display:'+(splitFunded.checked?'table-cell':'none')+'"><input type="number" class="item-partA-qty" placeholder="0" min="0" step="0.01"></td>'+
     '<td><select class="item-unit"><option value="Nos">Nos</option><option value="Mtr">Mtr</option><option value="Set">Set</option><option value="Kg">Kg</option><option value="Box">Box</option><option value="Roll">Roll</option><option value="Pair">Pair</option><option value="Ltr">Ltr</option><option value="Sqm">Sqm</option><option value="Lot">Lot</option><option value="Others">Others</option></select></td>'+
     '<td><input type="number" class="item-price" value="0" min="0" step="0.01"></td>'+
     '<td style="text-align:center"><button class="btn-del-row" onclick="delRow(this)">×</button></td>';
@@ -1187,6 +1251,17 @@ let grouped={'Product':[],'Electrical/BOS':[],'AMC/Maintenance':[],'Service':[],
 let gstItems=[];
 let hasSplit7030=false;
 
+// Split-funded quotation (Part A = Funder, Part B = End User) — manual per-line quantity
+// split. Part B is always the remainder of Part A, never independently entered, so the
+// two always reconcile to the row's total quantity (same discipline as the GST-rounding
+// reconciliation elsewhere in this tool).
+let gstItemsA=[], gstItemsB=[];
+let subtotalA=0, subtotalB=0;
+function accumulateSplit(rate, amt, partARatio){
+  if(partARatio>0) gstItemsA.push({lineTotal:amt*partARatio, gstRate:rate});
+  if(partARatio<1) gstItemsB.push({lineTotal:amt*(1-partARatio), gstRate:rate});
+}
+
 rows.forEach(row=>{
   let itemType=row.querySelector('.item-type')?.value||'Product';
   let desc=(row.querySelector('.item-desc')?.value.trim()||'');
@@ -1199,10 +1274,18 @@ rows.forEach(row=>{
   let lineTotal=qty*price;
   subtotal+=lineTotal;
 
+  let partAQtyRaw=Number(row.querySelector('.item-partA-qty')?.value||0);
+  let partAQty=Math.min(Math.max(partAQtyRaw,0),qty);
+  let partARatio=qty>0 ? partAQty/qty : 0;
+  subtotalA+=lineTotal*partARatio;
+  subtotalB+=lineTotal*(1-partARatio);
+
   if(gstMode==="split7030"){
     hasSplit7030=true;
     gstItems.push({lineTotal:lineTotal*0.7,gstRate:5});
     gstItems.push({lineTotal:lineTotal*0.3,gstRate:18});
+    accumulateSplit(5, lineTotal*0.7, partARatio);
+    accumulateSplit(18, lineTotal*0.3, partARatio);
     grouped[itemType].push({
       desc:(desc||'Supply of Goods')+' — Supply of Goods (Deemed 70% of Project Value)',
       hsn:'8541', gstDisplay:'5%', qty, unit, price:price*0.7, lineTotal:lineTotal*0.7
@@ -1215,6 +1298,7 @@ rows.forEach(row=>{
     let rate = gstMode==="custom" ? Number(row.querySelector('.item-gst-custom')?.value||0) : Number(gstMode);
     let gstDisplay=rate+"%";
     gstItems.push({lineTotal,gstRate:rate});
+    accumulateSplit(rate, lineTotal, partARatio);
     grouped[itemType].push({desc,hsn,gstDisplay,qty,unit,price,lineTotal});
   }
 });
@@ -1240,6 +1324,20 @@ let gst=calcGST(gstItems);
 // Sum already-rounded whole-rupee figures (not raw floats) so the printed Subtotal +
 // tax rows always add up to exactly the printed Total.
 let total=Math.round(subtotal)+gst.gstTotal;
+
+// Split-funded quotation: Part A's CGST/SGST-vs-IGST comes from the Funder's own GSTIN
+// (getFunderStateCode), never the client's — each party's tax follows their own
+// registration, same guardrail as Bill-To/Ship-To. Part B keeps using the client's GSTIN,
+// unchanged. Combined figures below are a straight sum of the two parts (not an
+// independent third calculation), so Part A + Part B always reconcile to the combined
+// total by construction.
+let gstA=calcGST(gstItemsA, getFunderStateCode());
+let gstB=calcGST(gstItemsB, getClientStateCode());
+let totalA=Math.round(subtotalA)+gstA.gstTotal;
+let totalB=Math.round(subtotalB)+gstB.gstTotal;
+let combinedSubtotal=Math.round(subtotalA)+Math.round(subtotalB);
+let combinedGST=gstA.gstTotal+gstB.gstTotal;
+let combinedTotal=totalA+totalB;
 
 let headingText=subject.value ? subject.value.toUpperCase() : dt.label;
 if(clientName.value){
@@ -1277,6 +1375,30 @@ preview.innerHTML=`
 No. 10/11, Maragondanahalli Tavarekere, Bengaluru – 562130<br>
 GSTIN: 29AAHCT2953M1ZP<br><br>
 
+${(docType==='quotation' && splitFunded.checked) ? `
+<table>
+<tr>
+<td>
+<b>Part A — Funder:</b><br>
+${funderName.value || '—'}<br>
+${funderGST.value ? '<b>GSTIN:</b> '+funderGST.value.toUpperCase()+'<br>' : ''}
+${funderAddress.value.replace(/\n/g,"<br>")}
+</td>
+<td>
+<b>Part B — End User (also Ship To):</b><br>
+${clientName.value}<br>
+<b>Contact:</b> ${contactPerson.value}<br>
+<b>Phone:</b> ${contactPhone.value}<br>
+${clientGST.value ? '<b>GSTIN:</b> '+clientGST.value.toUpperCase()+'<br>' : ''}
+${delivery.value.replace(/\n/g,"<br>")}
+</td>
+<td>
+<b>${dt.noLabel}:</b> ${qtNo.value}<br>
+<b>Date:</b> ${formatDisplayDate(date.value)}
+</td>
+</tr>
+</table>
+` : `
 <table>
 <tr>
 <td>
@@ -1299,6 +1421,7 @@ ${docType==='invoice' ? '<br><b>Place of Supply:</b> '+placeOfSupply+'<br><b>Rev
 </td>
 </tr>
 </table>
+`}
 
 <div class="section-box" style="margin:10px 0">
   <b style="text-transform:uppercase;letter-spacing:0.05em;font-size:11px">Ship To</b><br>
@@ -1332,6 +1455,35 @@ ${itemRows || '<tr><td colspan="8" style="text-align:center;color:#999;padding:1
 ${gst.details}
 <tr class="grand-total-row"><td colspan="7" class="amount"><b>TOTAL</b></td><td class="amount"><b>${formatINR(total)}</b></td></tr>
 </table>
+
+${(docType==='quotation' && splitFunded.checked) ? `
+<div class="grid-2x2" style="margin-top:14px">
+  <div class="section-box">
+    <b>Part A — Billed to: ${funderName.value || '—'}</b>
+    <table style="margin-top:8px">
+      <tr><td colspan="7" class="amount">Subtotal</td><td class="amount">${formatINR(subtotalA)}</td></tr>
+      ${gstA.details}
+      <tr class="grand-total-row"><td colspan="7" class="amount"><b>TOTAL</b></td><td class="amount"><b>${formatINR(totalA)}</b></td></tr>
+    </table>
+  </div>
+  <div class="section-box">
+    <b>Part B — Billed to: ${clientName.value || '—'}</b>
+    <table style="margin-top:8px">
+      <tr><td colspan="7" class="amount">Subtotal</td><td class="amount">${formatINR(subtotalB)}</td></tr>
+      ${gstB.details}
+      <tr class="grand-total-row"><td colspan="7" class="amount"><b>TOTAL</b></td><td class="amount"><b>${formatINR(totalB)}</b></td></tr>
+    </table>
+  </div>
+</div>
+<div class="section-box" style="margin-top:10px;background:#eef7f1">
+  <b>Combined Summary — Full Project Value</b>
+  <table style="margin-top:8px">
+    <tr><td colspan="7" class="amount">Subtotal (Part A + Part B)</td><td class="amount">${formatINR(combinedSubtotal)}</td></tr>
+    <tr><td colspan="7" class="amount">GST (Part A + Part B)</td><td class="amount">${formatINR(combinedGST)}</td></tr>
+    <tr class="grand-total-row"><td colspan="7" class="amount"><b>TOTAL PROJECT VALUE</b></td><td class="amount"><b>${formatINR(combinedTotal)}</b></td></tr>
+  </table>
+</div>
+` : ''}
 
 ${hasSplit7030 ? `
 <div style="margin-top:16px; border:1.5px solid #0a5c3b; border-radius:6px; overflow:hidden; page-break-inside:avoid;">
@@ -1456,6 +1608,20 @@ function validateFields(){
     });
   }else{
     SHIP_TO_REQUIRED_FIELDS.forEach(f=>{
+      document.getElementById(f.id).classList.remove("field-error");
+      document.getElementById(f.err).classList.remove("visible");
+    });
+  }
+
+  if(splitFundedApplicable()){
+    FUNDER_REQUIRED_FIELDS.forEach(f=>{
+      if(!checkRequiredField(f)){
+        valid=false;
+        if(!firstInvalidEl) firstInvalidEl=document.getElementById(f.id);
+      }
+    });
+  }else{
+    FUNDER_REQUIRED_FIELDS.forEach(f=>{
       document.getElementById(f.id).classList.remove("field-error");
       document.getElementById(f.err).classList.remove("visible");
     });
@@ -1715,6 +1881,13 @@ populateStateSelect(shipState,"29");
 populateShipCityOptions();
 toggleShipCityOther();
 autoFillShipPin();
+
+splitFunded.addEventListener("change",toggleSplitFunding);
+funderGST.addEventListener("input",validateFunderGSTFormat);
+FUNDER_REQUIRED_FIELDS.forEach(f=>{
+  document.getElementById(f.id).addEventListener("input",()=>{ if(splitFundedApplicable()) checkRequiredField(f); });
+});
+
 document.querySelectorAll("input,textarea,select").forEach(el=>el.addEventListener("input",updatePreview));
 
 document.querySelectorAll("#itemsBody tr").forEach(tr=>{
@@ -1732,6 +1905,7 @@ date.valueAsDate=new Date();
 document.getElementById('seqAdminFY').value=getFYLabel(new Date());
 
 updateGSTIndicator();
+splitFundedWrapper.style.display = getDocType()==='quotation' ? 'flex' : 'none';
 updatePreview();
 
 </script>
