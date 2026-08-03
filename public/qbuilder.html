@@ -46,8 +46,6 @@ button{
   width:62%;
   background:#e9edf2;
   padding:30px 0;
-  display:flex;
-  justify-content:center;
   overflow:auto;
 }
 
@@ -86,6 +84,11 @@ button{
 #preview{
   position:relative;
   z-index:1;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:16px;
+  width:100%;
 }
 
 input, select, textarea{
@@ -330,6 +333,11 @@ input.field-error, textarea.field-error{
     width:100%;
     min-height:auto;
     padding:3mm;
+    page-break-after:always;
+  }
+
+  .document:last-child{
+    page-break-after:auto;
   }
 
   /* Convert grid to stable table for print */
@@ -518,7 +526,7 @@ input.field-error, textarea.field-error{
 
 <input id="subject" placeholder="Quotation Subject (optional), e.g. Supply of Electrical Panel & Switchgear">
 
-<h3>Line Items</h3>
+<h3 id="itemsHeading">Line Items</h3>
 <table class="items-table">
 <thead>
 <tr>
@@ -527,7 +535,6 @@ input.field-error, textarea.field-error{
 <th style="width:10%">HSN/SAC</th>
 <th style="width:14%">GST</th>
 <th style="width:9%">Qty</th>
-<th class="partA-col" style="width:9%;display:none">Part A Qty</th>
 <th style="width:10%">Unit</th>
 <th style="width:16%">Unit Price (₹)</th>
 <th style="width:6%"></th>
@@ -559,7 +566,6 @@ input.field-error, textarea.field-error{
 <input type="number" class="item-gst-custom" placeholder="Custom %" min="0" max="100" step="0.01" style="display:none;margin-top:4px;margin-bottom:0;">
 </td>
 <td><input type="number" class="item-qty" value="1" min="0" step="0.01"></td>
-<td class="partA-col" style="display:none"><input type="number" class="item-partA-qty" placeholder="0" min="0" step="0.01"></td>
 <td>
 <select class="item-unit">
 <option value="Nos">Nos</option>
@@ -583,6 +589,72 @@ input.field-error, textarea.field-error{
 <div style="font-size:10px;color:#888;margin:-4px 0 8px;">HSN/SAC is auto-suggested from the description/type — please verify before invoicing.</div>
 <button class="btn-add-row" onclick="addRow()">+ Add Item</button>
 <div class="field-error-msg" id="err-items">At least one line item with a description and price is required</div>
+
+<div id="partBItems" style="display:none">
+<h3 style="margin-top:16px">Part B Line Items — End User</h3>
+<table class="items-table">
+<thead>
+<tr>
+<th style="width:11%">Type</th>
+<th style="width:24%">Description</th>
+<th style="width:10%">HSN/SAC</th>
+<th style="width:14%">GST</th>
+<th style="width:9%">Qty</th>
+<th style="width:10%">Unit</th>
+<th style="width:16%">Unit Price (₹)</th>
+<th style="width:6%"></th>
+</tr>
+</thead>
+<tbody id="itemsBodyB">
+<tr>
+<td>
+<select class="item-type">
+<option value="Product">Product</option>
+<option value="Electrical/BOS">Electrical/BOS</option>
+<option value="AMC/Maintenance">AMC/Maintenance</option>
+<option value="Service">Service</option>
+<option value="Installation">Installation</option>
+<option value="Delivery">Delivery</option>
+<option value="Others">Others</option>
+</select>
+</td>
+<td><input type="text" class="item-desc" placeholder="Product / Service"></td>
+<td><input type="text" class="item-hsn" placeholder="HSN/SAC"></td>
+<td>
+<select class="item-gst-mode">
+<option value="0">0%</option>
+<option value="5">5%</option>
+<option value="18">18%</option>
+<option value="split7030">70% @5% + 30% @18%</option>
+<option value="custom">Custom %</option>
+</select>
+<input type="number" class="item-gst-custom" placeholder="Custom %" min="0" max="100" step="0.01" style="display:none;margin-top:4px;margin-bottom:0;">
+</td>
+<td><input type="number" class="item-qty" value="1" min="0" step="0.01"></td>
+<td>
+<select class="item-unit">
+<option value="Nos">Nos</option>
+<option value="Mtr">Mtr</option>
+<option value="Set">Set</option>
+<option value="Kg">Kg</option>
+<option value="Box">Box</option>
+<option value="Roll">Roll</option>
+<option value="Pair">Pair</option>
+<option value="Ltr">Ltr</option>
+<option value="Sqm">Sqm</option>
+<option value="Lot">Lot</option>
+<option value="Others">Others</option>
+</select>
+</td>
+<td><input type="number" class="item-price" value="0" min="0" step="0.01"></td>
+<td style="text-align:center"><button class="btn-del-row" onclick="delRow(this)">×</button></td>
+</tr>
+</tbody>
+</table>
+<div style="font-size:10px;color:#888;margin:-4px 0 8px;">HSN/SAC is auto-suggested from the description/type — please verify before invoicing.</div>
+<button class="btn-add-row" onclick="addRow('B')">+ Add Item</button>
+<div class="field-error-msg" id="err-itemsB">At least one line item is required for Part B</div>
+</div>
 
 <h3>Scope of Supply</h3>
 <select id="inclusionsTemplate"></select>
@@ -625,13 +697,90 @@ input.field-error, textarea.field-error{
 7. Jurisdiction – All disputes are subject to the exclusive jurisdiction of courts in Bengaluru, Karnataka,
 8. Entire Agreement – This quotation supersedes all prior verbal or written communications, representations or understandings on this subject matter.</textarea>
 
+<div id="partATerms" style="display:none">
+<h3 style="margin-top:16px;border-top:2px solid #0a5c3b;padding-top:10px">Part A Terms — Funder</h3>
+<select id="inclusionsTemplateA"></select>
+<textarea id="InclusionsA">
+1. Solar Panels,
+2. String Inverters,
+3. Mounting Structure,
+4. Cables & Junction Boxes,
+5. Earthing & Lightning Protection kit,
+6. ONE Year Warranty on Supply & Installation.</textarea>
+
+<select id="exclusionsTemplateA"></select>
+<textarea id="exclusionsA">
+1. All civil works except earthing,
+2. Structural strengthening (if required),
+3. Any additional works beyond agreed scope.</textarea>
+
+<select id="deliveryTemplateA"></select>
+<textarea id="deliveryDetailsA">
+1. Delivery and installation within 6-8 weeks from order confirmation.</textarea>
+
+<select id="paymentTemplateA"></select>
+<textarea id="paymentTermsA">
+1. 50% Advance on Order Confirmation,
+2. 30% Before Dispatch,
+3. 15% Before Installation & Sync,
+4. 5% After Commissioning.</textarea>
+
+<h3 style="margin-top:14px">Part A — General Terms &amp; Conditions</h3>
+<textarea id="generalTermsA">
+1. Prices are subject to change without notice if the order is not confirmed within the validity period of this quotation,
+2. Force Majeure – Techedge SPE India Pvt. Ltd shall not be liable for delays due to circumstances beyond reasonable control, including acts of God, natural disasters, government restrictions or supply chain disruptions,
+3. Confidentiality – Both parties agree to keep the terms of this quotation confidential and not disclose to any third party without prior written consent,
+4. Intellectual Property – All intellectual property rights in equipment supplied remain with the respective OEM/manufacturer. Techedge SPE India Pvt. Ltd makes no claim over OEM IP,
+5. Limitation of Liability – Techedge SPE India Pvt. Ltd's liability shall in no event exceed the value of goods/services supplied under this quotation,
+6. Governing Law – This quotation and any contract arising therefrom shall be governed by the laws of India,
+7. Jurisdiction – All disputes are subject to the exclusive jurisdiction of courts in Bengaluru, Karnataka,
+8. Entire Agreement – This quotation supersedes all prior verbal or written communications, representations or understandings on this subject matter.</textarea>
+</div>
+
+<div id="partBTerms" style="display:none">
+<h3 style="margin-top:16px;border-top:2px solid #0a5c3b;padding-top:10px">Part B Terms — End User</h3>
+<select id="inclusionsTemplateB"></select>
+<textarea id="InclusionsB">
+1. Solar Panels,
+2. String Inverters,
+3. Mounting Structure,
+4. Cables & Junction Boxes,
+5. Earthing & Lightning Protection kit,
+6. ONE Year Warranty on Supply & Installation.</textarea>
+
+<select id="exclusionsTemplateB"></select>
+<textarea id="exclusionsB">
+1. All civil works except earthing,
+2. Structural strengthening (if required),
+3. Any additional works beyond agreed scope.</textarea>
+
+<select id="deliveryTemplateB"></select>
+<textarea id="deliveryDetailsB">
+1. Delivery and installation within 6-8 weeks from order confirmation.</textarea>
+
+<select id="paymentTemplateB"></select>
+<textarea id="paymentTermsB">
+1. 50% Advance on Order Confirmation,
+2. 30% Before Dispatch,
+3. 15% Before Installation & Sync,
+4. 5% After Commissioning.</textarea>
+
+<h3 style="margin-top:14px">Part B — General Terms &amp; Conditions</h3>
+<textarea id="generalTermsB">
+1. Prices are subject to change without notice if the order is not confirmed within the validity period of this quotation,
+2. Force Majeure – Techedge SPE India Pvt. Ltd shall not be liable for delays due to circumstances beyond reasonable control, including acts of God, natural disasters, government restrictions or supply chain disruptions,
+3. Confidentiality – Both parties agree to keep the terms of this quotation confidential and not disclose to any third party without prior written consent,
+4. Intellectual Property – All intellectual property rights in equipment supplied remain with the respective OEM/manufacturer. Techedge SPE India Pvt. Ltd makes no claim over OEM IP,
+5. Limitation of Liability – Techedge SPE India Pvt. Ltd's liability shall in no event exceed the value of goods/services supplied under this quotation,
+6. Governing Law – This quotation and any contract arising therefrom shall be governed by the laws of India,
+7. Jurisdiction – All disputes are subject to the exclusive jurisdiction of courts in Bengaluru, Karnataka,
+8. Entire Agreement – This quotation supersedes all prior verbal or written communications, representations or understandings on this subject matter.</textarea>
+</div>
+
 </div>
 
 <div class="right">
-<div class="document">
-<img src="/Logo.png" class="watermark">
 <div id="preview"></div>
-</div>
 </div>
 
 </div>
@@ -1089,12 +1238,16 @@ function toggleSplitFunding(){
   const on=splitFunded.checked;
   funderFields.style.display = on ? "block" : "none";
   partBLabel.style.display = on ? "inline" : "none";
-  document.querySelectorAll('.partA-col').forEach(el=>{ el.style.display = on ? "table-cell" : "none"; });
+  document.getElementById('partATerms').style.display = on ? "block" : "none";
+  document.getElementById('partBTerms').style.display = on ? "block" : "none";
+  document.getElementById('partBItems').style.display = on ? "block" : "none";
+  document.getElementById('itemsHeading').textContent = on ? 'Part A Line Items — Funder' : 'Line Items';
   if(!on){
     ['funderName','funderAddress'].forEach(id=>{
       document.getElementById(id).classList.remove('field-error');
       document.getElementById('err-'+id).classList.remove('visible');
     });
+    document.getElementById('err-itemsB').classList.remove('visible');
   }
   updatePreview();
 }
@@ -1199,8 +1352,8 @@ function autoFillUnit(row){
 }
 
 /* LINE ITEM ROWS */
-function addRow(){
-  const tbody=document.getElementById('itemsBody');
+function addRow(part){
+  const tbody=document.getElementById(part && part==='B' ? 'itemsBodyB' : 'itemsBody');
   const tr=document.createElement('tr');
   tr.innerHTML=
     '<td><select class="item-type"><option value="Product">Product</option><option value="Electrical/BOS">Electrical/BOS</option><option value="AMC/Maintenance">AMC/Maintenance</option><option value="Service">Service</option><option value="Installation">Installation</option><option value="Delivery">Delivery</option><option value="Others">Others</option></select></td>'+
@@ -1208,7 +1361,6 @@ function addRow(){
     '<td><input type="text" class="item-hsn" placeholder="HSN/SAC"></td>'+
     '<td><select class="item-gst-mode"><option value="0">0%</option><option value="5">5%</option><option value="18">18%</option><option value="split7030">70% @5% + 30% @18%</option><option value="custom">Custom %</option></select><input type="number" class="item-gst-custom" placeholder="Custom %" min="0" max="100" step="0.01" style="display:none;margin-top:4px;margin-bottom:0;"></td>'+
     '<td><input type="number" class="item-qty" value="1" min="0" step="0.01"></td>'+
-    '<td class="partA-col" style="display:'+(splitFunded.checked?'table-cell':'none')+'"><input type="number" class="item-partA-qty" placeholder="0" min="0" step="0.01"></td>'+
     '<td><select class="item-unit"><option value="Nos">Nos</option><option value="Mtr">Mtr</option><option value="Set">Set</option><option value="Kg">Kg</option><option value="Box">Box</option><option value="Roll">Roll</option><option value="Pair">Pair</option><option value="Ltr">Ltr</option><option value="Sqm">Sqm</option><option value="Lot">Lot</option><option value="Others">Others</option></select></td>'+
     '<td><input type="number" class="item-price" value="0" min="0" step="0.01"></td>'+
     '<td style="text-align:center"><button class="btn-del-row" onclick="delRow(this)">×</button></td>';
@@ -1227,10 +1379,190 @@ function addRow(){
 }
 
 function delRow(btn){
-  const rows=document.querySelectorAll('#itemsBody tr');
-  if(rows.length<=1) return;
+  const tbody=btn.closest('tbody');
+  if(tbody.querySelectorAll('tr').length<=1) return;
   btn.closest('tr').remove();
   updatePreview();
+}
+
+/* LINE ITEM ROW HELPERS (shared by the single and split-funded documents) */
+const typeOrder=['Product','Electrical/BOS','AMC/Maintenance','Service','Installation','Delivery','Others'];
+const typeColors={'Product':'#0a5c3b','Electrical/BOS':'#b45309','AMC/Maintenance':'#7c3aed','Service':'#0074BB','Installation':'#0a5c3b','Delivery':'#065f46','Others':'#6b7280'};
+const typeBg={'Product':'#eef7f1','Electrical/BOS':'#fef3c7','AMC/Maintenance':'#ede9fe','Service':'#e0f2ff','Installation':'#eef7f1','Delivery':'#d1fae5','Others':'#f3f4f6'};
+
+function newGroups(){
+  return {'Product':[],'Electrical/BOS':[],'AMC/Maintenance':[],'Service':[],'Installation':[],'Delivery':[],'Others':[]};
+}
+
+// Part C (merged) BOQ: combine Part A + Part B line items into a single table. Rows that
+// match on description/HSN/GST/unit/unit-price are merged into one row with summed qty;
+// everything else is listed separately. Only used for display — totals always stay the
+// straight A+B sum (see combinedSubtotal/combinedTotal), so merging never shifts a rupee.
+function mergeGroups(gA, gB){
+  const out=newGroups();
+  typeOrder.forEach(type=>{
+    const items=(gA[type]||[]).concat(gB[type]||[]);
+    const merged=[];
+    items.forEach(it=>{
+      const found=merged.find(m=>
+        m.desc===it.desc && m.hsn===it.hsn && m.gstDisplay===it.gstDisplay &&
+        m.unit===it.unit && m.price===it.price);
+      if(found){
+        found.qty=found.qty+it.qty;
+        found.lineTotal=found.qty*found.price;
+      }else{
+        merged.push(Object.assign({}, it));
+      }
+    });
+    out[type]=merged;
+  });
+  return out;
+}
+
+// Part C GST rows: identical tax lines from Part A and Part B (same label, e.g. two
+// "CGST @2.5%" rows) are summed into one row for the merged document. Different lines
+// (IGST vs CGST+SGST) are never merged, and the total is unchanged by construction.
+function mergeGSTDetails(a, b){
+  const re=/<tr class="gst-row"><td colspan="7">([^<]+)<\/td><td class="amount">₹?\s*([0-9,]+)<\/td><\/tr>/g;
+  const map=new Map();
+  (a+'\n'+b).replace(re,function(_,label,amt){
+    map.set(label,(map.get(label)||0)+Number(amt.replace(/,/g,'')));
+    return _;
+  });
+  let out='';
+  map.forEach(function(amt,label){
+    out+='<tr class="gst-row"><td colspan="7">'+label+'</td><td class="amount">'+formatINR(amt)+'</td></tr>';
+  });
+  return out;
+}
+
+function buildItemRows(groupedObj, startN){
+  let rowsHtml='';
+  let n=startN||1;
+  typeOrder.forEach(itemType=>{
+    const list=groupedObj[itemType];
+    if(!list || list.length===0) return;
+    rowsHtml+='<tr><td colspan="8" style="background:'+typeBg[itemType]+';padding:5px 8px;font-size:10px;font-weight:bold;text-transform:uppercase;letter-spacing:0.06em;color:'+typeColors[itemType]+';border-bottom:1px solid #ccc">'+itemType+'</td></tr>';
+    list.forEach(item=>{
+      rowsHtml+='<tr>'+
+        '<td style="text-align:center;color:#666">'+(n++)+'</td>'+
+        '<td>'+(item.desc||'—')+'</td>'+
+        '<td style="text-align:center">'+(item.hsn||'—')+'</td>'+
+        '<td style="text-align:center">'+item.gstDisplay+'</td>'+
+        '<td style="text-align:center">'+item.qty+'</td>'+
+        '<td style="text-align:center">'+(item.unit||'—')+'</td>'+
+        '<td class="amount">'+formatINR(item.price)+'</td>'+
+        '<td class="amount">'+formatINR(item.lineTotal)+'</td>'+
+      '</tr>';
+    });
+  });
+  return {html:rowsHtml, nextN:n};
+}
+
+/* DOCUMENT BUILDERS — a split-funded quotation renders three standalone documents:
+   Part A (Funder), Part B (End User), Part C (merged A+B). buildDoc() produces the
+   full A4 block for any of them; non-split-funded mode renders a single buildDoc(). */
+function termBox(title, content){
+  return `<div style="margin-top:16px; border:1.5px solid #0a5c3b; border-radius:6px; overflow:hidden; page-break-inside:avoid;">
+  <div style="background:#0a5c3b; padding:7px 14px;">
+    <span style="color:white; font-size:12px; font-weight:bold; text-transform:uppercase; letter-spacing:0.05em;">${title}</span>
+  </div>
+  <div style="padding:10px 14px; font-size:11px; line-height:1.7; color:#333; background:#f9fafb;">
+    ${content}
+  </div>
+</div>`;
+}
+
+function sectionGrid(label, inclusions, exclusions, delivery, payment){
+  return (label ? '<div style="margin-top:10px;font-size:11px;font-weight:bold;color:#0a5c3b;text-transform:uppercase;letter-spacing:0.05em">'+label+'</div>' : '')+
+  `<div class="grid-2x2">
+<div class="section-box"><b>Scope of Supply:</b><br>${inclusions}</div>
+<div class="section-box"><b>Exclusions:</b><br>${exclusions}</div>
+<div class="section-box"><b>Delivery & Installation:</b><br>${delivery}</div>
+<div class="section-box"><b>Payment Terms:</b><br>${payment}</div>
+</div>`;
+}
+
+function buildDoc(o){
+  return `
+<div class="document">
+<img src="/Logo.png" class="watermark">
+<div style="position:relative;z-index:1">
+<div class="proposal-heading">${o.headingText}</div>
+
+<img src="/Logo.png" class="logo"><br><br>
+
+<b>Techedge SPE India Pvt. Ltd.</b><br>
+No. 10/11, Maragondanahalli Tavarekere, Bengaluru – 562130<br>
+GSTIN: 29AAHCT2953M1ZP<br><br>
+
+${o.partyHeader}
+
+<div class="section-box" style="margin:10px 0">
+  <b style="text-transform:uppercase;letter-spacing:0.05em;font-size:11px">Ship To</b><br>
+  ${o.shipToHTML}
+</div>
+
+${o.transportLine ? `
+<div style="margin:0 0 10px;padding:6px 10px;background:#f9fafb;border:1px solid #ccc;border-radius:4px;font-size:10.5px;color:#333">
+  <b style="color:#0a5c3b">Transport Details:</b> ${o.transportLine}
+</div>` : ''}
+
+${o.proformaNote}
+
+<table>
+<tr><th>#</th><th>Description</th><th>HSN/SAC</th><th>GST</th><th>Qty</th><th>Unit</th><th class="amount">Unit Price</th><th class="amount">Total</th></tr>
+${o.itemRows || '<tr><td colspan="8" style="text-align:center;color:#999;padding:14px">No items added yet</td></tr>'}
+</table>
+
+<table>
+<tr><td colspan="7" class="amount">Subtotal</td><td class="amount">${formatINR(o.subtotal)}</td></tr>
+${o.gstDetails}
+<tr class="grand-total-row"><td colspan="7" class="amount"><b>TOTAL</b></td><td class="amount"><b>${formatINR(o.total)}</b></td></tr>
+</table>
+
+${o.taxationNote}
+
+<br><b>Amount in Words:</b> ${o.words}<br><br>
+
+${o.sectionGrid}
+
+${o.generalTermsBlocks}
+
+<br><br>
+
+<div style="margin-top:25px; display:flex; justify-content:space-between; align-items:flex-start; gap:40px; page-break-inside:avoid;">
+
+  <div style="flex:1; text-align:left; position:relative;">
+
+    <img src="/Logo.png"
+         style="position:absolute; left:0; top:-20px; height:110px; opacity:0.05; z-index:0;">
+
+    <div style="position:relative; z-index:1;">
+      <b>For Techedge SPE India Pvt. Ltd.</b><br><br>
+
+      <img src="/Sign.png" style="height:60px;"><br>
+
+      <div style="border-top:1px solid #444; width:220px; margin-top:4px;"></div>
+      <b>Authorized Signatory</b>
+    </div>
+
+  </div>
+
+  <div style="flex:1; border:2px solid #0a5c3b; padding:14px; background:#f3f9f6; font-size:13px;">
+    <b>Please transfer the payment to the following bank account</b><br><br>
+    State Bank of India<br>
+    A/C No: 38440022567<br>
+    IFSC: SBIN0017780
+  </div>
+
+</div>
+<br>
+<div style="text-align:center; font-size:12px; margin-top:12px;">
+  ${o.validityLine}
+</div>
+</div>
+</div>`;
 }
 
 function updatePreview(){
@@ -1238,31 +1570,19 @@ function updatePreview(){
 let docType=getDocType();
 let dt=DOC_TYPES[docType];
 
-let rows=document.querySelectorAll('#itemsBody tr');
+let splitOn=(docType==='quotation' && splitFunded.checked);
+
 let subtotal=0;
-let itemRows='';
-let sNo=1;
-
-let typeOrder=['Product','Electrical/BOS','AMC/Maintenance','Service','Installation','Delivery','Others'];
-let typeColors={'Product':'#0a5c3b','Electrical/BOS':'#b45309','AMC/Maintenance':'#7c3aed','Service':'#0074BB','Installation':'#0a5c3b','Delivery':'#065f46','Others':'#6b7280'};
-let typeBg={'Product':'#eef7f1','Electrical/BOS':'#fef3c7','AMC/Maintenance':'#ede9fe','Service':'#e0f2ff','Installation':'#eef7f1','Delivery':'#d1fae5','Others':'#f3f4f6'};
-let grouped={'Product':[],'Electrical/BOS':[],'AMC/Maintenance':[],'Service':[],'Installation':[],'Delivery':[],'Others':[]};
-
-let gstItems=[];
+let subtotalA=0, subtotalB=0;
+let grouped=newGroups(), groupedA=newGroups(), groupedB=newGroups();
+let gstItems=[], gstItemsA=[], gstItemsB=[];
 let hasSplit7030=false;
 
-// Split-funded quotation (Part A = Funder, Part B = End User) — manual per-line quantity
-// split. Part B is always the remainder of Part A, never independently entered, so the
-// two always reconcile to the row's total quantity (same discipline as the GST-rounding
-// reconciliation elsewhere in this tool).
-let gstItemsA=[], gstItemsB=[];
-let subtotalA=0, subtotalB=0;
-function accumulateSplit(rate, amt, partARatio){
-  if(partARatio>0) gstItemsA.push({lineTotal:amt*partARatio, gstRate:rate});
-  if(partARatio<1) gstItemsB.push({lineTotal:amt*(1-partARatio), gstRate:rate});
-}
-
-rows.forEach(row=>{
+// Split-funded quotation uses TWO independent line-item tables: #itemsBody holds Part A
+// (Funder) items, #itemsBodyB holds Part B (End User) items. Each part renders as its own
+// standalone quotation document (see buildDoc below); Part C is the merged A+B document.
+// Non-split-funded mode reads only #itemsBody (Part A table), unchanged from before.
+function collectRow(row, groups, gstArr, onSubtotal){
   let itemType=row.querySelector('.item-type')?.value||'Product';
   let desc=(row.querySelector('.item-desc')?.value.trim()||'');
   let hsn=(row.querySelector('.item-hsn')?.value.trim()||'');
@@ -1272,53 +1592,34 @@ rows.forEach(row=>{
   let price=Number(row.querySelector('.item-price')?.value||0);
   if(!desc && price===0) return;
   let lineTotal=qty*price;
-  subtotal+=lineTotal;
-
-  let partAQtyRaw=Number(row.querySelector('.item-partA-qty')?.value||0);
-  let partAQty=Math.min(Math.max(partAQtyRaw,0),qty);
-  let partARatio=qty>0 ? partAQty/qty : 0;
-  subtotalA+=lineTotal*partARatio;
-  subtotalB+=lineTotal*(1-partARatio);
-
+  onSubtotal(lineTotal);
   if(gstMode==="split7030"){
     hasSplit7030=true;
-    gstItems.push({lineTotal:lineTotal*0.7,gstRate:5});
-    gstItems.push({lineTotal:lineTotal*0.3,gstRate:18});
-    accumulateSplit(5, lineTotal*0.7, partARatio);
-    accumulateSplit(18, lineTotal*0.3, partARatio);
-    grouped[itemType].push({
-      desc:(desc||'Supply of Goods')+' — Supply of Goods (Deemed 70% of Project Value)',
-      hsn:'8541', gstDisplay:'5%', qty, unit, price:price*0.7, lineTotal:lineTotal*0.7
-    });
-    grouped[itemType].push({
-      desc:(desc||'Installation Services')+' — Installation & Commissioning Services (Deemed 30% of Project Value)',
-      hsn:'9983', gstDisplay:'18%', qty, unit, price:price*0.3, lineTotal:lineTotal*0.3
-    });
+    gstArr.push({lineTotal:lineTotal*0.7,gstRate:5});
+    gstArr.push({lineTotal:lineTotal*0.3,gstRate:18});
+    let goodsDesc=(desc||'Supply of Goods')+' — Supply of Goods (Deemed 70% of Project Value)';
+    let servDesc=(desc||'Installation Services')+' — Installation & Commissioning Services (Deemed 30% of Project Value)';
+    groups[itemType].push({desc:goodsDesc,hsn:'8541',gstDisplay:'5%',qty,unit,price:price*0.7,lineTotal:lineTotal*0.7});
+    groups[itemType].push({desc:servDesc,hsn:'9983',gstDisplay:'18%',qty,unit,price:price*0.3,lineTotal:lineTotal*0.3});
   }else{
     let rate = gstMode==="custom" ? Number(row.querySelector('.item-gst-custom')?.value||0) : Number(gstMode);
     let gstDisplay=rate+"%";
-    gstItems.push({lineTotal,gstRate:rate});
-    accumulateSplit(rate, lineTotal, partARatio);
-    grouped[itemType].push({desc,hsn,gstDisplay,qty,unit,price,lineTotal});
+    gstArr.push({lineTotal,gstRate:rate});
+    groups[itemType].push({desc,hsn,gstDisplay,qty,unit,price,lineTotal});
   }
-});
+}
 
-typeOrder.forEach(itemType=>{
-  if(grouped[itemType].length===0) return;
-  itemRows+='<tr><td colspan="8" style="background:'+typeBg[itemType]+';padding:5px 8px;font-size:10px;font-weight:bold;text-transform:uppercase;letter-spacing:0.06em;color:'+typeColors[itemType]+';border-bottom:1px solid #ccc">'+itemType+'</td></tr>';
-  grouped[itemType].forEach(item=>{
-    itemRows+='<tr>'+
-      '<td style="text-align:center;color:#666">'+(sNo++)+'</td>'+
-      '<td>'+(item.desc||'—')+'</td>'+
-      '<td style="text-align:center">'+(item.hsn||'—')+'</td>'+
-      '<td style="text-align:center">'+item.gstDisplay+'</td>'+
-      '<td style="text-align:center">'+item.qty+'</td>'+
-      '<td style="text-align:center">'+(item.unit||'—')+'</td>'+
-      '<td class="amount">'+formatINR(item.price)+'</td>'+
-      '<td class="amount">'+formatINR(item.lineTotal)+'</td>'+
-    '</tr>';
-  });
-});
+if(splitOn){
+  document.querySelectorAll('#itemsBody tr').forEach(row=>collectRow(row, groupedA, gstItemsA, v=>{subtotalA+=v;}));
+  document.querySelectorAll('#itemsBodyB tr').forEach(row=>collectRow(row, groupedB, gstItemsB, v=>{subtotalB+=v;}));
+}else{
+  document.querySelectorAll('#itemsBody tr').forEach(row=>collectRow(row, grouped, gstItems, v=>{subtotal+=v;}));
+}
+
+let itemRows=buildItemRows(grouped).html;
+let itemRowsA=buildItemRows(groupedA).html;
+let itemRowsB=buildItemRows(groupedB).html;
+let itemRowsC=buildItemRows(mergeGroups(groupedA, groupedB)).html;
 
 let gst=calcGST(gstItems);
 // Sum already-rounded whole-rupee figures (not raw floats) so the printed Subtotal +
@@ -1355,6 +1656,14 @@ let shipAddressVal=shipAddress.value.replace(/\n/g,"<br>");
 let shipCityLine=(getShipCityName() || shipPin.value)
   ? [getShipCityName(), STATE_CODES[shipState.value]].filter(Boolean).join(', ')+(shipPin.value?' - '+shipPin.value:'')
   : '';
+let shipToHTML=shipSame
+  ? '<span style="font-style:italic;color:#666">Same as Bill To Address</span>'
+  : (
+      '<b>' + (shipNameVal || '—') + '</b><br>' +
+      (shipGSTVal ? 'GSTIN: ' + shipGSTVal + '<br>' : '') +
+      (shipAddressVal || '—') +
+      (shipCityLine ? '<br>' + shipCityLine : '')
+    );
 
 let transporterNameVal=document.getElementById('transporterName').value;
 let vehicleNoVal=document.getElementById('vehicleNo').value.toUpperCase();
@@ -1365,40 +1674,26 @@ let transportLine=[
   ewayBillNoVal ? 'E-Way Bill No: '+ewayBillNoVal : ''
 ].filter(Boolean).join(' &middot; ');
 
-preview.innerHTML=`
+let proformaNote=docType==='proforma' ? `
+<div style="margin:14px 0; padding:8px 12px; background:#fffbeb; border:1px solid #fde68a; border-radius:4px; font-size:11px; color:#92400e; line-height:1.6;">
+  <b>Note:</b> This is a Proforma Invoice issued for indicative/advance-payment purposes only. It is not a Tax Invoice under Section 31 of the CGST Act, 2017 and cannot be used for claiming Input Tax Credit. A Tax Invoice will be issued on actual supply of goods/services.
+</div>` : '';
 
-<div class="proposal-heading">${headingText}</div>
+let taxationNote=hasSplit7030 ? `
+<div style="margin-top:16px; border:1.5px solid #0a5c3b; border-radius:6px; overflow:hidden; page-break-inside:avoid;">
+  <div style="background:#0a5c3b; padding:7px 14px;">
+    <span style="color:white; font-size:12px; font-weight:bold; text-transform:uppercase; letter-spacing:0.05em;">Taxation Compliance Note</span>
+  </div>
+  <div style="padding:10px 14px; font-size:11px; line-height:1.7; color:#333; background:#f9fafb;">
+    GST on this Engineering, Procurement, and Construction (EPC) solar contract has been calculated as a Composite Supply. As mandated by the Ministry of Finance via Notification No. 01/2017-Central Tax (Rate) (Schedule I, Entry 234) and Notification No. 11/2017-Central Tax (Rate), the project valuation is split using the statutory 70:30 legal fiction. 70% of the total gross value is treated as the supply of renewable goods (taxed at 5% GST under HSN 8541) and 30% is treated as the supply of allied installation services (taxed at 18% GST under SAC 9983).
+  </div>
+</div>` : '';
 
-<img src="/Logo.png" class="logo"><br><br>
+let validityLine=docType==='invoice'
+  ? 'Payment due by '+addDaysToDate(date.value,15)+'.'
+  : 'This '+dt.footerNoun+' is valid till '+addDaysToDate(date.value,15)+'.';
 
-<b>Techedge SPE India Pvt. Ltd.</b><br>
-No. 10/11, Maragondanahalli Tavarekere, Bengaluru – 562130<br>
-GSTIN: 29AAHCT2953M1ZP<br><br>
-
-${(docType==='quotation' && splitFunded.checked) ? `
-<table>
-<tr>
-<td>
-<b>Part A — Funder:</b><br>
-${funderName.value || '—'}<br>
-${funderGST.value ? '<b>GSTIN:</b> '+funderGST.value.toUpperCase()+'<br>' : ''}
-${funderAddress.value.replace(/\n/g,"<br>")}
-</td>
-<td>
-<b>Part B — End User (also Ship To):</b><br>
-${clientName.value}<br>
-<b>Contact:</b> ${contactPerson.value}<br>
-<b>Phone:</b> ${contactPhone.value}<br>
-${clientGST.value ? '<b>GSTIN:</b> '+clientGST.value.toUpperCase()+'<br>' : ''}
-${delivery.value.replace(/\n/g,"<br>")}
-</td>
-<td>
-<b>${dt.noLabel}:</b> ${qtNo.value}<br>
-<b>Date:</b> ${formatDisplayDate(date.value)}
-</td>
-</tr>
-</table>
-` : `
+let headerSingle=`
 <table>
 <tr>
 <td>
@@ -1420,135 +1715,143 @@ ${(getClientCityName() || clientPin.value) ? '<br>'+[getClientCityName(), STATE_
 ${docType==='invoice' ? '<br><b>Place of Supply:</b> '+placeOfSupply+'<br><b>Reverse Charge:</b> '+(reverseCharge?'Yes':'No') : ''}
 </td>
 </tr>
-</table>
-`}
+</table>`;
 
-<div class="section-box" style="margin:10px 0">
-  <b style="text-transform:uppercase;letter-spacing:0.05em;font-size:11px">Ship To</b><br>
-  ${shipSame
-    ? '<span style="font-style:italic;color:#666">Same as Bill To Address</span>'
-    : (
-        '<b>' + (shipNameVal || '—') + '</b><br>' +
-        (shipGSTVal ? 'GSTIN: ' + shipGSTVal + '<br>' : '') +
-        (shipAddressVal || '—') +
-        (shipCityLine ? '<br>' + shipCityLine : '')
-      )}
-</div>
-
-${transportLine ? `
-<div style="margin:0 0 10px;padding:6px 10px;background:#f9fafb;border:1px solid #ccc;border-radius:4px;font-size:10.5px;color:#333">
-  <b style="color:#0a5c3b">Transport Details:</b> ${transportLine}
-</div>` : ''}
-
-${docType==='proforma' ? `
-<div style="margin:14px 0; padding:8px 12px; background:#fffbeb; border:1px solid #fde68a; border-radius:4px; font-size:11px; color:#92400e; line-height:1.6;">
-  <b>Note:</b> This is a Proforma Invoice issued for indicative/advance-payment purposes only. It is not a Tax Invoice under Section 31 of the CGST Act, 2017 and cannot be used for claiming Input Tax Credit. A Tax Invoice will be issued on actual supply of goods/services.
-</div>` : ''}
-
+let headerA=`
 <table>
-<tr><th>#</th><th>Description</th><th>HSN/SAC</th><th>GST</th><th>Qty</th><th>Unit</th><th class="amount">Unit Price</th><th class="amount">Total</th></tr>
-${itemRows || '<tr><td colspan="8" style="text-align:center;color:#999;padding:14px">No items added yet</td></tr>'}
-</table>
+<tr>
+<td>
+<b>Part A — Funder:</b><br>
+${funderName.value || '—'}<br>
+${funderGST.value ? '<b>GSTIN:</b> '+funderGST.value.toUpperCase()+'<br>' : ''}
+${funderAddress.value.replace(/\n/g,"<br>")}
+</td>
+<td>
+<b>${dt.noLabel}:</b> ${qtNo.value}A<br>
+<b>Date:</b> ${formatDisplayDate(date.value)}
+</td>
+</tr>
+</table>`;
 
+let headerB=`
 <table>
-<tr><td colspan="7" class="amount">Subtotal</td><td class="amount">${formatINR(subtotal)}</td></tr>
-${gst.details}
-<tr class="grand-total-row"><td colspan="7" class="amount"><b>TOTAL</b></td><td class="amount"><b>${formatINR(total)}</b></td></tr>
-</table>
+<tr>
+<td>
+<b>Part B — End User (also Ship To):</b><br>
+${clientName.value}<br>
+<b>Contact:</b> ${contactPerson.value}<br>
+<b>Phone:</b> ${contactPhone.value}<br>
+${clientGST.value ? '<b>GSTIN:</b> '+clientGST.value.toUpperCase()+'<br>' : ''}
+${delivery.value.replace(/\n/g,"<br>")}
+</td>
+<td>
+<b>${dt.noLabel}:</b> ${qtNo.value}B<br>
+<b>Date:</b> ${formatDisplayDate(date.value)}
+</td>
+</tr>
+</table>`;
 
-${(docType==='quotation' && splitFunded.checked) ? `
-<div class="grid-2x2" style="margin-top:14px">
-  <div class="section-box">
-    <b>Part A — Billed to: ${funderName.value || '—'}</b>
-    <table style="margin-top:8px">
-      <tr><td colspan="7" class="amount">Subtotal</td><td class="amount">${formatINR(subtotalA)}</td></tr>
-      ${gstA.details}
-      <tr class="grand-total-row"><td colspan="7" class="amount"><b>TOTAL</b></td><td class="amount"><b>${formatINR(totalA)}</b></td></tr>
-    </table>
-  </div>
-  <div class="section-box">
-    <b>Part B — Billed to: ${clientName.value || '—'}</b>
-    <table style="margin-top:8px">
-      <tr><td colspan="7" class="amount">Subtotal</td><td class="amount">${formatINR(subtotalB)}</td></tr>
-      ${gstB.details}
-      <tr class="grand-total-row"><td colspan="7" class="amount"><b>TOTAL</b></td><td class="amount"><b>${formatINR(totalB)}</b></td></tr>
-    </table>
-  </div>
-</div>
-<div class="section-box" style="margin-top:10px;background:#eef7f1">
-  <b>Combined Summary — Full Project Value</b>
-  <table style="margin-top:8px">
-    <tr><td colspan="7" class="amount">Subtotal (Part A + Part B)</td><td class="amount">${formatINR(combinedSubtotal)}</td></tr>
-    <tr><td colspan="7" class="amount">GST (Part A + Part B)</td><td class="amount">${formatINR(combinedGST)}</td></tr>
-    <tr class="grand-total-row"><td colspan="7" class="amount"><b>TOTAL PROJECT VALUE</b></td><td class="amount"><b>${formatINR(combinedTotal)}</b></td></tr>
-  </table>
-</div>
-` : ''}
+let headerC=`
+<table>
+<tr>
+<td>
+<b>Part A — Funder:</b><br>
+${funderName.value || '—'}<br>
+${funderGST.value ? '<b>GSTIN:</b> '+funderGST.value.toUpperCase()+'<br>' : ''}
+${funderAddress.value.replace(/\n/g,"<br>")}
+</td>
+<td>
+<b>Part B — End User (also Ship To):</b><br>
+${clientName.value}<br>
+<b>Contact:</b> ${contactPerson.value}<br>
+<b>Phone:</b> ${contactPhone.value}<br>
+${clientGST.value ? '<b>GSTIN:</b> '+clientGST.value.toUpperCase()+'<br>' : ''}
+${delivery.value.replace(/\n/g,"<br>")}
+</td>
+<td>
+<b>${dt.noLabel}:</b> ${qtNo.value}<br>
+<b>Date:</b> ${formatDisplayDate(date.value)}
+</td>
+</tr>
+</table>`;
 
-${hasSplit7030 ? `
-<div style="margin-top:16px; border:1.5px solid #0a5c3b; border-radius:6px; overflow:hidden; page-break-inside:avoid;">
-  <div style="background:#0a5c3b; padding:7px 14px;">
-    <span style="color:white; font-size:12px; font-weight:bold; text-transform:uppercase; letter-spacing:0.05em;">Taxation Compliance Note</span>
-  </div>
-  <div style="padding:10px 14px; font-size:11px; line-height:1.7; color:#333; background:#f9fafb;">
-    GST on this Engineering, Procurement, and Construction (EPC) solar contract has been calculated as a Composite Supply. As mandated by the Ministry of Finance via Notification No. 01/2017-Central Tax (Rate) (Schedule I, Entry 234) and Notification No. 11/2017-Central Tax (Rate), the project valuation is split using the statutory 70:30 legal fiction. 70% of the total gross value is treated as the supply of renewable goods (taxed at 5% GST under HSN 8541) and 30% is treated as the supply of allied installation services (taxed at 18% GST under SAC 9983).
-  </div>
-</div>
-` : ''}
+let scopeA=InclusionsA.value.replace(/\n/g,"<br>");
+let exclA=exclusionsA.value.replace(/\n/g,"<br>");
+let delivA=deliveryDetailsA.value.replace(/\n/g,"<br>");
+let payA=paymentTermsA.value.replace(/\n/g,"<br>");
+let scopeB=InclusionsB.value.replace(/\n/g,"<br>");
+let exclB=exclusionsB.value.replace(/\n/g,"<br>");
+let delivB=deliveryDetailsB.value.replace(/\n/g,"<br>");
+let payB=paymentTermsB.value.replace(/\n/g,"<br>");
 
-<br><b>Amount in Words:</b> ${numberToWords(Math.round(total))}<br><br>
-
-<div class="grid-2x2">
-<div class="section-box"><b>Scope of Supply:</b><br>${Inclusions.value.replace(/\n/g,"<br>")}</div>
-<div class="section-box"><b>Exclusions:</b><br>${exclusions.value.replace(/\n/g,"<br>")}</div>
-<div class="section-box"><b>Delivery & Installation:</b><br>${deliveryDetails.value.replace(/\n/g,"<br>")}</div>
-<div class="section-box"><b>Payment Terms:</b><br>${paymentTerms.value.replace(/\n/g,"<br>")}</div>
-</div>
-
-<div style="margin-top:16px; border:1.5px solid #0a5c3b; border-radius:6px; overflow:hidden; page-break-inside:avoid;">
-  <div style="background:#0a5c3b; padding:7px 14px;">
-    <span style="color:white; font-size:12px; font-weight:bold; text-transform:uppercase; letter-spacing:0.05em;">General Terms &amp; Conditions</span>
-  </div>
-  <div style="padding:10px 14px; font-size:11px; line-height:1.7; color:#333; background:#f9fafb;">
-    ${fmtLines(generalTerms.value)}
-  </div>
-</div>
-
-<br><br>
-
-<div style="margin-top:25px; display:flex; justify-content:space-between; align-items:flex-start; gap:40px; page-break-inside:avoid;">
-
-  <div style="flex:1; text-align:left; position:relative;">
-
-    <img src="/Logo.png"
-         style="position:absolute; left:0; top:-20px; height:110px; opacity:0.05; z-index:0;">
-
-    <div style="position:relative; z-index:1;">
-      <b>For Techedge SPE India Pvt. Ltd.</b><br><br>
-
-      <img src="/Sign.png" style="height:60px;"><br>
-
-      <div style="border-top:1px solid #444; width:220px; margin-top:4px;"></div>
-      <b>Authorized Signatory</b>
-    </div>
-
-  </div>
-
-  <div style="flex:1; border:2px solid #0a5c3b; padding:14px; background:#f3f9f6; font-size:13px;">
-    <b>Please transfer the payment to the following bank account</b><br><br>
-    State Bank of India<br>
-    A/C No: 38440022567<br>
-    IFSC: SBIN0017780
-  </div>
-
-</div>
-<br>
-<div style="text-align:center; font-size:12px; margin-top:12px;">
-  ${docType==='invoice'
-    ? 'Payment due by '+addDaysToDate(date.value,15)+'.'
-    : 'This '+dt.footerNoun+' is valid till '+addDaysToDate(date.value,15)+'.'}
-</div>
-`;
+if(!splitOn){
+  preview.innerHTML=buildDoc({
+    headingText,
+    partyHeader:headerSingle,
+    shipToHTML, transportLine, proformaNote,
+    itemRows,
+    subtotal,
+    gstDetails:gst.details,
+    total,
+    taxationNote,
+    words:numberToWords(Math.round(total)),
+    sectionGrid:sectionGrid('',
+      Inclusions.value.replace(/\n/g,"<br>"),
+      exclusions.value.replace(/\n/g,"<br>"),
+      deliveryDetails.value.replace(/\n/g,"<br>"),
+      paymentTerms.value.replace(/\n/g,"<br>")),
+    generalTermsBlocks:termBox('General Terms &amp; Conditions', fmtLines(generalTerms.value)),
+    validityLine
+  });
+}else{
+  preview.innerHTML=
+    buildDoc({
+      headingText,
+      partyHeader:headerA,
+      shipToHTML, transportLine, proformaNote,
+      itemRows:itemRowsA,
+      subtotal:subtotalA,
+      gstDetails:gstA.details,
+      total:totalA,
+      taxationNote,
+      words:numberToWords(Math.round(totalA)),
+      sectionGrid:sectionGrid('', scopeA, exclA, delivA, payA),
+      generalTermsBlocks:termBox('General Terms &amp; Conditions — Part A (Funder)', fmtLines(generalTermsA.value)),
+      validityLine
+    })+
+    buildDoc({
+      headingText,
+      partyHeader:headerB,
+      shipToHTML, transportLine, proformaNote,
+      itemRows:itemRowsB,
+      subtotal:subtotalB,
+      gstDetails:gstB.details,
+      total:totalB,
+      taxationNote,
+      words:numberToWords(Math.round(totalB)),
+      sectionGrid:sectionGrid('', scopeB, exclB, delivB, payB),
+      generalTermsBlocks:termBox('General Terms &amp; Conditions — Part B (End User)', fmtLines(generalTermsB.value)),
+      validityLine
+    })+
+    buildDoc({
+      headingText,
+      partyHeader:headerC,
+      shipToHTML, transportLine, proformaNote,
+      itemRows:itemRowsC,
+      subtotal:combinedSubtotal,
+      gstDetails:mergeGSTDetails(gstA.details, gstB.details),
+      total:combinedTotal,
+      taxationNote,
+      words:numberToWords(combinedTotal),
+      sectionGrid:
+        sectionGrid('Part A — Scope of Supply, Exclusions, Delivery &amp; Payment Terms', scopeA, exclA, delivA, payA)+
+        sectionGrid('Part B — Scope of Supply, Exclusions, Delivery &amp; Payment Terms', scopeB, exclB, delivB, payB),
+      generalTermsBlocks:
+        termBox('General Terms &amp; Conditions — Part A (Funder)', fmtLines(generalTermsA.value))+
+        termBox('General Terms &amp; Conditions — Part B (End User)', fmtLines(generalTermsB.value)),
+      validityLine
+    });
+}
 }
 
 /* VALIDATION */
@@ -1560,8 +1863,8 @@ const REQUIRED_FIELDS=[
   {id:"delivery", err:"err-delivery", requiredMsg:"Billing address is required"}
 ];
 
-function hasValidLineItems(){
-  return Array.from(document.querySelectorAll('#itemsBody tr')).some(row=>{
+function hasValidLineItems(selector){
+  return Array.from(document.querySelectorAll(selector+' tr')).some(row=>{
     let desc=row.querySelector('.item-desc')?.value.trim();
     let price=Number(row.querySelector('.item-price')?.value||0);
     return desc || price>0;
@@ -1630,12 +1933,23 @@ function validateFields(){
   validateEmailFormat();
 
   const itemsMsg=document.getElementById('err-items');
-  if(!hasValidLineItems()){
+  if(!hasValidLineItems('#itemsBody')){
     itemsMsg.classList.add("visible");
     valid=false;
     if(!firstInvalidEl) firstInvalidEl=itemsMsg;
   }else{
     itemsMsg.classList.remove("visible");
+  }
+
+  if(splitFundedApplicable()){
+    const itemsMsgB=document.getElementById('err-itemsB');
+    if(!hasValidLineItems('#itemsBodyB')){
+      itemsMsgB.classList.add("visible");
+      valid=false;
+      if(!firstInvalidEl) firstInvalidEl=itemsMsgB;
+    }else{
+      itemsMsgB.classList.remove("visible");
+    }
   }
 
   if(!valid && firstInvalidEl){
@@ -1678,17 +1992,27 @@ function clearPageNumbers(){
 
 function stampPageNumbers(){
   clearPageNumbers();
-  let docEl=document.querySelector(".document");
+  let docs=document.querySelectorAll(".document");
   let pageHeight=mmToPx(297-6); /* A4 height minus top+bottom @page margin */
-  let totalPages=Math.max(1,Math.ceil(docEl.scrollHeight/pageHeight));
+  let totalPages=0;
+  let docPages=[];
+  docs.forEach(doc=>{
+    let p=Math.max(1,Math.ceil(doc.scrollHeight/pageHeight));
+    docPages.push(p);
+    totalPages+=p;
+  });
 
-  for(let i=0;i<totalPages;i++){
-    let stamp=document.createElement("div");
-    stamp.className="page-number-stamp";
-    stamp.textContent="Page "+(i+1)+" of "+totalPages;
-    stamp.style.top=((i+1)*pageHeight-14)+"px";
-    docEl.appendChild(stamp);
-  }
+  let pageNo=0;
+  docs.forEach((doc,di)=>{
+    for(let i=0;i<docPages[di];i++){
+      pageNo++;
+      let stamp=document.createElement("div");
+      stamp.className="page-number-stamp";
+      stamp.textContent="Page "+pageNo+" of "+totalPages;
+      stamp.style.top=((i+1)*pageHeight-14)+"px";
+      doc.appendChild(stamp);
+    }
+  });
 }
 
 window.addEventListener("beforeprint",stampPageNumbers);
@@ -1836,27 +2160,26 @@ const SCOPE_TEMPLATE_OPTIONS=[
   {value:'custom', label:'Custom (Blank)'}
 ];
 
-function populateTemplateSelect(sel){
+function wireTemplateSelect(sel, textareaId, field){
   sel.innerHTML=SCOPE_TEMPLATE_OPTIONS.map(o=>'<option value="'+o.value+'">'+o.label+'</option>').join('');
+  sel.addEventListener("change",()=>{
+    document.getElementById(textareaId).value=(SCOPE_TEMPLATES[sel.value]||SCOPE_TEMPLATES.custom)[field];
+    updatePreview();
+  });
 }
-[inclusionsTemplate, exclusionsTemplate, deliveryTemplate, paymentTemplate].forEach(populateTemplateSelect);
 
-inclusionsTemplate.addEventListener("change",()=>{
-  Inclusions.value=(SCOPE_TEMPLATES[inclusionsTemplate.value]||SCOPE_TEMPLATES.custom).inclusions;
-  updatePreview();
-});
-exclusionsTemplate.addEventListener("change",()=>{
-  exclusions.value=(SCOPE_TEMPLATES[exclusionsTemplate.value]||SCOPE_TEMPLATES.custom).exclusions;
-  updatePreview();
-});
-deliveryTemplate.addEventListener("change",()=>{
-  deliveryDetails.value=(SCOPE_TEMPLATES[deliveryTemplate.value]||SCOPE_TEMPLATES.custom).delivery;
-  updatePreview();
-});
-paymentTemplate.addEventListener("change",()=>{
-  paymentTerms.value=(SCOPE_TEMPLATES[paymentTemplate.value]||SCOPE_TEMPLATES.custom).payment;
-  updatePreview();
-});
+wireTemplateSelect(inclusionsTemplate,"Inclusions","inclusions");
+wireTemplateSelect(exclusionsTemplate,"exclusions","exclusions");
+wireTemplateSelect(deliveryTemplate,"deliveryDetails","delivery");
+wireTemplateSelect(paymentTemplate,"paymentTerms","payment");
+wireTemplateSelect(document.getElementById('inclusionsTemplateA'),"InclusionsA","inclusions");
+wireTemplateSelect(document.getElementById('exclusionsTemplateA'),"exclusionsA","exclusions");
+wireTemplateSelect(document.getElementById('deliveryTemplateA'),"deliveryDetailsA","delivery");
+wireTemplateSelect(document.getElementById('paymentTemplateA'),"paymentTermsA","payment");
+wireTemplateSelect(document.getElementById('inclusionsTemplateB'),"InclusionsB","inclusions");
+wireTemplateSelect(document.getElementById('exclusionsTemplateB'),"exclusionsB","exclusions");
+wireTemplateSelect(document.getElementById('deliveryTemplateB'),"deliveryDetailsB","delivery");
+wireTemplateSelect(document.getElementById('paymentTemplateB'),"paymentTermsB","payment");
 
 clientGST.addEventListener("input",syncStateFromGSTIN);
 clientGST.addEventListener("input",updateGSTIndicator);
@@ -1890,7 +2213,7 @@ FUNDER_REQUIRED_FIELDS.forEach(f=>{
 
 document.querySelectorAll("input,textarea,select").forEach(el=>el.addEventListener("input",updatePreview));
 
-document.querySelectorAll("#itemsBody tr").forEach(tr=>{
+document.querySelectorAll("#itemsBody tr, #itemsBodyB tr").forEach(tr=>{
   tr.querySelector(".item-desc")?.addEventListener("input",()=>autoFillHSN(tr));
   tr.querySelector(".item-type")?.addEventListener("change",()=>{autoFillHSN(tr);autoFillGST(tr);autoFillUnit(tr);});
   tr.querySelector(".item-gst-mode")?.addEventListener("change",()=>{tr.querySelector(".item-gst-mode").dataset.userSet="true";toggleCustomGST(tr);});
